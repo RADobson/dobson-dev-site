@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dobson Defence | Managed Security for Small Business</title>
+    <title>Dobson Defence | Private SOC for Small Business</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230B0C10%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2260%22 fill=%22%2300F0FF%22>&gt;_</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,8 +53,8 @@
         .price-period { font-size: 1rem; color: #666; vertical-align: middle; }
         .price-sub { font-family: var(--font-mono); color: var(--accent-neon); margin-bottom: 2rem; display: block; }
         .feature-list { list-style: none; text-align: left; margin: 2rem 0; padding: 0 1rem; }
-        .feature-list li { margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; }
-        .feature-list li svg { width: 20px; height: 20px; margin-right: 15px; fill: var(--accent-green); }
+        .feature-list li { margin-bottom: 1rem; font-size: 1rem; display: flex; align-items: center; }
+        .feature-list li svg { width: 18px; height: 18px; margin-right: 12px; fill: var(--accent-green); flex-shrink: 0; }
 
         /* --- COMPARISON --- */
         .comparison { padding: 4rem 0; border-top: 1px solid #1f1f1f; }
@@ -72,8 +72,8 @@
         
         .form-group { margin-bottom: 1.5rem; }
         .form-label { display: block; color: #888; margin-bottom: 0.5rem; font-size: 0.9rem; font-family: var(--font-mono); }
-        .form-input, .form-textarea { width: 100%; background: #0B0C10; border: 1px solid #333; color: var(--text-white); padding: 1rem; font-size: 1rem; font-family: var(--font-body); transition: all 0.3s ease; }
-        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-neon); box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); }
+        .form-input, .form-textarea, .form-select { width: 100%; background: #0B0C10; border: 1px solid #333; color: var(--text-white); padding: 1rem; font-size: 1rem; font-family: var(--font-body); transition: all 0.3s ease; }
+        .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--accent-neon); box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); }
         
         .btn-submit { background: var(--accent-neon); color: #000; border: none; padding: 1rem 2rem; font-weight: bold; width: 100%; cursor: pointer; text-transform: uppercase; font-family: var(--font-mono); transition: all 0.3s ease; }
         .btn-submit:hover { background: #fff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
@@ -96,10 +96,10 @@
     <section id="hero" class="text-center">
         <div class="container">
             <p class="mono-header highlight">// SMB_PROTECTION_PROTOCOL</p>
-            <h1 class="headline">Enterprise-Grade Security.<br>Small Business Price.</h1>
+            <h1 class="headline">Private Security Operations Center.<br>For Small Business.</h1>
             <p class="subhead">
-                Ransomware protection, 24/7 monitoring, and Cyber Insurance compliance.<br>
-                <strong>No servers to buy. No contracts.</strong>
+                A unified platform combining <strong>SIEM, SOAR, & XDR.</strong><br>
+                We monitor your endpoints, cloud, and identity in one place.
             </p>
             <br>
             <a href="#signup" style="display:inline-block; border-bottom: 1px solid var(--accent-neon);">Scroll to Sign Up ↓</a>
@@ -109,19 +109,19 @@
     <section class="pricing-section">
         <div class="container">
             <div class="pricing-card">
-                <span class="price-sub">MANAGED ENDPOINT DEFENCE</span>
-                <div class="price-tag">$15 <span class="price-period">/dev/mo</span></div>
+                <span class="price-sub">MANAGED SOC & XDR</span>
+                <div class="price-tag">$15 <span class="price-period">/user/mo</span></div>
                 <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">(AUD inc. GST)</p>
 
                 <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Next-Gen Antivirus (NGAV)</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Ransomware Blocking</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>24/7 SOC Monitoring</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Insurance Compliance Ready</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Monthly Reporting</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><strong>XDR:</strong> Next-Gen Antivirus & Ransomware Blocking</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><strong>SIEM:</strong> Office 365 & Cloud Log Monitoring</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><strong>SOAR:</strong> Automated Threat Isolation</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><strong>UEBA:</strong> Identity & Behavior Analysis</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Monthly "Plain English" Threat Report</li>
                 </ul>
 
-                <a href="#signup" class="btn-primary">START PROTECTION</a>
+                <a href="#signup" class="btn-primary">ACTIVATE SOC</a>
                 <p style="margin-top: 1rem; font-size: 0.8rem; color: #555;">Instant Setup. Cancel anytime.</p>
             </div>
         </div>
@@ -129,24 +129,24 @@
 
     <section class="comparison">
         <div class="container">
-            <h2 class="text-center">Why local businesses choose us.</h2>
+            <h2 class="text-center">Why simple "Antivirus" isn't enough anymore.</h2>
             <div class="comp-grid">
                 <div class="comp-col">
-                    <h3>[ MICROSOFT / STANDARD AV ]</h3>
+                    <h3>[ STANDARD ANTIVIRUS ]</h3>
                     <ul class="bad-list">
-                        <li><strong>Standard Defender:</strong> Good, but "Passive". No one is watching.</li>
-                        <li><strong>Alert Fatigue:</strong> It emails <i>you</i> at 2 AM. You don't know what to do.</li>
-                        <li><strong>Hidden Costs:</strong> Often requires expensive "Business Premium" upgrades ($33+).</li>
-                        <li><strong>Slow Response:</strong> If you get hacked, you are in a queue for support.</li>
+                        <li><strong>Passive:</strong> Only looks for known files on the laptop.</li>
+                        <li><strong>Blind to Cloud:</strong> Can't see if your Office 365 was hacked.</li>
+                        <li><strong>No Context:</strong> Can't tell if a login is weird (UEBA).</li>
+                        <li><strong>Manual Response:</strong> You have to fix the virus yourself.</li>
                     </ul>
                 </div>
                 <div class="comp-col" style="background: rgba(0, 240, 255, 0.05); padding: 2rem; border-radius: 8px; border: 1px solid #333;">
-                    <h3 class="highlight">[ DOBSON DEFENCE ]</h3>
+                    <h3 class="highlight">[ DOBSON SOC ]</h3>
                     <ul class="good-list">
-                        <li><strong>Active Threat Hunting:</strong> We don't just wait for alerts; we look for hackers.</li>
-                        <li><strong>We Handle It:</strong> You never get a 2 AM panic alert. We fix it remotely.</li>
-                        <li><strong>Price Locked:</strong> Flat $15 rate. No need to upgrade your Email/Office plan.</li>
-                        <li><strong>Insurance Compliant:</strong> Meets "Managed EDR" requirements for cyber policies.</li>
+                        <li><strong>Full XDR:</strong> We correlate laptop activity with cloud logs.</li>
+                        <li><strong>Cloud SIEM:</strong> We monitor your Emails & Identity (M365).</li>
+                        <li><strong>Automated SOAR:</strong> Threats are blocked instantly by code.</li>
+                        <li><strong>Human Overwatch:</strong> Real engineers watching your back.</li>
                     </ul>
                 </div>
             </div>
@@ -178,12 +178,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Approximate Number of Computers</label>
-                        <select name="device_count" class="form-input">
-                            <option value="1-5">1 - 5 Devices</option>
-                            <option value="6-10">6 - 10 Devices</option>
-                            <option value="11-20">11 - 20 Devices</option>
-                            <option value="20+">20+ Devices</option>
+                        <label class="form-label">Number of Users (Laptops + Emails)</label>
+                        <select name="user_count" class="form-input" style="color: #fff; background: #0B0C10;">
+                            <option value="1-5">1 - 5 Users</option>
+                            <option value="6-10">6 - 10 Users</option>
+                            <option value="11-20">11 - 20 Users</option>
+                            <option value="20+">20+ Users</option>
                         </select>
                     </div>
 
