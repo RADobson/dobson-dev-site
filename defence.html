@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobson Defence | Managed Security for Small Business</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230B0C10%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2260%22 fill=%22%2300F0FF%22>&gt;_</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- BRAND THEME --- */
+        :root {
+            --bg-main: #0B0C10;       
+            --bg-secondary: #121212;  
+            --accent-neon: #00F0FF;   
+            --accent-purple: #BC13FE; 
+            --accent-green: #39FF14;  
+            --text-white: #FFFFFF;    
+            --text-grey: #C5C6C7;     
+            --font-mono: 'Fira Code', monospace; 
+            --font-body: 'Inter', sans-serif;      
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-main); color: var(--text-grey); font-family: var(--font-body); line-height: 1.6; scroll-behavior: smooth; }
+        h1, h2, h3, h4 { color: var(--text-white); font-family: var(--font-body); font-weight: 700; letter-spacing: -0.5px; }
+        .mono-header { font-family: var(--font-mono); }
+        a { text-decoration: none; color: var(--accent-neon); transition: all 0.3s ease; }
+        .container { width: 90%; max-width: 1000px; margin: 0 auto; }
+        .text-center { text-align: center; }
+        .highlight { color: var(--accent-neon); }
+
+        /* --- NAV --- */
+        header { padding: 1.5rem 0; border-bottom: 1px solid #1f1f1f; background: rgba(11, 12, 16, 0.95); position: sticky; top: 0; z-index: 100; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.2rem; color: var(--text-white); }
+        .nav-link-back { font-size: 0.9rem; font-family: var(--font-mono); color: #666; }
+        .nav-link-back:hover { color: var(--accent-neon); }
+
+        /* --- HERO --- */
+        #hero { padding: 5rem 0 3rem 0; }
+        h1.headline { font-size: 3rem; line-height: 1.2; margin-bottom: 1.5rem; }
+        p.subhead { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto; color: #999; }
+
+        /* --- PRICING CARD --- */
+        .pricing-section { padding: 4rem 0; }
+        .pricing-card { background: var(--bg-secondary); border: 2px solid #333; border-radius: 8px; padding: 3rem 2rem; max-width: 500px; margin: 0 auto; text-align: center; position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
+        .pricing-card:hover { border-color: var(--accent-neon); transform: translateY(-5px); }
+        .price-tag { font-size: 3.5rem; font-weight: 800; color: var(--text-white); font-family: var(--font-body); }
+        .price-period { font-size: 1rem; color: #666; vertical-align: middle; }
+        .price-sub { font-family: var(--font-mono); color: var(--accent-neon); margin-bottom: 2rem; display: block; }
+        .feature-list { list-style: none; text-align: left; margin: 2rem 0; padding: 0 1rem; }
+        .feature-list li { margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; }
+        .feature-list li svg { width: 20px; height: 20px; margin-right: 15px; fill: var(--accent-green); }
+
+        /* --- COMPARISON --- */
+        .comparison { padding: 4rem 0; border-top: 1px solid #1f1f1f; }
+        .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+        .comp-col h3 { font-family: var(--font-mono); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .bad-list li { color: #888; margin-bottom: 0.8rem; position: relative; padding-left: 25px; }
+        .bad-list li::before { content: '×'; position: absolute; left: 0; color: #ff3333; font-weight: bold; }
+        .good-list li { color: var(--text-white); margin-bottom: 0.8rem; position: relative; padding-left: 25px; }
+        .good-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-green); font-weight: bold; }
+
+        /* --- CONTACT FORM --- */
+        #signup { padding: 6rem 0; background: var(--bg-secondary); border-top: 1px solid #1f1f1f; }
+        .form-container { max-width: 600px; margin: 0 auto; background: var(--bg-main); padding: 2.5rem; border: 1px solid #333; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .form-header { font-family: var(--font-mono); color: var(--accent-neon); margin-bottom: 1.5rem; text-align: center; }
+        
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; color: #888; margin-bottom: 0.5rem; font-size: 0.9rem; font-family: var(--font-mono); }
+        .form-input, .form-textarea { width: 100%; background: #0B0C10; border: 1px solid #333; color: var(--text-white); padding: 1rem; font-size: 1rem; font-family: var(--font-body); transition: all 0.3s ease; }
+        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-neon); box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); }
+        
+        .btn-submit { background: var(--accent-neon); color: #000; border: none; padding: 1rem 2rem; font-weight: bold; width: 100%; cursor: pointer; text-transform: uppercase; font-family: var(--font-mono); transition: all 0.3s ease; }
+        .btn-submit:hover { background: #fff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+
+        /* --- FOOTER --- */
+        footer { padding: 3rem 0; text-align: center; font-size: 0.8rem; color: #555; border-top: 1px solid #1f1f1f; }
+
+        @media (max-width: 768px) { h1.headline { font-size: 2rem; } .comp-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <div class="logo">DOBSON DEFENCE</div>
+            <a href="index.html" class="nav-link-back">< Back to Engineering</a>
+        </div>
+    </header>
+
+    <section id="hero" class="text-center">
+        <div class="container">
+            <p class="mono-header highlight">// SMB_PROTECTION_PROTOCOL</p>
+            <h1 class="headline">Enterprise-Grade Security.<br>Small Business Price.</h1>
+            <p class="subhead">
+                Ransomware protection, 24/7 monitoring, and Cyber Insurance compliance.<br>
+                <strong>No servers to buy. No contracts.</strong>
+            </p>
+            <br>
+            <a href="#signup" style="display:inline-block; border-bottom: 1px solid var(--accent-neon);">Scroll to Sign Up ↓</a>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-card">
+                <span class="price-sub">MANAGED ENDPOINT DEFENCE</span>
+                <div class="price-tag">$15 <span class="price-period">/dev/mo</span></div>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">(AUD inc. GST)</p>
+
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Next-Gen Antivirus (NGAV)</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Ransomware Blocking</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>24/7 SOC Monitoring</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Insurance Compliance Ready</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Monthly Reporting</li>
+                </ul>
+
+                <a href="#signup" class="btn-primary">START PROTECTION</a>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: #555;">Instant Setup. Cancel anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison">
+        <div class="container">
+            <h2 class="text-center">Why local businesses choose us.</h2>
+            <div class="comp-grid">
+                <div class="comp-col">
+                    <h3>[ MICROSOFT / STANDARD AV ]</h3>
+                    <ul class="bad-list">
+                        <li><strong>Standard Defender:</strong> Good, but "Passive". No one is watching.</li>
+                        <li><strong>Alert Fatigue:</strong> It emails <i>you</i> at 2 AM. You don't know what to do.</li>
+                        <li><strong>Hidden Costs:</strong> Often requires expensive "Business Premium" upgrades ($33+).</li>
+                        <li><strong>Slow Response:</strong> If you get hacked, you are in a queue for support.</li>
+                    </ul>
+                </div>
+                <div class="comp-col" style="background: rgba(0, 240, 255, 0.05); padding: 2rem; border-radius: 8px; border: 1px solid #333;">
+                    <h3 class="highlight">[ DOBSON DEFENCE ]</h3>
+                    <ul class="good-list">
+                        <li><strong>Active Threat Hunting:</strong> We don't just wait for alerts; we look for hackers.</li>
+                        <li><strong>We Handle It:</strong> You never get a 2 AM panic alert. We fix it remotely.</li>
+                        <li><strong>Price Locked:</strong> Flat $15 rate. No need to upgrade your Email/Office plan.</li>
+                        <li><strong>Insurance Compliant:</strong> Meets "Managed EDR" requirements for cyber policies.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="signup">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 2rem;">Protect your business today.</h2>
+            
+            <div class="form-container">
+                <div class="form-header">// NEW_CLIENT_ONBOARDING</div>
+                
+                <form action="https://formspree.io/f/xzznoayg" method="POST">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Business Name</label>
+                        <input type="text" name="business_name" class="form-input" placeholder="e.g. Smith & Co Accounting" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Contact Person</label>
+                        <input type="text" name="contact_name" class="form-input" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" name="email" class="form-input" placeholder="you@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Approximate Number of Computers</label>
+                        <select name="device_count" class="form-input">
+                            <option value="1-5">1 - 5 Devices</option>
+                            <option value="6-10">6 - 10 Devices</option>
+                            <option value="11-20">11 - 20 Devices</option>
+                            <option value="20+">20+ Devices</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Any specific concerns? (Optional)</label>
+                        <textarea name="message" class="form-textarea" rows="3" placeholder="e.g. We need this for insurance compliance..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Submit Request</button>
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #666;">We will reply within 24 hours to schedule installation.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Dobson Development Pty Ltd. Brisbane, QLD.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="index.html" style="color: #666;">Home</a> | 
+                <a href="mailto:contact@dobsondevelopment.com.au" style="color: #666;">Contact Support</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
