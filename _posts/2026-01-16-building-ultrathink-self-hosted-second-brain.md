@@ -10,7 +10,7 @@ excerpt: "How I adapted Nate B Jones' Second Brain architecture for privacy-firs
 
 ---
 
-I recently watched [Nate B Jones' video on building a Second Brain with AI](https://youtu.be/0TpON5T-Sw4), and it crystallized something I'd been thinking about for a while: the tools exist now to build a system that actively works on your information while you sleep.
+I recently watched [Nate B Jones' video on building a Second Brain with AI](https://youtu.be/0TpON5T-Sw4?si=4CSCAN7fbkq1eJl0), and it crystallized something I'd been thinking about for a while: the tools exist now to build a system that actively works on your information while you sleep.
 
 But his stack (Slack + Notion + Zapier) didn't fit my requirements:
 - I wanted **privacy** - my thoughts in local Markdown files, not SaaS databases
