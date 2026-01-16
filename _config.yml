@@ -1,0 +1,32 @@
+# Jekyll Configuration for Dobson Development
+title: Dobson Development Blog
+description: Insights on SIEM, SOAR, XDR, and security automation
+url: "https://dobsondevelopment.com.au"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude files from build
+exclude:
+  - README.md
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+
+# Permalinks
+permalink: /blog/:title/
+
+# Collections (for future use)
+collections:
+  posts:
+    output: true
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
