@@ -14,9 +14,9 @@ I watched an incredible video by Nate B. Jones the other day which recommended t
 
 Go and watch it and come back - https://youtu.be/0TpON5T-Sw4?si=SaJwfnb3q7y7cAcW - I'll wait. Trust me its really good.
 
-I first heard of the "second brain" concept about 9 years ago on a Tim Ferriss podcast, while doing fasted walking at the gym early one morning, shortly before Donald Trump was inaugurated President for the first time.
+I first heard of the "second brain" concept about 9 years ago on a Tim Ferriss podcast, while doing fasted treadmill walking at the gym early one morning, shortly before Donald Trump was inaugurated President for the first time.
 
-![Donald Trump Chicken](./images.sbs.com.jpg)
+![Donald_Trump_Chicken.jpg](./images.sbs.com.jpg)
 
 I really TRIED to do it - with Evernote - back when that was a thing. But I could never make it work because I'm too scatter-brained. Getting on top of all the tagging and folder organisation and systematising was impossible for me to maintain for any length of time. So I gave up.
 
@@ -238,7 +238,7 @@ The commands are minimal because the whole point is you shouldn't have to rememb
 
 ## Full Circle
 
-So here I am - 9 years after that Tim Ferriss podcast, a full Trump presidential term later - and I've finally got a second brain system that actually works. Not because the concept changed. The patterns are the same. We still can't hold more than 4-7 things in working memory. We still need systems that capture, classify, surface, and nudge. That was true in 2017 and it's true now.
+So here I am - 9 years after that Tim Ferriss podcast, a full 9-year numerology cyvle later - and I've finally got a second brain system that actually works. Not because the concept changed. The patterns are the same. We still can't hold more than 4-7 things in working memory. We still need systems that capture, classify, surface, and nudge. That was true in 2017 and it's true now.
 
 What changed is that AI got good enough to do the boring parts - the tagging, the organising, the "where does this go?" decision-making that I could never stick with manually.
 
