@@ -10,25 +10,50 @@ excerpt: "How a complex stack of no-code tools became a simple 600-line Python s
 
 ---
 
-I recently watched [Nate B Jones' video on building a Second Brain with AI](https://youtu.be/0TpON5T-Sw4?si=4CSCAN7fbkq1eJl0), and it crystallized something I'd been thinking about for a while: the tools exist now to build a system that actively works on your information while you sleep.
+I watched an incredible video by Nate B. Jones the other day which recommended that now - in 2026 - it is finally time to implement a "second brain" system.
 
-But his stack (Slack + Notion + Zapier) didn't fit my requirements:
+Go and watch it and come back - https://youtu.be/0TpON5T-Sw4?si=SaJwfnb3q7y7cAcW - I'll wait. Trust me its really good.
+
+I first heard of the "second brain" concept about 9 years ago on a Tim Ferriss podcast, while doing fasted walking at the gym early one morning, shortly before Donald Trump was inaugurated President for the first time.
+
+![Donald Trump Chicken](./images.sbs.com.jpg)
+
+I really to do it - with Evernote - back when that was a thing. But I could never make it work because I'm too scatter-brained. Getting on top of all the tagging and folder organisation and systematising was impossible for me to maintain for any length of time. So I gave up.
+
+But watching Nate B. Jones' video inspired me to try again.
+
+The epiphany that he provided was that no - in 2026 - the technology exists to automate all that tagging and systematising - so that the only task that is incumbent on the human in the loop is just to remember to capture the thoughts that arise. That's it. That's all you have to do. Using AI - the second-brain system should be able to organise itself automatically. And furthermore - it should be able to surface relevant information and data points back into your attention at the appropriate time - without you manually having to recall it from the deep dark depths of your nervous system.
+
+The stack that Nate B. Jones recommended was comprised of 4 popular tools:
+1. **Slack** for capture
+2. **Zapier** for automation
+3. **ChatGPT** for processing brainpower
+4. **Notion** for storage
+
+But there's just one problem - I don't like Slack. I'm one of the few who prefers Teams (crazy I know). 
+
+Never been a fan of Zapier either - I always used IFTTT back in the old days - and these days I use n8n.
+
+AAAND I've never used Notion before either. As I said - I was a big Evernote user - until Evernote was ruined. Since then I've played around with Obsidian.
+
+So Nate's Slack + Notion + Zapier stack didn't suit me:
 - I wanted **privacy** - my thoughts in local Markdown files, not SaaS databases
 - I wanted **control** - no API rate limits or "you've hit your automation cap"
 - I wanted **cost efficiency** - $0/month, not $50+
 
-So I set out to build my own. What followed was a journey through increasingly complex infrastructure... until a moment of clarity simplified everything.
+So I set out to build Nate's second brain system MY way.
 
-## The Over-Engineered First Attempt
+What followed was a journey through increasingly complex infrastructure... until a moment of clarity simplified everything.
 
-My initial architecture was ambitious:
+## The Over-Engineered First Attempt 
 
-- **Telegram** for capture (solid choice, kept this)
-- **n8n** for automation workflows (self-hosted Zapier alternative)
-- **Obsidian** running headlessly in Docker (yes, the desktop app, in a container)
+- Instead of using Slack, I decided to use **Telegram** for capture. This ended up being a solid choice, and is basically the only component that survived the cull and made it into prod.
+- Instead of using Zapier, I tried **n8n** for automation workflows - Self-hosted. Open-soure. Free. Sounds perfect, right?
+- Instead of using Notion, I tried **Obsidian** - running headlessly in Docker Yes, the desktop app, in a container. I had to spoof it into thinking it had a UI. It was ridiculous.
 - **CouchDB** as the sync backend
 - **LiveSync plugin** to bridge Obsidian with CouchDB
 - **Caddy** as a reverse proxy with automatic HTTPS
+- **Claude Sonnet 4.5** as the AI API
 
 Four n8n workflow JSON files. Six Docker containers. A "Headless Ghost" architecture where Obsidian watched for filesystem changes and synced them to CouchDB so my iPad could see updates.
 
