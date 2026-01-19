@@ -12,8 +12,9 @@ excerpt: "How a complex stack of no-code tools became a simple 600-line Python s
 
 I watched an incredible video by Nate B. Jones the other day which recommended that now - in 2026 - it is finally time to implement a "second brain" system.
 
-Go aheah and watch - I'll wait. Trust me its really good.
+Go ahead and watch - I'll wait. Trust me its really good.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0TpON5T-Sw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 I first heard of the "second brain" concept about 9 years ago on a Tim Ferriss podcast, while doing fasted treadmill walking at the gym early one morning, shortly before Donald Trump was inaugurated President for the first time.
 
