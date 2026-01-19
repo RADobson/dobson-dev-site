@@ -17,10 +17,10 @@ Go and watch it and come back - https://youtu.be/0TpON5T-Sw4?si=SaJwfnb3q7y7cAcW
 I first heard of the "second brain" concept about 9 years ago on a Tim Ferriss podcast, while doing fasted treadmill walking at the gym early one morning, shortly before Donald Trump was inaugurated President for the first time.
 
 <figure>
-  <img src="./Donald_Trump_chicken.jpg" alt="Donald_Trump_chicken.jpg">
+  <img src="{{ '/assets/images/Donald_Trump_chicken.jpg' | relative_url }}" alt="Donald_Trump_chicken.jpg">
   <figcaption>Donald_Trump_chicken.jpg</figcaption>
 </figure>
-<br />
+
 I really TRIED to do it - with Evernote - back when that was a thing. But I could never make it work because I'm too scatter-brained. Getting on top of all the tagging and folder organisation and systematising was impossible for me to maintain for any length of time. So I gave up.
 
 But watching Nate B. Jones' video inspired me to try again.
@@ -75,10 +75,9 @@ It was 11pm. I was staring at yet ANOTHER CouchDB sync error. My third one that 
 I looked at my n8n workflows. Really looked at them. The actual logic - classify a message, write a file, send a confirmation back - was maybe 50 lines of Python if you squinted. But it was buried under layers of drag-and-drop nodes and JSON configs and webhook handlers and error catchers. The "headless Obsidian" monstrosity? It only existed because I needed something to run the LiveSync plugin. But wait - if I'm writing directly to the filesystem anyway... I don't NEED sync. The files are already there. On the server. Where I can just... read them.
 
 <figure>
-  <img src="./VIM_wife_VIM_life.jpg" alt="VIM_wife_VIM_life.jpg">
+  <img src="{{ '/assets/images/VIM_wife_VIM_life.jpg' | relative_url }}" alt="VIM_wife_VIM_life.jpg">
   <figcaption>VIM_wife_VIM_life.jpg</figcaption>
 </figure>
-<br />
 
 The whole Rube Goldberg machine I'd built was solving problems that only existed because of other parts of the machine.
 
