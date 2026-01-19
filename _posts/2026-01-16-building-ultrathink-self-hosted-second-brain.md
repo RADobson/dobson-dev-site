@@ -49,11 +49,11 @@ So Nate's Slack + Notion + Zapier stack didn't suit me:
 
 So I set out to build Nate's second brain system MY way.
 
-What followed was - predictably - me spending weeks overcomplicating everything until I finally had a "what am I DOING" moment.
+What followed was - predictably - me wasting days trying to do it my way - until I finally had a "what am I DOING" moment.
 
 ## The Over-Engineered First Attempt
 
-Look. I'm a developer. And developers have this disease where we can't just USE something - we have to BUILD it ourselves. So here's what I did:
+Look. I'm a tinkerer. And we tinkerers have this condition where we can't just USE something - we have to BUILD it ourselves. So here's what I did:
 
 - Swapped Slack for **Telegram** for capture. This was actually a good call - survived the cull and made it to prod. Broken clock, twice a day, etc.
 - Swapped Zapier for **n8n** - self-hosted, open-source, free. Sounds perfect right? SPOILER: it was not perfect.
