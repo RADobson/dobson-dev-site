@@ -20,6 +20,7 @@ I first heard of the "second brain" concept about 9 years ago on a Tim Ferriss p
   <img src="{{ '/assets/images/Donald_Trump_chicken.jpg' | relative_url }}" alt="Donald_Trump_chicken.jpg">
   <figcaption>Donald_Trump_chicken.jpg</figcaption>
 </figure>
+<br><br>
 
 I really TRIED to do it - with Evernote - back when that was a thing. But I could never make it work because I'm too scatter-brained. Getting on top of all the tagging and folder organisation and systematising was impossible for me to maintain for any length of time. So I gave up.
 
@@ -78,6 +79,7 @@ I looked at my n8n workflows. Really looked at them. The actual logic - classify
   <img src="{{ '/assets/images/VIM_wife_VIM_life.jpg' | relative_url }}" alt="VIM_wife_VIM_life.jpg">
   <figcaption>VIM_wife_VIM_life.jpg</figcaption>
 </figure>
+<br><br>
 
 The whole Rube Goldberg machine I'd built was solving problems that only existed because of other parts of the machine.
 
