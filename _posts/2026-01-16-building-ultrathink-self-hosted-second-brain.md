@@ -59,17 +59,19 @@ Look. I'm a developer. And developers have this disease where we can't just USE 
 
 Four n8n workflow JSON files. Six Docker containers. A "Headless Ghost" architecture where Obsidian watched for filesystem changes and synced them to CouchDB so my iPad could see updates. I called it "elegant" at the time. Reader - it was not elegant.
 
-It worked. Technically. In the same way a car held together with duct tape and prayers "works". Obsidian's Docker container crashed every 48 hours like clockwork. The n8n workflows were visual spaghetti that I couldn't version control - so every time something broke I was playing "find the misconfigured node" like some terrible escape room. LiveSync had edge cases that made me want to throw my laptop out the window.
+It sort of worked. But it was was a nightmare to maintain. Obsidian's Docker container crashed every few hours like clockwork. The n8n workflows were visual spaghetti with no version control - every time something broke I was playing "find the misconfigured node" like some terrible escape room. LiveSync had edge cases, CouchDB had misconfigurations. It was a headache.
 
-I was spending more time debugging the infrastructure than actually capturing thoughts. The IRONY - building a system to reduce cognitive load that was itself a massive cognitive load - was not lost on me. But I pressed on. Because sunk cost fallacy is real.
+I was spending more time debugging the infrastructure than actually capturing thoughts. The irony of building a system to reduce cognitive load that was itself a massive cognitive load was not lost on me. But I pressed on. Because sunk cost fallacy is real.
 
 ## The Brainwave
 
-It was 11pm. I was staring at yet ANOTHER CouchDB sync error. My third one that week. And I just... stopped.
+It was 11pm. I was staring at yet ANOTHER CouchDB sync error. My third one that day. And I just... stopped.
 
-*Wait. I'm a developer. I write code for a living. Claude Code is literally RIGHT THERE on my machine. Why am I fighting with visual node editors and headless desktop apps like some kind of masochist?*
+*Wait. Why am I trying to fit this concept into some arbitrary 3rd tools? I literally installed Claude Code on my machine yesterday. Why am I fighting with visual node editors and headless desktop apps like some kind of masochist?*
 
 I looked at my n8n workflows. Really looked at them. The actual logic - classify a message, write a file, send a confirmation back - was maybe 50 lines of Python if you squinted. But it was buried under layers of drag-and-drop nodes and JSON configs and webhook handlers and error catchers. The "headless Obsidian" monstrosity? It only existed because I needed something to run the LiveSync plugin. But wait - if I'm writing directly to the filesystem anyway... I don't NEED sync. The files are already there. On the server. Where I can just... read them.
+
+VIM_wife_VIM_life.jpg
 
 The whole Rube Goldberg machine I'd built was solving problems that only existed because of other parts of the machine.
 
@@ -122,9 +124,9 @@ But here's my unpopular opinion: if your "no-code" solution involves:
 - Workflow JSONs you can't meaningfully diff
 - Debug sessions that take longer than just rewriting the logic in actual code
 
-...maybe just write code? I know - shocking advice from a developer. But I genuinely think we've over-rotated on "no-code everything" as an industry.
+...maybe just write code? I know - shocking advice from a non-developer. But I genuinely think we've over-rotated on "no-code everything" as an industry.
 
-Claude Code made this embarrassingly trivial. I described what I wanted. It wrote the script. I tested it. We went back and forth for an hour. The entire rewrite took less time than my LAST n8n debugging session. That's not an exaggeration.
+Claude Code made this embarrassingly trivial. I described what I wanted. It wrote the script. I tested it. We went back and forth for an hour. The entire rewrite took less time than a typical n8n debugging session.
 
 ## The 8 Building Blocks (Nate Was Right About These)
 
@@ -238,7 +240,11 @@ The commands are minimal because the whole point is you shouldn't have to rememb
 
 ## Full Circle
 
-So here I am - 9 years after that Tim Ferriss podcast, a full 9-year numerology cyvle later - and I've finally got a second brain system that actually works. Not because the concept changed. The patterns are the same. We still can't hold more than 4-7 things in working memory. We still need systems that capture, classify, surface, and nudge. That was true in 2017 and it's true now.
+So here I am - 9 years after that Tim Ferriss podcast - a full 9-year numerology cycle later - and I've finally got a second brain system that actually works.
+
+Not because the concept changed. The patterns are the same. We still can't hold more than 4-7 things in working memory. We still need systems that capture, classify, surface, and nudge.
+
+That was true in 2017 and it's true now.
 
 What changed is that AI got good enough to do the boring parts - the tagging, the organising, the "where does this go?" decision-making that I could never stick with manually.
 
