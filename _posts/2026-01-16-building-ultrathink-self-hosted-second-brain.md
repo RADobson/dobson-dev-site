@@ -55,7 +55,8 @@ What followed was - predictably - me wasting days trying to do it my way - until
 
 Look. I'm a tinkerer. And we tinkerers have this condition where we can't just USE something - we have to BUILD it ourselves. So here's what I did:
 
-- Swapped Slack for **Telegram** for capture. This was actually a good call - survived the cull and made it to prod. Broken clock, twice a day, etc.
+- Signed up for Oracle Cloud and spun up a free-tier Ampere VM with 4 vCPUs and 24GB of RAM. I had to upgrade my account to a paid account to actually get this provisioned - but the resources themselves are in the free-tier and won't attract a bill.
+- Swapped Slack for **Telegram** for capture. This was actually a good call in the end - it survived the cull and made it to my current prod system.
 - Swapped Zapier for **n8n** - self-hosted, open-source, free. Sounds perfect right? SPOILER: it was not perfect.
 - Swapped Notion for **Obsidian** - but here's the thing - I needed it to run on a headless server. So I containerised the desktop app in Docker. The DESKTOP app. In a CONTAINER. I had to spoof it into thinking it had a UI. It was absolutely unhinged.
 - **CouchDB** as the sync backend - because apparently I hated myself
