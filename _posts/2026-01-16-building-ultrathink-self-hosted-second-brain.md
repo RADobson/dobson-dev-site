@@ -16,7 +16,7 @@ Go and watch it and come back - https://youtu.be/0TpON5T-Sw4?si=SaJwfnb3q7y7cAcW
 
 I first heard of the "second brain" concept about 9 years ago on a Tim Ferriss podcast, while doing fasted treadmill walking at the gym early one morning, shortly before Donald Trump was inaugurated President for the first time.
 
-<img src="./images.sbs.com.jpg" alt="Donald_Trump_Chicken.jpg">
+<img src="./Donald_Trump_chicken.jpg" alt="Donald_Trump_chicken.jpg">
 
 
 I really TRIED to do it - with Evernote - back when that was a thing. But I could never make it work because I'm too scatter-brained. Getting on top of all the tagging and folder organisation and systematising was impossible for me to maintain for any length of time. So I gave up.
