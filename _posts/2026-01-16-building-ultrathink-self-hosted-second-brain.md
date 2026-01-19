@@ -38,7 +38,7 @@ The stack that Nate B. Jones recommended was comprised of 4 popular tools:
 
 But there's just one problem - I don't like Slack. I'm one of the few who prefers Teams (crazy I know). 
 
-Never been a fan of Zapier either - I always used IFTTT back in the old days - and these days I use n8n.
+Never been a big fan of Zapier either - I always used IFTTT back in the old days - and these days I use n8n.
 
 AAAND I've never used Notion before either. As I said - I was a big Evernote user - until Evernote was ruined. Since then I've played around with Obsidian.
 
