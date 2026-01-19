@@ -28,7 +28,7 @@ I really TRIED to do it - with Evernote - back when that was a thing. But I coul
 
 But watching Nate B. Jones' video inspired me to try again.
 
-The epiphany that he provided was that no - in 2026 - the technology exists to automate all that tagging and systematising - so that the only task that is incumbent on the human in the loop is just to remember to capture the thoughts that arise. That's it. That's all you have to do. Using AI - the second-brain system should be able to organise itself automatically. And furthermore - it should be able to surface relevant information and data points back into your attention at the appropriate time - without you manually having to recall it from the deep dark depths of your nervous system.
+The epiphany that he provided was that now - in 2026 - the technology exists to automate all that tagging and systematising - so that the only task that is incumbent on the human in the loop is just to remember to capture the thoughts that arise. That's it. That's all you have to do. Using AI - the second-brain system should be able to organise itself automatically. And furthermore - it should be able to surface relevant information and data points back into your attention at the appropriate time - without you manually having to recall it from the deep dark depths of your nervous system.
 
 The stack that Nate B. Jones recommended was comprised of 4 popular tools:
 1. **Slack** for capture
