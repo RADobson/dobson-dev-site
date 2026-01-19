@@ -14,7 +14,7 @@ I watched an incredible video by Nate B. Jones the other day which recommended t
 
 Go ahead and watch it - I'll wait. Trust me its really good.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0TpON5T-Sw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+<br><br>
 
 I first heard of the "second brain" concept about 9 years ago on a Tim Ferriss podcast, while doing fasted treadmill walking at the gym early one morning, shortly before Donald Trump was inaugurated President for the first time.
 
