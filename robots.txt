@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dobsondevelopment.com.au/sitemap.xml
