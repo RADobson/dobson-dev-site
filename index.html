@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dobson Development | SIEM, SOAR, & XDR Engineering</title>
+    <title>Dobson Development | Software Products Portfolio</title>
+    <meta name="description" content="Australian software studio building practical tools for cybersecurity and business. Explore our portfolio of live products.">
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230B0C10%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2260%22 fill=%22%2300F0FF%22>&gt;_</text></svg>">
 
@@ -11,8 +12,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dobson Development | Software Products Portfolio">
+    <meta property="og:description" content="Australian software studio building practical tools for cybersecurity and business.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dobsondevelopment.com.au">
+
     <style>
-        /* --- CSS Variables & Theme Setup --- */
         :root {
             --bg-main: #0B0C10;       
             --bg-secondary: #121212;  
@@ -20,19 +26,17 @@
             --accent-purple: #BC13FE; 
             --text-white: #FFFFFF;    
             --text-grey: #C5C6C7;     
-            
             --font-mono: 'Fira Code', monospace; 
             --font-body: 'Inter', sans-serif;      
         }
 
-        /* --- General Reset --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: var(--bg-main);
             color: var(--text-grey);
             font-family: var(--font-body);
             line-height: 1.6;
-            scroll-behavior: smooth; /* Smooth scrolling for anchors */
+            scroll-behavior: smooth;
         }
         h1, h2, h3, h4 { color: var(--text-white); font-family: var(--font-mono); letter-spacing: -0.5px; }
         a { text-decoration: none; color: var(--accent-neon); transition: all 0.3s ease; }
@@ -67,22 +71,23 @@
             animation: typing 2s steps(14, end), blink-caret .75s step-end infinite;
         }
         .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-grey); position: relative; }
+        .nav-links a { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-grey); }
         .nav-links a:hover { color: var(--accent-neon); }
 
         /* --- HERO --- */
         #hero {
-            height: 90vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             position: relative;
             margin-top: 60px;
+            padding: 4rem 0;
             background-image: 
                 radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(188, 19, 254, 0.05) 0%, transparent 50%);
         }
         .hero-content { max-width: 800px; }
-        h1.hero-title { font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        h1.hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
         .hero-subtitle { font-size: 1.2rem; max-width: 600px; margin-bottom: 2.5rem; }
         .btn-neon {
             display: inline-block;
@@ -95,33 +100,194 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .btn-neon:hover { background: var(--accent-neon); color: var(--bg-main); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+        .btn-neon:hover { 
+            background: var(--accent-neon); 
+            color: var(--bg-main); 
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); 
+        }
 
-        /* --- STACK --- */
-        #the-stack { padding: 6rem 0; background-color: var(--bg-secondary); border-top: 1px solid #1f1f1f; border-bottom: 1px solid #1f1f1f; }
+        /* --- PORTFOLIO SECTION --- */
+        #portfolio { 
+            padding: 6rem 0; 
+            background-color: var(--bg-secondary); 
+            border-top: 1px solid #1f1f1f; 
+        }
         .section-header { text-align: center; margin-bottom: 4rem; }
-        .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .stack-card { background: var(--bg-main); padding: 2rem; border: 1px solid #333; transition: all 0.3s ease; }
-        .stack-card:hover { border-color: var(--accent-neon); transform: translateY(-5px); box-shadow: 0 10px 20px -10px rgba(0, 240, 255, 0.2); }
-        .stack-card h3 { margin-bottom: 1rem; color: var(--accent-neon); font-size: 1.1rem; }
-        .stack-card.purple-theme h3 { color: var(--accent-purple); }
-        .stack-card.purple-theme:hover { border-color: var(--accent-purple); box-shadow: 0 10px 20px -10px rgba(188, 19, 254, 0.2); }
-        .stack-card ul { list-style: none; }
-        .stack-card ul li { margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .stack-card ul li::before { content: '> '; color: var(--accent-neon); font-family: var(--font-mono); font-weight: bold; }
+        .section-header p { margin-top: 1rem; }
+        
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2rem; 
+        }
+        
+        .portfolio-card {
+            background: var(--bg-main);
+            border: 1px solid #333;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .portfolio-card:hover { 
+            border-color: var(--accent-neon); 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -20px rgba(0, 240, 255, 0.3); 
+        }
+        .portfolio-card.purple-theme:hover { 
+            border-color: var(--accent-purple); 
+            box-shadow: 0 20px 40px -20px rgba(188, 19, 254, 0.3); 
+        }
+        
+        .card-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-preview img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        .card-preview-text {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text-white);
+            text-align: center;
+        }
+        .card-preview-doppeldown {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+        }
+        .card-preview-doppeldown .card-preview-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-preview-cyberpuzzle {
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%);
+        }
+        .card-preview-cyberpuzzle .card-preview-text {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-status {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .status-live { color: #22c55e; }
+        .status-live::before { content: '● '; }
+        
+        .card-content p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--accent-neon);
+        }
+        .tag.purple {
+            background: rgba(188, 19, 254, 0.1);
+            border-color: rgba(188, 19, 254, 0.3);
+            color: var(--accent-purple);
+        }
+        
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--accent-neon);
+            color: var(--accent-neon);
+            transition: all 0.3s ease;
+            text-align: center;
+            justify-content: center;
+        }
+        .card-link:hover {
+            background: var(--accent-neon);
+            color: var(--bg-main);
+        }
+        .purple-theme .card-link {
+            border-color: var(--accent-purple);
+            color: var(--accent-purple);
+        }
+        .purple-theme .card-link:hover {
+            background: var(--accent-purple);
+            color: var(--bg-main);
+        }
 
-        /* --- SERVICES --- */
-        #services { padding: 6rem 0; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 4rem; }
-        .service-item h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        /* --- ABOUT SECTION --- */
+        #about {
+            padding: 6rem 0;
+            border-top: 1px solid #1f1f1f;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        .stats-card {
+            background: #111;
+            padding: 2rem;
+            border: 1px dashed #333;
+            font-family: var(--font-mono);
+        }
+        .stats-card h3 {
+            border-bottom: 1px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+        .stat-label { color: #666; }
+        .stat-value { color: var(--accent-neon); }
 
-        /* --- PHASE 4: CONTACT FORM --- */
+        /* --- CONTACT --- */
         #contact {
             padding: 6rem 0;
             background: var(--bg-secondary);
             border-top: 1px solid #1f1f1f;
         }
-
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
@@ -130,7 +296,6 @@
             background: var(--bg-main);
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
-
         .terminal-header {
             background: #1f1f1f;
             padding: 0.5rem 1rem;
@@ -142,11 +307,7 @@
             display: flex;
             justify-content: space-between;
         }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
+        .form-group { margin-bottom: 1.5rem; }
         .form-label {
             display: block;
             font-family: var(--font-mono);
@@ -154,7 +315,6 @@
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
         }
-
         .form-input, .form-textarea {
             width: 100%;
             background: transparent;
@@ -166,13 +326,11 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-
         .form-input:focus, .form-textarea:focus {
             outline: none;
             border-bottom-color: var(--accent-neon);
             background: rgba(0, 240, 255, 0.05);
         }
-
         .btn-submit {
             background: transparent;
             color: var(--accent-neon);
@@ -184,14 +342,14 @@
             margin-top: 1rem;
             text-transform: uppercase;
             font-weight: bold;
+            transition: all 0.3s ease;
         }
-
         .btn-submit:hover {
             background: var(--accent-neon);
             color: var(--bg-main);
         }
 
-        /* Footer credits */
+        /* --- FOOTER --- */
         .footer-credits {
             text-align: center;
             padding: 2rem 0;
@@ -204,23 +362,16 @@
         @keyframes typing { from { width: 0 } to { width: 100% } }
         @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent-neon); } }
 
-        /* --- MOBILE & RESPONSIVE --- */
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
-            h1.hero-title { font-size: 2.5rem; }
-            
-            /* Hide desktop nav */
+            h1.hero-title { font-size: 2.2rem; }
             .nav-links { display: none; }
-            
-            /* Show mobile menu toggle */
             .mobile-menu-btn { display: block !important; }
-            
             .hero-content { text-align: center; }
-            
-            /* Stack the about section */
-            .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
         }
 
-        /* Mobile Menu Overlay Styles */
         .mobile-nav-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
@@ -231,20 +382,17 @@
             justify-content: center;
             align-items: center;
             gap: 2rem;
-            transform: translateX(100%); /* Hidden by default */
+            transform: translateX(100%);
             transition: transform 0.3s ease-in-out;
         }
-        
         .mobile-nav-overlay.active { transform: translateX(0); }
-        
         .mobile-nav-overlay a {
             font-family: var(--font-mono);
             font-size: 1.5rem;
             color: var(--text-white);
         }
-        
         .mobile-menu-btn {
-            display: none; /* Hidden on desktop */
+            display: none;
             background: none;
             border: none;
             color: var(--accent-neon);
@@ -252,24 +400,6 @@
             font-size: 1.5rem;
             cursor: pointer;
             z-index: 101;
-        }
-
-        /* Service List Styling */
-        .service-list {
-            margin-top: 1rem;
-            list-style: none;
-            border-top: 1px solid #333;
-            padding-top: 1rem;
-        }
-        .service-list li {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            color: #888;
-        }
-        .service-list li::before {
-            content: '+ ';
-            color: var(--accent-purple);
         }
     </style>
 </head>
@@ -282,13 +412,10 @@
                 <div class="typing-text">dobson_dev_</div>
             </div>
             
-			<nav class="nav-links">
-                <a href="#about">Mission Log</a>
-                <a href="#the-stack">The Stack</a>
-                <a href="defence.html" style="color: var(--text-white);">Managed Defence</a>
-                <a href="#services">Services</a>
-                <a href="/blog/">Blog</a>
-                <a href="#contact" style="color: var(--accent-neon); font-weight: 600;">[ Initiate Contact ]</a>
+            <nav class="nav-links">
+                <a href="#portfolio">Portfolio</a>
+                <a href="#about">About</a>
+                <a href="#contact" style="color: var(--accent-neon); font-weight: 600;">[ Contact ]</a>
             </nav>
 
             <button class="mobile-menu-btn" onclick="toggleMenu()">[ :: ]</button>
@@ -296,164 +423,126 @@
     </header>
 
     <div class="mobile-nav-overlay" id="mobileNav">
-        <a href="#about" onclick="toggleMenu()">// MISSION_LOG</a>
-        <a href="#the-stack" onclick="toggleMenu()">// THE_STACK</a>
-		<a href="defence.html">// MANAGED_DEFENCE</a>
-        <a href="#services" onclick="toggleMenu()">// SERVICES</a>
-        <a href="/blog/" onclick="toggleMenu()">// BLOG</a>
+        <a href="#portfolio" onclick="toggleMenu()">// PORTFOLIO</a>
+        <a href="#about" onclick="toggleMenu()">// ABOUT</a>
         <a href="#contact" onclick="toggleMenu()">// CONTACT</a>
     </div>
 
     <section id="hero">
         <div class="container hero-content">
-            <p class="mono-accent">System Status: OPTIMAL</p>
-            <h1 class="hero-title">God-mode for<br>your <span class="purple-accent">SOC</span>.</h1>
+            <p class="mono-accent">// PORTFOLIO</p>
+            <h1 class="hero-title">We build <span class="purple-accent">software</span><br>that ships.</h1>
             <p class="hero-subtitle">
-                Elite SIEM, SOAR, & XDR engineering. We bridge the gap between software procurement and advanced technical execution.
+                Australian software studio crafting practical tools for cybersecurity, business, and the web. Real products. Real users. No vaporware.
             </p>
-            <a href="#contact" class="btn-neon">INITIALIZE PROJECT</a>
+            <a href="#portfolio" class="btn-neon">VIEW PROJECTS →</a>
         </div>
     </section>
-	
-    <section id="about" style="padding: 6rem 0; border-bottom: 1px solid #1f1f1f;">
+
+    <section id="portfolio">
         <div class="container">
-            <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center;">
+            <div class="section-header">
+                <h2><span class="mono-accent">//</span> LIVE PROJECTS</h2>
+                <p>Products we've built and shipped to production.</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                
+                <!-- DoppelDown -->
+                <div class="portfolio-card">
+                    <div class="card-preview card-preview-doppeldown">
+                        <div class="card-preview-text">DoppelDown</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>DoppelDown</h3>
+                        <span class="card-status status-live">LIVE</span>
+                        <p>
+                            AI-powered brand protection for SMBs. Monitors newly registered domains daily to detect lookalike domains, typosquatting, and phishing attempts targeting your brand. Enterprise-grade protection at startup-friendly prices.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">SaaS</span>
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">AI/ML</span>
+                        </div>
+                        <a href="https://doppeldown.com" target="_blank" class="card-link">
+                            Visit Site →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CyberPuzzle -->
+                <div class="portfolio-card purple-theme">
+                    <div class="card-preview card-preview-cyberpuzzle">
+                        <div class="card-preview-text">CyberPuzzle</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>CyberPuzzle.fun</h3>
+                        <span class="card-status status-live">LIVE</span>
+                        <p>
+                            Interactive cybersecurity skill challenges for hiring and training. Gamified CTF-style puzzles that actually test real-world security knowledge. Perfect for screening candidates or upskilling teams.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag purple">Gamification</span>
+                            <span class="tag purple">HR Tech</span>
+                            <span class="tag purple">Cybersecurity</span>
+                        </div>
+                        <a href="https://cyberpuzzle.fun" target="_blank" class="card-link">
+                            Try It →
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
                 
                 <div class="about-text">
-                    <h2><span class="mono-accent">//</span> MISSION_LOG</h2>
+                    <h2><span class="mono-accent">//</span> ABOUT US</h2>
                     <br>
-                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
-                        Most agencies sell you a license and wish you luck. <br>
-                        <span class="mono-accent">We log in and get to work.</span>
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        Dobson Development was built to solve the "shelfware" problem. You have the tools (Splunk, Sentinel, XSOAR), but you don't have the engineering hours to tune them.
+                    <p style="font-size: 1.1rem;">
+                        We're a small Australian software studio with a <span class="mono-accent">bias for action</span>.
                     </p>
                     <p>
-                        We are <span class="purple-accent">SOAR Engineers</span> and <span class="purple-accent">SIEM Architects</span>. We focus on high-fidelity detection, noise reduction, and ruthless automation of Tier-1 tasks.
+                        Our background is in cybersecurity engineering — SIEM, SOAR, and SOC operations. Now we're channeling that expertise into building products that solve real problems.
+                    </p>
+                    <p>
+                        Every project in our portfolio is live, serving real users. We ship fast, iterate often, and don't believe in slideware.
                     </p>
                 </div>
 
-                <div class="stats-card" style="background: #111; padding: 2rem; border: 1px dashed #333; font-family: var(--font-mono);">
-                    <h3 style="border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 1rem; color: var(--text-white);">
-                        [ OPERATOR_STATS ]
-                    </h3>
+                <div class="stats-card">
+                    <h3 style="color: var(--text-white);">[ SYSTEM_INFO ]</h3>
                     
-                    <div style="margin-bottom: 0.8rem; display: flex; justify-content: space-between;">
-                        <span style="color: #666;">CLASS:</span>
-                        <span style="color: var(--accent-neon);">Engineering Consultancy</span>
+                    <div class="stat-row">
+                        <span class="stat-label">ENTITY:</span>
+                        <span class="stat-value">Dobson Development Pty Ltd</span>
                     </div>
                     
-                    <div style="margin-bottom: 0.8rem; display: flex; justify-content: space-between;">
-                        <span style="color: #666;">SPECIALTY:</span>
-                        <span style="color: var(--text-white);">Automation / SOAR</span>
+                    <div class="stat-row">
+                        <span class="stat-label">LOCATION:</span>
+                        <span style="color: var(--text-white);">Queensland, Australia</span>
                     </div>
 
-                    <div style="margin-bottom: 0.8rem; display: flex; justify-content: space-between;">
-                        <span style="color: #666;">LATENCY:</span>
-                        <span style="color: var(--accent-neon);">Low</span>
+                    <div class="stat-row">
+                        <span class="stat-label">FOCUS:</span>
+                        <span class="stat-value">SaaS / Cybersecurity</span>
                     </div>
 
-                    <div style="margin-bottom: 0.8rem; display: flex; justify-content: space-between;">
-                        <span style="color: #666;">NOISE:</span>
-                        <span style="color: var(--accent-neon);">Filtered</span>
+                    <div class="stat-row">
+                        <span class="stat-label">PROJECTS_LIVE:</span>
+                        <span class="stat-value">2</span>
                     </div>
 
-                    <div style="margin-top: 1.5rem; border-top: 1px solid #333; pt: 1rem;">
-                        <p style="color: var(--accent-purple); font-size: 0.9rem;">> "We build the God-mode you were promised."</p>
+                    <div style="margin-top: 1.5rem; border-top: 1px solid #333; padding-top: 1rem;">
+                        <p style="color: var(--accent-purple); font-size: 0.9rem;">> "Ship it. Learn. Iterate."</p>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-    <section id="the-stack">
-        <div class="container">
-            <div class="section-header">
-                <h2><span class="mono-accent">//</span> THE CORE STACK</h2>
-                <p>Specialized expertise in market-leading security platforms.</p>
-            </div>
-            <div class="stack-grid">
-                <div class="stack-card">
-                    <h3>[ SIEM ]</h3>
-                    <ul>
-                        <li>Splunk Cloud & ES</li>
-                        <li>Microsoft Sentinel</li>
-                        <li>Crowdstrike Next-Gen</li>
-                        <li>Palo Alto XSIAM</li>
-                        <li>Exabeam New-Scale</li>
-                    </ul>
-                </div>
-                <div class="stack-card">
-                    <h3>[ SOAR ]</h3>
-                    <ul>
-                        <li>Palo Alto XSOAR</li>
-                        <li>Splunk SOAR</li>
-                        <li>Crowdstrike Fusion</li>
-                        <li>Microsoft Sentinel SOAR</li>
-                    </ul>
-                </div>
-                <div class="stack-card purple-theme">
-                    <h3>[ XDR ]</h3>
-                    <ul>
-                        <li>Microsoft Defender</li>
-                        <li>Crowdstrike Falcon</li>
-                        <li>Palo Alto XDR</li>
-						<li>LimaCharlie SecOps Cloud</li>
-                    </ul>
-                </div>
-                <div class="stack-card purple-theme">
-                    <h3>[ UEBA ]</h3>
-                    <ul>
-                        <li>Exabeam Fusion</li>
-                        <li>Splunk UBA</li>
-                        <li>DTEX InTERCEPT</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2><span class="mono-accent">//</span> ENGAGEMENT MODELS</h2>
-                <p>Flexibility for complex environments.</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-item" style="background: #111; padding: 2rem; border: 1px solid #222;">
-                    <h3 class="mono-accent">01. Professional Engineering</h3>
-                    <p>Deep-dive technical engagements. We handle architecture design and complex deployments.</p>
-                    <ul class="service-list">
-                        <li>Custom Parser Development</li>
-                        <li>Log Source Onboarding</li>
-                        <li>SIEM Architecture Design</li>
-                        <li>Dashboards & Reporting</li>
-                    </ul>
-                </div>
-
-                <div class="service-item" style="background: #111; padding: 2rem; border: 1px solid #222;">
-                    <h3 class="purple-accent">02. Managed SOC (MSSP)</h3>
-                    <p>"Eyes on glass." 24/7 monitoring and response utilizing the platforms we engineer.</p>
-                    <ul class="service-list">
-                        <li>24/7 Triage & Response</li>
-                        <li>Threat Hunting</li>
-                        <li>Incident Management</li>
-                        <li>Monthly Threat Briefings</li>
-                    </ul>
-                </div>
-
-                <div class="service-item" style="background: #111; padding: 2rem; border: 1px solid #222;">
-                    <h3 class="mono-accent">03. Licensing & Procurement</h3>
-                    <p>Software delivery with a margin of excellence. Get the right seat count, the first time.</p>
-                    <ul class="service-list">
-                        <li>Splunk / ES / SOAR Licensing</li>
-                        <li>Microsoft Sentinel Commit</li>
-                        <li>CrowdStrike Bundles</li>
-                        <li>Architecture Sizing Reviews</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
@@ -461,62 +550,50 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <h2><span class="mono-accent">//</span> OPEN TICKET</h2>
-                <p>Ready to deploy? Send a transmission.</p>
+                <h2><span class="mono-accent">//</span> GET IN TOUCH</h2>
+                <p>Got a project idea? Want to collaborate? Drop us a line.</p>
             </div>
 
             <div class="contact-container">
                 <div class="terminal-header">
-                    <span>root@dobson-dev:~# ./contact_form.sh</span>
+                    <span>root@dobson-dev:~# ./contact.sh</span>
                     <span>_ X</span>
                 </div>
                 
                 <form action="https://formspree.io/f/xzznoayg" method="POST">
                     
                     <div class="form-group">
-                        <label class="form-label">var user_name =</label>
-                        <input type="text" name="name" class="form-input" placeholder="Enter Name" required>
+                        <label class="form-label">var name =</label>
+                        <input type="text" name="name" class="form-input" placeholder="Your name" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">var email_address =</label>
-                        <input type="email" name="email" class="form-input" placeholder="Enter Email" required>
+                        <label class="form-label">var email =</label>
+                        <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">var project_scope =</label>
-                        <textarea name="message" class="form-textarea" rows="4" placeholder="Describe requirements..." required></textarea>
+                        <label class="form-label">var message =</label>
+                        <textarea name="message" class="form-textarea" rows="4" placeholder="What's on your mind?" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-submit">[ EXECUTE SEND ]</button>
+                    <button type="submit" class="btn-submit">[ SEND MESSAGE ]</button>
                 </form>
             </div>
 
             <div class="footer-credits">
-                <p>Dobson Development Pty Ltd. © 2025.</p>
-                <p>Brisbane, Australia.</p>
-                
-                <div style="margin-top: 1.5rem; border-top: 1px solid #333; padding-top: 1rem; display: inline-block;">
-                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">// CANDIDATE_PROTOCOL</p>
-                    <a href="https://cyberpuzzle.fun" target="_blank" style="font-family: var(--font-mono); color: var(--accent-purple); font-size: 0.9rem;">
-                        [ INITIATE SKILL CHECK ]
-                    </a>
-                </div>
+                <p>Dobson Development Pty Ltd © 2025</p>
+                <p>Sunshine Coast, Queensland, Australia</p>
             </div>
         </div>
     </section>
+
     <script>
         function toggleMenu() {
             const nav = document.getElementById('mobileNav');
             const btn = document.querySelector('.mobile-menu-btn');
             nav.classList.toggle('active');
-            
-            // Toggle button text between [ :: ] (menu) and [ X ] (close)
-            if (nav.classList.contains('active')) {
-                btn.textContent = "[ X ]";
-            } else {
-                btn.textContent = "[ :: ]";
-            }
+            btn.textContent = nav.classList.contains('active') ? "[ X ]" : "[ :: ]";
         }
     </script>
 

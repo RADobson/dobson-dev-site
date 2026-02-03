@@ -1,6 +1,6 @@
 # Jekyll Configuration for Dobson Development
-title: Dobson Development Blog
-description: Insights on SIEM, SOAR, XDR, and security automation
+title: Dobson Development
+description: Australian software studio building practical tools for cybersecurity and business
 url: "https://dobsondevelopment.com.au"
 baseurl: ""
 
@@ -18,7 +18,7 @@ exclude:
 # Permalinks
 permalink: /blog/:title/
 
-# Collections (for future use)
+# Collections
 collections:
   posts:
     output: true
