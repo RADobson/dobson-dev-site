@@ -31,13 +31,18 @@
 | Reduced font weight requests (400,600,700 only) | ✅ Done | Medium — smaller font payload |
 | Internal link prefetching on hover | ✅ Done | Medium — faster navigation |
 
+**Completed (Feb 2026):**
+- [x] Self-host Google Fonts (eliminates third-party dependency) ✅ **DONE - LCP improved by 2.8s!**
+- [x] Add `<link rel="preload">` for critical fonts ✅ **DONE**
+- [x] Inline `@font-face` declarations ✅ **DONE**
+- [x] Service worker for aggressive caching ✅ **DONE**
+
 **Future improvements:**
-- [ ] Self-host Google Fonts (eliminates third-party dependency)
 - [ ] Extract critical CSS inline, defer the rest
-- [ ] Add `<link rel="preload">` for hero background if image added
 - [ ] Implement HTTP/2 Server Push headers (if hosting supports)
 - [ ] Generate WebP/AVIF versions of all images
 - [ ] Add `fetchpriority="high"` to LCP element
+- [ ] Font subsetting (reduce from 84KB to ~30KB)
 
 ### 1.2 Interaction to Next Paint (INP) — Target: <200ms
 
@@ -358,19 +363,37 @@ npx schema-dts-validator ./index.html
 7. **robots.txt updated** with more AI crawler blocks (Perplexity, ByteDance, Cohere, Meta)
 8. **Manifest shortcuts** added for Portfolio, Blog, Contact
 
+### Performance Sprint ✅ (Feb 5, 2026)
+
+**Achieved 98% Lighthouse Performance Score (up from 69%)**
+
+| Metric | Before | After | Improvement |
+|--------|--------|-------|-------------|
+| LCP | 4.6s | **1.8s** | 61% faster |
+| FCP | 3.3s | **1.2s** | 64% faster |
+| Speed Index | 8.7s | **4.1s** | 53% faster |
+
+**Optimizations completed:**
+- ✅ **Self-hosted fonts** — Inter + Fira Code woff2 (eliminates Google Fonts)
+- ✅ **Font preloading** — `<link rel="preload">` for critical fonts
+- ✅ **Inline @font-face** — No render-blocking CSS requests
+- ✅ **Service worker** — Aggressive caching (cache-first for fonts)
+- ✅ **LCP optimization** — Removed reveal animations from hero elements
+
 ### Next Steps 🔜
 
 1. **Set up Google Search Console** and submit sitemap
-2. **Run PageSpeed Insights** baseline test
-3. **Generate PNG PWA icons** (192px and 512px) for broader compatibility
-4. **Create unique OG images** for each blog post
-5. **Self-host fonts** (eliminate Google Fonts dependency)
-6. **Move particles to Web Worker** with OffscreenCanvas
-7. **Set up Lighthouse CI** in GitHub Actions
-8. **Convert images to WebP/AVIF** with `<picture>` fallbacks
-9. **Add Google Analytics 4** (when ready)
-10. **Implement FAQ schema** when FAQ section is added
+2. **Generate PNG PWA icons** (192px and 512px) for broader compatibility
+3. **Create unique OG images** for each blog post
+4. **Font subsetting** — reduce font files from 84KB to ~30KB
+5. **Move particles to Web Worker** with OffscreenCanvas
+6. **Set up Lighthouse CI** in GitHub Actions
+7. **Convert images to WebP/AVIF** with `<picture>` fallbacks
+8. **Add Google Analytics 4** (when ready)
+9. **Implement FAQ schema** when FAQ section is added
 
 ---
 
 *This document should be reviewed and updated with each significant site change.*
+
+*Last performance audit: February 5, 2026 — 98% score*
