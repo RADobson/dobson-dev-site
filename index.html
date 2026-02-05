@@ -1,23 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Dobson Development | Software Products & Cybersecurity Tools</title>
     <meta name="description" content="Australian software studio building practical tools for cybersecurity and business. Explore DoppelDown for brand protection and CyberPuzzle for security training.">
-    <meta name="keywords" content="cybersecurity software, brand protection, typosquatting detection, security training, SaaS products, Australian software company">
+    <meta name="keywords" content="cybersecurity software, brand protection, typosquatting detection, security training, SaaS products, Australian software company, Sunshine Coast developer, Queensland tech studio">
     <meta name="author" content="Dobson Development Pty Ltd">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dobsondevelopment.com.au/">
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230B0C10%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2260%22 fill=%22%2300F0FF%22>&gt;_</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230B0C10%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2260%22 fill=%22%2300F0FF%22>&gt;_</text></svg>">
-
-    <!-- Fonts -->
+    <!-- Performance: Resource Hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://formspree.io">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Performance: Preload critical font CSS -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" as="style">
+    
+    <!-- SEO: Sitemap link -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icon.svg">
+    <link rel="apple-touch-icon" href="/assets/images/icon.svg">
+
+    <!-- Fonts — loaded with display=swap to prevent FOIT (CLS fix) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- SEO: Enhanced Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="geo.region" content="AU-QLD">
+    <meta name="geo.placename" content="Sunshine Coast">
+    <meta name="language" content="en-AU">
+
+    <!-- PWA / Mobile -->
+    <meta name="theme-color" content="#0B0C10">
+    <meta name="color-scheme" content="dark">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dobson Dev">
+    <meta name="application-name" content="Dobson Development">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/manifest.webmanifest">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Dobson Development | Software Products & Cybersecurity Tools">
@@ -27,55 +55,146 @@
     <meta property="og:image" content="https://dobsondevelopment.com.au/assets/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Dobson Development - Australian software studio building cybersecurity and business tools">
     <meta property="og:locale" content="en_AU">
     <meta property="og:site_name" content="Dobson Development">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RADobson">
+    <meta name="twitter:creator" content="@RADobson">
     <meta name="twitter:title" content="Dobson Development | Software Products & Cybersecurity Tools">
     <meta name="twitter:description" content="Australian software studio building practical tools for cybersecurity and business.">
     <meta name="twitter:image" content="https://dobsondevelopment.com.au/assets/images/og-image.png">
+    <meta name="twitter:image:alt" content="Dobson Development - Australian software studio">
 
-    <!-- Structured Data / JSON-LD -->
+    <!-- Structured Data: Organization (enhanced) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Dobson Development Pty Ltd",
+        "legalName": "Dobson Development Pty Ltd",
         "url": "https://dobsondevelopment.com.au",
-        "logo": "https://dobsondevelopment.com.au/assets/images/logo.png",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://dobsondevelopment.com.au/assets/images/logo.png",
+            "width": 512,
+            "height": 512
+        },
         "description": "Australian software studio building practical tools for cybersecurity and business",
+        "foundingDate": "2025",
         "founder": {
             "@type": "Person",
-            "name": "Ernie Dobson"
+            "name": "Ernie Dobson",
+            "jobTitle": "Founder & Developer",
+            "sameAs": [
+                "https://github.com/RADobson",
+                "https://www.linkedin.com/in/ernie-dobson",
+                "https://twitter.com/RADobson"
+            ]
         },
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Sunshine Coast",
             "addressRegion": "Queensland",
+            "postalCode": "4556",
             "addressCountry": "AU"
         },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "ernie@dobsondevelopment.com.au",
+            "contactType": "customer service",
+            "availableLanguage": "English"
+        },
         "sameAs": [
-            "https://github.com/RADobson"
+            "https://github.com/RADobson",
+            "https://www.linkedin.com/in/ernie-dobson",
+            "https://twitter.com/RADobson"
         ],
-        "offers": [
-            {
-                "@type": "SoftwareApplication",
-                "name": "DoppelDown",
-                "applicationCategory": "SecurityApplication",
-                "operatingSystem": "Web",
-                "url": "https://doppeldown.com",
-                "description": "AI-powered brand protection for SMBs"
-            },
-            {
-                "@type": "SoftwareApplication",
-                "name": "CyberPuzzle",
-                "applicationCategory": "SecurityApplication",
-                "operatingSystem": "Web",
-                "url": "https://cyberpuzzle.fun",
-                "description": "Interactive cybersecurity skill challenges"
-            }
+        "knowsAbout": [
+            "Cybersecurity",
+            "Brand Protection",
+            "Typosquatting Detection",
+            "AI/ML",
+            "SaaS Development",
+            "Security Training"
         ]
+    }
+    </script>
+    
+    <!-- Structured Data: WebSite with SearchAction -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Dobson Development",
+        "alternateName": "Dobson Dev",
+        "url": "https://dobsondevelopment.com.au",
+        "description": "Australian software studio building practical tools for cybersecurity and business",
+        "inLanguage": "en-AU",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Dobson Development Pty Ltd"
+        }
+    }
+    </script>
+    
+    <!-- Structured Data: SoftwareApplication entities (separate, properly typed) -->
+    <script type="application/ld+json">
+    [{
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "DoppelDown",
+        "applicationCategory": "SecurityApplication",
+        "applicationSubCategory": "Brand Protection",
+        "operatingSystem": "Web",
+        "url": "https://doppeldown.com",
+        "description": "AI-powered brand protection for SMBs. Monitors newly registered domains daily to detect lookalike domains, typosquatting, and phishing attempts targeting your brand.",
+        "author": {
+            "@type": "Organization",
+            "name": "Dobson Development Pty Ltd",
+            "url": "https://dobsondevelopment.com.au"
+        },
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceCurrency": "AUD"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "CyberPuzzle",
+        "applicationCategory": "EducationalApplication",
+        "applicationSubCategory": "Cybersecurity Training",
+        "operatingSystem": "Web",
+        "url": "https://cyberpuzzle.fun",
+        "description": "Interactive cybersecurity skill challenges for hiring and training. Gamified CTF-style puzzles that test real-world security knowledge.",
+        "author": {
+            "@type": "Organization",
+            "name": "Dobson Development Pty Ltd",
+            "url": "https://dobsondevelopment.com.au"
+        },
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceCurrency": "AUD"
+        }
+    }]
+    </script>
+    
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://dobsondevelopment.com.au"
+        }]
     }
     </script>
 
@@ -111,12 +230,37 @@
         
         html { scroll-behavior: smooth; }
         
+        /* CLS FIX: Use system fonts until web fonts load */
         body {
             background-color: var(--bg-main);
             color: var(--text-grey);
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* CLS FIX: Swap to web fonts only after loaded */
+        .fonts-loaded body {
+            font-family: var(--font-body);
+        }
+        .fonts-loaded h1, .fonts-loaded h2, .fonts-loaded h3, .fonts-loaded h4,
+        .fonts-loaded .mono-accent, .fonts-loaded .nav-links a,
+        .fonts-loaded .logo-terminal, .fonts-loaded code {
+            font-family: var(--font-mono);
+        }
+        
+        /* Reduced motion: disable all animations */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .scanlines::after { display: none; }
+            #particles-canvas { display: none; }
         }
         
         h1, h2, h3, h4 { 
@@ -378,10 +522,12 @@
         /* --- HERO --- */
         #hero {
             min-height: 100vh;
+            min-height: 100dvh; /* Dynamic viewport height — fixes mobile address bar issue */
             display: flex;
             align-items: center;
             position: relative;
             padding: 8rem 0 4rem;
+            padding-top: max(8rem, env(safe-area-inset-top, 0px));
             overflow: hidden;
         }
         
@@ -1171,6 +1317,18 @@
         }
         .footer-credits a:hover { color: var(--accent-neon); }
 
+        /* --- SCROLL PROGRESS BAR --- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple));
+            z-index: 1001;
+            transition: width 0.1s linear;
+        }
+
         /* --- BACK TO TOP --- */
         .back-to-top {
             position: fixed;
@@ -1210,11 +1368,31 @@
         @keyframes typing { from { width: 0 } to { width: 100% } }
         @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent-neon); } }
 
-        /* --- MOBILE --- */
+        /* --- MOBILE-FIRST RESPONSIVE --- */
+        /* Small phones (320px+) */
+        @media (max-width: 480px) {
+            .container { width: 92%; }
+            h1.hero-title { font-size: 2rem; letter-spacing: -1px; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; gap: 0.75rem; width: 100%; }
+            .hero-buttons .btn-neon,
+            .hero-buttons .btn-ghost { width: 100%; justify-content: center; }
+            .card-content { padding: 1.25rem; }
+            .card-preview { height: 150px; }
+            .service-card { padding: 1.5rem; }
+            .contact-form { padding: 1.25rem; }
+            /* Ensure all interactive elements meet 44px minimum tap target */
+            .btn-neon, .btn-ghost, .btn-submit, .card-link,
+            .nav-links a, .form-input, .form-textarea {
+                min-height: 44px;
+            }
+        }
+
+        /* Tablets and below */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu-btn { display: flex !important; }
-            #hero { min-height: auto; padding: 7rem 0 4rem; }
+            #hero { min-height: auto; min-height: auto; padding: 7rem 0 4rem; }
             .hero-content { text-align: center; }
             .hero-buttons { justify-content: center; }
             .hero-badge { margin-left: auto; margin-right: auto; }
@@ -1223,7 +1401,90 @@
             .portfolio-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .section-header h2 { font-size: 1.6rem; }
-            .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+            .back-to-top { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+            /* CLS: Reserve space for mobile menu button */
+            .mobile-menu-btn { min-width: 44px; min-height: 44px; }
+            /* Improve touch targets for links */
+            .mobile-nav-overlay a { 
+                padding: 1.25rem 2rem;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+            }
+            /* Safe area insets for notched phones */
+            .container {
+                padding-left: max(5%, env(safe-area-inset-left, 0px));
+                padding-right: max(5%, env(safe-area-inset-right, 0px));
+            }
+        }
+        
+        /* Touch device hover fix */
+        @media (hover: none) {
+            .service-card:hover,
+            .portfolio-card:hover,
+            .blog-preview:hover,
+            .stats-card:hover {
+                transform: none;
+            }
+        }
+        
+        /* High contrast mode support */
+        @media (forced-colors: active) {
+            .btn-neon, .card-link, .btn-submit {
+                border: 2px solid ButtonText;
+            }
+        }
+        
+        /* Print styles for SEO (Google sometimes indexes print) */
+        @media print {
+            header, #particles-canvas, .scanlines::after, .scroll-progress,
+            .back-to-top, .scroll-indicator, .hero-gradient, .hero-grid,
+            .mobile-menu-btn, .mobile-nav-overlay { display: none !important; }
+            body { background: white; color: black; }
+            h1, h2, h3, h4 { color: black; }
+            a { color: #0066cc; }
+            .container { max-width: 100%; }
+        }
+        
+        /* === PERFORMANCE: content-visibility for below-fold sections === */
+        #services, #portfolio, #blog, #about, #contact {
+            content-visibility: auto;
+            contain-intrinsic-size: auto 800px;
+        }
+        
+        /* === ACCESSIBILITY: Enhanced focus states === */
+        :focus-visible {
+            outline: 2px solid var(--accent-neon);
+            outline-offset: 3px;
+        }
+        
+        /* Remove outline for mouse users */
+        :focus:not(:focus-visible) {
+            outline: none;
+        }
+        
+        /* Focus styles for interactive elements */
+        .btn-neon:focus-visible,
+        .btn-ghost:focus-visible,
+        .card-link:focus-visible,
+        .btn-submit:focus-visible {
+            outline: 2px solid var(--accent-neon);
+            outline-offset: 3px;
+            box-shadow: var(--glow-neon);
+        }
+        
+        .nav-links a:focus-visible,
+        .mobile-nav-overlay a:focus-visible {
+            background: rgba(0, 240, 255, 0.15);
+            outline: 2px solid var(--accent-neon);
+            outline-offset: 2px;
+        }
+        
+        .form-input:focus-visible,
+        .form-textarea:focus-visible {
+            outline: none;
+            border-bottom-color: var(--accent-neon);
+            box-shadow: 0 2px 0 0 var(--accent-neon);
         }
     </style>
 </head>
@@ -1512,171 +1773,258 @@
         </section>
     </main>
 
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
+    <!-- Performance: Font loading CLS fix -->
     <script>
-        // ===== PARTICLE SYSTEM =====
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouseX = 0, mouseY = 0;
+    // Detect font loading to prevent CLS
+    if ('fonts' in document) {
+        Promise.all([
+            document.fonts.load('400 1em Inter'),
+            document.fonts.load('600 1em "Fira Code"')
+        ]).then(function() {
+            document.documentElement.classList.add('fonts-loaded');
+        }).catch(function() {
+            setTimeout(function() { document.documentElement.classList.add('fonts-loaded'); }, 3000);
+        });
+    } else {
+        document.documentElement.classList.add('fonts-loaded');
+    }
+    </script>
+
+    <!-- Core functionality (deferred to not block render) -->
+    <script>
+    (function() {
+        'use strict';
         
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        // ===== OPTIMIZED SCROLL HANDLER (single rAF-throttled handler) =====
+        var scrollTicking = false;
+        var header = document.querySelector('header');
+        var scrollProgress = document.getElementById('scrollProgress');
+        var backToTop = document.getElementById('backToTop');
         
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.5 + 0.2;
-                this.color = Math.random() > 0.5 ? '0, 240, 255' : '188, 19, 254';
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                // Subtle mouse interaction
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 100) {
-                    this.x -= dx * 0.01;
-                    this.y -= dy * 0.01;
-                }
-                
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                    this.reset();
-                }
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-        
-        function initParticles() {
-            particles = [];
-            const count = Math.min(80, Math.floor(window.innerWidth / 20));
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
-        }
-        initParticles();
-        
-        function connectParticles() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 240, 255, ${0.1 * (1 - dist / 120)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+        window.addEventListener('scroll', function() {
+            if (!scrollTicking) {
+                requestAnimationFrame(function() {
+                    var scrollY = window.pageYOffset;
+                    
+                    // Header state
+                    if (header) header.classList.toggle('scrolled', scrollY > 50);
+                    
+                    // Scroll progress bar
+                    if (scrollProgress) {
+                        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                        scrollProgress.style.width = (docHeight > 0 ? (scrollY / docHeight) * 100 : 0) + '%';
                     }
-                }
+                    
+                    // Back to top button
+                    if (backToTop) backToTop.classList.toggle('visible', scrollY > 400);
+                    
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
             }
-        }
-        
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            connectParticles();
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-        
-        document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+        }, { passive: true });
 
         // ===== MOBILE MENU =====
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        const mobileLinks = mobileNav.querySelectorAll('a');
+        var menuBtn = document.getElementById('menuBtn');
+        var mobileNav = document.getElementById('mobileNav');
         
         function toggleMenu() {
-            const isOpen = mobileNav.classList.toggle('active');
+            var isOpen = mobileNav.classList.toggle('active');
             menuBtn.classList.toggle('active');
             menuBtn.setAttribute('aria-expanded', isOpen);
             document.body.style.overflow = isOpen ? 'hidden' : '';
         }
         
         menuBtn.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
-        mobileNav.addEventListener('click', e => { if (e.target === mobileNav) toggleMenu(); });
-        document.addEventListener('keydown', e => { 
-            if (e.key === 'Escape' && mobileNav.classList.contains('active')) toggleMenu(); 
+        mobileNav.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', toggleMenu);
+        });
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === mobileNav) toggleMenu();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) toggleMenu();
         });
 
-        // ===== HEADER SCROLL STATE =====
-        const header = document.querySelector('header');
-        let lastScroll = 0;
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            header.classList.toggle('scrolled', currentScroll > 50);
-            lastScroll = currentScroll;
-        });
-
-        // ===== SCROLL REVEAL =====
-        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
-                }
+        // ===== SCROLL REVEAL (IntersectionObserver) =====
+        if ('IntersectionObserver' in window) {
+            var revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+                revealObserver.observe(el);
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        
-        revealElements.forEach(el => revealObserver.observe(el));
+        } else {
+            // Fallback: show everything
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+                el.classList.add('visible');
+            });
+        }
 
         // ===== BACK TO TOP =====
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            backToTop.classList.toggle('visible', window.pageYOffset > 400);
-        });
-        
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        if (backToTop) {
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
         // ===== FORM SUBMISSION =====
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function() {
-            const btn = this.querySelector('.btn-submit');
-            btn.textContent = '[ SENDING... ]';
-            btn.disabled = true;
-        });
+        var form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function() {
+                var btn = this.querySelector('.btn-submit');
+                if (btn) { btn.textContent = '[ SENDING... ]'; btn.disabled = true; }
+            });
+        }
 
         // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
             anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
+                var targetEl = document.querySelector(this.getAttribute('href'));
+                if (targetEl) {
                     e.preventDefault();
-                    const headerHeight = header.offsetHeight;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    var headerHeight = header ? header.offsetHeight : 0;
+                    var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                     window.scrollTo({ top: targetPosition, behavior: 'smooth' });
                 }
             });
         });
+
+        // ===== PARTICLE SYSTEM (deferred, optimized) =====
+        function initParticles() {
+            var canvas = document.getElementById('particles-canvas');
+            if (!canvas) return;
+            
+            // Skip on reduced motion or very small screens
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                canvas.style.display = 'none';
+                return;
+            }
+            
+            var ctx = canvas.getContext('2d');
+            var particles = [];
+            var isVisible = true;
+            var isMobile = window.innerWidth < 768;
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            
+            // Debounced resize
+            var resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(resizeCanvas, 200);
+            }, { passive: true });
+            
+            // Reduced particle count for performance
+            var count = isMobile ? 
+                Math.min(25, Math.floor(window.innerWidth / 30)) : 
+                Math.min(50, Math.floor(window.innerWidth / 25));
+            
+            for (var i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    speedY: (Math.random() - 0.5) * 0.3,
+                    opacity: Math.random() * 0.4 + 0.1,
+                    color: Math.random() > 0.5 ? '0,240,255' : '188,19,254'
+                });
+            }
+            
+            var connDist = isMobile ? 70 : 100;
+            var connDistSq = connDist * connDist;
+            
+            function animate() {
+                if (!isVisible) {
+                    requestAnimationFrame(animate);
+                    return;
+                }
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (var i = 0; i < particles.length; i++) {
+                    var p = particles[i];
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    
+                    if (p.x < 0 || p.x > canvas.width) { p.x = Math.random() * canvas.width; }
+                    if (p.y < 0 || p.y > canvas.height) { p.y = Math.random() * canvas.height; }
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, 6.283);
+                    ctx.fillStyle = 'rgba(' + p.color + ',' + p.opacity + ')';
+                    ctx.fill();
+                    
+                    // Connect only to nearby particles (capped loop)
+                    for (var j = i + 1; j < Math.min(particles.length, i + 12); j++) {
+                        var dx = p.x - particles[j].x;
+                        var dy = p.y - particles[j].y;
+                        var dSq = dx * dx + dy * dy;
+                        if (dSq < connDistSq) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = 'rgba(0,240,255,' + (0.06 * (1 - Math.sqrt(dSq) / connDist)) + ')';
+                            ctx.lineWidth = 0.4;
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                
+                requestAnimationFrame(animate);
+            }
+            
+            // Pause when tab hidden (save CPU/battery)
+            document.addEventListener('visibilitychange', function() {
+                isVisible = !document.hidden;
+            });
+            
+            animate();
+        }
+        
+        // Defer particle init until after main content paints
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(initParticles, { timeout: 2000 });
+        } else {
+            setTimeout(initParticles, 300);
+        }
+
+        // ===== LINK PREFETCH ON HOVER =====
+        var prefetched = {};
+        document.querySelectorAll('a[href^="/"]').forEach(function(link) {
+            link.addEventListener('mouseenter', function() {
+                var href = this.getAttribute('href');
+                if (href && !prefetched[href]) {
+                    var pf = document.createElement('link');
+                    pf.rel = 'prefetch';
+                    pf.href = href;
+                    document.head.appendChild(pf);
+                    prefetched[href] = true;
+                }
+            }, { once: true, passive: true });
+        });
+
+        // ===== CONSOLE EASTER EGG =====
+        console.log('%c> Dobson Development', 'color: #00F0FF; font-family: monospace; font-size: 20px; font-weight: bold;');
+        console.log('%c> Building software that ships.', 'color: #BC13FE; font-family: monospace; font-size: 14px;');
+        console.log('%c> Found a bug? We pay bounties! Contact: ernie@dobsondevelopment.com.au', 'color: #9ca3af; font-family: monospace; font-size: 12px;');
+    })();
     </script>
 </body>
 </html>

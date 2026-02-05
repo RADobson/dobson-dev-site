@@ -1,0 +1,246 @@
+<!-- ============================================================
+     PERFORMANCE OPTIMIZATIONS
+     Core Web Vitals: LCP, INP, CLS mitigation
+     Include at END of <body> for non-critical JS
+     ============================================================ -->
+
+<script>
+(function() {
+    'use strict';
+    
+    // === CORE WEB VITALS: Reduce CLS from font loading ===
+    // Check if fonts are already cached
+    if ('fonts' in document) {
+        Promise.all([
+            document.fonts.load('400 1em Inter'),
+            document.fonts.load('600 1em Inter'),
+            document.fonts.load('400 1em "Fira Code"'),
+            document.fonts.load('600 1em "Fira Code"')
+        ]).then(function() {
+            document.documentElement.classList.add('fonts-loaded');
+        }).catch(function() {
+            // Fallback: add class after timeout to prevent FOIT
+            setTimeout(function() {
+                document.documentElement.classList.add('fonts-loaded');
+            }, 3000);
+        });
+    } else {
+        // Browsers without Font Loading API - just add class
+        document.documentElement.classList.add('fonts-loaded');
+    }
+    
+    // === CORE WEB VITALS: INP — Throttle scroll handlers ===
+    var scrollTicking = false;
+    var lastKnownScrollY = 0;
+    
+    function onScroll() {
+        lastKnownScrollY = window.pageYOffset || document.documentElement.scrollTop;
+        if (!scrollTicking) {
+            requestAnimationFrame(function() {
+                updateScrollUI(lastKnownScrollY);
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
+    }
+    
+    function updateScrollUI(scrollY) {
+        // Header state
+        var header = document.querySelector('header[role="banner"]');
+        if (header) {
+            header.classList.toggle('scrolled', scrollY > 50);
+        }
+        
+        // Scroll progress bar
+        var scrollProgress = document.getElementById('scrollProgress');
+        if (scrollProgress) {
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var scrollPercent = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+        
+        // Back to top button
+        var backToTop = document.getElementById('backToTop');
+        if (backToTop) {
+            backToTop.classList.toggle('visible', scrollY > 400);
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    // === CORE WEB VITALS: INP — Debounce resize ===
+    var resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            // Dispatch custom event for components that need resize
+            window.dispatchEvent(new CustomEvent('optimizedResize'));
+        }, 150);
+    }, { passive: true });
+    
+    // === PERFORMANCE: Intersection Observer for lazy animations ===
+    if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1, 
+            rootMargin: '0px 0px -50px 0px' 
+        });
+        
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+            revealObserver.observe(el);
+        });
+    } else {
+        // Fallback: show everything immediately
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+            el.classList.add('visible');
+        });
+    }
+    
+    // === PERFORMANCE: Lazy-load particle canvas ===
+    // Only initialize particles after first paint + user has scrolled near hero
+    function initParticlesLazy() {
+        var canvas = document.getElementById('particles-canvas');
+        if (!canvas) return;
+        
+        // Reduce particle count on mobile for better INP
+        var isMobile = window.innerWidth < 768;
+        var isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (isReducedMotion) {
+            canvas.style.display = 'none';
+            return;
+        }
+        
+        var ctx = canvas.getContext('2d');
+        var particles = [];
+        var mouseX = 0, mouseY = 0;
+        var animationId = null;
+        var isVisible = true;
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('optimizedResize', resizeCanvas);
+        
+        var particleCount = isMobile ? 
+            Math.min(30, Math.floor(window.innerWidth / 30)) : 
+            Math.min(60, Math.floor(window.innerWidth / 25));
+        
+        function Particle() {
+            this.reset();
+        }
+        Particle.prototype.reset = function() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 1.5 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3;
+            this.opacity = Math.random() * 0.4 + 0.1;
+            this.color = Math.random() > 0.5 ? '0, 240, 255' : '188, 19, 254';
+        };
+        Particle.prototype.update = function() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                this.reset();
+            }
+        };
+        Particle.prototype.draw = function() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, 6.283);
+            ctx.fillStyle = 'rgba(' + this.color + ',' + this.opacity + ')';
+            ctx.fill();
+        };
+        
+        for (var i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        // Simplified connection — use spatial grid to avoid O(n²)
+        var connectionDist = isMobile ? 80 : 100;
+        var connectionDistSq = connectionDist * connectionDist;
+        
+        function animate() {
+            if (!isVisible) {
+                animationId = requestAnimationFrame(animate);
+                return;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (var i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Only connect nearby particles (limit j to reduce work)
+                for (var j = i + 1; j < particles.length && j < i + 15; j++) {
+                    var dx = particles[i].x - particles[j].x;
+                    var dy = particles[i].y - particles[j].y;
+                    var distSq = dx * dx + dy * dy;
+                    if (distSq < connectionDistSq) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = 'rgba(0, 240, 255,' + (0.08 * (1 - Math.sqrt(distSq) / connectionDist)) + ')';
+                        ctx.lineWidth = 0.4;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        // Pause animation when tab is not visible (saves CPU/battery)
+        document.addEventListener('visibilitychange', function() {
+            isVisible = !document.hidden;
+        });
+        
+        // Throttled mouse tracking (desktop only)
+        if (!isMobile) {
+            var mouseThrottle = false;
+            document.addEventListener('mousemove', function(e) {
+                if (!mouseThrottle) {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    mouseThrottle = true;
+                    setTimeout(function() { mouseThrottle = false; }, 50);
+                }
+            }, { passive: true });
+        }
+        
+        animate();
+    }
+    
+    // Delay particle init until after first contentful paint
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(initParticlesLazy, { timeout: 2000 });
+    } else {
+        setTimeout(initParticlesLazy, 500);
+    }
+    
+    // === PERFORMANCE: Prefetch blog pages on hover ===
+    if ('IntersectionObserver' in window) {
+        var prefetchedUrls = new Set();
+        document.querySelectorAll('a[href^="/blog/"]').forEach(function(link) {
+            link.addEventListener('mouseenter', function() {
+                var href = this.getAttribute('href');
+                if (href && !prefetchedUrls.has(href)) {
+                    var prefetchLink = document.createElement('link');
+                    prefetchLink.rel = 'prefetch';
+                    prefetchLink.href = href;
+                    document.head.appendChild(prefetchLink);
+                    prefetchedUrls.add(href);
+                }
+            }, { once: true, passive: true });
+        });
+    }
+    
+})();
+</script>

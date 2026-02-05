@@ -1,0 +1,266 @@
+<!-- ============================================================
+     ADVANCED SEO HEAD — Core Web Vitals & Structured Data
+     Include this in <head> for comprehensive SEO coverage
+     ============================================================ -->
+
+<!-- === PERFORMANCE: Resource Hints === -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://formspree.io">
+<link rel="dns-prefetch" href="https://giscus.app">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- === PERFORMANCE: Preload Critical Fonts === -->
+<!-- Preload only the weights we actually use above the fold -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" as="style">
+
+<!-- === SEO: Core Meta Tags === -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="bingbot" content="index, follow">
+
+<!-- === SEO: Geo-targeting for Australian business === -->
+<meta name="geo.region" content="AU-QLD">
+<meta name="geo.placename" content="Sunshine Coast">
+<meta name="geo.position" content="-26.6500;153.0667">
+<meta name="ICBM" content="-26.6500, 153.0667">
+<meta name="language" content="en-AU">
+
+<!-- === PWA / Mobile: Theme & Manifest === -->
+<meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0B0C10">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dobson Dev">
+<meta name="application-name" content="Dobson Development">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="/manifest.webmanifest">
+
+<!-- === SEO: Structured Data — WebSite with SearchAction === -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.title | default: 'Dobson Development' }}",
+    "alternateName": "Dobson Dev",
+    "url": "{{ site.url }}",
+    "description": "{{ site.description }}",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dobson Development Pty Ltd",
+        "url": "{{ site.url }}"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "{{ site.url }}/blog/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+
+<!-- === SEO: Structured Data — LocalBusiness === -->
+{% if page.url == '/' or page.url == '/index.html' %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Dobson Development Pty Ltd",
+    "description": "Australian software studio building practical tools for cybersecurity and business. Specialising in SaaS products, AI-powered applications, and security tools.",
+    "url": "{{ site.url }}",
+    "logo": "{{ site.url }}/assets/images/logo.png",
+    "image": "{{ site.url }}/assets/images/og-image.png",
+    "telephone": "",
+    "email": "{{ site.author.email }}",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sunshine Coast",
+        "addressRegion": "Queensland",
+        "postalCode": "4556",
+        "addressCountry": "AU"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-26.6500",
+        "longitude": "153.0667"
+    },
+    "areaServed": [
+        {
+            "@type": "Country",
+            "name": "Australia"
+        },
+        {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": "-26.6500",
+                "longitude": "153.0667"
+            },
+            "geoRadius": "50000"
+        }
+    ],
+    "founder": {
+        "@type": "Person",
+        "name": "Ernie Dobson",
+        "jobTitle": "Founder & Developer",
+        "url": "{{ site.url }}",
+        "sameAs": [
+            "https://github.com/RADobson",
+            "https://www.linkedin.com/in/ernie-dobson",
+            "https://twitter.com/RADobson"
+        ],
+        "knowsAbout": [
+            "Cybersecurity",
+            "SIEM",
+            "SOAR",
+            "SOC Operations",
+            "AI/ML",
+            "SaaS Development",
+            "Python",
+            "Next.js",
+            "Brand Protection"
+        ]
+    },
+    "sameAs": [
+        "https://github.com/RADobson",
+        "https://www.linkedin.com/in/ernie-dobson"
+    ],
+    "knowsAbout": [
+        "Cybersecurity Software",
+        "Brand Protection",
+        "Typosquatting Detection",
+        "AI-Powered SaaS",
+        "Security Training",
+        "Web Application Development"
+    ],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Software Development Services",
+        "itemListElement": [
+            {
+                "@type": "OfferCatalog",
+                "name": "Cybersecurity Tools",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Custom Cybersecurity Solutions",
+                            "description": "Brand protection, threat monitoring, and vulnerability assessment tools with enterprise-grade security."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "OfferCatalog",
+                "name": "AI-Powered SaaS",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "AI-Powered Software Products",
+                            "description": "Intelligent software leveraging machine learning for workflow automation, data analysis, and business insights."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "OfferCatalog",
+                "name": "Rapid Prototyping",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "MVP Development",
+                            "description": "From concept to MVP in weeks. Fast shipping, frequent iteration, and idea validation."
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "makesOffer": [
+        {
+            "@type": "Offer",
+            "itemOffered": {
+                "@type": "SoftwareApplication",
+                "name": "DoppelDown",
+                "applicationCategory": "SecurityApplication",
+                "applicationSubCategory": "Brand Protection",
+                "operatingSystem": "Web",
+                "url": "https://doppeldown.com",
+                "description": "AI-powered brand protection for SMBs. Monitors newly registered domains to detect lookalike domains, typosquatting, and phishing attempts.",
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "priceCurrency": "AUD"
+                }
+            }
+        },
+        {
+            "@type": "Offer",
+            "itemOffered": {
+                "@type": "SoftwareApplication",
+                "name": "CyberPuzzle",
+                "applicationCategory": "EducationalApplication",
+                "applicationSubCategory": "Security Training",
+                "operatingSystem": "Web",
+                "url": "https://cyberpuzzle.fun",
+                "description": "Interactive cybersecurity skill challenges. Gamified CTF-style puzzles testing real-world security knowledge for hiring and training.",
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "priceCurrency": "AUD"
+                }
+            }
+        }
+    ]
+}
+</script>
+{% endif %}
+
+<!-- === SEO: Structured Data — ItemList for Portfolio (Homepage) === -->
+{% if page.url == '/' or page.url == '/index.html' %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Live Software Products",
+    "description": "Products built and shipped to production by Dobson Development",
+    "url": "{{ site.url }}/#portfolio",
+    "numberOfItems": 2,
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "DoppelDown",
+            "url": "https://doppeldown.com",
+            "description": "AI-powered brand protection for SMBs"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "CyberPuzzle",
+            "url": "https://cyberpuzzle.fun",
+            "description": "Interactive cybersecurity skill challenges"
+        }
+    ]
+}
+</script>
+{% endif %}
+
+<!-- === SEO: Open Graph Enhancements (page-level overrides) === -->
+{% if page.og_image %}
+<meta property="og:image" content="{{ page.og_image | absolute_url }}">
+{% endif %}
+{% if page.og_type %}
+<meta property="og:type" content="{{ page.og_type }}">
+{% endif %}

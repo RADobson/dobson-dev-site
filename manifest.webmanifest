@@ -1,0 +1,52 @@
+{
+    "name": "Dobson Development",
+    "short_name": "Dobson Dev",
+    "description": "Australian software studio building practical tools for cybersecurity and business",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#0B0C10",
+    "theme_color": "#0B0C10",
+    "orientation": "portrait-primary",
+    "lang": "en-AU",
+    "categories": ["business", "developer-tools", "security"],
+    "icons": [
+        {
+            "src": "/assets/images/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/assets/images/icon.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "View Portfolio",
+            "short_name": "Portfolio",
+            "description": "See live projects",
+            "url": "/#portfolio",
+            "icons": [{ "src": "/assets/images/icon.svg", "sizes": "any" }]
+        },
+        {
+            "name": "Read Blog",
+            "short_name": "Blog",
+            "description": "Latest articles",
+            "url": "/blog/",
+            "icons": [{ "src": "/assets/images/icon.svg", "sizes": "any" }]
+        },
+        {
+            "name": "Contact Us",
+            "short_name": "Contact",
+            "description": "Get in touch",
+            "url": "/#contact",
+            "icons": [{ "src": "/assets/images/icon.svg", "sizes": "any" }]
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false
+}

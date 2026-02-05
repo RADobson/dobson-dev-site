@@ -2,8 +2,12 @@
 layout: post
 title: "Building Ultrathink: A Private, Self-Hosted Second Brain"
 date: 2026-01-16
+last_modified_at: 2026-01-16
 tags: [automation, python, telegram, ai, claude]
 excerpt: "How a complex stack of no-code tools became a simple 600-line Python script, thanks to Claude Code."
+description: "How I built Ultrathink, a private self-hosted second brain system using Python and Claude AI, replacing a complex Slack/Notion/Zapier stack with a simple 600-line script."
+image: /assets/images/og-default.png
+author: "Ernie Dobson"
 ---
 
 *How a complex stack of no-code tools became a simple 600-line Python script*

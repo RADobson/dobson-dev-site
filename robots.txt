@@ -1,4 +1,79 @@
+# Dobson Development — robots.txt
+# https://dobsondevelopment.com.au
+# Last updated: February 2026
+
+# Default: allow all pages
 User-agent: *
 Allow: /
+Disallow: /assets/images/*.jpg$
+Disallow: /assets/images/*.png$
 
+# Allow all modern search engines full access
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/images/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Block AI training crawlers (protect original content)
+# OpenAI
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+# Anthropic
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Google AI (for Gemini training, not search)
+User-agent: Google-Extended
+Disallow: /
+
+# Meta AI
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+# Common Crawl (used for AI training)
+User-agent: CCBot
+Disallow: /
+
+# ByteDance/TikTok
+User-agent: Bytespider
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /
+
+# Cohere
+User-agent: cohere-ai
+Disallow: /
+
+# Sitemap location
 Sitemap: https://dobsondevelopment.com.au/sitemap.xml
+
+# Crawl-delay for courtesy (optional, not universally supported)
+# Crawl-delay: 1

@@ -1,21 +1,33 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://dobsondevelopment.com.au/</loc>
-    <lastmod>2026-02-03</lastmod>
+    <loc>{{ site.url }}/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dobsondevelopment.com.au/blog/</loc>
-    <lastmod>2026-02-03</lastmod>
+    <loc>{{ site.url }}/blog/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  {% for post in site.posts %}
   <url>
-    <loc>https://dobsondevelopment.com.au/blog/building-ultrathink-self-hosted-second-brain/</loc>
-    <lastmod>2026-01-16</lastmod>
+    <loc>{{ post.url | absolute_url }}</loc>
+    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    {% if post.image %}
+    <image:image>
+      <image:loc>{{ post.image | absolute_url }}</image:loc>
+      <image:title>{{ post.title | xml_escape }}</image:title>
+    </image:image>
+    {% endif %}
   </url>
+  {% endfor %}
 </urlset>

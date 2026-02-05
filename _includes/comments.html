@@ -1,0 +1,72 @@
+<!-- Giscus Comments -->
+{% if site.giscus and site.giscus.repo %}
+<div class="comments-section reveal">
+    <h3>Comments</h3>
+    <p class="comments-intro">Have thoughts on this post? Join the discussion below.</p>
+    
+    <div class="giscus-wrapper">
+        <script src="https://giscus.app/client.js"
+            data-repo="{{ site.giscus.repo }}"
+            data-repo-id="{{ site.giscus.repo_id }}"
+            data-category="{{ site.giscus.category }}"
+            data-category-id="{{ site.giscus.category_id }}"
+            data-mapping="{{ site.giscus.mapping | default: 'pathname' }}"
+            data-strict="0"
+            data-reactions-enabled="{{ site.giscus.reactions_enabled | default: '1' }}"
+            data-emit-metadata="{{ site.giscus.emit_metadata | default: '0' }}"
+            data-input-position="bottom"
+            data-theme="{{ site.giscus.theme | default: 'dark_dimmed' }}"
+            data-lang="{{ site.giscus.lang | default: 'en' }}"
+            crossorigin="{{ site.giscus.crossorigin | default: 'anonymous' }}"
+            async>
+        </script>
+    </div>
+    
+    <noscript>
+        <div class="comments-noscript">
+            <p>Please enable JavaScript to view the comments powered by <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">giscus</a>.</p>
+        </div>
+    </noscript>
+</div>
+
+<style>
+.comments-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.comments-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-white);
+}
+
+.comments-intro {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.giscus-wrapper {
+    min-height: 150px;
+}
+
+.comments-noscript {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.comments-noscript p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.comments-noscript a {
+    color: var(--accent-neon);
+}
+</style>
+{% endif %}
