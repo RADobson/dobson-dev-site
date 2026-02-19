@@ -1,0 +1,725 @@
+---
+layout: null
+title: "Security Stack Maturity Score | Rate Your Cyber Defence Posture"
+description: "Free interactive assessment tool that scores your security stack maturity across 8 domains. Find gaps, get a roadmap, and level up from Reactive to Predictive."
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Security Stack Maturity Score | Rate Your Cyber Defence Posture | Dobson Development</title>
+    <meta name="description" content="Free interactive assessment tool that scores your security stack maturity across 8 domains. Find gaps, get a roadmap, and level up from Reactive to Predictive.">
+    <meta name="keywords" content="security maturity assessment, cybersecurity maturity model, security stack score, cyber maturity, security posture assessment, CMMI security, security roadmap, endpoint security maturity, zero trust assessment">
+    <meta name="author" content="Dobson Development Pty Ltd">
+    <link rel="canonical" href="https://dobsondevelopment.com.au/tools/security-maturity-score">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+    <link rel="apple-touch-icon" href="/assets/images/icon.svg">
+    <meta name="theme-color" content="#0B0C10">
+    <meta name="color-scheme" content="dark">
+
+    <meta property="og:title" content="Security Stack Maturity Score | Rate Your Cyber Defence Posture">
+    <meta property="og:description" content="Free interactive assessment — score your security stack across 8 domains and get a personalised roadmap to level up.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dobsondevelopment.com.au/tools/security-maturity-score">
+    <meta property="og:image" content="https://dobsondevelopment.com.au/assets/images/og-default.png">
+    <meta property="og:locale" content="en_AU">
+    <meta property="og:site_name" content="Dobson Development">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RADobson">
+    <meta name="twitter:title" content="Security Stack Maturity Score | Rate Your Cyber Defence Posture">
+    <meta name="twitter:description" content="Free interactive assessment — score your security stack across 8 domains and get a personalised roadmap.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Security Stack Maturity Score",
+        "description": "Free interactive assessment tool that scores your security stack maturity across 8 domains from Reactive to Predictive.",
+        "url": "https://dobsondevelopment.com.au/tools/security-maturity-score",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+        "author": { "@type": "Organization", "name": "Dobson Development Pty Ltd", "url": "https://dobsondevelopment.com.au" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dobsondevelopment.com.au"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://dobsondevelopment.com.au/tools/"},
+            {"@type": "ListItem", "position": 3, "name": "Security Maturity Score", "item": "https://dobsondevelopment.com.au/tools/security-maturity-score"}
+        ]
+    }
+    </script>
+
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/firacode-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Inter'; font-style:normal; font-weight:700; font-display:swap; src:url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Fira Code'; font-style:normal; font-weight:400; font-display:swap; src:url('/assets/fonts/firacode-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Fira Code'; font-style:normal; font-weight:600; font-display:swap; src:url('/assets/fonts/firacode-latin.woff2') format('woff2'); }
+
+        :root {
+            --bg-main: #0B0C10;
+            --bg-secondary: #0f1014;
+            --bg-card: #141419;
+            --accent-neon: #00F0FF;
+            --accent-purple: #BC13FE;
+            --accent-green: #22c55e;
+            --text-white: #FFFFFF;
+            --text-grey: #9ca3af;
+            --text-muted: #6b7280;
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-hover: rgba(0,240,255,0.3);
+            --font-mono: 'Fira Code', monospace;
+            --font-body: 'Inter', sans-serif;
+            --level-1: #ef4444;
+            --level-2: #f97316;
+            --level-3: #eab308;
+            --level-4: #22c55e;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        ::-webkit-scrollbar { width:6px; }
+        ::-webkit-scrollbar-track { background:var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,var(--accent-neon),var(--accent-purple)); border-radius:3px; }
+        html { scroll-behavior:smooth; }
+        body { font-family:var(--font-body); background:var(--bg-main); color:var(--text-grey); line-height:1.7; min-height:100vh; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+        h1,h2,h3,h4 { color:var(--text-white); font-family:var(--font-mono); letter-spacing:-0.5px; font-weight:600; }
+        a { color:var(--accent-neon); text-decoration:none; transition:all 0.3s ease; }
+        a:hover { color:var(--accent-purple); }
+        :focus-visible { outline:2px solid var(--accent-neon); outline-offset:3px; }
+        :focus:not(:focus-visible) { outline:none; }
+
+        .container { max-width:900px; margin:0 auto; padding:0 20px; }
+
+        .site-header { background:rgba(11,12,16,0.95); backdrop-filter:blur(10px); padding:1.25rem 0; position:sticky; top:0; z-index:100; border-bottom:1px solid var(--border-subtle); }
+        .site-header .container { display:flex; justify-content:space-between; align-items:center; }
+        .site-logo { font-family:var(--font-mono); font-size:1.2rem; font-weight:600; color:var(--accent-neon); display:flex; align-items:center; gap:0.5rem; }
+        .site-logo::before { content:'>_'; color:var(--accent-neon); }
+        .site-logo:hover { text-shadow:0 0 20px rgba(0,240,255,0.5); color:var(--accent-neon); }
+        .site-nav { display:flex; gap:2rem; }
+        .site-nav a { color:var(--text-grey); font-size:0.9rem; font-family:var(--font-mono); position:relative; }
+        .site-nav a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--accent-neon); transition:width 0.3s ease; }
+        .site-nav a:hover { color:var(--accent-neon); }
+        .site-nav a:hover::after { width:100%; }
+
+        .site-footer { padding:2rem 0; border-top:1px solid var(--border-subtle); text-align:center; font-size:0.85rem; color:var(--text-muted); font-family:var(--font-mono); }
+
+        .assessment-hero { padding:3rem 0 2rem; text-align:center; border-bottom:1px solid var(--border-subtle); margin-bottom:2rem; }
+        .assessment-hero h1 { font-size:clamp(1.6rem,4vw,2.4rem); margin-bottom:1rem; line-height:1.3; }
+        .assessment-hero h1 .highlight { color:var(--accent-neon); }
+        .assessment-hero p { max-width:600px; margin:0 auto 1.5rem; color:var(--text-grey); }
+        .trust-badges { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:1rem; }
+        .trust-badge { font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted); background:var(--bg-card); border:1px solid var(--border-subtle); padding:0.4rem 0.8rem; border-radius:4px; }
+
+        .progress-bar { background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:8px; padding:1rem 1.5rem; margin-bottom:2rem; }
+        .progress-steps { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; font-family:var(--font-mono); font-size:0.8rem; }
+        .progress-track { height:4px; background:rgba(255,255,255,0.06); border-radius:2px; overflow:hidden; }
+        .progress-fill { height:100%; background:linear-gradient(90deg,var(--accent-neon),var(--accent-purple)); border-radius:2px; transition:width 0.4s ease; }
+
+        .step { display:none; animation:fadeIn 0.3s ease; }
+        .step.active { display:block; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+        .step-card { background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; padding:2rem; margin-bottom:1.5rem; }
+        .step-card h2 { font-size:1.3rem; margin-bottom:0.5rem; }
+        .step-card h2 .step-num { color:var(--accent-neon); }
+        .step-card .step-desc { color:var(--text-muted); margin-bottom:1.5rem; font-size:0.95rem; }
+        .step-card .domain-icon { font-size:2rem; margin-bottom:0.75rem; display:block; }
+
+        .question { margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border-subtle); }
+        .question:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+        .question label { display:block; color:var(--text-white); margin-bottom:0.75rem; font-size:0.95rem; line-height:1.5; }
+        .options { display:flex; flex-direction:column; gap:0.5rem; }
+        .option-btn { font-family:var(--font-body); font-size:0.88rem; padding:0.75rem 1.2rem; border:1px solid var(--border-subtle); background:transparent; color:var(--text-grey); border-radius:6px; cursor:pointer; transition:all 0.2s ease; text-align:left; line-height:1.4; }
+        .option-btn:hover { border-color:var(--border-hover); color:var(--text-white); background:rgba(0,240,255,0.03); }
+        .option-btn.selected { border-color:var(--accent-neon); background:rgba(0,240,255,0.08); color:var(--accent-neon); }
+        .option-btn .opt-level { font-family:var(--font-mono); font-size:0.7rem; display:inline-block; padding:0.15rem 0.5rem; border-radius:3px; margin-right:0.5rem; font-weight:600; vertical-align:middle; }
+        .opt-l1 { background:rgba(239,68,68,0.15); color:var(--level-1); }
+        .opt-l2 { background:rgba(249,115,22,0.15); color:var(--level-2); }
+        .opt-l3 { background:rgba(234,179,8,0.15); color:var(--level-3); }
+        .opt-l4 { background:rgba(34,197,94,0.15); color:var(--level-4); }
+
+        .step-nav { display:flex; justify-content:space-between; margin-top:1.5rem; gap:1rem; }
+        .btn { font-family:var(--font-mono); font-weight:600; font-size:0.9rem; padding:0.85rem 1.5rem; border-radius:6px; cursor:pointer; transition:all 0.3s ease; border:none; }
+        .btn-primary { background:transparent; color:var(--accent-neon); border:1px solid var(--accent-neon); }
+        .btn-primary:hover { background:var(--accent-neon); color:var(--bg-main); box-shadow:0 0 30px rgba(0,240,255,0.4); }
+        .btn-secondary { background:transparent; color:var(--text-grey); border:1px solid var(--border-subtle); }
+        .btn-secondary:hover { border-color:var(--text-grey); color:var(--text-white); }
+        .btn:disabled { opacity:0.3; cursor:not-allowed; }
+
+        /* Results */
+        .overall-score { text-align:center; padding:2.5rem 2rem; background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; margin-bottom:2rem; position:relative; overflow:hidden; }
+        .overall-score::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent-neon),var(--accent-purple)); }
+        .overall-score .score-value { font-family:var(--font-mono); font-size:4.5rem; font-weight:700; margin:0.5rem 0; background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .overall-score .score-label { font-family:var(--font-mono); font-size:1.1rem; color:var(--text-white); margin-bottom:0.25rem; }
+        .overall-score .score-sublabel { font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); }
+        .overall-score .comparison { margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid var(--border-subtle); font-family:var(--font-mono); font-size:0.82rem; color:var(--text-muted); }
+        .overall-score .comparison span { color:var(--accent-neon); }
+
+        /* Radar chart CSS */
+        .radar-wrap { display:flex; justify-content:center; margin-bottom:2rem; }
+        .radar-svg { max-width:420px; width:100%; }
+        .radar-grid { stroke:rgba(255,255,255,0.08); stroke-width:1; fill:none; }
+        .radar-axis { stroke:rgba(255,255,255,0.06); stroke-width:1; }
+        .radar-area { fill:rgba(0,240,255,0.12); stroke:var(--accent-neon); stroke-width:2; }
+        .radar-dot { fill:var(--accent-neon); }
+        .radar-label { fill:var(--text-grey); font-family:'Inter',sans-serif; font-size:11px; }
+        .radar-avg-area { fill:none; stroke:var(--accent-purple); stroke-width:1.5; stroke-dasharray:4,3; opacity:0.6; }
+
+        /* Domain bars */
+        .domain-results { display:grid; gap:1rem; margin-bottom:2rem; }
+        .domain-row { background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:8px; padding:1.25rem 1.5rem; }
+        .domain-row-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; }
+        .domain-row-name { font-family:var(--font-mono); font-size:0.85rem; color:var(--text-white); }
+        .domain-row-level { font-family:var(--font-mono); font-size:0.8rem; font-weight:600; }
+        .domain-bar-track { height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden; }
+        .domain-bar-fill { height:100%; border-radius:4px; transition:width 0.6s ease; }
+        .domain-row-desc { font-size:0.82rem; color:var(--text-muted); margin-top:0.5rem; line-height:1.5; }
+
+        /* Recommendations */
+        .rec-section { margin-bottom:2rem; }
+        .rec-section h2 { font-size:1.2rem; margin-bottom:1rem; }
+        .rec-card { background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:0.75rem; }
+        .rec-card h3 { font-size:0.95rem; margin-bottom:0.25rem; display:flex; align-items:center; gap:0.5rem; }
+        .rec-card .rec-priority { font-family:var(--font-mono); font-size:0.7rem; padding:0.15rem 0.5rem; border-radius:3px; }
+        .rec-card .pri-high { background:rgba(239,68,68,0.15); color:var(--level-1); }
+        .rec-card .pri-med { background:rgba(249,115,22,0.15); color:var(--level-2); }
+        .rec-card .pri-low { background:rgba(234,179,8,0.15); color:var(--level-3); }
+        .rec-card .rec-text { font-size:0.88rem; line-height:1.6; color:var(--text-grey); }
+        .rec-card .rec-actions { margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--border-subtle); }
+        .rec-card .rec-actions li { font-size:0.85rem; color:var(--text-grey); margin-bottom:0.35rem; padding-left:1rem; position:relative; list-style:none; }
+        .rec-card .rec-actions li::before { content:'→'; position:absolute; left:0; color:var(--accent-neon); font-family:var(--font-mono); }
+
+        /* CTA */
+        .cta-section { background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; padding:2rem; margin-bottom:2rem; text-align:center; }
+        .cta-section h3 { margin-bottom:0.5rem; }
+        .cta-section p { margin-bottom:1.25rem; font-size:0.9rem; }
+        .email-form { display:flex; gap:0.5rem; max-width:420px; margin:0 auto; }
+        .email-form input { flex:1; background:rgba(255,255,255,0.02); border:none; border-bottom:1px solid var(--border-subtle); color:var(--text-white); font-family:var(--font-mono); padding:0.75rem 0.5rem; font-size:0.9rem; border-radius:4px 4px 0 0; }
+        .email-form input:focus { outline:none; border-bottom-color:var(--accent-neon); }
+        .email-form .btn { white-space:nowrap; }
+        .form-success { display:none; color:var(--accent-green); font-family:var(--font-mono); font-size:0.9rem; margin-top:1rem; }
+
+        .cta-buttons { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:1.5rem; }
+
+        .disclaimer { font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border-subtle); }
+        .disclaimer a { font-size:0.8rem; }
+
+        @media (max-width:768px) {
+            .site-header .container { flex-direction:column; gap:1rem; }
+            .site-nav { gap:1rem; }
+            .site-nav a { font-size:0.8rem; }
+            .email-form { flex-direction:column; }
+            .radar-label { font-size:9px; }
+        }
+        @media (max-width:480px) {
+            .step-card { padding:1.25rem; }
+            .overall-score .score-value { font-size:3.5rem; }
+        }
+        @media (prefers-reduced-motion:reduce) {
+            *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-logo">dobson.dev</a>
+            <nav class="site-nav">
+                <a href="/">Home</a>
+                <a href="/services/cybersecurity">Cybersecurity</a>
+                <a href="/services/ai-consulting">AI Agents</a>
+                <a href="/tools/">Tools</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="assessment-hero">
+                <h1>Security Stack <span class="highlight">Maturity Score</span></h1>
+                <p>Rate your organisation's security posture across 8 critical domains. Get your maturity level, see where you stand vs industry, and get a roadmap to level up.</p>
+                <div class="trust-badges">
+                    <span class="trust-badge">8 Security Domains</span>
+                    <span class="trust-badge">~3 Minutes</span>
+                    <span class="trust-badge">Instant Results</span>
+                    <span class="trust-badge">Free Roadmap</span>
+                </div>
+            </div>
+
+            <div id="assessment">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-steps">
+                        <span id="progressLabel">Domain 1 of 8</span>
+                        <span id="progressPct">12%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill" style="width:12%"></div>
+                    </div>
+                </div>
+
+                <div id="stepsContainer"></div>
+
+                <div id="results" class="step">
+                    <div class="overall-score" id="overallScore"></div>
+                    <div class="radar-wrap" id="radarWrap"></div>
+                    <h2 style="margin-bottom:1rem; font-size:1.2rem;">Domain Breakdown</h2>
+                    <div class="domain-results" id="domainResults"></div>
+                    <div class="rec-section" id="recSection">
+                        <h2>🎯 Priority Roadmap</h2>
+                        <div id="recCards"></div>
+                    </div>
+                    <div class="cta-section">
+                        <h3>📄 Get Your Personalised Maturity Roadmap</h3>
+                        <p>We'll send a detailed PDF with your scores, benchmarks, and step-by-step actions tailored to your results.</p>
+                        <form class="email-form" id="emailForm" action="https://formspree.io/f/xkgwbvgz" method="POST">
+                            <input type="hidden" name="tool" value="security-maturity-score">
+                            <input type="hidden" name="scores" id="hiddenScores">
+                            <input type="email" name="email" placeholder="your@email.com" required>
+                            <button type="submit" class="btn btn-primary">Send Roadmap</button>
+                        </form>
+                        <div class="form-success" id="formSuccess">✓ Sent! Check your inbox.</div>
+                    </div>
+                    <div class="cta-buttons">
+                        <button class="btn btn-secondary" onclick="resetAssessment()">↻ Retake Assessment</button>
+                        <a href="/services/cybersecurity" class="btn btn-primary">Talk to a Security Expert →</a>
+                    </div>
+                    <div class="disclaimer">
+                        <p>This tool provides a high-level indicative assessment only and does not constitute professional cybersecurity advice. For a comprehensive evaluation, <a href="/services/cybersecurity">contact us</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Dobson Development Pty Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    const DOMAINS = [
+        {
+            id: 'endpoint', name: 'Endpoint Security', icon: '🖥️',
+            question: 'How do you protect endpoints (laptops, desktops, servers)?',
+            options: [
+                { level: 1, text: 'Traditional antivirus only, signature-based detection' },
+                { level: 2, text: 'EDR deployed with behavioural detection and alerting' },
+                { level: 3, text: 'XDR platform correlating endpoint, email, and cloud telemetry' },
+                { level: 4, text: 'Autonomous response — threats auto-contained with AI-driven decisioning' }
+            ],
+            descriptions: {
+                1: 'Reactive: Relying on signature-based AV leaves you exposed to zero-days and fileless attacks.',
+                2: 'Monitored: EDR gives visibility into endpoint behaviour, but response still requires human action.',
+                3: 'Automated: XDR correlates signals across your stack, reducing dwell time significantly.',
+                4: 'Predictive: Autonomous containment stops threats in real-time without waiting for analyst triage.'
+            },
+            nextActions: {
+                1: ['Deploy an EDR solution (CrowdStrike, SentinelOne, or Defender for Endpoint)', 'Enable behavioural detection and block-on-detect policies', 'Establish endpoint baseline and monitoring dashboards'],
+                2: ['Evaluate XDR platforms that ingest email, identity, and cloud signals', 'Integrate EDR alerts into your SIEM or SOAR', 'Implement automated isolation for high-confidence detections'],
+                3: ['Enable autonomous response / auto-containment features', 'Tune ML models with your environment-specific data', 'Implement deception technology (honeypots) at endpoints'],
+                4: ['Continuously validate with breach simulation and red teaming', 'Share threat intel across industry ISACs', 'Pursue continuous improvement via purple team exercises']
+            }
+        },
+        {
+            id: 'identity', name: 'Identity & Access', icon: '🔐',
+            question: 'How do you manage identity, authentication, and access control?',
+            options: [
+                { level: 1, text: 'Passwords only, no MFA, minimal access controls' },
+                { level: 2, text: 'MFA enabled for critical systems, basic role-based access' },
+                { level: 3, text: 'Zero trust architecture — verify every request, least privilege enforced' },
+                { level: 4, text: 'Continuous adaptive authentication with risk-based access decisions' }
+            ],
+            descriptions: {
+                1: 'Reactive: Password-only auth is trivially compromised. Credential theft is the #1 attack vector.',
+                2: 'Monitored: MFA significantly reduces account compromise, but static trust assumptions remain.',
+                3: 'Automated: Zero trust eliminates implicit trust — every access request is verified contextually.',
+                4: 'Predictive: Continuous auth adapts in real-time to risk signals (location, device, behaviour).'
+            },
+            nextActions: {
+                1: ['Deploy MFA across all user accounts (start with privileged and cloud apps)', 'Implement a password manager and enforce complexity policies', 'Audit and remove orphaned accounts and excessive permissions'],
+                2: ['Begin zero trust planning — map trust boundaries and data flows', 'Implement conditional access policies (device compliance, location)', 'Deploy privileged access management (PAM) for admin accounts'],
+                3: ['Implement continuous authentication with session risk scoring', 'Deploy UEBA to detect anomalous access patterns', 'Automate access reviews and just-in-time privilege elevation'],
+                4: ['Integrate behavioural biometrics for high-value sessions', 'Implement decentralised identity where applicable', 'Run identity-focused red team exercises quarterly']
+            }
+        },
+        {
+            id: 'network', name: 'Network Security', icon: '🌐',
+            question: 'What does your network security architecture look like?',
+            options: [
+                { level: 1, text: 'Perimeter firewall only, flat internal network' },
+                { level: 2, text: 'IDS/IPS deployed, basic network segmentation' },
+                { level: 3, text: 'Microsegmentation with east-west traffic inspection' },
+                { level: 4, text: 'AI-driven network detection and response (NDR) with automated policy' }
+            ],
+            descriptions: {
+                1: 'Reactive: A flat network with only perimeter defence means once breached, lateral movement is trivial.',
+                2: 'Monitored: IDS/IPS and segmentation add layers, but detection of lateral movement is still limited.',
+                3: 'Automated: Microsegmentation enforces least-privilege networking, containing breaches by design.',
+                4: 'Predictive: AI-driven NDR detects anomalous traffic patterns and adapts policies in real-time.'
+            },
+            nextActions: {
+                1: ['Segment critical systems (servers, IoT, guest) into separate VLANs/zones', 'Deploy IDS/IPS at network chokepoints', 'Implement DNS filtering and web proxy controls'],
+                2: ['Plan microsegmentation for sensitive workloads (start with crown jewels)', 'Deploy east-west traffic monitoring', 'Implement network access control (NAC) for device trust'],
+                3: ['Evaluate NDR solutions with ML-based anomaly detection', 'Implement automated firewall rule management', 'Deploy encrypted traffic analysis capabilities'],
+                4: ['Integrate NDR with SOAR for automated containment', 'Implement software-defined perimeter (SDP)', 'Run regular network penetration testing with adversary simulation']
+            }
+        },
+        {
+            id: 'logging', name: 'Logging & Monitoring', icon: '📊',
+            question: 'How do you handle security logging and monitoring?',
+            options: [
+                { level: 1, text: 'Minimal or no centralised logging, reactive investigation only' },
+                { level: 2, text: 'Basic SIEM with log aggregation and simple alert rules' },
+                { level: 3, text: 'Correlated detection across sources with tuned use cases and dashboards' },
+                { level: 4, text: 'Predictive analytics, UEBA, and ML-driven threat hunting' }
+            ],
+            descriptions: {
+                1: 'Reactive: Without centralised logging, you can\'t detect or investigate incidents effectively.',
+                2: 'Monitored: Basic SIEM gives visibility but high noise and manual correlation slow response.',
+                3: 'Automated: Correlated detections across data sources dramatically reduce false positives and MTTD.',
+                4: 'Predictive: ML-driven analytics surface threats before they materialise, enabling proactive hunting.'
+            },
+            nextActions: {
+                1: ['Deploy a SIEM or log management platform (even open-source like Wazuh)', 'Centralise logs from firewalls, endpoints, identity, and cloud', 'Establish a basic alerting and triage workflow'],
+                2: ['Develop correlated detection rules across log sources', 'Tune alerts to reduce false positives below 30%', 'Implement dashboards for SOC visibility (MTTD, MTTR)'],
+                3: ['Deploy UEBA for user and entity behaviour analytics', 'Implement threat hunting programme with regular cadence', 'Evaluate ML-based anomaly detection overlays'],
+                4: ['Integrate threat intelligence feeds for predictive alerting', 'Automate hunt hypotheses with SOAR playbooks', 'Measure and optimise detection coverage against MITRE ATT&CK']
+            }
+        },
+        {
+            id: 'vulnmgmt', name: 'Vulnerability Management', icon: '🔍',
+            question: 'How do you identify and manage vulnerabilities?',
+            options: [
+                { level: 1, text: 'Ad-hoc or no vulnerability scanning' },
+                { level: 2, text: 'Scheduled scans (monthly/quarterly) with basic reporting' },
+                { level: 3, text: 'Continuous scanning with SLA-driven remediation workflows' },
+                { level: 4, text: 'Risk-based prioritisation with exploit intelligence and auto-patching' }
+            ],
+            descriptions: {
+                1: 'Reactive: Without regular scanning, critical vulnerabilities go undetected until exploited.',
+                2: 'Monitored: Scheduled scans catch known vulns, but gaps between scans leave exposure windows.',
+                3: 'Automated: Continuous scanning with enforced SLAs ensures timely remediation.',
+                4: 'Predictive: Risk-based prioritisation focuses effort on vulns actively exploited in the wild.'
+            },
+            nextActions: {
+                1: ['Deploy a vulnerability scanner (Qualys, Tenable, or open-source alternatives)', 'Run an initial baseline scan across all assets', 'Establish a patch management process with defined SLAs'],
+                2: ['Move to continuous or weekly scanning cadence', 'Implement SLA-driven remediation (Critical: 48h, High: 7d, Medium: 30d)', 'Integrate scan results with ticketing for accountability'],
+                3: ['Adopt risk-based prioritisation (EPSS scores, exploit availability)', 'Implement automated patching for standard workloads', 'Add attack surface management for external-facing assets'],
+                4: ['Integrate threat intel for predictive vulnerability prioritisation', 'Implement virtual patching via WAF/IPS for zero-days', 'Run vulnerability validation with breach & attack simulation']
+            }
+        },
+        {
+            id: 'ir', name: 'Incident Response', icon: '🚨',
+            question: 'What is your incident response capability?',
+            options: [
+                { level: 1, text: 'No formal incident response plan' },
+                { level: 2, text: 'Documented IR plan with defined roles and communication procedures' },
+                { level: 3, text: 'Regularly tested plan with tabletop exercises and lessons learned' },
+                { level: 4, text: 'Automated playbooks with SOAR, integrated retainer, and continuous improvement' }
+            ],
+            descriptions: {
+                1: 'Reactive: Without a plan, incident response is chaotic, slow, and likely to increase damage.',
+                2: 'Monitored: A documented plan ensures structure, but untested plans often fail under pressure.',
+                3: 'Automated: Regular exercises validate the plan and build team muscle memory for real incidents.',
+                4: 'Predictive: SOAR-driven automation slashes response time and ensures consistency across incidents.'
+            },
+            nextActions: {
+                1: ['Create an incident response plan covering detection, containment, eradication, recovery', 'Define roles: incident commander, comms lead, technical lead', 'Establish communication templates and escalation paths'],
+                2: ['Schedule quarterly tabletop exercises with realistic scenarios', 'Establish a lessons-learned process after every incident', 'Pre-negotiate an IR retainer with an external firm'],
+                3: ['Implement SOAR platform for automated playbook execution', 'Build automated containment playbooks for top 5 incident types', 'Integrate IR with threat intel for contextual enrichment'],
+                4: ['Measure MTTR and continuously optimise playbooks', 'Run full-scale simulations including business stakeholders', 'Contribute to and consume from industry ISAC intelligence']
+            }
+        },
+        {
+            id: 'backup', name: 'Backup & Recovery', icon: '💾',
+            question: 'How do you handle backup and disaster recovery?',
+            options: [
+                { level: 1, text: 'No backups or inconsistent/untested backups' },
+                { level: 2, text: 'Regular backups with basic offsite/cloud copies' },
+                { level: 3, text: 'Tested recovery procedures with defined RPO/RTO targets' },
+                { level: 4, text: 'Immutable backups with orchestrated recovery and ransomware resilience' }
+            ],
+            descriptions: {
+                1: 'Reactive: Without reliable backups, a ransomware attack or data loss event is catastrophic.',
+                2: 'Monitored: Regular backups exist but untested recovery means you\'re hoping — not knowing — they work.',
+                3: 'Automated: Tested recovery with defined targets gives confidence in your ability to bounce back.',
+                4: 'Predictive: Immutable backups + orchestrated recovery ensures resilience even against sophisticated ransomware.'
+            },
+            nextActions: {
+                1: ['Implement 3-2-1 backup strategy (3 copies, 2 media, 1 offsite)', 'Automate backup schedules for critical systems and data', 'Document what needs to be backed up and retention requirements'],
+                2: ['Define RPO/RTO targets for each critical system', 'Test restoration monthly — actually recover data, don\'t just verify jobs', 'Implement backup monitoring and alerting for failures'],
+                3: ['Deploy immutable backup storage (WORM, air-gapped, or immutable cloud)', 'Implement orchestrated recovery with automated failover', 'Run quarterly DR drills including full system restoration'],
+                4: ['Test ransomware-specific recovery scenarios', 'Implement backup anomaly detection (early ransomware warning)', 'Maintain living DR runbooks with automated validation']
+            }
+        },
+        {
+            id: 'culture', name: 'Security Culture', icon: '🎓',
+            question: 'How mature is your organisation\'s security awareness and culture?',
+            options: [
+                { level: 1, text: 'No formal security training programme' },
+                { level: 2, text: 'Annual security awareness training for all staff' },
+                { level: 3, text: 'Continuous training with phishing simulations and metrics' },
+                { level: 4, text: 'Security champions programme with embedded security across teams' }
+            ],
+            descriptions: {
+                1: 'Reactive: Without training, staff are your biggest vulnerability — phishing success rates exceed 30%.',
+                2: 'Monitored: Annual training ticks a box but retention drops rapidly without reinforcement.',
+                3: 'Automated: Continuous training with phishing sims builds real behavioural change and measurable improvement.',
+                4: 'Predictive: Security champions embed security thinking into every team, making it a cultural norm.'
+            },
+            nextActions: {
+                1: ['Launch a basic security awareness programme (KnowBe4, Proofpoint SAT)', 'Cover phishing, passwords, social engineering, and physical security', 'Get executive sponsorship for security culture initiatives'],
+                2: ['Move to monthly micro-training modules (5-10 mins)', 'Launch phishing simulation campaigns with progressive difficulty', 'Track and report metrics: click rates, report rates, completion'],
+                3: ['Recruit security champions from each business unit', 'Implement gamification and recognition for security behaviours', 'Integrate security into onboarding, performance reviews, and culture'],
+                4: ['Measure security culture maturity with annual surveys', 'Run cross-functional security hackathons', 'Publish internal security newsletter and maintain community of practice']
+            }
+        }
+    ];
+
+    const LEVEL_NAMES = { 1: 'Reactive', 2: 'Monitored', 3: 'Automated', 4: 'Predictive' };
+    const LEVEL_COLORS = { 1: 'var(--level-1)', 2: 'var(--level-2)', 3: 'var(--level-3)', 4: 'var(--level-4)' };
+    const AVG_SMB = 2.1;
+
+    let scores = {};
+    let currentStep = 0;
+
+    function init() {
+        const container = document.getElementById('stepsContainer');
+        DOMAINS.forEach((d, i) => {
+            const step = document.createElement('div');
+            step.className = 'step' + (i === 0 ? ' active' : '');
+            step.id = 'step-' + i;
+            step.innerHTML = `
+                <div class="step-card">
+                    <span class="domain-icon">${d.icon}</span>
+                    <h2><span class="step-num">${i+1}/8</span> ${d.name}</h2>
+                    <p class="step-desc">${d.question}</p>
+                    <div class="options" id="options-${d.id}">
+                        ${d.options.map(o => `
+                            <button class="option-btn" data-domain="${d.id}" data-level="${o.level}" onclick="selectOption(this)">
+                                <span class="opt-level opt-l${o.level}">L${o.level}</span> ${o.text}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="step-nav">
+                    <button class="btn btn-secondary" onclick="prevStep()" ${i===0?'disabled':''}>← Back</button>
+                    <button class="btn btn-primary" id="next-${i}" onclick="${i===DOMAINS.length-1?'showResults()':'nextStep()'}" disabled>
+                        ${i===DOMAINS.length-1?'See Results →':'Next →'}
+                    </button>
+                </div>
+            `;
+            container.appendChild(step);
+        });
+    }
+
+    function selectOption(btn) {
+        const domain = btn.dataset.domain;
+        const level = parseInt(btn.dataset.level);
+        scores[domain] = level;
+        btn.parentElement.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        document.getElementById('next-' + currentStep).disabled = false;
+    }
+
+    function nextStep() {
+        document.getElementById('step-' + currentStep).classList.remove('active');
+        currentStep++;
+        document.getElementById('step-' + currentStep).classList.add('active');
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function prevStep() {
+        document.getElementById('step-' + currentStep).classList.remove('active');
+        currentStep--;
+        document.getElementById('step-' + currentStep).classList.add('active');
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateProgress() {
+        const pct = Math.round(((currentStep + 1) / DOMAINS.length) * 100);
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressPct').textContent = pct + '%';
+        document.getElementById('progressLabel').textContent = `Domain ${currentStep + 1} of ${DOMAINS.length}`;
+    }
+
+    function showResults() {
+        document.getElementById('step-' + currentStep).classList.remove('active');
+        document.getElementById('progressBar').style.display = 'none';
+        document.getElementById('results').classList.add('active');
+
+        const vals = Object.values(scores);
+        const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+        const levelName = avg < 1.5 ? 'Reactive' : avg < 2.5 ? 'Monitored' : avg < 3.5 ? 'Automated' : 'Predictive';
+        const diff = avg - AVG_SMB;
+        const diffText = diff > 0 ? `${diff.toFixed(1)} above` : diff < 0 ? `${Math.abs(diff).toFixed(1)} below` : 'at';
+
+        document.getElementById('hiddenScores').value = JSON.stringify(scores);
+
+        // Overall score
+        document.getElementById('overallScore').innerHTML = `
+            <div class="score-label">${levelName}</div>
+            <div class="score-value">${avg.toFixed(1)}</div>
+            <div class="score-sublabel">out of 4.0</div>
+            <div class="comparison">Average SMB score: <span>${AVG_SMB}</span> · You are <span>${diffText}</span> average</div>
+        `;
+
+        // Radar chart
+        renderRadar();
+
+        // Domain breakdown
+        const domainResults = document.getElementById('domainResults');
+        domainResults.innerHTML = '';
+        DOMAINS.forEach(d => {
+            const s = scores[d.id];
+            const pct = (s / 4) * 100;
+            const color = LEVEL_COLORS[s];
+            domainResults.innerHTML += `
+                <div class="domain-row">
+                    <div class="domain-row-header">
+                        <span class="domain-row-name">${d.icon} ${d.name}</span>
+                        <span class="domain-row-level" style="color:${color}">Level ${s} — ${LEVEL_NAMES[s]}</span>
+                    </div>
+                    <div class="domain-bar-track">
+                        <div class="domain-bar-fill" style="width:${pct}%;background:${color}"></div>
+                    </div>
+                    <div class="domain-row-desc">${d.descriptions[s]}</div>
+                </div>
+            `;
+        });
+
+        // Recommendations sorted by priority (lowest score first)
+        const sorted = DOMAINS.slice().sort((a, b) => scores[a.id] - scores[b.id]);
+        const recCards = document.getElementById('recCards');
+        recCards.innerHTML = '';
+        sorted.forEach((d, i) => {
+            const s = scores[d.id];
+            if (s >= 4) return; // already max
+            const pri = s === 1 ? 'HIGH' : s === 2 ? 'MED' : 'LOW';
+            const priClass = s === 1 ? 'pri-high' : s === 2 ? 'pri-med' : 'pri-low';
+            const actions = d.nextActions[s];
+            recCards.innerHTML += `
+                <div class="rec-card">
+                    <h3>${d.icon} ${d.name} <span class="rec-priority ${priClass}">${pri}</span></h3>
+                    <p class="rec-text">Currently Level ${s} (${LEVEL_NAMES[s]}) → Target: Level ${s+1} (${LEVEL_NAMES[s+1]})</p>
+                    <ul class="rec-actions">
+                        ${actions.map(a => `<li>${a}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderRadar() {
+        const cx = 200, cy = 200, r = 150;
+        const n = DOMAINS.length;
+        const angleStep = (2 * Math.PI) / n;
+
+        function polarToCart(angle, radius) {
+            return { x: cx + radius * Math.sin(angle), y: cy - radius * Math.cos(angle) };
+        }
+
+        // Grid rings
+        let gridPaths = '';
+        [1, 2, 3, 4].forEach(level => {
+            const rr = (level / 4) * r;
+            let pts = [];
+            for (let i = 0; i < n; i++) {
+                const p = polarToCart(i * angleStep, rr);
+                pts.push(`${p.x},${p.y}`);
+            }
+            gridPaths += `<polygon class="radar-grid" points="${pts.join(' ')}"/>`;
+        });
+
+        // Axes
+        let axes = '';
+        for (let i = 0; i < n; i++) {
+            const p = polarToCart(i * angleStep, r);
+            axes += `<line class="radar-axis" x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}"/>`;
+        }
+
+        // Labels
+        let labels = '';
+        DOMAINS.forEach((d, i) => {
+            const p = polarToCart(i * angleStep, r + 25);
+            const anchor = Math.abs(p.x - cx) < 5 ? 'middle' : p.x > cx ? 'start' : 'end';
+            labels += `<text class="radar-label" x="${p.x}" y="${p.y}" text-anchor="${anchor}" dominant-baseline="central">${d.name}</text>`;
+        });
+
+        // User area
+        let userPts = [], dots = '';
+        DOMAINS.forEach((d, i) => {
+            const val = scores[d.id] || 1;
+            const p = polarToCart(i * angleStep, (val / 4) * r);
+            userPts.push(`${p.x},${p.y}`);
+            dots += `<circle class="radar-dot" cx="${p.x}" cy="${p.y}" r="4"/>`;
+        });
+
+        // Average SMB area
+        let avgPts = [];
+        for (let i = 0; i < n; i++) {
+            const p = polarToCart(i * angleStep, (AVG_SMB / 4) * r);
+            avgPts.push(`${p.x},${p.y}`);
+        }
+
+        document.getElementById('radarWrap').innerHTML = `
+            <svg class="radar-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                ${gridPaths}
+                ${axes}
+                <polygon class="radar-avg-area" points="${avgPts.join(' ')}"/>
+                <polygon class="radar-area" points="${userPts.join(' ')}"/>
+                ${dots}
+                ${labels}
+            </svg>
+        `;
+    }
+
+    function resetAssessment() {
+        scores = {};
+        currentStep = 0;
+        document.getElementById('results').classList.remove('active');
+        document.getElementById('progressBar').style.display = 'block';
+        document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+        document.querySelectorAll('[id^="next-"]').forEach(b => b.disabled = true);
+        document.getElementById('step-0').classList.add('active');
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Email form
+    document.addEventListener('DOMContentLoaded', () => {
+        init();
+        const form = document.getElementById('emailForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            try {
+                await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+                form.style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+            } catch (err) {
+                alert('Something went wrong. Please try again.');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
