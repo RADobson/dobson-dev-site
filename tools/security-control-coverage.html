@@ -1,0 +1,527 @@
+---
+layout: null
+title: "Security Control Coverage Calculator"
+description: "Map your security tools to NIST CSF, Essential Eight & CIS Controls. Find gaps, overlaps and get actionable recommendations. Free from Dobson Development."
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Control Coverage Calculator | Dobson Development</title>
+    <meta name="description" content="Map your security tools to NIST CSF, Essential Eight & CIS Controls. Find gaps, overlaps and get actionable recommendations.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dobsondevelopment.com.au/tools/security-control-coverage">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+
+    <meta property="og:title" content="Security Control Coverage Calculator | Dobson Development">
+    <meta property="og:description" content="Map your security tools to NIST CSF, Essential Eight & CIS Controls. Find gaps, overlaps and get actionable recommendations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dobsondevelopment.com.au/tools/security-control-coverage">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Security Control Coverage Calculator",
+        "description": "Map your security tools to NIST CSF, Essential Eight & CIS Controls. Find gaps, overlaps and get actionable recommendations.",
+        "url": "https://dobsondevelopment.com.au/tools/security-control-coverage",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Web Browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+        "author": { "@type": "Organization", "name": "Dobson Development", "url": "https://dobsondevelopment.com.au" }
+    }
+    </script>
+
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/firacode-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        @font-face{font-family:'Inter';font-weight:400;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Inter';font-weight:600;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Fira Code';font-weight:400;font-display:swap;src:url('/assets/fonts/firacode-latin.woff2') format('woff2')}
+        @font-face{font-family:'Fira Code';font-weight:600;font-display:swap;src:url('/assets/fonts/firacode-latin.woff2') format('woff2')}
+
+        :root{
+            --bg-main:#0B0C10;--bg-secondary:#0f1014;--bg-card:#141419;
+            --accent-neon:#00F0FF;--accent-purple:#BC13FE;--accent-green:#22c55e;--accent-orange:#f59e0b;--accent-red:#ef4444;
+            --text-white:#FFFFFF;--text-grey:#9ca3af;--text-muted:#6b7280;
+            --border-subtle:rgba(255,255,255,0.06);--border-hover:rgba(0,240,255,0.3);
+            --font-mono:'Fira Code',monospace;--font-body:'Inter',sans-serif;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:var(--bg-main)}
+        ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent-neon),var(--accent-purple));border-radius:3px}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font-body);background:var(--bg-main);color:var(--text-grey);line-height:1.6;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        h1,h2,h3,h4{color:var(--text-white);font-family:var(--font-mono);font-weight:600}
+        a{color:var(--accent-neon);text-decoration:none;transition:all .3s}
+        code,.mono{font-family:var(--font-mono)}
+
+        .site-header{background:rgba(11,12,16,0.95);backdrop-filter:blur(10px);padding:1.25rem 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border-subtle)}
+        .site-header .container{display:flex;justify-content:space-between;align-items:center}
+        .site-logo{font-family:var(--font-mono);font-size:1.2rem;font-weight:600;color:var(--accent-neon);display:flex;align-items:center;gap:.5rem}
+        .site-logo::before{content:'>_';color:var(--accent-neon)}
+        .site-nav{display:flex;gap:2rem}
+        .site-nav a{color:var(--text-grey);font-size:.9rem;font-family:var(--font-mono)}
+        .site-nav a:hover{color:var(--accent-neon)}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+        .hero{padding:3rem 0 2rem;text-align:center;border-bottom:1px solid var(--border-subtle);margin-bottom:2rem}
+        .hero h1{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:.75rem;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{max-width:650px;margin:0 auto;font-size:1.05rem}
+        .meta-line{font-family:var(--font-mono);font-size:.8rem;color:var(--text-muted);margin-top:1rem}
+
+        /* Tool Picker */
+        .section{margin-bottom:2.5rem}
+        .section-title{font-size:1.2rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+        .section-title .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));color:var(--bg-main);font-size:.8rem;font-weight:700}
+
+        .search-wrap{position:relative;margin-bottom:1.25rem}
+        .search-wrap::before{content:'⌕';position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:1.1rem}
+        .search-bar{width:100%;padding:.75rem 1rem .75rem 2.75rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-white);font-family:var(--font-body);font-size:1rem;outline:none;transition:border .3s}
+        .search-bar:focus{border-color:var(--accent-neon)}
+
+        .category-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+        .cat-btn{padding:.35rem .75rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-grey);font-size:.8rem;font-family:var(--font-mono);cursor:pointer;transition:all .2s}
+        .cat-btn:hover{border-color:var(--border-hover);color:var(--text-white)}
+        .cat-btn.active{background:rgba(0,240,255,0.1);border-color:var(--accent-neon);color:var(--accent-neon)}
+
+        .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+        .tool-chip{padding:.6rem .9rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.5rem;font-size:.85rem;user-select:none}
+        .tool-chip:hover{border-color:var(--border-hover);background:rgba(0,240,255,0.03)}
+        .tool-chip.selected{background:rgba(0,240,255,0.08);border-color:var(--accent-neon);color:var(--text-white)}
+        .tool-chip .icon{font-size:1.1rem}
+        .tool-chip .check{margin-left:auto;opacity:0;color:var(--accent-neon);transition:opacity .2s}
+        .tool-chip.selected .check{opacity:1}
+        .selected-count{font-family:var(--font-mono);font-size:.85rem;color:var(--text-muted);margin-bottom:.75rem}
+
+        /* Results */
+        #results{display:none}
+        #results.visible{display:block}
+
+        .framework-section{margin-bottom:2rem}
+        .framework-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+        .framework-name{font-size:1.1rem}
+        .framework-score{font-family:var(--font-mono);font-size:1.5rem;font-weight:700}
+        .score-good{color:var(--accent-green)}
+        .score-mid{color:var(--accent-orange)}
+        .score-bad{color:var(--accent-red)}
+
+        .control-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem}
+        .control-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;transition:all .3s}
+        .control-card.covered{border-color:rgba(34,197,94,0.3)}
+        .control-card.partial{border-color:rgba(245,158,11,0.3)}
+        .control-card.gap{border-color:rgba(239,68,68,0.3)}
+        .control-name{font-family:var(--font-mono);font-size:.85rem;color:var(--text-white);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+        .control-name .status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+        .status-dot.green{background:var(--accent-green)}
+        .status-dot.orange{background:var(--accent-orange)}
+        .status-dot.red{background:var(--accent-red)}
+        .control-tools{font-size:.75rem;color:var(--text-muted);margin-top:.35rem}
+        .progress-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;margin-top:.5rem}
+        .progress-fill{height:100%;border-radius:3px;transition:width .5s ease}
+        .progress-fill.green{background:var(--accent-green)}
+        .progress-fill.orange{background:var(--accent-orange)}
+        .progress-fill.red{background:var(--accent-red)}
+        .progress-fill.neon{background:linear-gradient(90deg,var(--accent-neon),var(--accent-purple))}
+
+        /* Summary bar */
+        .summary-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem}
+        .summary-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:10px;padding:1.25rem;text-align:center}
+        .summary-card .label{font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.35rem}
+        .summary-card .value{font-family:var(--font-mono);font-size:1.8rem;font-weight:700}
+
+        /* Overlaps */
+        .overlap-list{display:flex;flex-direction:column;gap:.5rem}
+        .overlap-item{background:var(--bg-card);border:1px solid rgba(188,19,254,0.2);border-radius:8px;padding:.75rem 1rem;font-size:.85rem}
+        .overlap-item .control-label{font-family:var(--font-mono);color:var(--accent-purple);font-size:.8rem}
+        .overlap-item .tools{color:var(--text-grey);margin-top:.25rem}
+
+        /* Recommendations */
+        .rec-list{display:flex;flex-direction:column;gap:.75rem}
+        .rec-card{background:var(--bg-card);border-left:3px solid var(--accent-neon);border-radius:0 8px 8px 0;padding:1rem 1.25rem}
+        .rec-card .rec-title{font-family:var(--font-mono);font-size:.85rem;color:var(--text-white);margin-bottom:.25rem}
+        .rec-card .rec-desc{font-size:.85rem;color:var(--text-grey)}
+        .rec-card.priority-high{border-left-color:var(--accent-red)}
+        .rec-card.priority-med{border-left-color:var(--accent-orange)}
+
+        /* Lead capture */
+        .lead-section{background:linear-gradient(135deg,rgba(0,240,255,0.05),rgba(188,19,254,0.05));border:1px solid var(--border-subtle);border-radius:12px;padding:2.5rem;text-align:center;margin-top:2rem}
+        .lead-section h3{font-size:1.3rem;margin-bottom:.75rem}
+        .lead-section p{margin-bottom:1.25rem;max-width:500px;margin-left:auto;margin-right:auto}
+        .lead-form{display:flex;gap:.75rem;max-width:450px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+        .lead-form input[type="email"]{flex:1;min-width:220px;padding:.75rem 1rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-white);font-family:var(--font-body);font-size:.95rem;outline:none}
+        .lead-form input[type="email"]:focus{border-color:var(--accent-neon)}
+        .lead-form button{padding:.75rem 1.5rem;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));border:none;border-radius:8px;color:var(--bg-main);font-family:var(--font-mono);font-weight:600;font-size:.9rem;cursor:pointer;transition:transform .2s,box-shadow .2s}
+        .lead-form button:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,240,255,0.3)}
+        .form-msg{font-family:var(--font-mono);font-size:.85rem;margin-top:.75rem}
+
+        .footer{padding:2rem 0;text-align:center;font-size:.8rem;color:var(--text-muted);border-top:1px solid var(--border-subtle);margin-top:3rem}
+
+        @media(max-width:640px){
+            .tool-grid{grid-template-columns:1fr 1fr}
+            .control-grid{grid-template-columns:1fr}
+            .summary-bar{grid-template-columns:1fr 1fr}
+            .site-nav{gap:1rem}
+            .site-nav a{font-size:.75rem}
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="site-logo">Dobson Dev</a>
+        <nav class="site-nav">
+            <a href="/">Home</a>
+            <a href="/tools">Tools</a>
+            <a href="/blog">Blog</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </div></header>
+
+    <section class="hero"><div class="container">
+        <h1>Security Control Coverage Calculator</h1>
+        <p>Select your security tools and instantly see your coverage across NIST CSF, Essential Eight, and CIS Controls. Find gaps, spot overlaps, get recommendations.</p>
+        <div class="meta-line">Updated Feb 2026 · Client-side · No data stored</div>
+    </div></section>
+
+    <main class="container">
+        <!-- Step 1: Tool Picker -->
+        <div class="section">
+            <h2 class="section-title"><span class="num">1</span> Select Your Security Tools</h2>
+            <div class="search-wrap">
+                <input type="text" class="search-bar" id="toolSearch" placeholder="Search tools..." oninput="renderTools()">
+            </div>
+            <div class="category-filter" id="catFilter"></div>
+            <div class="selected-count" id="selectedCount">0 tools selected</div>
+            <div class="tool-grid" id="toolGrid"></div>
+        </div>
+
+        <!-- Results -->
+        <div id="results">
+            <h2 class="section-title"><span class="num">2</span> Coverage Analysis</h2>
+
+            <div class="summary-bar" id="summaryBar"></div>
+
+            <!-- NIST CSF -->
+            <div class="framework-section">
+                <div class="framework-header">
+                    <h3 class="framework-name">NIST CSF 2.0</h3>
+                    <span class="framework-score" id="nistScore"></span>
+                </div>
+                <div class="control-grid" id="nistGrid"></div>
+            </div>
+
+            <!-- Essential Eight -->
+            <div class="framework-section">
+                <div class="framework-header">
+                    <h3 class="framework-name">Essential Eight</h3>
+                    <span class="framework-score" id="e8Score"></span>
+                </div>
+                <div class="control-grid" id="e8Grid"></div>
+            </div>
+
+            <!-- CIS Controls -->
+            <div class="framework-section">
+                <div class="framework-header">
+                    <h3 class="framework-name">CIS Controls v8</h3>
+                    <span class="framework-score" id="cisScore"></span>
+                </div>
+                <div class="control-grid" id="cisGrid"></div>
+            </div>
+
+            <!-- Overlaps -->
+            <div class="section">
+                <h2 class="section-title"><span class="num">3</span> Redundancy & Overlaps</h2>
+                <p style="margin-bottom:1rem;font-size:.9rem">Controls covered by multiple tools — potential cost optimisation opportunities.</p>
+                <div class="overlap-list" id="overlapList"></div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="section">
+                <h2 class="section-title"><span class="num">4</span> Recommendations</h2>
+                <div class="rec-list" id="recList"></div>
+            </div>
+
+            <!-- Lead Capture -->
+            <div class="lead-section">
+                <h3>📄 Get Your Full Coverage Report (PDF)</h3>
+                <p>Receive a detailed PDF with your personalised gap analysis, remediation roadmap, and tool recommendations.</p>
+                <form class="lead-form" id="leadForm" action="https://formspree.io/f/mnnqekvg" method="POST">
+                    <input type="hidden" name="_subject" value="Security Coverage Calculator - PDF Request">
+                    <input type="hidden" name="tools" id="hiddenTools">
+                    <input type="hidden" name="nist_score" id="hiddenNist">
+                    <input type="hidden" name="e8_score" id="hiddenE8">
+                    <input type="hidden" name="cis_score" id="hiddenCis">
+                    <input type="email" name="email" placeholder="you@company.com" required>
+                    <button type="submit">Send My Report →</button>
+                </form>
+                <div class="form-msg" id="formMsg"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container">
+        © 2026 Dobson Development · <a href="/privacy">Privacy</a> · <a href="/tools">More Tools</a>
+    </div></footer>
+
+<script>
+// ============================================================
+// DATA: Security Tools mapped to frameworks
+// ============================================================
+const CATEGORIES = {
+    'Endpoint': '🖥️', 'Network': '🌐', 'Identity': '🔑', 'Cloud': '☁️',
+    'SIEM/Log': '📊', 'Email': '📧', 'Vulnerability': '🔍', 'Backup': '💾',
+    'GRC': '📋', 'AppSec': '🛡️', 'PAM': '🔐', 'DLP': '📁'
+};
+
+const NIST_FUNCTIONS = ['Identify','Protect','Detect','Respond','Recover'];
+const E8_CONTROLS = [
+    'Application Control','Patch Applications','Configure MS Office Macros',
+    'User Application Hardening','Restrict Admin Privileges','Patch Operating Systems',
+    'Multi-Factor Authentication','Regular Backups'
+];
+const CIS_CONTROLS = [
+    'CIS 1: Enterprise Asset Inventory','CIS 2: Software Asset Inventory',
+    'CIS 3: Data Protection','CIS 4: Secure Configuration',
+    'CIS 5: Account Management','CIS 6: Access Control Management',
+    'CIS 7: Continuous Vulnerability Management','CIS 8: Audit Log Management',
+    'CIS 9: Email & Browser Protections','CIS 10: Malware Defences',
+    'CIS 11: Data Recovery','CIS 12: Network Infrastructure Management',
+    'CIS 13: Network Monitoring & Defence','CIS 14: Security Awareness Training',
+    'CIS 15: Service Provider Management','CIS 16: Application Software Security',
+    'CIS 17: Incident Response Management','CIS 18: Penetration Testing'
+];
+
+const TOOLS = [
+    {id:'crowdstrike',name:'CrowdStrike Falcon',cat:'Endpoint',nist:['Protect','Detect','Respond'],e8:['Application Control','Patch Operating Systems','User Application Hardening'],cis:['CIS 10: Malware Defences','CIS 13: Network Monitoring & Defence','CIS 7: Continuous Vulnerability Management']},
+    {id:'sentinelone',name:'SentinelOne',cat:'Endpoint',nist:['Protect','Detect','Respond'],e8:['Application Control','User Application Hardening'],cis:['CIS 10: Malware Defences','CIS 13: Network Monitoring & Defence']},
+    {id:'defender',name:'Microsoft Defender for Endpoint',cat:'Endpoint',nist:['Protect','Detect','Respond'],e8:['Application Control','User Application Hardening','Patch Operating Systems'],cis:['CIS 10: Malware Defences','CIS 4: Secure Configuration','CIS 7: Continuous Vulnerability Management']},
+    {id:'carbonblack',name:'VMware Carbon Black',cat:'Endpoint',nist:['Detect','Respond'],e8:['Application Control'],cis:['CIS 10: Malware Defences','CIS 13: Network Monitoring & Defence']},
+    {id:'sophos',name:'Sophos Intercept X',cat:'Endpoint',nist:['Protect','Detect'],e8:['Application Control','User Application Hardening'],cis:['CIS 10: Malware Defences']},
+    {id:'splunk',name:'Splunk',cat:'SIEM/Log',nist:['Identify','Detect','Respond'],e8:[],cis:['CIS 8: Audit Log Management','CIS 13: Network Monitoring & Defence','CIS 17: Incident Response Management']},
+    {id:'sentinel',name:'Microsoft Sentinel',cat:'SIEM/Log',nist:['Identify','Detect','Respond'],e8:[],cis:['CIS 8: Audit Log Management','CIS 13: Network Monitoring & Defence','CIS 17: Incident Response Management']},
+    {id:'elastic',name:'Elastic Security',cat:'SIEM/Log',nist:['Detect','Respond'],e8:[],cis:['CIS 8: Audit Log Management','CIS 13: Network Monitoring & Defence']},
+    {id:'datadog',name:'Datadog Security',cat:'SIEM/Log',nist:['Detect','Identify'],e8:[],cis:['CIS 8: Audit Log Management','CIS 13: Network Monitoring & Defence']},
+    {id:'cloudflare',name:'Cloudflare',cat:'Network',nist:['Protect','Detect'],e8:['User Application Hardening'],cis:['CIS 9: Email & Browser Protections','CIS 12: Network Infrastructure Management','CIS 13: Network Monitoring & Defence']},
+    {id:'paloalto',name:'Palo Alto Networks NGFW',cat:'Network',nist:['Protect','Detect'],e8:['User Application Hardening'],cis:['CIS 12: Network Infrastructure Management','CIS 13: Network Monitoring & Defence','CIS 9: Email & Browser Protections']},
+    {id:'fortinet',name:'Fortinet FortiGate',cat:'Network',nist:['Protect','Detect'],e8:[],cis:['CIS 12: Network Infrastructure Management','CIS 13: Network Monitoring & Defence']},
+    {id:'zscaler',name:'Zscaler',cat:'Network',nist:['Protect','Detect'],e8:['User Application Hardening'],cis:['CIS 12: Network Infrastructure Management','CIS 9: Email & Browser Protections']},
+    {id:'okta',name:'Okta',cat:'Identity',nist:['Protect','Identify'],e8:['Multi-Factor Authentication','Restrict Admin Privileges'],cis:['CIS 5: Account Management','CIS 6: Access Control Management']},
+    {id:'entra',name:'Microsoft Entra ID',cat:'Identity',nist:['Protect','Identify'],e8:['Multi-Factor Authentication','Restrict Admin Privileges'],cis:['CIS 5: Account Management','CIS 6: Access Control Management']},
+    {id:'duo',name:'Cisco Duo',cat:'Identity',nist:['Protect'],e8:['Multi-Factor Authentication'],cis:['CIS 6: Access Control Management']},
+    {id:'ping',name:'Ping Identity',cat:'Identity',nist:['Protect'],e8:['Multi-Factor Authentication'],cis:['CIS 5: Account Management','CIS 6: Access Control Management']},
+    {id:'cyberark',name:'CyberArk',cat:'PAM',nist:['Protect','Identify'],e8:['Restrict Admin Privileges'],cis:['CIS 5: Account Management','CIS 6: Access Control Management']},
+    {id:'beyondtrust',name:'BeyondTrust',cat:'PAM',nist:['Protect'],e8:['Restrict Admin Privileges'],cis:['CIS 5: Account Management','CIS 6: Access Control Management']},
+    {id:'aws_security',name:'AWS Security Hub',cat:'Cloud',nist:['Identify','Detect'],e8:[],cis:['CIS 1: Enterprise Asset Inventory','CIS 2: Software Asset Inventory','CIS 4: Secure Configuration']},
+    {id:'azure_defender',name:'Microsoft Defender for Cloud',cat:'Cloud',nist:['Identify','Protect','Detect'],e8:['Patch Operating Systems'],cis:['CIS 1: Enterprise Asset Inventory','CIS 4: Secure Configuration','CIS 7: Continuous Vulnerability Management']},
+    {id:'gcp_scc',name:'Google Security Command Center',cat:'Cloud',nist:['Identify','Detect'],e8:[],cis:['CIS 1: Enterprise Asset Inventory','CIS 4: Secure Configuration']},
+    {id:'wiz',name:'Wiz',cat:'Cloud',nist:['Identify','Detect'],e8:[],cis:['CIS 1: Enterprise Asset Inventory','CIS 2: Software Asset Inventory','CIS 4: Secure Configuration','CIS 7: Continuous Vulnerability Management']},
+    {id:'lacework',name:'Lacework',cat:'Cloud',nist:['Detect','Identify'],e8:[],cis:['CIS 1: Enterprise Asset Inventory','CIS 4: Secure Configuration']},
+    {id:'proofpoint',name:'Proofpoint',cat:'Email',nist:['Protect','Detect'],e8:['Configure MS Office Macros','User Application Hardening'],cis:['CIS 9: Email & Browser Protections']},
+    {id:'mimecast',name:'Mimecast',cat:'Email',nist:['Protect','Detect'],e8:['Configure MS Office Macros','User Application Hardening'],cis:['CIS 9: Email & Browser Protections']},
+    {id:'abnormal',name:'Abnormal Security',cat:'Email',nist:['Detect'],e8:[],cis:['CIS 9: Email & Browser Protections']},
+    {id:'qualys',name:'Qualys',cat:'Vulnerability',nist:['Identify','Detect'],e8:['Patch Applications','Patch Operating Systems'],cis:['CIS 7: Continuous Vulnerability Management','CIS 2: Software Asset Inventory']},
+    {id:'tenable',name:'Tenable',cat:'Vulnerability',nist:['Identify','Detect'],e8:['Patch Applications','Patch Operating Systems'],cis:['CIS 7: Continuous Vulnerability Management','CIS 1: Enterprise Asset Inventory']},
+    {id:'rapid7',name:'Rapid7 InsightVM',cat:'Vulnerability',nist:['Identify','Detect'],e8:['Patch Applications'],cis:['CIS 7: Continuous Vulnerability Management']},
+    {id:'snyk',name:'Snyk',cat:'AppSec',nist:['Identify','Protect'],e8:['Patch Applications'],cis:['CIS 16: Application Software Security','CIS 7: Continuous Vulnerability Management']},
+    {id:'veracode',name:'Veracode',cat:'AppSec',nist:['Identify'],e8:['Patch Applications'],cis:['CIS 16: Application Software Security']},
+    {id:'checkmarx',name:'Checkmarx',cat:'AppSec',nist:['Identify'],e8:[],cis:['CIS 16: Application Software Security']},
+    {id:'veeam',name:'Veeam',cat:'Backup',nist:['Recover'],e8:['Regular Backups'],cis:['CIS 11: Data Recovery']},
+    {id:'commvault',name:'Commvault',cat:'Backup',nist:['Recover'],e8:['Regular Backups'],cis:['CIS 11: Data Recovery']},
+    {id:'acronis',name:'Acronis',cat:'Backup',nist:['Recover','Protect'],e8:['Regular Backups'],cis:['CIS 11: Data Recovery','CIS 10: Malware Defences']},
+    {id:'knowbe4',name:'KnowBe4',cat:'GRC',nist:['Protect'],e8:[],cis:['CIS 14: Security Awareness Training']},
+    {id:'sailpoint',name:'SailPoint',cat:'Identity',nist:['Identify','Protect'],e8:['Restrict Admin Privileges'],cis:['CIS 5: Account Management','CIS 6: Access Control Management']},
+    {id:'intune',name:'Microsoft Intune',cat:'Endpoint',nist:['Protect','Identify'],e8:['Patch Operating Systems','Configure MS Office Macros','Application Control'],cis:['CIS 1: Enterprise Asset Inventory','CIS 4: Secure Configuration','CIS 2: Software Asset Inventory']},
+    {id:'jamf',name:'Jamf',cat:'Endpoint',nist:['Protect','Identify'],e8:['Patch Operating Systems','Application Control'],cis:['CIS 1: Enterprise Asset Inventory','CIS 4: Secure Configuration']},
+    {id:'symantec_dlp',name:'Broadcom/Symantec DLP',cat:'DLP',nist:['Protect','Identify'],e8:[],cis:['CIS 3: Data Protection']},
+    {id:'forcepoint',name:'Forcepoint DLP',cat:'DLP',nist:['Protect'],e8:[],cis:['CIS 3: Data Protection']},
+    {id:'pentera',name:'Pentera',cat:'Vulnerability',nist:['Identify','Detect'],e8:[],cis:['CIS 18: Penetration Testing']},
+    {id:'cobalt',name:'Cobalt',cat:'Vulnerability',nist:['Identify'],e8:[],cis:['CIS 18: Penetration Testing']},
+    {id:'thirdparty_risk',name:'ServiceNow GRC',cat:'GRC',nist:['Identify'],e8:[],cis:['CIS 15: Service Provider Management']},
+];
+
+let selectedTools = new Set();
+let activeCat = null;
+
+function $(id){return document.getElementById(id)}
+
+function renderCatFilter(){
+    const el=$('catFilter');
+    el.innerHTML = `<button class="cat-btn ${!activeCat?'active':''}" onclick="setCat(null)">All</button>` +
+        Object.entries(CATEGORIES).map(([c,icon])=>`<button class="cat-btn ${activeCat===c?'active':''}" onclick="setCat('${c}')">${icon} ${c}</button>`).join('');
+}
+
+function setCat(c){activeCat=c;renderCatFilter();renderTools()}
+
+function renderTools(){
+    const q=$('toolSearch').value.toLowerCase();
+    const filtered=TOOLS.filter(t=>{
+        if(activeCat&&t.cat!==activeCat)return false;
+        if(q&&!t.name.toLowerCase().includes(q))return false;
+        return true;
+    });
+    $('toolGrid').innerHTML=filtered.map(t=>`
+        <div class="tool-chip ${selectedTools.has(t.id)?'selected':''}" onclick="toggleTool('${t.id}')">
+            <span class="icon">${CATEGORIES[t.cat]||'🔧'}</span>
+            <span>${t.name}</span>
+            <span class="check">✓</span>
+        </div>
+    `).join('');
+    $('selectedCount').textContent=`${selectedTools.size} tool${selectedTools.size!==1?'s':''} selected`;
+}
+
+function toggleTool(id){
+    if(selectedTools.has(id))selectedTools.delete(id);else selectedTools.add(id);
+    renderTools();
+    calculate();
+}
+
+// ============================================================
+// CALCULATION ENGINE
+// ============================================================
+function getSelected(){return TOOLS.filter(t=>selectedTools.has(t.id))}
+
+function calcFramework(sel,controlList,getter){
+    return controlList.map(c=>{
+        const covering=sel.filter(t=>getter(t).includes(c));
+        return {name:c,covered:covering.length>0,tools:covering.map(t=>t.name),count:covering.length};
+    });
+}
+
+function scoreClass(pct){return pct>=75?'score-good':pct>=40?'score-mid':'score-bad'}
+function barClass(pct){return pct>=75?'green':pct>=40?'orange':'red'}
+
+function renderFramework(results,gridId,scoreId){
+    const covered=results.filter(r=>r.covered).length;
+    const pct=Math.round(covered/results.length*100);
+    $(scoreId).textContent=pct+'%';
+    $(scoreId).className='framework-score '+scoreClass(pct);
+    $(gridId).innerHTML=results.map(r=>{
+        const cls=r.count>1?'covered':r.count===1?'covered':'gap';
+        const dotCls=r.count>0?'green':'red';
+        return `<div class="control-card ${r.covered?'covered':'gap'}">
+            <div class="control-name"><span class="status-dot ${dotCls}"></span>${r.name}</div>
+            ${r.covered?`<div class="control-tools">Covered by: ${r.tools.join(', ')}</div>`:`<div class="control-tools" style="color:var(--accent-red)">⚠ Not covered</div>`}
+        </div>`;
+    }).join('');
+    return pct;
+}
+
+function calculate(){
+    const sel=getSelected();
+    const el=$('results');
+    if(sel.length===0){el.classList.remove('visible');return;}
+    el.classList.add('visible');
+
+    const nist=calcFramework(sel,NIST_FUNCTIONS,t=>t.nist);
+    const e8=calcFramework(sel,E8_CONTROLS,t=>t.e8);
+    const cis=calcFramework(sel,CIS_CONTROLS,t=>t.cis);
+
+    const nistPct=renderFramework(nist,'nistGrid','nistScore');
+    const e8Pct=renderFramework(e8,'e8Grid','e8Score');
+    const cisPct=renderFramework(cis,'cisGrid','cisScore');
+
+    const totalControls=NIST_FUNCTIONS.length+E8_CONTROLS.length+CIS_CONTROLS.length;
+    const totalCovered=[...nist,...e8,...cis].filter(r=>r.covered).length;
+    const overallPct=Math.round(totalCovered/totalControls*100);
+    const gapCount=totalControls-totalCovered;
+
+    // Summary bar
+    $('summaryBar').innerHTML=`
+        <div class="summary-card"><div class="label">Overall Coverage</div><div class="value ${scoreClass(overallPct)}">${overallPct}%</div></div>
+        <div class="summary-card"><div class="label">Tools Selected</div><div class="value" style="color:var(--accent-neon)">${sel.length}</div></div>
+        <div class="summary-card"><div class="label">Controls Covered</div><div class="value" style="color:var(--accent-green)">${totalCovered}</div></div>
+        <div class="summary-card"><div class="label">Gaps Found</div><div class="value" style="color:${gapCount>0?'var(--accent-red)':'var(--accent-green)'}">${gapCount}</div></div>
+    `;
+
+    // Overlaps
+    const allResults=[...nist,...e8,...cis];
+    const overlaps=allResults.filter(r=>r.count>1);
+    $('overlapList').innerHTML=overlaps.length?overlaps.map(o=>`
+        <div class="overlap-item">
+            <div class="control-label">${o.name} — ${o.count} tools</div>
+            <div class="tools">${o.tools.join(', ')}</div>
+        </div>
+    `).join(''):'<p style="color:var(--text-muted);font-size:.9rem">No overlapping coverage detected.</p>';
+
+    // Recommendations
+    generateRecs(nist,e8,cis,sel);
+
+    // Hidden form fields
+    $('hiddenTools').value=sel.map(t=>t.name).join(', ');
+    $('hiddenNist').value=nistPct+'%';
+    $('hiddenE8').value=e8Pct+'%';
+    $('hiddenCis').value=cisPct+'%';
+}
+
+function generateRecs(nist,e8,cis,sel){
+    const recs=[];
+    const gaps={nist:nist.filter(r=>!r.covered),e8:e8.filter(r=>!r.covered),cis:cis.filter(r=>!r.covered)};
+
+    // High priority: Essential Eight gaps
+    if(gaps.e8.find(r=>r.name==='Multi-Factor Authentication'))
+        recs.push({p:'high',title:'🚨 MFA Not Covered',desc:'Multi-Factor Authentication is a critical Essential Eight control. Consider Okta, Microsoft Entra ID, or Cisco Duo.'});
+    if(gaps.e8.find(r=>r.name==='Regular Backups'))
+        recs.push({p:'high',title:'🚨 No Backup Solution',desc:'Regular Backups is essential for ransomware resilience. Consider Veeam, Commvault, or Acronis.'});
+    if(gaps.e8.find(r=>r.name==='Patch Applications')||gaps.e8.find(r=>r.name==='Patch Operating Systems'))
+        recs.push({p:'high',title:'🚨 Patching Gaps',desc:'Patch management is a core Essential Eight control. Consider Qualys, Tenable, or Microsoft Intune for OS/app patching.'});
+    if(gaps.e8.find(r=>r.name==='Restrict Admin Privileges'))
+        recs.push({p:'med',title:'⚠️ Privileged Access Not Managed',desc:'Consider CyberArk, BeyondTrust, or SailPoint for privileged access management.'});
+
+    // NIST gaps
+    if(gaps.nist.find(r=>r.name==='Recover'))
+        recs.push({p:'high',title:'🚨 No Recovery Capability',desc:'Your stack has no recovery/backup tools. This is critical for business continuity.'});
+    if(gaps.nist.find(r=>r.name==='Identify'))
+        recs.push({p:'med',title:'⚠️ Asset Identification Gap',desc:'Consider cloud security posture tools (Wiz, AWS Security Hub) or vulnerability scanners for asset visibility.'});
+    if(gaps.nist.find(r=>r.name==='Detect'))
+        recs.push({p:'med',title:'⚠️ Detection Gap',desc:'No detection/monitoring capability. Consider a SIEM (Splunk, Microsoft Sentinel) or EDR solution.'});
+
+    // CIS gaps
+    if(gaps.cis.find(r=>r.name==='CIS 8: Audit Log Management'))
+        recs.push({p:'med',title:'⚠️ No Centralised Logging',desc:'Audit log management is foundational. Consider Splunk, Elastic Security, or Microsoft Sentinel.'});
+    if(gaps.cis.find(r=>r.name==='CIS 14: Security Awareness Training'))
+        recs.push({p:'med',title:'⚠️ No Security Awareness Training',desc:'Human error is the #1 attack vector. Consider KnowBe4 for phishing simulation and training.'});
+    if(gaps.cis.find(r=>r.name==='CIS 3: Data Protection'))
+        recs.push({p:'med',title:'⚠️ No Data Protection/DLP',desc:'Consider Broadcom DLP or Forcepoint for data loss prevention.'});
+    if(gaps.cis.find(r=>r.name==='CIS 18: Penetration Testing'))
+        recs.push({p:'low',title:'💡 No Penetration Testing',desc:'Regular pen testing validates your controls. Consider Pentera for automated testing or Cobalt for pen-test-as-a-service.'});
+
+    // Overlap recommendations
+    const endpointTools=sel.filter(t=>t.cat==='Endpoint');
+    if(endpointTools.length>2)
+        recs.push({p:'low',title:'💡 Multiple Endpoint Tools',desc:`You have ${endpointTools.length} endpoint tools (${endpointTools.map(t=>t.name).join(', ')}). Consider consolidating to reduce cost and complexity.`});
+
+    if(recs.length===0)
+        recs.push({p:'low',title:'✅ Looking Good!',desc:'Your security stack has solid coverage across all major frameworks. Consider regular reviews and penetration testing to validate effectiveness.'});
+
+    $('recList').innerHTML=recs.map(r=>`
+        <div class="rec-card priority-${r.p}">
+            <div class="rec-title">${r.title}</div>
+            <div class="rec-desc">${r.desc}</div>
+        </div>
+    `).join('');
+}
+
+// Form handling
+$('leadForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const form=this;
+    const msg=$('formMsg');
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+    .then(r=>{
+        if(r.ok){msg.textContent='✅ Report request sent! We\'ll be in touch.';msg.style.color='var(--accent-green)';form.reset();}
+        else{msg.textContent='❌ Something went wrong. Try again.';msg.style.color='var(--accent-red)';}
+    }).catch(()=>{msg.textContent='❌ Network error. Try again.';msg.style.color='var(--accent-red)';});
+});
+
+// Init
+renderCatFilter();
+renderTools();
+</script>
+</body>
+</html>
