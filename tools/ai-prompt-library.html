@@ -1,0 +1,1521 @@
+---
+layout: null
+title: "AI Prompt Library for Security Teams"
+description: "40 curated AI/LLM prompts for incident response, threat hunting, malware analysis, log analysis, report writing & threat intelligence. Copy and paste into ChatGPT or Claude."
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Library for Security Teams | Dobson Development</title>
+    <meta name="description" content="40 curated AI/LLM prompts for incident response, threat hunting, malware analysis, log analysis, report writing and threat intelligence. Copy-paste ready for ChatGPT, Claude & GPT-4.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dobsondevelopment.com.au/tools/ai-prompt-library">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+
+    <meta property="og:title" content="AI Prompt Library for Security Teams | Dobson Development">
+    <meta property="og:description" content="40 curated AI prompts for security operations. Copy-paste into ChatGPT or Claude for incident response, threat hunting, malware analysis and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dobsondevelopment.com.au/tools/ai-prompt-library">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "AI Prompt Library for Security Teams",
+        "description": "40 curated AI/LLM prompts for security operations including incident response, threat hunting, malware analysis, log analysis, report writing and threat intelligence.",
+        "url": "https://dobsondevelopment.com.au/tools/ai-prompt-library",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Web Browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+        "author": { "@type": "Organization", "name": "Dobson Development", "url": "https://dobsondevelopment.com.au" }
+    }
+    </script>
+
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/firacode-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        @font-face{font-family:'Inter';font-weight:400;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Inter';font-weight:600;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Fira Code';font-weight:400;font-display:swap;src:url('/assets/fonts/firacode-latin.woff2') format('woff2')}
+        @font-face{font-family:'Fira Code';font-weight:600;font-display:swap;src:url('/assets/fonts/firacode-latin.woff2') format('woff2')}
+
+        :root{
+            --bg-main:#0B0C10;--bg-secondary:#0f1014;--bg-card:#141419;
+            --accent-neon:#00F0FF;--accent-purple:#BC13FE;--accent-green:#22c55e;--accent-orange:#f59e0b;--accent-red:#ef4444;
+            --text-white:#FFFFFF;--text-grey:#9ca3af;--text-muted:#6b7280;
+            --border-subtle:rgba(255,255,255,0.06);--border-hover:rgba(0,240,255,0.3);
+            --font-mono:'Fira Code',monospace;--font-body:'Inter',sans-serif;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:var(--bg-main)}
+        ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent-neon),var(--accent-purple));border-radius:3px}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font-body);background:var(--bg-main);color:var(--text-grey);line-height:1.6;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        h1,h2,h3,h4{color:var(--text-white);font-family:var(--font-mono);font-weight:600}
+        a{color:var(--accent-neon);text-decoration:none;transition:all .3s}
+        code,.mono{font-family:var(--font-mono)}
+
+        .site-header{background:rgba(11,12,16,0.95);backdrop-filter:blur(10px);padding:1.25rem 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border-subtle)}
+        .site-header .container{display:flex;justify-content:space-between;align-items:center}
+        .site-logo{font-family:var(--font-mono);font-size:1.2rem;font-weight:600;color:var(--accent-neon);display:flex;align-items:center;gap:.5rem}
+        .site-logo::before{content:'>_';color:var(--accent-neon)}
+        .site-nav{display:flex;gap:2rem}
+        .site-nav a{color:var(--text-grey);font-size:.9rem;font-family:var(--font-mono)}
+        .site-nav a:hover{color:var(--accent-neon)}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+        .hero{padding:3rem 0 2rem;text-align:center;border-bottom:1px solid var(--border-subtle);margin-bottom:2rem}
+        .hero h1{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:.75rem;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{max-width:650px;margin:0 auto;font-size:1.05rem}
+        .meta-line{font-family:var(--font-mono);font-size:.8rem;color:var(--text-muted);margin-top:1rem}
+
+        .stats-bar{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0;padding:1rem;background:var(--bg-card);border-radius:12px;border:1px solid var(--border-subtle)}
+        .stat{text-align:center}
+        .stat-num{font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:var(--accent-neon)}
+        .stat-label{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+
+        .controls{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;align-items:center}
+        .search-box{flex:1;min-width:250px;position:relative}
+        .search-box input{width:100%;padding:.75rem 1rem .75rem 2.5rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-white);font-family:var(--font-mono);font-size:.9rem;transition:border-color .3s}
+        .search-box input:focus{outline:none;border-color:var(--accent-neon);box-shadow:0 0 20px rgba(0,240,255,.1)}
+        .search-box input::placeholder{color:var(--text-muted)}
+        .search-box::before{content:'⌕';position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:1.1rem}
+        .filter-section{margin-bottom:1rem}
+        .filter-label{font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:block}
+        .filter-group{display:flex;gap:.5rem;flex-wrap:wrap}
+        .filter-btn{padding:.5rem 1rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-grey);font-family:var(--font-mono);font-size:.78rem;cursor:pointer;transition:all .3s;white-space:nowrap}
+        .filter-btn:hover{border-color:var(--border-hover);color:var(--text-white)}
+        .filter-btn.active{background:rgba(0,240,255,.1);border-color:var(--accent-neon);color:var(--accent-neon)}
+        .results-count{font-family:var(--font-mono);font-size:.85rem;color:var(--text-muted);margin-bottom:1rem}
+
+        .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.25rem;margin-bottom:3rem}
+        .prompt-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:12px;padding:1.5rem;transition:all .3s;position:relative;overflow:hidden}
+        .prompt-card:hover{border-color:var(--border-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,240,255,.08)}
+        .prompt-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-neon),var(--accent-purple));opacity:0;transition:opacity .3s}
+        .prompt-card:hover::before{opacity:1}
+        .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;gap:.5rem;flex-wrap:wrap}
+        .category-tag{font-family:var(--font-mono);font-size:.72rem;padding:.2rem .6rem;border-radius:4px;white-space:nowrap;font-weight:600}
+        .cat-ir{background:rgba(239,68,68,.15);color:var(--accent-red)}
+        .cat-th{background:rgba(0,240,255,.1);color:var(--accent-neon)}
+        .cat-ma{background:rgba(188,19,254,.15);color:var(--accent-purple)}
+        .cat-la{background:rgba(245,158,11,.15);color:var(--accent-orange)}
+        .cat-rw{background:rgba(34,197,94,.15);color:var(--accent-green)}
+        .cat-ti{background:rgba(99,102,241,.15);color:#818cf8}
+        .difficulty-badge{font-family:var(--font-mono);font-size:.68rem;padding:.2rem .5rem;border-radius:4px;border:1px solid var(--border-subtle);color:var(--text-muted)}
+        .diff-beginner{border-color:rgba(34,197,94,.3);color:var(--accent-green)}
+        .diff-intermediate{border-color:rgba(245,158,11,.3);color:var(--accent-orange)}
+        .diff-advanced{border-color:rgba(239,68,68,.3);color:var(--accent-red)}
+        .card-title{font-size:1rem;color:var(--text-white);margin-bottom:.4rem}
+        .card-desc{font-size:.85rem;color:var(--text-grey);margin-bottom:.75rem;line-height:1.5}
+        .llm-rec{font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);margin-bottom:.75rem;display:flex;align-items:center;gap:.3rem}
+        .prompt-block{background:var(--bg-main);border:1px solid var(--border-subtle);border-radius:8px;padding:1rem;position:relative;margin-bottom:.75rem;max-height:200px;overflow:hidden;transition:max-height .3s}
+        .prompt-block.expanded{max-height:none}
+        .prompt-text{font-family:var(--font-mono);font-size:.78rem;color:var(--accent-neon);white-space:pre-wrap;word-break:break-word;line-height:1.6}
+        .prompt-block .fade-overlay{position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--bg-main));pointer-events:none;transition:opacity .3s}
+        .prompt-block.expanded .fade-overlay{opacity:0}
+        .copy-btn{position:absolute;top:.5rem;right:.5rem;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);color:var(--accent-neon);padding:.3rem .6rem;border-radius:4px;font-family:var(--font-mono);font-size:.7rem;cursor:pointer;transition:all .3s;z-index:2}
+        .copy-btn:hover{background:rgba(0,240,255,.25)}
+        .copy-btn.copied{background:rgba(34,197,94,.2);border-color:rgba(34,197,94,.4);color:var(--accent-green)}
+        .expand-btn{display:inline-block;font-family:var(--font-mono);font-size:.72rem;color:var(--accent-purple);cursor:pointer;border:none;background:none;padding:.25rem 0;margin-bottom:.5rem}
+        .expand-btn:hover{color:var(--accent-neon)}
+        .expected-result{font-size:.8rem;color:var(--text-muted);border-top:1px solid var(--border-subtle);padding-top:.6rem}
+        .expected-result strong{color:var(--text-grey);font-size:.72rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.04em}
+
+        .lead-section{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:16px;padding:3rem 2rem;text-align:center;margin:3rem 0}
+        .lead-section h2{font-size:1.5rem;margin-bottom:.75rem;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .lead-section p{max-width:500px;margin:0 auto 1.5rem;font-size:.95rem}
+        .lead-form{display:flex;gap:.75rem;max-width:500px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+        .lead-form input[type="email"]{flex:1;min-width:220px;padding:.75rem 1rem;background:var(--bg-main);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-white);font-family:var(--font-mono);font-size:.9rem}
+        .lead-form input[type="email"]:focus{outline:none;border-color:var(--accent-neon)}
+        .lead-form input[type="email"]::placeholder{color:var(--text-muted)}
+        .lead-form button{padding:.75rem 1.5rem;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));color:var(--bg-main);border:none;border-radius:8px;font-family:var(--font-mono);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .3s;white-space:nowrap}
+        .lead-form button:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,240,255,.3)}
+        .lead-perks{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem}
+        .lead-perk{font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);display:flex;align-items:center;gap:.3rem}
+        .lead-success{display:none;color:var(--accent-green);font-family:var(--font-mono)}
+
+        .site-footer{border-top:1px solid var(--border-subtle);padding:2rem 0;text-align:center;margin-top:3rem}
+        .site-footer p{font-size:.85rem;color:var(--text-muted)}
+        .footer-links{display:flex;gap:1.5rem;justify-content:center;margin-bottom:1rem}
+        .footer-links a{font-family:var(--font-mono);font-size:.8rem;color:var(--text-muted)}
+        .footer-links a:hover{color:var(--accent-neon)}
+
+        @media(max-width:768px){
+            .site-nav{gap:1rem}
+            .cards-grid{grid-template-columns:1fr}
+            .controls{flex-direction:column}
+            .search-box{min-width:100%}
+            .lead-section{padding:2rem 1rem}
+            .stats-bar{gap:1rem}
+        }
+        @media(max-width:480px){
+            .site-nav a{font-size:.75rem}
+            .filter-btn{font-size:.7rem;padding:.4rem .7rem}
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-logo">Dobson Dev</a>
+            <nav class="site-nav">
+                <a href="/">Home</a>
+                <a href="/tools/">Tools</a>
+                <a href="/blog/">Blog</a>
+                <a href="/contact/">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>AI Prompt Library for Security Teams</h1>
+            <p>40 battle-tested prompts for security operations. Copy any prompt, paste into ChatGPT or Claude, and get immediate results for IR, threat hunting, malware analysis &amp; more.</p>
+            <div class="meta-line">v1.0 &middot; 40 Prompts &middot; 6 Categories &middot; Updated Feb 2026 &middot; Free &amp; Open</div>
+        </section>
+
+        <div class="stats-bar">
+            <div class="stat"><div class="stat-num">40</div><div class="stat-label">Prompts</div></div>
+            <div class="stat"><div class="stat-num">6</div><div class="stat-label">Categories</div></div>
+            <div class="stat"><div class="stat-num" id="visibleCount">40</div><div class="stat-label">Showing</div></div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search prompts, categories, keywords...">
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <span class="filter-label">Category</span>
+            <div class="filter-group" id="categoryFilters">
+                <button class="filter-btn active" data-cat="all">All</button>
+                <button class="filter-btn" data-cat="Incident Response">🚨 Incident Response</button>
+                <button class="filter-btn" data-cat="Threat Hunting">🎯 Threat Hunting</button>
+                <button class="filter-btn" data-cat="Malware Analysis">🔬 Malware Analysis</button>
+                <button class="filter-btn" data-cat="Log Analysis">📊 Log Analysis</button>
+                <button class="filter-btn" data-cat="Report Writing">📝 Report Writing</button>
+                <button class="filter-btn" data-cat="Threat Intelligence">🌐 Threat Intelligence</button>
+            </div>
+        </div>
+        <div class="filter-section">
+            <span class="filter-label">Difficulty</span>
+            <div class="filter-group" id="diffFilters">
+                <button class="filter-btn active" data-diff="all">All</button>
+                <button class="filter-btn" data-diff="Beginner">🟢 Beginner</button>
+                <button class="filter-btn" data-diff="Intermediate">🟡 Intermediate</button>
+                <button class="filter-btn" data-diff="Advanced">🔴 Advanced</button>
+            </div>
+        </div>
+
+        <div class="results-count" id="resultsCount"></div>
+        <div class="cards-grid" id="cardsGrid"></div>
+
+        <section class="lead-section" id="leadSection">
+            <h2>Get the Advanced Prompt Engineering Guide for Security</h2>
+            <p>50+ advanced techniques including prompt chaining, few-shot examples, and custom frameworks for security analysis workflows.</p>
+            <div class="lead-form" id="leadForm">
+                <input type="email" id="leadEmail" placeholder="your.email@company.com" required>
+                <button type="button" onclick="handleLeadSubmit()">Get the Guide →</button>
+            </div>
+            <div class="lead-success" id="leadSuccess">✓ Check your inbox! The guide is on its way.</div>
+            <div class="lead-perks">
+                <span class="lead-perk">✓ Prompt chaining techniques</span>
+                <span class="lead-perk">✓ Custom security frameworks</span>
+                <span class="lead-perk">✓ Real-world examples</span>
+                <span class="lead-perk">✓ No spam, ever</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="/tools/">All Tools</a>
+                <a href="/blog/">Blog</a>
+                <a href="/contact/">Contact</a>
+            </div>
+            <p>&copy; 2026 Dobson Development. Built in Brisbane 🇦🇺</p>
+        </div>
+    </footer>
+
+<script>
+const PROMPTS = [
+  // ── INCIDENT RESPONSE (7) ──
+  {
+    id:1, category:"Incident Response", catClass:"cat-ir", difficulty:"Beginner", llm:"Any LLM",
+    title:"Incident Timeline Reconstruction",
+    desc:"Build a chronological timeline from raw incident notes and logs.",
+    prompt:`You are a senior incident responder. I will provide you with raw incident notes, log excerpts, and timestamps from a security incident. Your task is to:
+
+1. Organize all events into a strict chronological timeline
+2. Identify gaps in the timeline where we may be missing visibility
+3. Highlight the key pivot points (initial access, lateral movement, data exfiltration)
+4. Flag any timestamps that seem inconsistent or suspicious
+5. Suggest what additional log sources could fill the gaps
+
+Format the timeline as a table with columns: Timestamp (UTC) | Source | Event Description | Significance (Low/Medium/High/Critical)
+
+Here are the incident notes:
+[PASTE YOUR INCIDENT NOTES HERE]`,
+    expected:"A structured timeline table with gap analysis and recommendations for additional log sources to review."
+  },
+  {
+    id:2, category:"Incident Response", catClass:"cat-ir", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Breach Scope Assessment",
+    desc:"Determine the blast radius and affected systems from initial compromise indicators.",
+    prompt:`You are a digital forensics and incident response (DFIR) lead conducting a breach scope assessment. Given the following indicators of compromise and initial findings, help me determine the full blast radius:
+
+**Initial Compromise Details:**
+[PASTE DETAILS: compromised account, initial access vector, first detection time]
+
+**Known IOCs:**
+[PASTE: IPs, domains, file hashes, registry keys, etc.]
+
+For each IOC, analyze:
+1. What systems likely interacted with this IOC?
+2. What is the probable attack chain (map to MITRE ATT&CK)?
+3. What data stores were accessible from the compromised account/system?
+4. What lateral movement paths exist from the initial foothold?
+5. Estimate a confidence level (High/Medium/Low) for each affected system
+
+Then provide:
+- A prioritized list of systems to investigate next
+- Recommended containment actions in order of urgency
+- Evidence preservation priorities`,
+    expected:"Structured blast radius analysis with MITRE ATT&CK mapping, prioritized investigation list, and containment recommendations."
+  },
+  {
+    id:3, category:"Incident Response", catClass:"cat-ir", difficulty:"Advanced", llm:"Claude",
+    title:"Ransomware Negotiation Preparation Brief",
+    desc:"Generate an intelligence brief on a ransomware group to inform negotiation strategy.",
+    prompt:`You are a ransomware intelligence analyst. Our organization has been hit by the ransomware group "[GROUP NAME]". Prepare a comprehensive intelligence brief covering:
+
+1. **Group Profile:** Known aliases, first observed date, suspected nation-state affiliation, estimated number of victims
+2. **Typical TTPs:** Initial access vectors, tools used, dwell time patterns, encryption methods
+3. **Negotiation History:** Do they typically negotiate? Average discount from initial demand? Do they honor decryption after payment? Known cases of double-extortion or data leaks post-payment?
+4. **Decryption Track Record:** Are free decryptors available? Success rate of paid decryption?
+5. **Law Enforcement Actions:** Any recent takedowns, arrests, or sanctions against this group?
+6. **Recommendations:** Should we engage? What is our BATNA (Best Alternative to Negotiated Agreement)? Key leverage points?
+
+Base your analysis on publicly available threat intelligence. Clearly mark any assessments vs. confirmed facts.`,
+    expected:"Multi-section intelligence brief with confidence levels, negotiation strategy recommendations, and legal/compliance considerations."
+  },
+  {
+    id:4, category:"Incident Response", catClass:"cat-ir", difficulty:"Beginner", llm:"Any LLM",
+    title:"IR Communication Templates",
+    desc:"Generate stakeholder communication templates for active incidents.",
+    prompt:`You are an incident response communications specialist. Generate three communication templates for a security incident with the following details:
+
+**Incident Summary:** [BRIEF DESCRIPTION]
+**Severity:** [Critical/High/Medium/Low]
+**Current Status:** [Investigating/Containing/Eradicating/Recovering]
+**Affected Systems/Users:** [DETAILS]
+
+Generate these three templates:
+
+1. **Executive Notification** (for C-suite/board) — Business impact focus, no jargon, 3-4 paragraphs max, include timeline for next update
+2. **Technical Stakeholder Update** (for IT/engineering teams) — Technical details, IOCs to watch for, specific actions required from their teams
+3. **Customer/External Communication** (if needed) — Transparent but measured, regulatory-compliant language, what we're doing to protect them
+
+For each template, include [PLACEHOLDER] tags for details that need to be filled in. Match a professional but urgent tone.`,
+    expected:"Three ready-to-customize communication templates tailored to different audiences with appropriate detail levels."
+  },
+  {
+    id:5, category:"Incident Response", catClass:"cat-ir", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Evidence Preservation Checklist",
+    desc:"Generate a forensic evidence collection and preservation plan.",
+    prompt:`You are a senior DFIR analyst. Given the following incident scenario, create a comprehensive evidence preservation and collection plan:
+
+**Incident Type:** [e.g., Business Email Compromise, Ransomware, Insider Threat, Web Shell]
+**Affected Systems:** [List: OS types, cloud services, network devices]
+**Time Constraint:** [How long before systems must be restored to production?]
+**Legal Hold Status:** [Yes/No — is litigation anticipated?]
+
+Provide:
+1. **Priority-ordered evidence collection list** — what to grab first (volatile → non-volatile)
+2. **For each evidence source:**
+   - Exact collection command/tool (be specific: dd, FTK Imager, KAPE, cloud-native tools)
+   - Chain of custody documentation requirements
+   - Storage and hashing requirements (SHA-256 minimum)
+3. **Cloud-specific evidence** (if applicable) — API logs, authentication logs, storage snapshots
+4. **Network evidence** — PCAP locations, flow data, DNS logs, proxy logs
+5. **Common mistakes to avoid** for this incident type
+6. **Estimated time** for each collection task`,
+    expected:"Ordered evidence collection plan with specific commands, tools, and time estimates for each evidence source."
+  },
+  {
+    id:6, category:"Incident Response", catClass:"cat-ir", difficulty:"Advanced", llm:"Claude",
+    title:"Root Cause Analysis Report",
+    desc:"Structure a thorough root cause analysis from incident findings.",
+    prompt:`You are a senior incident response lead writing a root cause analysis (RCA) for a completed incident investigation. Using the following incident findings, produce a structured RCA document:
+
+**Incident ID:** [ID]
+**Incident Summary:** [WHAT HAPPENED]
+**Impact:** [SYSTEMS/DATA/USERS AFFECTED]
+**Timeline:** [KEY EVENTS WITH TIMESTAMPS]
+**Findings:** [PASTE INVESTIGATION FINDINGS]
+
+Structure the RCA as follows:
+1. **Executive Summary** (2-3 sentences for leadership)
+2. **Incident Description** (factual, chronological narrative)
+3. **Root Cause** — Apply the "5 Whys" technique to drill to the true root cause
+4. **Contributing Factors** (things that made it worse: missing controls, slow detection, etc.)
+5. **What Went Well** (detection/response wins to reinforce)
+6. **Lessons Learned** with specific, actionable recommendations categorized as:
+   - Immediate (fix within 1 week)
+   - Short-term (fix within 30 days)
+   - Long-term (strategic improvements)
+7. **Metrics:** MTTD (Mean Time to Detect), MTTR (Mean Time to Respond), total dwell time
+8. **Appendix:** IOCs, affected asset list, reference links`,
+    expected:"Complete RCA document with 5-Whys analysis, prioritized remediation actions, and incident metrics."
+  },
+  {
+    id:7, category:"Incident Response", catClass:"cat-ir", difficulty:"Intermediate", llm:"Any LLM",
+    title:"Containment Strategy Decision Matrix",
+    desc:"Evaluate containment options and trade-offs for an active incident.",
+    prompt:`You are an incident commander evaluating containment options for an active security incident. Analyze the following scenario and produce a containment decision matrix:
+
+**Incident Type:** [TYPE]
+**Threat Actor Activity:** [WHAT ARE THEY DOING RIGHT NOW?]
+**Affected Systems:** [LIST WITH BUSINESS CRITICALITY]
+**Current Business Operations Impact:** [WHAT BREAKS IF WE ISOLATE?]
+
+For each potential containment action, evaluate:
+| Containment Action | Threat Mitigation (H/M/L) | Business Impact (H/M/L) | Reversibility | Time to Implement | Recommended? |
+
+Consider these options at minimum:
+1. Full network isolation of affected hosts
+2. Targeted firewall rules (block specific IOCs)
+3. Account disablement/password reset
+4. DNS sinkholing of C2 domains
+5. Application-layer blocking
+6. Partial network segmentation
+
+Then provide your recommended containment sequence with timing and rollback procedures.`,
+    expected:"Decision matrix comparing containment options with trade-off analysis and a recommended sequenced approach."
+  },
+
+  // ── THREAT HUNTING (7) ──
+  {
+    id:8, category:"Threat Hunting", catClass:"cat-th", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Threat Hunt Hypothesis Generator",
+    desc:"Generate structured hunt hypotheses based on your environment and threat landscape.",
+    prompt:`You are a senior threat hunter. Based on the following information about our environment, generate 5 structured threat hunting hypotheses:
+
+**Industry:** [e.g., Financial Services, Healthcare, Government]
+**Key Assets:** [e.g., PII database, payment systems, IP repository]
+**Recent Threat Intel:** [Any recent advisories, threat actor campaigns targeting your sector]
+**Current Detection Gaps:** [What are you NOT monitoring well?]
+**Tech Stack:** [Key security tools, OS environment, cloud providers]
+
+For each hypothesis, provide:
+1. **Hypothesis statement** (clear, testable — "We believe [threat actor/technique] may be present in our environment because [reasoning]")
+2. **MITRE ATT&CK mapping** (technique ID + tactic)
+3. **Data sources required** (specific log types, telemetry)
+4. **Hunt query/logic** (pseudocode or SIEM query)
+5. **Expected evidence** if the hypothesis is confirmed
+6. **False positive considerations**
+7. **Priority:** High/Medium/Low based on likelihood and impact`,
+    expected:"5 structured, testable hunt hypotheses with queries, data source requirements, and MITRE mappings."
+  },
+  {
+    id:9, category:"Threat Hunting", catClass:"cat-th", difficulty:"Advanced", llm:"Claude",
+    title:"Living-off-the-Land Binary Analysis",
+    desc:"Identify suspicious LOLBin usage patterns in your environment.",
+    prompt:`You are a threat hunter specializing in detecting living-off-the-land (LOL) techniques. I'll provide process execution logs from our environment. Analyze them for suspicious LOLBin abuse:
+
+**Environment:** [Windows/Linux/Mixed]
+**Log Source:** [Sysmon/EDR/auditd]
+**Time Period:** [Date range]
+
+[PASTE PROCESS EXECUTION LOGS OR SAMPLE]
+
+For each suspicious finding:
+1. Identify the LOLBin and the specific abuse technique
+2. Map to MITRE ATT&CK (technique + sub-technique)
+3. Explain why this execution pattern is suspicious vs. normal admin usage
+4. Provide the baseline "normal" usage for comparison
+5. Rate confidence level: Confirmed Malicious / Likely Suspicious / Needs Context / Likely Benign
+6. Suggest follow-up queries to pivot on the finding
+
+Also provide a summary table of all LOLBins found, sorted by suspicion level.`,
+    expected:"Detailed analysis of each LOLBin usage with ATT&CK mapping, confidence ratings, and pivot queries."
+  },
+  {
+    id:10, category:"Threat Hunting", catClass:"cat-th", difficulty:"Beginner", llm:"Any LLM",
+    title:"Anomalous Network Behavior Checklist",
+    desc:"Generate a checklist for hunting anomalous network patterns.",
+    prompt:`You are a network threat hunter. Create a comprehensive hunting checklist for anomalous network behavior in a corporate environment. For each check, provide:
+
+1. **What to look for** (specific pattern or anomaly)
+2. **Why it matters** (what attack technique it might indicate)
+3. **Where to find it** (log source, tool, or data feed)
+4. **Sample query or filter** (generic enough for any SIEM)
+5. **Normal baseline** (what "expected" looks like)
+
+Cover these categories:
+- DNS anomalies (tunneling, DGA, excessive NXDOMAINs)
+- Beaconing patterns (regular interval callbacks, jitter analysis)
+- Unusual port usage (uncommon ports, protocol mismatches)
+- Data exfiltration indicators (large outbound transfers, encoding patterns)
+- Lateral movement (SMB/WinRM/RDP/SSH spikes between workstations)
+- Encrypted traffic anomalies (self-signed certs, JA3/JA3S mismatches)`,
+    expected:"20+ item hunting checklist organized by category with sample queries and baseline references."
+  },
+  {
+    id:11, category:"Threat Hunting", catClass:"cat-th", difficulty:"Advanced", llm:"Claude or GPT-4",
+    title:"Supply Chain Attack Detection",
+    desc:"Hunt for indicators of software supply chain compromise.",
+    prompt:`You are a threat hunter investigating potential software supply chain compromise in our environment. Help me develop a hunt plan:
+
+**Recently Updated Software:** [LIST SOFTWARE THAT WAS UPDATED IN LAST 30 DAYS]
+**Package Managers in Use:** [npm, pip, NuGet, Maven, etc.]
+**Build Pipeline:** [CI/CD tools — Jenkins, GitHub Actions, etc.]
+**Known Concerns:** [Any specific advisories or anomalies noticed]
+
+Develop a comprehensive hunt plan covering:
+
+1. **Binary Integrity Checks**
+   - How to verify software signatures and hashes against vendor-published values
+   - Specific commands for each OS to check binary signatures
+
+2. **Behavioral Analysis of Updated Software**
+   - New network connections (C2 beaconing from previously quiet software)
+   - New file system access patterns
+   - New child processes spawned
+   - New registry modifications (Windows)
+
+3. **Dependency Confusion / Typosquatting**
+   - How to audit internal package registries
+   - Commands to check for known-bad packages
+
+4. **Build Pipeline Integrity**
+   - What to look for in CI/CD logs
+   - Signs of compromised build agents
+
+5. **Detection Queries** — Provide 3 SIEM queries for detecting supply chain indicators`,
+    expected:"Structured hunt plan with specific commands, queries, and procedures for each supply chain attack vector."
+  },
+  {
+    id:12, category:"Threat Hunting", catClass:"cat-th", difficulty:"Intermediate", llm:"Any LLM",
+    title:"User Behavior Anomaly Investigation",
+    desc:"Analyze user activity patterns for potential insider threat or account compromise.",
+    prompt:`You are a threat hunter investigating anomalous user behavior. Analyze the following user activity summary and identify potential indicators of compromise or insider threat:
+
+**User:** [USERNAME / ROLE / DEPARTMENT]
+**Normal Working Hours:** [e.g., 9 AM - 5 PM AEST]
+**Normal Access Patterns:** [Systems they typically access]
+
+**Recent Activity (Last 7 Days):**
+[PASTE: login times, systems accessed, files downloaded/uploaded, VPN connections, email activity, privilege usage]
+
+Provide:
+1. **Anomaly Detection:** What deviates from the stated baseline?
+2. **Risk Scoring:** Rate each anomaly (1-10) based on potential severity
+3. **Benign Explanations:** For each anomaly, what's the innocent explanation?
+4. **Malicious Explanations:** What could this indicate if it IS an attack?
+5. **Recommended Follow-up:** What additional data would confirm or rule out each theory?
+6. **Urgency Assessment:** Can this wait for next business day, or should we act now?`,
+    expected:"Anomaly-by-anomaly analysis with dual benign/malicious interpretations and prioritized investigation steps."
+  },
+  {
+    id:13, category:"Threat Hunting", catClass:"cat-th", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Cloud Environment Hunt Plan",
+    desc:"Generate a threat hunting plan specific to AWS/Azure/GCP environments.",
+    prompt:`You are a cloud security threat hunter. Create a targeted hunt plan for our cloud environment:
+
+**Cloud Provider:** [AWS / Azure / GCP]
+**Key Services Used:** [e.g., EC2, S3, Lambda, RDS, IAM]
+**Identity Provider:** [e.g., Okta, Azure AD, Google Workspace]
+**Recent Changes:** [Any infrastructure changes, new deployments, or policy modifications]
+
+Generate a hunt plan with 10 specific hunts covering:
+
+For each hunt:
+1. **Hunt Name** and objective
+2. **Cloud-native log source** (e.g., CloudTrail, Azure Activity Log, GCP Audit Log)
+3. **Specific API calls or events to look for**
+4. **Query** (in the cloud provider's native query language)
+5. **What a true positive looks like**
+6. **Common false positives**
+
+Cover these threat areas:
+- Credential abuse (key exposure, impossible travel)
+- Privilege escalation (policy modifications, role assumption chains)
+- Data exfiltration (S3/Blob access patterns, unusual downloads)
+- Persistence (new IAM users, Lambda backdoors, modified automation)
+- Resource hijacking (cryptomining, unusual compute spin-up)`,
+    expected:"10 cloud-specific hunt procedures with native queries and true/false positive guidance."
+  },
+  {
+    id:14, category:"Threat Hunting", catClass:"cat-th", difficulty:"Beginner", llm:"Any LLM",
+    title:"Phishing Campaign Analysis",
+    desc:"Analyze phishing indicators and generate a response plan.",
+    prompt:`You are a threat analyst investigating a phishing campaign targeting our organization. Analyze the following indicators and produce an assessment:
+
+**Email Details:**
+- Subject: [SUBJECT LINE]
+- Sender: [FROM ADDRESS]
+- Reply-To: [IF DIFFERENT]
+- URLs in body: [LIST URLS]
+- Attachments: [FILENAME(S) AND TYPE(S)]
+- Number of recipients: [COUNT]
+
+**Additional Context:**
+[Any headers, DKIM/SPF results, sandbox results, user reports]
+
+Provide:
+1. **Campaign Classification:** Bulk phishing, spear phishing, BEC, credential harvesting, malware delivery?
+2. **Infrastructure Analysis:** What can we determine about the sending infrastructure and linked domains?
+3. **IOC Extraction:** Complete list of IOCs (domains, IPs, hashes, email addresses)
+4. **Threat Actor Assessment:** Known campaign? Seen in threat intel feeds?
+5. **Impact Assessment:** Who clicked? Who submitted credentials? (provide queries to find out)
+6. **Immediate Response Actions:** Prioritized list of containment steps
+7. **Detection Rules:** Provide 2-3 email gateway rules and 2-3 SIEM rules to catch variants`,
+    expected:"Complete phishing campaign assessment with IOCs, response actions, and detection rules for variants."
+  },
+
+  // ── MALWARE ANALYSIS (7) ──
+  {
+    id:15, category:"Malware Analysis", catClass:"cat-ma", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Static Analysis Report Generator",
+    desc:"Generate a structured static analysis report from file metadata and strings output.",
+    prompt:`You are a malware analyst. I'm going to provide the output of static analysis tools for a suspicious file. Analyze the findings and produce a structured report:
+
+**File Details:**
+- Filename: [NAME]
+- SHA-256: [HASH]
+- File Type: [PE/ELF/Mach-O/Office/PDF/Script]
+- File Size: [SIZE]
+
+**Strings Output (relevant selections):**
+[PASTE INTERESTING STRINGS]
+
+**PE/ELF Headers (if applicable):**
+[PASTE HEADER INFO — imports, exports, sections]
+
+**VirusTotal Results (if available):**
+[PASTE DETECTION RATIO AND KEY DETECTIONS]
+
+Produce a report covering:
+1. **File Classification:** Malware family (if identifiable), type (RAT, loader, stealer, ransomware, etc.)
+2. **Suspicious Indicators:** What strings, imports, or sections suggest malicious intent?
+3. **Capability Assessment:** Based on imports/strings, what can this malware likely do?
+4. **C2 Indicators:** Any URLs, IPs, domains, or network-related strings?
+5. **Persistence Mechanisms:** Any indicators of how it maintains persistence?
+6. **Evasion Techniques:** Anti-analysis, packing, obfuscation indicators?
+7. **MITRE ATT&CK Mapping:** Map identified capabilities to techniques
+8. **Recommended Next Steps:** What should dynamic analysis focus on?`,
+    expected:"Structured malware analysis report with capability assessment, IOCs, and ATT&CK mapping."
+  },
+  {
+    id:16, category:"Malware Analysis", catClass:"cat-ma", difficulty:"Advanced", llm:"Claude",
+    title:"C2 Communication Pattern Decoder",
+    desc:"Analyze network traffic captures for C2 communication patterns.",
+    prompt:`You are a malware reverse engineer specializing in C2 protocol analysis. I have captured network traffic from a suspected malware sample. Analyze the following and decode the C2 communication:
+
+**PCAP Summary / Network Logs:**
+[PASTE: connection details, DNS queries, HTTP requests, or raw packet summaries]
+
+**Known Context:**
+- Malware Family (if known): [NAME]
+- First beacon observed: [TIMESTAMP]
+- Affected host: [IP/HOSTNAME]
+
+Analyze:
+1. **Protocol Identification:** What protocol is the C2 using? (HTTP, HTTPS, DNS, ICMP, custom TCP/UDP)
+2. **Beaconing Pattern:** What is the interval? Is there jitter? Calculate the pattern.
+3. **Data Encoding:** How is data encoded? (Base64, XOR, custom cipher, protocol steganography)
+4. **Command Structure:** Can you identify the command/response format?
+5. **Exfiltration Channel:** Is data being exfiltrated? How and how much?
+6. **Infrastructure Mapping:** What C2 infrastructure is revealed? (domains, IPs, CDN abuse)
+7. **Detection Signatures:** Write 2 Suricata/Snort rules to detect this C2 pattern
+8. **YARA Rule:** Write a YARA rule for the network pattern if applicable
+
+Show your analysis step-by-step so I can follow your reasoning.`,
+    expected:"Detailed C2 protocol analysis with decoded patterns, detection signatures (Suricata/Snort), and YARA rules."
+  },
+  {
+    id:17, category:"Malware Analysis", catClass:"cat-ma", difficulty:"Advanced", llm:"Claude",
+    title:"Deobfuscate PowerShell Payload",
+    desc:"Walk through deobfuscation of obfuscated PowerShell malware.",
+    prompt:`You are a malware analyst specializing in script deobfuscation. Walk me through the deobfuscation of this PowerShell payload step by step:
+
+\`\`\`powershell
+[PASTE OBFUSCATED POWERSHELL CODE]
+\`\`\`
+
+For each deobfuscation step:
+1. **Identify the obfuscation technique** used (string concatenation, Base64, char codes, variable substitution, compression, Invoke-Expression wrapping, etc.)
+2. **Show the transformation** — before and after for each layer
+3. **Explain what the technique is hiding** and why attackers use it
+4. **Provide the clean, readable version** after each layer is removed
+
+After full deobfuscation, provide:
+- **Final deobfuscated code** with comments explaining each section
+- **Capability summary:** What does this payload actually do?
+- **IOCs extracted:** URLs, IPs, file paths, registry keys, domains
+- **MITRE ATT&CK mapping** for the payload's actions
+- **Detection recommendations:** How to detect this at the endpoint and network level`,
+    expected:"Step-by-step deobfuscation walkthrough with final clean code, IOCs, and detection recommendations."
+  },
+  {
+    id:18, category:"Malware Analysis", catClass:"cat-ma", difficulty:"Beginner", llm:"Any LLM",
+    title:"Sandbox Report Interpreter",
+    desc:"Interpret automated sandbox results and extract actionable intelligence.",
+    prompt:`You are a malware analyst helping a junior team member interpret sandbox analysis results. Here is the automated sandbox report for a suspicious file:
+
+**Sandbox Used:** [ANY.RUN / Joe Sandbox / Cuckoo / Hybrid Analysis]
+**File:** [FILENAME AND HASH]
+
+**Sandbox Findings:**
+[PASTE THE KEY FINDINGS: processes created, files dropped, registry changes, network connections, screenshots/behavior description]
+
+Explain the findings in a way that's clear for someone learning malware analysis:
+
+1. **TL;DR:** In 2-3 sentences, what does this malware do?
+2. **Execution Chain:** Walk through what happened step by step, in plain English
+3. **Red Flags:** What behaviors are clearly malicious and why?
+4. **Persistence:** How does it survive a reboot?
+5. **Network Activity:** What is it communicating with and why?
+6. **Evasion Attempts:** Did it try to detect the sandbox?
+7. **IOCs to Block:** Provide a clean, copy-paste list of all IOCs
+8. **Risk Rating:** On a scale of 1-10, how dangerous is this, and why?
+9. **Immediate Actions:** What should the SOC do right now?`,
+    expected:"Plain-English malware analysis walkthrough with extracted IOCs and prioritized response actions."
+  },
+  {
+    id:19, category:"Malware Analysis", catClass:"cat-ma", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"YARA Rule Generator",
+    desc:"Generate YARA rules from malware indicators and behavioral patterns.",
+    prompt:`You are a YARA rule developer. Based on the following malware indicators, write production-quality YARA rules:
+
+**Malware Details:**
+- Family: [NAME OR UNKNOWN]
+- Type: [RAT/Stealer/Ransomware/Loader/etc.]
+- SHA-256: [HASH]
+
+**Indicators:**
+- Unique strings: [LIST UNIQUE STRINGS FOUND]
+- File structure: [PE sections, entropy, compiler stamps]
+- Behavioral: [Mutex names, file paths created, registry keys]
+- Network: [C2 patterns, user-agent strings, URL patterns]
+
+Write 3 YARA rules with increasing specificity:
+1. **Broad detection** — catches the family with some false positive risk
+2. **Precise detection** — targets this specific variant
+3. **Behavioral/memory rule** — for scanning process memory
+
+For each rule:
+- Include metadata (author, date, description, hash, reference)
+- Add comments explaining each condition
+- Rate the false positive risk (Low/Medium/High)
+- Specify the recommended scan target (files on disk, memory, network streams)
+
+Test the logic by explaining what each condition matches and why it's unlikely to be a false positive.`,
+    expected:"3 production-quality YARA rules with metadata, comments, and false-positive analysis."
+  },
+  {
+    id:20, category:"Malware Analysis", catClass:"cat-ma", difficulty:"Intermediate", llm:"Claude",
+    title:"Reverse Engineering Guidance",
+    desc:"Get step-by-step guidance for reverse engineering an unknown binary.",
+    prompt:`You are a senior reverse engineer mentoring me through the analysis of an unknown binary. I need a structured approach to understand what this binary does.
+
+**Binary Details:**
+- File Type: [PE/ELF/Mach-O]
+- Architecture: [x86/x64/ARM]
+- Packed/Obfuscated: [Yes/No/Unknown]
+- File Size: [SIZE]
+- Initial Observations: [ANY INITIAL FINDINGS]
+
+Provide a step-by-step reverse engineering methodology:
+
+1. **Triage Phase** — What to check first (5 minutes)
+   - Tools and commands to run
+   - What to look for in the output
+
+2. **Surface Analysis** — Understanding structure (15 minutes)
+   - Import/export analysis approach
+   - Section analysis (what to look for)
+   - String analysis strategy
+
+3. **Deep Analysis Priorities** — Where to focus in IDA/Ghidra
+   - How to identify main() or the entry point logic
+   - Key functions to look for (network, file I/O, crypto, anti-analysis)
+   - Common patterns to recognize
+
+4. **Dynamic Analysis Plan** — What to monitor
+   - Debugger setup recommendations
+   - Breakpoint strategy
+   - What behavior to capture
+
+5. **Reporting Template** — How to document findings as I go
+
+If I share specific findings at each stage, guide me to the next step.`,
+    expected:"Structured RE methodology with specific tools, commands, and analysis priorities at each phase."
+  },
+  {
+    id:21, category:"Malware Analysis", catClass:"cat-ma", difficulty:"Advanced", llm:"Claude",
+    title:"Malware Configuration Extractor Logic",
+    desc:"Help design logic to extract embedded configurations from malware samples.",
+    prompt:`You are an expert in malware configuration extraction. I need to build an extraction routine for a malware family that embeds its configuration (C2 servers, encryption keys, campaign IDs) in the binary.
+
+**Malware Family:** [NAME OR DESCRIBE BEHAVIOR]
+**Known Config Storage Method:** [e.g., XOR-encrypted blob in .data section, RC4-encrypted resource, appended to PE overlay, registry, hardcoded strings]
+**Sample Config Values (if known):** [Any previously extracted configs]
+**Binary Format:** [PE/ELF/.NET/Script]
+
+Help me:
+1. **Identify the config location** — What patterns or markers to search for in the binary
+2. **Decode/decrypt logic** — Step-by-step decryption algorithm (with pseudocode)
+3. **Python extraction script** — Write a working Python script using pefile/lief/struct that:
+   - Locates the config blob
+   - Decrypts/decodes it
+   - Parses individual config fields
+   - Outputs structured JSON
+4. **Validation** — How to verify the extracted config is correct
+5. **Automation** — How to make this work across variants of the same family
+
+Include error handling and comments in the code.`,
+    expected:"Working Python extraction script with decryption logic, structured output, and variant handling."
+  },
+
+  // ── LOG ANALYSIS (6) ──
+  {
+    id:22, category:"Log Analysis", catClass:"cat-la", difficulty:"Beginner", llm:"Any LLM",
+    title:"Windows Event Log Investigation",
+    desc:"Identify key Windows security events for common attack scenarios.",
+    prompt:`You are a Windows security log analyst. I'm investigating a potential compromise on a Windows system. Help me analyze these Windows Event Logs:
+
+**Investigation Focus:** [Account compromise / Lateral movement / Privilege escalation / Persistence / Data access]
+**Time Window:** [START - END]
+**Relevant Logs:**
+[PASTE EVENT LOG ENTRIES — include Event ID, timestamp, source, and message]
+
+Provide:
+1. **Event Interpretation:** For each significant event, explain what it means in plain English
+2. **Attack Narrative:** Piece together what happened based on the events
+3. **Critical Event IDs to Focus On:**
+   - 4624/4625 — Logon success/failure patterns
+   - 4672 — Special privilege assignment
+   - 4688 — Process creation (if audit policy enabled)
+   - 4698/4702 — Scheduled task activity
+   - 7045 — Service installation
+   - 1102 — Audit log cleared (tampering indicator)
+4. **Missing Visibility:** What events SHOULD be here but aren't? What audit policies are likely disabled?
+5. **Timeline:** Reconstruct a timeline from the log events
+6. **Follow-up Queries:** What additional events should I search for?`,
+    expected:"Event-by-event interpretation with attack narrative, timeline, and gap analysis."
+  },
+  {
+    id:23, category:"Log Analysis", catClass:"cat-la", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"SIEM Query Builder",
+    desc:"Convert natural language detection requirements into SIEM queries.",
+    prompt:`You are a SIEM engineer. Convert the following detection requirement into working queries for multiple SIEM platforms:
+
+**Detection Requirement:**
+[DESCRIBE IN PLAIN ENGLISH WHAT YOU WANT TO DETECT — e.g., "Detect when a user account authenticates from two different countries within a 1-hour window"]
+
+**Available Log Sources:** [e.g., Azure AD sign-in logs, VPN logs, proxy logs]
+**SIEM Platforms Needed:** [Choose: Splunk SPL / Microsoft Sentinel KQL / Elastic EQL / Chronicle UDM / CrowdStrike LogScale]
+
+For each SIEM platform:
+1. **The query** — production-ready with proper field names
+2. **Field mapping notes** — what field names might differ in your environment
+3. **Performance considerations** — how to optimize for large datasets
+4. **Tuning parameters** — what thresholds to adjust for your environment
+5. **False positive scenarios** — what benign activity might trigger this
+6. **Testing approach** — how to validate the query works correctly
+
+Also provide:
+- The detection as a **Sigma rule** (YAML format) for portability
+- Recommended alert severity and response playbook triggers`,
+    expected:"Production-ready SIEM queries for multiple platforms plus a portable Sigma rule."
+  },
+  {
+    id:24, category:"Log Analysis", catClass:"cat-la", difficulty:"Beginner", llm:"Any LLM",
+    title:"Firewall Log Pattern Analysis",
+    desc:"Analyze firewall logs for suspicious patterns and policy violations.",
+    prompt:`You are a network security analyst. Analyze the following firewall logs for suspicious patterns:
+
+**Firewall Type:** [Palo Alto / Fortinet / Check Point / pfSense / AWS Security Group / etc.]
+**Log Entries:**
+[PASTE FIREWALL LOG ENTRIES]
+
+Analyze for:
+1. **Port Scanning:** Any source IPs hitting multiple ports in sequence?
+2. **Denied-then-Allowed Patterns:** Probing followed by successful connections?
+3. **Unusual Outbound:** Internal hosts connecting to unusual external ports (IRC, Tor, crypto mining pools)?
+4. **Data Exfiltration Indicators:** Large outbound data transfers to uncommon destinations?
+5. **Policy Violations:** Traffic that shouldn't be allowed based on common best practices?
+6. **Geographic Anomalies:** Connections to/from unexpected countries?
+7. **Time-based Patterns:** Activity outside business hours?
+
+For each finding:
+- Explain what you see and why it's suspicious
+- Rate the risk (Critical / High / Medium / Low / Informational)
+- Suggest an immediate action
+- Provide a refined firewall rule to address it`,
+    expected:"Pattern analysis with risk-rated findings, explanations, and recommended firewall rules."
+  },
+  {
+    id:25, category:"Log Analysis", catClass:"cat-la", difficulty:"Advanced", llm:"Claude",
+    title:"Log Correlation Across Sources",
+    desc:"Correlate events across multiple log sources to reconstruct an attack chain.",
+    prompt:`You are a senior SOC analyst performing cross-source log correlation for an active investigation. I'll provide logs from multiple sources. Correlate them to reconstruct the attack chain:
+
+**Log Sources Provided:**
+1. [SOURCE 1 — e.g., EDR/Sysmon]: [PASTE ENTRIES]
+2. [SOURCE 2 — e.g., Proxy/Web Gateway]: [PASTE ENTRIES]
+3. [SOURCE 3 — e.g., Authentication/AD]: [PASTE ENTRIES]
+4. [SOURCE 4 — e.g., Firewall/IDS]: [PASTE ENTRIES]
+
+**Correlation Keys:** [IP addresses, usernames, hostnames, timestamps to pivot on]
+
+Perform:
+1. **Unified Timeline:** Merge all events into a single chronological timeline, noting the source for each event
+2. **Pivot Analysis:** For each entity (user, IP, hostname), trace their complete activity across all sources
+3. **Attack Chain Reconstruction:** Map the correlated events to a kill chain or MITRE ATT&CK chain
+4. **Gap Analysis:** Where are we missing visibility? What happened between the events we can see?
+5. **Confidence Assessment:** For each link in the chain, rate your confidence (High/Medium/Low) and explain why
+6. **Key Evidence:** Highlight the most important events that prove malicious intent
+7. **Recommended Actions:** Based on the correlated picture, what should we do next?`,
+    expected:"Unified cross-source timeline with attack chain reconstruction, gap analysis, and confidence ratings."
+  },
+  {
+    id:26, category:"Log Analysis", catClass:"cat-la", difficulty:"Intermediate", llm:"Any LLM",
+    title:"Cloud Audit Log Investigator",
+    desc:"Analyze cloud provider audit logs for unauthorized access or configuration changes.",
+    prompt:`You are a cloud security analyst. Analyze the following cloud audit logs for signs of unauthorized access or malicious configuration changes:
+
+**Cloud Provider:** [AWS CloudTrail / Azure Activity Log / GCP Audit Log]
+**Investigation Trigger:** [Why are we looking? Alert, anomaly, or routine audit?]
+**Time Window:** [START - END]
+
+**Audit Log Entries:**
+[PASTE LOG ENTRIES]
+
+Analyze:
+1. **Identity Analysis:** Who performed these actions? Service accounts vs. humans? Assumed roles?
+2. **Action Classification:** Categorize each action — Read / Write / Delete / Privilege Change
+3. **Anomaly Detection:** What actions are unusual or risky?
+   - IAM policy changes
+   - Security group modifications
+   - Encryption key access or deletion
+   - Logging/monitoring disabled
+   - New regions used for the first time
+   - Public access granted to resources
+4. **Blast Radius:** If this is malicious, what's the potential impact?
+5. **IOC Extraction:** Source IPs, user agents, API keys involved
+6. **Remediation:** Specific steps to undo any dangerous changes
+7. **Detection Rules:** Write 2 detection rules to catch this pattern going forward`,
+    expected:"Cloud audit analysis with categorized actions, anomaly identification, and remediation steps."
+  },
+  {
+    id:27, category:"Log Analysis", catClass:"cat-la", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Email Header Analysis",
+    desc:"Deep analysis of email headers to trace message origin and detect spoofing.",
+    prompt:`You are an email security analyst. Analyze the following email headers to determine the true origin of this message and whether it's been spoofed:
+
+**Full Email Headers:**
+[PASTE COMPLETE EMAIL HEADERS]
+
+Provide a detailed analysis:
+1. **Message Path:** Trace the email hop-by-hop from origin to delivery (Received headers, bottom to top)
+2. **Authentication Results:**
+   - SPF: Pass/Fail? What IP was checked against what domain?
+   - DKIM: Valid signature? Signing domain matches From domain?
+   - DMARC: Pass/Fail? What policy was applied?
+3. **Spoofing Indicators:**
+   - Does the envelope sender match the display From?
+   - Reply-To mismatches?
+   - Header inconsistencies?
+4. **Infrastructure Analysis:**
+   - Sending IP reputation (check against known bad lists)
+   - Sending MTA identification
+   - X-Originating-IP analysis
+5. **Suspicious Headers:** Any unusual or tampered headers?
+6. **Verdict:** Legitimate / Likely Spoofed / Confirmed Spoofed — with reasoning
+7. **IOCs:** All domains, IPs, and email addresses to investigate or block`,
+    expected:"Hop-by-hop header analysis with SPF/DKIM/DMARC assessment and spoofing verdict."
+  },
+
+  // ── REPORT WRITING (6) ──
+  {
+    id:28, category:"Report Writing", catClass:"cat-rw", difficulty:"Beginner", llm:"Any LLM",
+    title:"Executive Incident Summary",
+    desc:"Transform technical incident details into a board-ready executive summary.",
+    prompt:`You are a CISO preparing an executive summary of a security incident for the board of directors. They are non-technical. Transform the following technical incident details into a clear, business-focused summary:
+
+**Technical Incident Details:**
+[PASTE: timeline, affected systems, attack vector, technical response actions, current status]
+
+Write an executive summary that includes:
+1. **What Happened** (2-3 sentences, no jargon)
+2. **Business Impact** (what was affected in business terms — customers, revenue, data, operations)
+3. **What We Did** (response actions in plain language)
+4. **Current Status** (are we safe now? what's still in progress?)
+5. **What We're Doing to Prevent Recurrence** (key remediation items)
+6. **Resource Needs** (if any budget/staffing asks)
+7. **Regulatory/Legal Considerations** (notification obligations, timeline)
+
+Rules:
+- No technical acronyms without explanation
+- Focus on business risk, not technical details
+- Use analogies if they help clarify
+- Maximum 1 page
+- Include a "Bottom Line Up Front" (BLUF) in the first sentence
+- Tone: professional, calm, confident`,
+    expected:"One-page board-ready executive summary with BLUF, business impact focus, and clear next steps."
+  },
+  {
+    id:29, category:"Report Writing", catClass:"cat-rw", difficulty:"Intermediate", llm:"Claude",
+    title:"Penetration Test Findings Report",
+    desc:"Structure penetration testing findings into a professional report format.",
+    prompt:`You are a penetration testing report writer. I'll provide raw findings from a pentest engagement. Transform them into a professional report:
+
+**Engagement Details:**
+- Client: [NAME]
+- Scope: [SYSTEMS/APPLICATIONS TESTED]
+- Test Type: [External/Internal/Web App/Social Engineering]
+- Testing Period: [DATES]
+- Methodology: [OWASP/PTES/NIST]
+
+**Raw Findings:**
+[PASTE FINDINGS — vulnerability descriptions, proof of concept details, affected systems]
+
+For each finding, structure as:
+1. **Title** (clear, descriptive)
+2. **Severity:** Critical / High / Medium / Low / Informational (use CVSS 3.1 if applicable)
+3. **Affected Asset(s)**
+4. **Description** (what the vulnerability is — for technical and non-technical readers)
+5. **Business Impact** (what could an attacker actually DO with this?)
+6. **Proof of Concept** (sanitized steps to reproduce)
+7. **Remediation** (specific fix with implementation guidance)
+8. **Reference** (CWE, CVE, OWASP Top 10 mapping)
+
+Also generate:
+- **Executive Summary** paragraph for the report intro
+- **Risk Summary Table** (finding vs. severity vs. status)
+- **Prioritized Remediation Roadmap** (what to fix first and why)`,
+    expected:"Professional pentest report with structured findings, executive summary, and remediation roadmap."
+  },
+  {
+    id:30, category:"Report Writing", catClass:"cat-rw", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Risk Assessment Narrative",
+    desc:"Generate a risk assessment narrative for identified security gaps.",
+    prompt:`You are a security risk analyst. Write a risk assessment narrative for the following identified security gaps:
+
+**Organization Context:**
+- Industry: [INDUSTRY]
+- Size: [EMPLOYEE COUNT / REVENUE]
+- Regulatory Framework: [e.g., PCI-DSS, HIPAA, SOC 2, Essential Eight, ISO 27001]
+
+**Identified Security Gaps:**
+[LIST GAPS — e.g., "No MFA on VPN", "Unpatched Exchange server", "No DLP controls", etc.]
+
+For each gap, provide:
+1. **Risk Statement:** "There is a risk that [threat] could [exploit vulnerability] resulting in [impact]"
+2. **Likelihood:** Almost Certain / Likely / Possible / Unlikely / Rare — with justification
+3. **Impact:** Catastrophic / Major / Moderate / Minor / Insignificant — with justification
+4. **Inherent Risk Rating** (Likelihood × Impact matrix)
+5. **Existing Controls** (what's partially mitigating this already?)
+6. **Residual Risk Rating** (after existing controls)
+7. **Recommended Treatment:** Accept / Mitigate / Transfer / Avoid
+8. **Recommended Controls** with estimated cost/effort (Low/Med/High)
+9. **Regulatory Mapping:** Which compliance requirements does this gap violate?
+
+Generate a final **Risk Register Table** and a **Top 5 Risks** summary for leadership.`,
+    expected:"Complete risk assessment with risk register, regulatory mapping, and prioritized treatment plan."
+  },
+  {
+    id:31, category:"Report Writing", catClass:"cat-rw", difficulty:"Advanced", llm:"Claude",
+    title:"Threat Model Documentation",
+    desc:"Generate a comprehensive threat model for an application or system.",
+    prompt:`You are a threat modeling expert using the STRIDE methodology. Generate a comprehensive threat model for the following system:
+
+**System Name:** [NAME]
+**System Description:** [WHAT IT DOES]
+**Architecture:**
+[DESCRIBE: components, data flows, trust boundaries, external interfaces, authentication methods, data stores]
+
+**Data Classification:** [What sensitive data does it handle?]
+**User Roles:** [Who accesses it and at what privilege level?]
+
+Generate a STRIDE threat model:
+
+1. **Data Flow Diagram Description** (text-based — describe all components, flows, trust boundaries)
+
+2. **STRIDE Analysis** — For each component and data flow:
+   - **S**poofing threats
+   - **T**ampering threats
+   - **R**epudiation threats
+   - **I**nformation Disclosure threats
+   - **D**enial of Service threats
+   - **E**levation of Privilege threats
+
+3. For each identified threat:
+   - Threat ID and title
+   - STRIDE category
+   - Affected component
+   - Attack scenario (how would this be exploited?)
+   - Likelihood (H/M/L)
+   - Impact (H/M/L)
+   - Existing mitigations
+   - Recommended mitigations
+   - Priority
+
+4. **Summary Risk Matrix**
+5. **Top 10 Threats** requiring immediate attention
+6. **Recommended Security Controls** prioritized by risk reduction`,
+    expected:"Complete STRIDE threat model with threat enumeration, risk matrix, and prioritized mitigations."
+  },
+  {
+    id:32, category:"Report Writing", catClass:"cat-rw", difficulty:"Beginner", llm:"Any LLM",
+    title:"Security Metrics Dashboard Brief",
+    desc:"Generate a monthly security metrics narrative for leadership.",
+    prompt:`You are a SOC manager preparing the monthly security metrics brief for leadership. Using the following raw metrics, create a compelling narrative:
+
+**Monthly Metrics:**
+- Total alerts: [NUMBER]
+- True positives: [NUMBER]
+- False positives: [NUMBER]
+- MTTD (Mean Time to Detect): [HOURS/MINUTES]
+- MTTR (Mean Time to Respond): [HOURS/MINUTES]
+- Incidents by severity: Critical: [N], High: [N], Medium: [N], Low: [N]
+- Phishing emails reported by users: [N]
+- Phishing emails caught by gateway: [N]
+- Vulnerability scan results: Critical: [N], High: [N] (with patch status)
+- Compliance audit findings: [STATUS]
+
+Generate:
+1. **Executive Summary** (3-4 sentences — are we getting better or worse?)
+2. **Key Wins This Month** (positive trends to highlight)
+3. **Areas of Concern** (where do we need attention or investment?)
+4. **Trend Analysis** (compare to previous months if data available)
+5. **Recommendations** (1-3 actionable items for the coming month)
+6. **Risk Callouts** (anything leadership should be aware of)
+
+Keep it to one page. Use directional language (↑ improving, ↓ degrading, → stable). No jargon.`,
+    expected:"One-page metrics narrative with trend indicators, wins, concerns, and actionable recommendations."
+  },
+  {
+    id:33, category:"Report Writing", catClass:"cat-rw", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Vulnerability Disclosure Advisory",
+    desc:"Draft a vulnerability disclosure advisory for responsible disclosure.",
+    prompt:`You are a security researcher preparing a responsible vulnerability disclosure advisory. Structure the following finding into a professional advisory:
+
+**Vulnerability Details:**
+- Product/Service: [NAME AND VERSION]
+- Vulnerability Type: [e.g., SQL Injection, RCE, SSRF, Auth Bypass]
+- Discovery Date: [DATE]
+- Vendor Notified: [DATE]
+- CVSS 3.1 Score: [SCORE] (or ask me to help you calculate it)
+
+**Technical Details:**
+[DESCRIBE THE VULNERABILITY — how it works, where it exists, prerequisites]
+
+**Proof of Concept:**
+[STEPS TO REPRODUCE]
+
+Draft the advisory with these sections:
+1. **Advisory ID and Title**
+2. **Summary** (2-3 sentences)
+3. **Affected Versions**
+4. **CVSS Score and Vector String** (help me calculate if needed)
+5. **Technical Description** (detailed but professional)
+6. **Impact Analysis** (what an attacker could achieve)
+7. **Proof of Concept** (redacted/responsible version)
+8. **Remediation** (vendor patch + workarounds)
+9. **Timeline** (discovery → notification → fix → disclosure)
+10. **Credit** (researcher attribution)
+11. **References** (CWE, related CVEs, vendor advisory link)
+
+Follow responsible disclosure norms. Redact any details that could enable script-kiddie exploitation.`,
+    expected:"Professional vulnerability advisory following responsible disclosure format with appropriate redactions."
+  },
+
+  // ── THREAT INTELLIGENCE (7) ──
+  {
+    id:34, category:"Threat Intelligence", catClass:"cat-ti", difficulty:"Beginner", llm:"Any LLM",
+    title:"CVE Impact Assessment",
+    desc:"Quickly assess the impact and urgency of a new CVE for your environment.",
+    prompt:`You are a threat intelligence analyst. A new CVE has been published and I need a rapid impact assessment for our environment:
+
+**CVE ID:** [CVE-YYYY-NNNNN]
+**CVE Description:** [PASTE FROM NVD OR VENDOR ADVISORY]
+**CVSS Score:** [SCORE IF KNOWN]
+
+**Our Environment:**
+- Do we use the affected product? [Yes/No/Unknown]
+- Version(s) deployed: [VERSION]
+- Deployment context: [Internet-facing / Internal only / Air-gapped]
+- Number of affected instances: [COUNT IF KNOWN]
+
+Provide:
+1. **Plain English Summary:** What is this vulnerability and why does it matter?
+2. **Exploitability Assessment:**
+   - Is there a public exploit? (check known sources)
+   - Is it being actively exploited in the wild?
+   - What prerequisites does an attacker need?
+   - Attack complexity (is this "click and own" or requires specific conditions?)
+3. **Impact to Our Environment:** Based on our context, rate Critical/High/Medium/Low/Not Applicable
+4. **Recommended Response:**
+   - Patch immediately / Schedule patch / Monitor / Accept risk
+   - Workarounds if no patch available
+   - Detection opportunities (what to look for if exploitation occurs)
+5. **Timeline:** Recommended remediation deadline
+6. **Communication Template:** One paragraph for the IT team explaining what they need to do`,
+    expected:"Rapid CVE assessment with exploitability analysis, environment-specific impact rating, and actionable response plan."
+  },
+  {
+    id:35, category:"Threat Intelligence", catClass:"cat-ti", difficulty:"Intermediate", llm:"Claude or GPT-4",
+    title:"Threat Actor Profile",
+    desc:"Build a comprehensive threat actor profile from available intelligence.",
+    prompt:`You are a cyber threat intelligence analyst. Build a comprehensive threat actor profile based on available open-source intelligence:
+
+**Threat Actor Name/Alias:** [NAME — e.g., APT29, Scattered Spider, LockBit, etc.]
+
+Produce a structured profile covering:
+
+1. **Overview**
+   - Known aliases and naming conventions (by different vendors)
+   - Suspected nation-state affiliation or motivation (financial, espionage, hacktivism)
+   - First observed and current activity status
+
+2. **Targeting**
+   - Industries targeted
+   - Geographic focus
+   - Organization size preferences
+   - Specific technologies they target
+
+3. **TTPs (MITRE ATT&CK Mapping)**
+   - Initial Access methods
+   - Favorite tools and malware families
+   - Infrastructure patterns (C2, domains, hosting)
+   - Notable techniques that are their "signature"
+
+4. **Recent Activity** (last 12 months)
+   - Notable campaigns or incidents attributed
+   - Evolution in TTPs
+   - New tools or infrastructure observed
+
+5. **Detection & Hunting**
+   - Key IOCs (current)
+   - Behavioral indicators specific to this actor
+   - Detection rule recommendations
+
+6. **Relevance to Our Organization**
+   - Based on their targeting profile, how likely are they to target [OUR INDUSTRY]?
+   - What specific controls would mitigate their primary TTPs?
+
+7. **References** — Key reports and intelligence sources
+
+Mark all assessments with confidence levels (High/Medium/Low).`,
+    expected:"Comprehensive threat actor dossier with ATT&CK mapping, detection guidance, and organizational relevance."
+  },
+  {
+    id:36, category:"Threat Intelligence", catClass:"cat-ti", difficulty:"Intermediate", llm:"Claude",
+    title:"Threat Landscape Summary",
+    desc:"Generate a periodic threat landscape briefing for your industry.",
+    prompt:`You are a threat intelligence manager preparing a quarterly threat landscape briefing. Generate a comprehensive briefing for:
+
+**Industry:** [YOUR INDUSTRY]
+**Region:** [YOUR GEOGRAPHIC REGION]
+**Time Period:** [QUARTER/YEAR]
+
+Structure the briefing:
+
+1. **Executive Summary** (5 key takeaways for leadership)
+
+2. **Top Threats This Quarter**
+   - Ransomware trends (active groups, new tactics, average ransom amounts)
+   - Nation-state activity relevant to our industry
+   - Supply chain threats
+   - Emerging attack techniques
+
+3. **Vulnerability Landscape**
+   - Most critical CVEs this quarter (top 5)
+   - Zero-days that were exploited in the wild
+   - Common vulnerability patterns
+
+4. **Industry-Specific Threats**
+   - Campaigns specifically targeting our industry
+   - Regulatory/compliance changes affecting our security posture
+   - Peer organization incidents (anonymized lessons learned)
+
+5. **Geopolitical Context**
+   - How current events may influence cyber threats against us
+   - Sanctions or law enforcement actions affecting threat actors
+
+6. **Forecast & Recommendations**
+   - Predicted threats for next quarter
+   - Recommended defensive priorities (top 3)
+   - Intelligence gaps to address
+
+Include confidence levels for all predictive assessments.`,
+    expected:"Quarterly threat landscape briefing with industry-specific analysis, geopolitical context, and forecasts."
+  },
+  {
+    id:37, category:"Threat Intelligence", catClass:"cat-ti", difficulty:"Advanced", llm:"Claude",
+    title:"Intelligence Requirement Development",
+    desc:"Develop a structured intelligence requirements framework for your organization.",
+    prompt:`You are a CTI program manager developing intelligence requirements for an organization. Help me build a structured intelligence requirements framework:
+
+**Organization Details:**
+- Industry: [INDUSTRY]
+- Size: [EMPLOYEES/REVENUE]
+- Geographic Presence: [LOCATIONS]
+- Key Assets: [CROWN JEWELS — what must be protected at all costs]
+- Current Threat Landscape Concerns: [TOP WORRIES]
+- Security Maturity: [Low/Medium/High]
+
+Develop:
+
+1. **Priority Intelligence Requirements (PIRs)** — 5-7 strategic questions leadership needs answered
+   - Format: "What [threat/actor/capability] poses the greatest risk to [asset/operation]?"
+   - Each with: Owner, Update Frequency, Collection Sources
+
+2. **Specific Intelligence Requirements (SIRs)** — 10-15 tactical questions for the security team
+   - Mapped to each PIR
+   - Include measurable indicators of change
+
+3. **Collection Plan**
+   - For each SIR: recommended OSINT/HUMINT/technical sources
+   - Free vs. paid source recommendations
+   - Collection frequency
+
+4. **Intelligence Lifecycle Process**
+   - How requirements flow to collection → analysis → dissemination
+   - Feedback mechanisms
+   - Metrics to measure program effectiveness
+
+5. **Dissemination Matrix**
+   - Who gets what intelligence, in what format, how often
+   - Strategic (monthly brief) vs. Tactical (real-time alerts)
+
+6. **Program Maturity Roadmap**
+   - Current state → 6-month goals → 12-month goals`,
+    expected:"Complete intelligence requirements framework with PIRs, SIRs, collection plan, and maturity roadmap."
+  },
+  {
+    id:38, category:"Threat Intelligence", catClass:"cat-ti", difficulty:"Beginner", llm:"Any LLM",
+    title:"IOC Enrichment Report",
+    desc:"Enrich raw indicators of compromise with context and intelligence.",
+    prompt:`You are a threat intelligence analyst performing IOC enrichment. For each indicator below, provide comprehensive context:
+
+**Indicators to Enrich:**
+[PASTE YOUR IOCS — IPs, domains, file hashes, email addresses, URLs]
+
+For each IOC, provide:
+1. **Type:** IP / Domain / Hash (MD5/SHA1/SHA256) / URL / Email
+2. **First Seen / Last Seen** (if known from public sources)
+3. **Reputation:** Clean / Suspicious / Malicious — with source
+4. **Associated Malware Families** (if any)
+5. **Associated Threat Actors** (if attributed)
+6. **Infrastructure Details:**
+   - For IPs: ASN, hosting provider, geolocation, open ports
+   - For domains: registrar, registration date, WHOIS privacy, DNS records
+   - For hashes: file type, file name, detection ratio
+7. **Related IOCs:** What other indicators cluster with this one?
+8. **Context:** Is this a shared hosting IP, CDN, known-bad infrastructure, or targeted?
+9. **Confidence Level:** How confident are we this is truly malicious?
+10. **Recommended Action:** Block / Monitor / Investigate / No Action — with reasoning
+
+Output as a structured table and provide a summary of the overall threat picture.`,
+    expected:"Enriched IOC report with context, confidence levels, and recommended blocking/monitoring actions."
+  },
+  {
+    id:39, category:"Threat Intelligence", catClass:"cat-ti", difficulty:"Advanced", llm:"Claude or GPT-4",
+    title:"Threat Intelligence Automation Workflow",
+    desc:"Design a threat intelligence automation pipeline using available tools.",
+    prompt:`You are a threat intelligence engineer designing an automated intelligence pipeline. Help me architect a workflow:
+
+**Current Tools:**
+- SIEM: [Splunk / Sentinel / Elastic / etc.]
+- TIP: [MISP / OpenCTI / ThreatConnect / None]
+- SOAR: [Cortex XSOAR / Splunk SOAR / Shuffle / None]
+- Feeds: [List current intel feeds — free and paid]
+
+**Requirements:**
+- Ingest IOCs from [SOURCES] automatically
+- Enrich with context (reputation, WHOIS, passive DNS, sandbox)
+- Score/prioritize indicators based on relevance to our environment
+- Auto-block high-confidence IOCs on [FIREWALL/EDR/PROXY]
+- Generate daily intelligence digest
+- Alert on IOCs matching our watch list
+
+Design:
+1. **Architecture Diagram** (text-based — components, data flows, integrations)
+2. **Ingestion Pipeline** — Sources → Normalization → Dedup → Storage
+3. **Enrichment Workflow** — For each IOC type, what enrichment steps and APIs
+4. **Scoring Algorithm** — How to calculate a relevance/confidence score (factors and weights)
+5. **Automation Playbooks** — 3 SOAR playbook designs:
+   - New high-severity IOC → auto-block workflow
+   - Daily digest generation
+   - IOC aging and expiration
+6. **API Integrations** — Specific endpoints and authentication methods
+7. **Metrics** — How to measure pipeline effectiveness
+
+Include error handling and failsafe recommendations.`,
+    expected:"Complete TI automation architecture with pipeline design, scoring algorithm, and SOAR playbook specifications."
+  },
+  {
+    id:40, category:"Threat Intelligence", catClass:"cat-ti", difficulty:"Intermediate", llm:"Any LLM",
+    title:"Dark Web Monitoring Brief",
+    desc:"Structure a dark web monitoring report from marketplace and forum findings.",
+    prompt:`You are a dark web intelligence analyst. Structure the following raw findings from dark web monitoring into a professional intelligence brief:
+
+**Monitoring Period:** [DATE RANGE]
+**Sources Monitored:** [Forums, marketplaces, paste sites, Telegram channels — be general]
+
+**Raw Findings:**
+[PASTE FINDINGS — mentions of your organization, leaked credentials, data listings, threat actor discussions, etc.]
+
+Structure the brief:
+
+1. **Executive Summary** (key findings that need immediate action)
+
+2. **Direct Threats** (findings that directly reference our organization)
+   - For each: Source, Date, Content Summary, Threat Level, Recommended Action
+   - Credential exposures → immediate password reset scope
+   - Data listings → validate if genuine, scope of exposure
+
+3. **Industry Threats** (findings relevant to our sector)
+   - New tools/services targeting our industry
+   - Discussions about vulnerabilities in our tech stack
+   - Peer organizations mentioned (anonymized)
+
+4. **Emerging Trends**
+   - New attack services or tools being sold
+   - Shifting threat actor tactics
+   - Price trends for access/data
+
+5. **Indicator Extraction**
+   - All actionable IOCs from the findings
+   - Recommended blocks/monitors
+
+6. **Risk Rating:** Current dark web threat level to our organization (1-10)
+7. **Recommended Actions** (prioritized, immediate → long-term)
+
+Mark all source intelligence with TLP classifications.`,
+    expected:"Structured dark web intelligence brief with TLP markings, prioritized threats, and actionable recommendations."
+  }
+];
+
+// ── State ──
+let activeCat = 'all';
+let activeDiff = 'all';
+
+// ── Render ──
+function renderCards() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const grid = document.getElementById('cardsGrid');
+    grid.innerHTML = '';
+    let count = 0;
+
+    PROMPTS.forEach(p => {
+        if (activeCat !== 'all' && p.category !== activeCat) return;
+        if (activeDiff !== 'all' && p.difficulty !== activeDiff) return;
+        if (q && !(p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.prompt.toLowerCase().includes(q))) return;
+
+        count++;
+        const diffClass = 'diff-' + p.difficulty.toLowerCase();
+        const card = document.createElement('div');
+        card.className = 'prompt-card';
+        card.innerHTML = `
+            <div class="card-header">
+                <span class="category-tag ${p.catClass}">${p.category}</span>
+                <span class="difficulty-badge ${diffClass}">${p.difficulty}</span>
+            </div>
+            <h3 class="card-title">${p.title}</h3>
+            <p class="card-desc">${p.desc}</p>
+            <div class="llm-rec">🤖 Best with: ${p.llm}</div>
+            <div class="prompt-block" id="pb-${p.id}">
+                <button class="copy-btn" onclick="copyPrompt(event, ${p.id})">Copy</button>
+                <div class="prompt-text">${escapeHtml(p.prompt)}</div>
+                <div class="fade-overlay"></div>
+            </div>
+            <button class="expand-btn" onclick="toggleExpand(${p.id})">▼ Show full prompt</button>
+            <div class="expected-result"><strong>Expected Output: </strong>${p.expected}</div>
+        `;
+        grid.appendChild(card);
+    });
+
+    document.getElementById('visibleCount').textContent = count;
+    document.getElementById('resultsCount').textContent = count === PROMPTS.length ? '' : `Showing ${count} of ${PROMPTS.length} prompts`;
+}
+
+function escapeHtml(t) {
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function toggleExpand(id) {
+    const pb = document.getElementById('pb-' + id);
+    const btn = pb.parentElement.querySelector('.expand-btn');
+    pb.classList.toggle('expanded');
+    btn.textContent = pb.classList.contains('expanded') ? '▲ Collapse' : '▼ Show full prompt';
+}
+
+function copyPrompt(e, id) {
+    e.stopPropagation();
+    const p = PROMPTS.find(x => x.id === id);
+    navigator.clipboard.writeText(p.prompt).then(() => {
+        const btn = e.target;
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+}
+
+// ── Filters ──
+document.querySelectorAll('#categoryFilters .filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('#categoryFilters .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCat = btn.dataset.cat;
+        renderCards();
+    });
+});
+
+document.querySelectorAll('#diffFilters .filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('#diffFilters .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeDiff = btn.dataset.diff;
+        renderCards();
+    });
+});
+
+document.getElementById('searchInput').addEventListener('input', renderCards);
+
+// ── Lead form ──
+function handleLeadSubmit() {
+    const email = document.getElementById('leadEmail').value;
+    if (!email || !email.includes('@')) return;
+    fetch('https://formspree.io/f/xwpkvgyj', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'ai-prompt-library', type: 'advanced-prompt-guide' })
+    }).then(() => {
+        document.getElementById('leadForm').style.display = 'none';
+        document.getElementById('leadSuccess').style.display = 'block';
+    }).catch(() => {
+        document.getElementById('leadForm').style.display = 'none';
+        document.getElementById('leadSuccess').style.display = 'block';
+    });
+}
+
+// ── Init ──
+renderCards();
+</script>
+</body>
+</html>
