@@ -1,0 +1,1008 @@
+---
+layout: null
+title: "SOC Automation Playbook Library"
+description: "Search MITRE ATT&CK techniques mapped to operational SOC playbooks. Investigation steps, containment actions, SIEM queries & automation guidance. Free from Dobson Development."
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Automation Playbook Library | Dobson Development</title>
+    <meta name="description" content="Search MITRE ATT&CK techniques mapped to operational SOC playbooks. Investigation steps, containment actions, SIEM queries & automation guidance.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dobsondevelopment.com.au/tools/soc-playbook-library">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+
+    <meta property="og:title" content="SOC Automation Playbook Library | Dobson Development">
+    <meta property="og:description" content="Search MITRE ATT&CK techniques mapped to operational SOC playbooks with investigation steps, containment & SIEM queries.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dobsondevelopment.com.au/tools/soc-playbook-library">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SOC Automation Playbook Library",
+        "description": "Search MITRE ATT&CK techniques mapped to operational SOC playbooks with investigation steps, containment actions, SIEM queries and automation guidance.",
+        "url": "https://dobsondevelopment.com.au/tools/soc-playbook-library",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Web Browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+        "author": { "@type": "Organization", "name": "Dobson Development", "url": "https://dobsondevelopment.com.au" }
+    }
+    </script>
+
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/firacode-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        @font-face{font-family:'Inter';font-weight:400;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Inter';font-weight:600;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url('/assets/fonts/inter-latin.woff2') format('woff2')}
+        @font-face{font-family:'Fira Code';font-weight:400;font-display:swap;src:url('/assets/fonts/firacode-latin.woff2') format('woff2')}
+        @font-face{font-family:'Fira Code';font-weight:600;font-display:swap;src:url('/assets/fonts/firacode-latin.woff2') format('woff2')}
+
+        :root{
+            --bg-main:#0B0C10;--bg-secondary:#0f1014;--bg-card:#141419;
+            --accent-neon:#00F0FF;--accent-purple:#BC13FE;--accent-green:#22c55e;--accent-orange:#f59e0b;--accent-red:#ef4444;
+            --text-white:#FFFFFF;--text-grey:#9ca3af;--text-muted:#6b7280;
+            --border-subtle:rgba(255,255,255,0.06);--border-hover:rgba(0,240,255,0.3);
+            --font-mono:'Fira Code',monospace;--font-body:'Inter',sans-serif;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:var(--bg-main)}
+        ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent-neon),var(--accent-purple));border-radius:3px}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font-body);background:var(--bg-main);color:var(--text-grey);line-height:1.6;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        h1,h2,h3,h4{color:var(--text-white);font-family:var(--font-mono);font-weight:600}
+        a{color:var(--accent-neon);text-decoration:none;transition:all .3s}
+        code,.mono{font-family:var(--font-mono)}
+
+        .site-header{background:rgba(11,12,16,0.95);backdrop-filter:blur(10px);padding:1.25rem 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border-subtle)}
+        .site-header .container{display:flex;justify-content:space-between;align-items:center}
+        .site-logo{font-family:var(--font-mono);font-size:1.2rem;font-weight:600;color:var(--accent-neon);display:flex;align-items:center;gap:.5rem}
+        .site-logo::before{content:'>_';color:var(--accent-neon)}
+        .site-nav{display:flex;gap:2rem}
+        .site-nav a{color:var(--text-grey);font-size:.9rem;font-family:var(--font-mono)}
+        .site-nav a:hover{color:var(--accent-neon)}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+        .hero{padding:3rem 0 2rem;text-align:center;border-bottom:1px solid var(--border-subtle);margin-bottom:2rem}
+        .hero h1{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:.75rem;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{max-width:650px;margin:0 auto;font-size:1.05rem}
+        .meta-line{font-family:var(--font-mono);font-size:.8rem;color:var(--text-muted);margin-top:1rem}
+
+        /* Stats bar */
+        .stats-bar{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0;padding:1rem;background:var(--bg-card);border-radius:12px;border:1px solid var(--border-subtle)}
+        .stat{text-align:center}
+        .stat-num{font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:var(--accent-neon)}
+        .stat-label{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+
+        /* Controls */
+        .controls{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;align-items:center}
+        .search-box{flex:1;min-width:250px;position:relative}
+        .search-box input{width:100%;padding:.75rem 1rem .75rem 2.5rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-white);font-family:var(--font-mono);font-size:.9rem;transition:border-color .3s}
+        .search-box input:focus{outline:none;border-color:var(--accent-neon);box-shadow:0 0 20px rgba(0,240,255,.1)}
+        .search-box input::placeholder{color:var(--text-muted)}
+        .search-box::before{content:'⌕';position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:1.1rem}
+        .filter-group{display:flex;gap:.5rem;flex-wrap:wrap}
+        .filter-btn{padding:.5rem 1rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-grey);font-family:var(--font-mono);font-size:.78rem;cursor:pointer;transition:all .3s;white-space:nowrap}
+        .filter-btn:hover{border-color:var(--border-hover);color:var(--text-white)}
+        .filter-btn.active{background:rgba(0,240,255,.1);border-color:var(--accent-neon);color:var(--accent-neon)}
+        .filter-section{margin-bottom:1rem}
+        .filter-label{font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:block}
+        .results-count{font-family:var(--font-mono);font-size:.85rem;color:var(--text-muted);margin-bottom:1rem}
+
+        /* Cards */
+        .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.25rem;margin-bottom:3rem}
+        .playbook-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:12px;padding:1.5rem;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+        .playbook-card:hover{border-color:var(--border-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,240,255,.08)}
+        .playbook-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-neon),var(--accent-purple));opacity:0;transition:opacity .3s}
+        .playbook-card:hover::before{opacity:1}
+        .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;gap:.75rem}
+        .technique-id{font-family:var(--font-mono);font-size:.8rem;color:var(--accent-neon);background:rgba(0,240,255,.08);padding:.2rem .6rem;border-radius:4px;white-space:nowrap}
+        .severity-badge{font-family:var(--font-mono);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;font-weight:600;text-transform:uppercase}
+        .severity-high{background:rgba(239,68,68,.15);color:var(--accent-red)}
+        .severity-medium{background:rgba(245,158,11,.15);color:var(--accent-orange)}
+        .severity-low{background:rgba(34,197,94,.15);color:var(--accent-green)}
+        .card-title{font-size:1.05rem;color:var(--text-white);margin-bottom:.4rem}
+        .card-tactic{font-family:var(--font-mono);font-size:.75rem;color:var(--accent-purple);margin-bottom:.6rem}
+        .card-desc{font-size:.88rem;color:var(--text-grey);margin-bottom:.75rem;line-height:1.5}
+        .card-meta{display:flex;gap:1rem;flex-wrap:wrap}
+        .meta-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);display:flex;align-items:center;gap:.3rem}
+        .automation-indicator{display:flex;gap:2px;align-items:center}
+        .automation-indicator .dot{width:6px;height:6px;border-radius:50%;background:var(--border-subtle)}
+        .automation-indicator .dot.filled{background:var(--accent-green)}
+        .expand-hint{font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);text-align:right;margin-top:.5rem;opacity:0;transition:opacity .3s}
+        .playbook-card:hover .expand-hint{opacity:1}
+
+        /* Expanded playbook detail */
+        .playbook-detail{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-subtle)}
+        .playbook-card.expanded .playbook-detail{display:block}
+        .playbook-card.expanded{grid-column:1/-1}
+        .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+        .detail-section{margin-bottom:1.25rem}
+        .detail-section h4{font-size:.85rem;color:var(--accent-neon);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+        .detail-section h4::before{font-size:.9rem}
+        .detail-section ol,.detail-section ul{padding-left:1.2rem}
+        .detail-section li{font-size:.85rem;color:var(--text-grey);margin-bottom:.35rem;line-height:1.5}
+        .query-block{background:var(--bg-main);border:1px solid var(--border-subtle);border-radius:8px;padding:1rem;margin-top:.5rem;position:relative;overflow-x:auto}
+        .query-block code{font-size:.78rem;color:var(--accent-neon);white-space:pre-wrap;word-break:break-all;line-height:1.6}
+        .query-label{font-family:var(--font-mono);font-size:.65rem;color:var(--accent-purple);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;display:block}
+        .copy-btn{position:absolute;top:.5rem;right:.5rem;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);color:var(--accent-neon);padding:.25rem .5rem;border-radius:4px;font-family:var(--font-mono);font-size:.65rem;cursor:pointer;transition:all .3s}
+        .copy-btn:hover{background:rgba(0,240,255,.2)}
+        .tools-list{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.3rem}
+        .tool-chip{font-family:var(--font-mono);font-size:.7rem;padding:.2rem .5rem;background:rgba(188,19,254,.1);border:1px solid rgba(188,19,254,.2);border-radius:4px;color:var(--accent-purple)}
+        .automation-bar{height:8px;background:var(--bg-main);border-radius:4px;overflow:hidden;margin-top:.4rem}
+        .automation-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent-green),var(--accent-neon))}
+
+        /* Lead capture */
+        .lead-section{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:16px;padding:3rem 2rem;text-align:center;margin:3rem 0}
+        .lead-section h2{font-size:1.5rem;margin-bottom:.75rem;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .lead-section p{max-width:500px;margin:0 auto 1.5rem;font-size:.95rem}
+        .lead-form{display:flex;gap:.75rem;max-width:500px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+        .lead-form input[type="email"]{flex:1;min-width:220px;padding:.75rem 1rem;background:var(--bg-main);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-white);font-family:var(--font-mono);font-size:.9rem}
+        .lead-form input[type="email"]:focus{outline:none;border-color:var(--accent-neon)}
+        .lead-form input[type="email"]::placeholder{color:var(--text-muted)}
+        .lead-form button{padding:.75rem 1.5rem;background:linear-gradient(135deg,var(--accent-neon),var(--accent-purple));color:var(--bg-main);border:none;border-radius:8px;font-family:var(--font-mono);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .3s;white-space:nowrap}
+        .lead-form button:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,240,255,.3)}
+        .lead-perks{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem}
+        .lead-perk{font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);display:flex;align-items:center;gap:.3rem}
+        .lead-success{display:none;color:var(--accent-green);font-family:var(--font-mono)}
+
+        /* Footer */
+        .site-footer{border-top:1px solid var(--border-subtle);padding:2rem 0;text-align:center;margin-top:3rem}
+        .site-footer p{font-size:.85rem;color:var(--text-muted)}
+        .footer-links{display:flex;gap:1.5rem;justify-content:center;margin-bottom:1rem}
+        .footer-links a{font-family:var(--font-mono);font-size:.8rem;color:var(--text-muted)}
+        .footer-links a:hover{color:var(--accent-neon)}
+
+        @media(max-width:768px){
+            .site-nav{gap:1rem}
+            .cards-grid{grid-template-columns:1fr}
+            .detail-grid{grid-template-columns:1fr}
+            .controls{flex-direction:column}
+            .search-box{min-width:100%}
+            .lead-section{padding:2rem 1rem}
+            .stats-bar{gap:1rem}
+        }
+        @media(max-width:480px){
+            .site-nav a{font-size:.75rem}
+            .filter-btn{font-size:.7rem;padding:.4rem .7rem}
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-logo">Dobson Dev</a>
+            <nav class="site-nav">
+                <a href="/">Home</a>
+                <a href="/tools/">Tools</a>
+                <a href="/blog/">Blog</a>
+                <a href="/contact/">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>SOC Automation Playbook Library</h1>
+            <p>Search MITRE ATT&CK techniques mapped to operational playbooks. Investigation steps, containment actions, SIEM queries &amp; automation guidance for your SOC.</p>
+            <div class="meta-line">v1.0 &middot; 25 ATT&CK Techniques &middot; Updated Feb 2026 &middot; Free &amp; Open</div>
+        </section>
+
+        <div class="stats-bar">
+            <div class="stat"><div class="stat-num" id="totalCount">25</div><div class="stat-label">Playbooks</div></div>
+            <div class="stat"><div class="stat-num" id="tacticCount">10</div><div class="stat-label">Tactics</div></div>
+            <div class="stat"><div class="stat-num" id="autoCount">8</div><div class="stat-label">Fully Automatable</div></div>
+            <div class="stat"><div class="stat-num" id="visibleCount">25</div><div class="stat-label">Showing</div></div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search techniques, tactics, keywords...">
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <span class="filter-label">Tactic</span>
+            <div class="filter-group" id="tacticFilters"></div>
+        </div>
+        <div class="filter-section">
+            <span class="filter-label">Severity</span>
+            <div class="filter-group" id="severityFilters">
+                <button class="filter-btn" data-severity="all">All</button>
+                <button class="filter-btn" data-severity="High">🔴 High</button>
+                <button class="filter-btn" data-severity="Medium">🟡 Medium</button>
+                <button class="filter-btn" data-severity="Low">🟢 Low</button>
+            </div>
+        </div>
+        <div class="filter-section">
+            <span class="filter-label">Automation Level</span>
+            <div class="filter-group" id="automationFilters">
+                <button class="filter-btn" data-auto="all">All</button>
+                <button class="filter-btn" data-auto="Full">⚡ Fully Automated</button>
+                <button class="filter-btn" data-auto="Partial">🔀 Partial</button>
+                <button class="filter-btn" data-auto="Manual">👤 Manual</button>
+            </div>
+        </div>
+
+        <div class="results-count" id="resultsCount"></div>
+        <div class="cards-grid" id="cardsGrid"></div>
+
+        <section class="lead-section" id="leadSection">
+            <h2>Download the Full SOAR Playbook Library</h2>
+            <p>Get all 25 playbooks as a comprehensive PDF with extended SIEM queries, runbook templates, and SOAR integration guides.</p>
+            <div class="lead-form" id="leadForm">
+                <input type="email" id="leadEmail" placeholder="your.email@company.com" required>
+                <button type="button" onclick="handleLeadSubmit()">Download PDF →</button>
+            </div>
+            <div class="lead-success" id="leadSuccess">✓ Check your inbox! The playbook library PDF is on its way.</div>
+            <div class="lead-perks">
+                <span class="lead-perk">✓ 25 detailed playbooks</span>
+                <span class="lead-perk">✓ Copy-paste SIEM queries</span>
+                <span class="lead-perk">✓ SOAR workflow diagrams</span>
+                <span class="lead-perk">✓ No spam, ever</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="/tools/">All Tools</a>
+                <a href="/blog/">Blog</a>
+                <a href="/contact/">Contact</a>
+            </div>
+            <p>&copy; 2026 Dobson Development. Built in Brisbane 🇦🇺</p>
+        </div>
+    </footer>
+
+<script>
+const PLAYBOOKS = [
+  {
+    id:"T1003",name:"OS Credential Dumping",tactic:"Credential Access",severity:"High",automation:"Full",
+    desc:"Adversaries dump credentials from OS to obtain account login information. Common tools include Mimikatz, ProcDump, and comsvcs.dll.",
+    detection:"Monitor for unusual access to LSASS (process access events), registry SAM hive reads, and NTDS.dit copies. Watch for processes spawning with debug privileges on lsass.exe.",
+    investigation:[
+      "Identify the source process accessing LSASS (Sysmon Event ID 10 — ProcessAccess)",
+      "Check if the parent process is legitimate (e.g., AV scan vs. unknown binary)",
+      "Pull file hash of the accessing binary and check against threat intel (VirusTotal, MISP)",
+      "Review user account that ran the process — is it a service account or interactive user?",
+      "Check for lateral movement from the same host in the last 24h",
+      "Examine if the credential dumping tool was dropped via a prior stage (check file creation events)"
+    ],
+    containment:[
+      "Isolate the affected endpoint from the network immediately",
+      "Force password reset for all accounts that were active on the compromised host",
+      "Revoke Kerberos tickets (krbtgt double-reset if domain-wide compromise suspected)",
+      "Disable the compromised user account(s)",
+      "Capture forensic memory image before remediation if possible"
+    ],
+    splunk:`index=sysmon EventCode=10 TargetImage="*\\\\lsass.exe"\n| where NOT match(SourceImage, "(?i)(mcafee|defender|crowdstrike)")\n| stats count by SourceImage, SourceProcessGUID, Computer\n| where count > 0`,
+    kql:`DeviceProcessEvents\n| where FileName in~ ("mimikatz.exe","procdump.exe") or\n  (ProcessCommandLine has "sekurlsa" or ProcessCommandLine has "lsass")\n| project Timestamp, DeviceName, AccountName, ProcessCommandLine`,
+    tools:["CrowdStrike","Microsoft Defender","Sysmon","Splunk","Sentinel"]
+  },
+  {
+    id:"T1059.001",name:"PowerShell Execution",tactic:"Execution",severity:"High",automation:"Partial",
+    desc:"Adversaries abuse PowerShell for execution of commands and scripts. Often used for downloading payloads, lateral movement, and living-off-the-land attacks.",
+    detection:"Enable PowerShell ScriptBlock logging (Event ID 4104) and Module logging. Alert on encoded commands, bypass flags, download cradles, and suspicious cmdlets.",
+    investigation:[
+      "Review the full ScriptBlock text from Event ID 4104",
+      "Decode any Base64-encoded commands (-EncodedCommand / -enc)",
+      "Identify the user context and parent process that launched PowerShell",
+      "Check for download cradles (IEX, Invoke-WebRequest, Net.WebClient)",
+      "Look for AMSI bypass attempts in the script content",
+      "Correlate with network logs for any outbound connections made during execution"
+    ],
+    containment:[
+      "Kill the PowerShell process tree on the affected host",
+      "Block the C2 domain/IP at the firewall and proxy",
+      "Enable Constrained Language Mode on the endpoint if not already active",
+      "Quarantine any downloaded payloads identified in the script",
+      "Review and restrict PowerShell execution policy via GPO"
+    ],
+    splunk:`index=wineventlog EventCode=4104\n| where match(ScriptBlockText, "(?i)(invoke-mimikatz|invoke-expression|downloadstring|encodedcommand|bypass)")\n| table _time, ComputerName, ScriptBlockText, UserID`,
+    kql:`DeviceEvents\n| where ActionType == "PowerShellCommand"\n| where AdditionalFields has_any ("EncodedCommand","Bypass","IEX","DownloadString")\n| project Timestamp, DeviceName, AccountName, AdditionalFields`,
+    tools:["Sentinel","Splunk","CrowdStrike","Carbon Black","AMSI"]
+  },
+  {
+    id:"T1566.001",name:"Spearphishing Attachment",tactic:"Initial Access",severity:"High",automation:"Partial",
+    desc:"Adversaries send targeted emails with malicious attachments (Office macros, PDFs, archives) to gain initial access to victim systems.",
+    detection:"Monitor email gateway for suspicious attachments (macros, double extensions, password-protected archives). Correlate with endpoint alerts for child processes spawned by Office applications.",
+    investigation:[
+      "Retrieve the original email from the mail gateway or quarantine",
+      "Extract and detonate the attachment in a sandbox (Any.Run, Joe Sandbox)",
+      "Identify all recipients of the same email (search by sender, subject, attachment hash)",
+      "Check if any recipient opened/executed the attachment (endpoint telemetry)",
+      "Analyse the attachment for C2 callbacks, dropped payloads, and persistence mechanisms",
+      "Check the sender domain against known phishing infrastructure"
+    ],
+    containment:[
+      "Purge the email from all recipient mailboxes (Exchange/O365 compliance search)",
+      "Block the sender domain and any extracted C2 indicators at the email gateway",
+      "Isolate any endpoint that executed the attachment",
+      "Reset credentials for any user who opened the attachment",
+      "Block extracted file hashes across EDR fleet"
+    ],
+    splunk:`index=email sourcetype=exchange OR sourcetype=o365\n| where attachment_name="*.docm" OR attachment_name="*.xlsm" OR attachment_name="*.iso"\n| stats count by sender, recipient, attachment_name, attachment_hash`,
+    kql:`EmailAttachmentInfo\n| where FileType in~ ("docm","xlsm","iso","vbs","hta")\n| join EmailEvents on NetworkMessageId\n| project Timestamp, SenderFromAddress, RecipientEmailAddress, FileName, SHA256`,
+    tools:["Proofpoint","Mimecast","Microsoft Defender for O365","Any.Run","VirusTotal"]
+  },
+  {
+    id:"T1053.005",name:"Scheduled Task/Job",tactic:"Persistence",severity:"Medium",automation:"Full",
+    desc:"Adversaries create scheduled tasks to maintain persistence, execute payloads at set intervals, or run as SYSTEM. Common in post-exploitation.",
+    detection:"Monitor for scheduled task creation events (Event ID 4698) and schtasks.exe command-line usage. Alert on tasks created by non-admin users or with suspicious actions.",
+    investigation:[
+      "Examine the scheduled task XML for the action, trigger, and principal (Event ID 4698)",
+      "Identify the user who created the task and their authentication method",
+      "Check the binary/script referenced in the task action — is it legitimate?",
+      "Review the creation timestamp against known compromise timeline",
+      "Look for similar tasks across other endpoints (fleet-wide query)",
+      "Check if the task runs as SYSTEM or with elevated privileges"
+    ],
+    containment:[
+      "Delete the malicious scheduled task (schtasks /delete /tn <name>)",
+      "Remove the payload referenced by the task",
+      "Block the payload hash across EDR",
+      "Audit all scheduled tasks on the host for additional persistence",
+      "Monitor for re-creation of the same or similar tasks"
+    ],
+    splunk:`index=wineventlog EventCode=4698\n| spath output=TaskName path=EventData.TaskName\n| spath output=TaskContent path=EventData.TaskContent\n| where NOT match(TaskName, "(?i)(microsoft|windows|adobe)")\n| table _time, ComputerName, TaskName, TaskContent`,
+    kql:`DeviceEvents\n| where ActionType == "ScheduledTaskCreated"\n| where InitiatingProcessAccountName !in~ ("system","local service")\n| project Timestamp, DeviceName, AccountName, AdditionalFields`,
+    tools:["Sysmon","Splunk","Sentinel","CrowdStrike","Autoruns"]
+  },
+  {
+    id:"T1021.001",name:"Remote Desktop Protocol",tactic:"Lateral Movement",severity:"High",automation:"Partial",
+    desc:"Adversaries use RDP to move laterally between systems. Often leveraged after credential theft to access servers and workstations interactively.",
+    detection:"Monitor for RDP logon events (Event ID 4624 Type 10), especially from unusual source IPs or at unusual times. Track NLA failures and brute-force patterns.",
+    investigation:[
+      "Identify the source IP of the RDP session (Event ID 4624, Logon Type 10)",
+      "Verify whether the source is an authorised jump box or admin workstation",
+      "Check the user account — is RDP access expected for this user?",
+      "Review the timing — does this match normal working hours?",
+      "Look for credential theft indicators prior to the RDP session on the source host",
+      "Check for data staging or exfiltration activity after the RDP session"
+    ],
+    containment:[
+      "Terminate the active RDP session",
+      "Disable the compromised account or restrict RDP access via group policy",
+      "Block the source IP at the host firewall if it's not a known admin station",
+      "Enable NLA requirement if not already enforced",
+      "Review and restrict RDP access across the environment (jump box only)"
+    ],
+    splunk:`index=wineventlog EventCode=4624 Logon_Type=10\n| where NOT src_ip IN ("10.0.1.50","10.0.1.51")\n| stats count by src_ip, dest, Account_Name, _time\n| sort -_time`,
+    kql:`DeviceLogonEvents\n| where LogonType == "RemoteInteractive"\n| where RemoteIP !in ("10.0.1.50","10.0.1.51")\n| project Timestamp, DeviceName, AccountName, RemoteIP, LogonType`,
+    tools:["Sentinel","Splunk","CrowdStrike","Windows Event Forwarding"]
+  },
+  {
+    id:"T1486",name:"Data Encrypted for Impact",tactic:"Impact",severity:"High",automation:"Partial",
+    desc:"Adversaries encrypt data on target systems to disrupt availability — ransomware. May encrypt local files, network shares, and backups.",
+    detection:"Monitor for mass file rename events (entropy-based), volume shadow copy deletion, and known ransomware process behaviours. EDR behavioural detections are critical.",
+    investigation:[
+      "Identify the ransomware variant from the ransom note, encrypted file extension, or binary hash",
+      "Determine patient zero — which endpoint was first encrypted?",
+      "Map the blast radius — which network shares and endpoints are affected?",
+      "Check for data exfiltration prior to encryption (double extortion)",
+      "Identify the initial access vector (phishing, RDP, vulnerability exploitation)",
+      "Determine if backups are intact and accessible"
+    ],
+    containment:[
+      "Isolate all affected endpoints from the network IMMEDIATELY",
+      "Disable the compromised accounts used for lateral spread",
+      "Block the ransomware binary hash and C2 indicators across all endpoints",
+      "Preserve encrypted systems for potential decryption key recovery",
+      "Engage incident response retainer and legal counsel",
+      "Do NOT pay the ransom without consulting legal and your insurer"
+    ],
+    splunk:`index=sysmon EventCode=11\n| where match(TargetFilename, "\\\\.(encrypted|locked|crypt|ransom)")\n| stats dc(TargetFilename) as file_count by Computer, Image\n| where file_count > 50`,
+    kql:`DeviceFileEvents\n| where ActionType == "FileRenamed"\n| summarize RenamedFiles=count() by DeviceName, InitiatingProcessFileName, bin(Timestamp, 5m)\n| where RenamedFiles > 100`,
+    tools:["CrowdStrike","SentinelOne","Microsoft Defender","Splunk","Sentinel"]
+  },
+  {
+    id:"T1078",name:"Valid Accounts",tactic:"Defense Evasion",severity:"High",automation:"Partial",
+    desc:"Adversaries use legitimate credentials (stolen, purchased, or default) to blend in with normal activity. Extremely difficult to detect without behavioural analysis.",
+    detection:"Monitor for impossible travel, unusual login times, logins from new devices/locations, and privilege escalation from compromised accounts. UEBA is critical.",
+    investigation:[
+      "Review the login history for the account — any impossible travel or geo-anomalies?",
+      "Check the device fingerprint — is this a known/enrolled device?",
+      "Compare login times against the user's normal pattern (baseline from past 30 days)",
+      "Look for MFA bypasses or legacy authentication usage",
+      "Check if the account has been seen in credential dumps (Have I Been Pwned, dark web monitoring)",
+      "Review what the account accessed after login — any unusual resources?"
+    ],
+    containment:[
+      "Force password reset and revoke all active sessions/tokens",
+      "Re-enrol MFA (assume existing MFA device may be compromised)",
+      "Disable legacy authentication protocols for the account",
+      "Review and remove any new inbox rules, OAuth apps, or delegates added",
+      "Place the account on heightened monitoring for 30 days"
+    ],
+    splunk:`index=azure sourcetype=azure:aad:signin\n| iplocation src_ip\n| where Country!="AU"\n| stats count by user, src_ip, Country, app\n| sort -count`,
+    kql:`SigninLogs\n| where ResultType == 0\n| where Location !in ("AU","NZ")\n| project TimeGenerated, UserPrincipalName, IPAddress, Location, AppDisplayName, DeviceDetail`,
+    tools:["Azure AD","Sentinel","Splunk","CrowdStrike Falcon Identity","Okta"]
+  },
+  {
+    id:"T1190",name:"Exploit Public-Facing Application",tactic:"Initial Access",severity:"High",automation:"Partial",
+    desc:"Adversaries exploit vulnerabilities in internet-facing applications (web apps, VPNs, firewalls) to gain initial access. Includes SQLi, RCE, and auth bypasses.",
+    detection:"Monitor WAF logs for exploitation patterns, IDS/IPS alerts, and application error spikes. Correlate with vulnerability scan data and patch status.",
+    investigation:[
+      "Identify the exploited vulnerability (CVE) from WAF/IDS alerts or application logs",
+      "Determine if exploitation was successful (check for post-exploitation indicators on the server)",
+      "Review the source IP — is it a known scanner, APT infrastructure, or proxy?",
+      "Check the application's patch level against the exploited vulnerability",
+      "Look for webshells, reverse shells, or new processes on the affected server",
+      "Review network connections from the server for C2 beaconing"
+    ],
+    containment:[
+      "Apply the security patch or virtual patch (WAF rule) immediately",
+      "Block the attacking IP(s) at the WAF and firewall",
+      "Isolate the affected server if post-exploitation activity is confirmed",
+      "Rotate all application credentials and API keys on the server",
+      "Check for data exfiltration from the application database"
+    ],
+    splunk:`index=waf sourcetype=waf_logs\n| where action="blocked" OR severity="critical"\n| stats count by src_ip, uri_path, attack_type, rule_id\n| where count > 10\n| sort -count`,
+    kql:`AzureDiagnostics\n| where ResourceType == "APPLICATIONGATEWAYS"\n| where action_s == "Blocked"\n| summarize count() by clientIp_s, requestUri_s, ruleSetType_s\n| order by count_ desc`,
+    tools:["AWS WAF","Azure WAF","Cloudflare","ModSecurity","Splunk","Sentinel"]
+  },
+  {
+    id:"T1047",name:"Windows Management Instrumentation",tactic:"Execution",severity:"Medium",automation:"Full",
+    desc:"Adversaries use WMI for execution of commands and payloads on local and remote systems. WMI provides a powerful interface for system management abuse.",
+    detection:"Monitor for WMI process creation events (Event ID 4688 / Sysmon 1 with wmiprvse.exe as parent), WMI event subscriptions (Sysmon 19-21), and remote WMI connections.",
+    investigation:[
+      "Identify the WMI command or query executed (process command line)",
+      "Check if WMI was used locally or remotely (look for DCOM connections on port 135)",
+      "Determine the user context running the WMI command",
+      "Check for WMI event subscriptions used for persistence (Sysmon Event ID 19-21)",
+      "Review if the WMI activity correlates with legitimate admin tools (SCCM, etc.)",
+      "Look for downstream process execution spawned by wmiprvse.exe"
+    ],
+    containment:[
+      "Kill the WMI provider host process if malicious activity confirmed",
+      "Remove any malicious WMI event subscriptions",
+      "Restrict remote WMI access via Windows Firewall rules",
+      "Disable WMI for non-admin users if feasible",
+      "Block the remote source IP if lateral WMI execution detected"
+    ],
+    splunk:`index=sysmon EventCode=1 ParentImage="*\\\\wmiprvse.exe"\n| where NOT match(Image, "(?i)(sccm|configmgr|monitoring)")\n| table _time, Computer, User, Image, CommandLine, ParentCommandLine`,
+    kql:`DeviceProcessEvents\n| where InitiatingProcessFileName =~ "wmiprvse.exe"\n| where FileName !in~ ("mofcomp.exe","WmiApSrv.exe")\n| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine`,
+    tools:["Sysmon","Splunk","Sentinel","CrowdStrike","Velociraptor"]
+  },
+  {
+    id:"T1547.001",name:"Registry Run Keys / Startup Folder",tactic:"Persistence",severity:"Medium",automation:"Full",
+    desc:"Adversaries add programs to registry run keys or startup folders to execute malicious code at system boot or user logon for persistence.",
+    detection:"Monitor registry modifications to Run/RunOnce keys (Sysmon Event ID 13) and file writes to Startup folders. Alert on non-standard binaries added to autorun locations.",
+    investigation:[
+      "Identify the registry key modified and the value data (binary path)",
+      "Check the binary referenced — is it signed? Known hash?",
+      "Determine which process made the registry modification",
+      "Review the user context and whether it aligns with legitimate software installs",
+      "Run Autoruns or similar tool on the endpoint for a full persistence enumeration",
+      "Check if the same persistence was deployed to other endpoints"
+    ],
+    containment:[
+      "Remove the malicious registry value",
+      "Delete or quarantine the referenced binary",
+      "Block the binary hash across EDR fleet",
+      "Run a full persistence scan on the affected endpoint",
+      "Monitor for re-creation of the registry key"
+    ],
+    splunk:`index=sysmon EventCode=13\n| where match(TargetObject, "(?i)(\\\\Run\\\\|\\\\RunOnce\\\\|Startup)")\n| where NOT match(Details, "(?i)(microsoft|adobe|google|zoom)")\n| table _time, Computer, User, TargetObject, Details, Image`,
+    kql:`DeviceRegistryEvents\n| where RegistryKey has_any ("Run","RunOnce")\n| where RegistryValueData !has_any ("Microsoft","Adobe","Google")\n| project Timestamp, DeviceName, AccountName, RegistryKey, RegistryValueData, InitiatingProcessFileName`,
+    tools:["Sysmon","Autoruns","Splunk","Sentinel","CrowdStrike"]
+  },
+  {
+    id:"T1071.001",name:"Application Layer Protocol: Web",tactic:"Command and Control",severity:"High",automation:"Partial",
+    desc:"Adversaries use HTTP/S for C2 communications, blending in with legitimate web traffic. Includes beaconing, data exfiltration, and command retrieval over web protocols.",
+    detection:"Monitor for beaconing patterns (regular interval callbacks), unusual user-agents, connections to newly registered domains, and high-entropy DNS queries. Proxy/firewall logs are key.",
+    investigation:[
+      "Identify the suspicious domain/IP from network logs or EDR alerts",
+      "Check domain registration date, WHOIS info, and reputation (DomainTools, VirusTotal)",
+      "Analyse the beacon pattern — is it regular interval with jitter?",
+      "Inspect the HTTP headers and payload if SSL inspection is enabled",
+      "Identify all endpoints communicating with the suspicious C2",
+      "Check the originating process making the connections (EDR process-to-network mapping)"
+    ],
+    containment:[
+      "Block the C2 domain/IP at firewall, proxy, and DNS sinkhole",
+      "Isolate all endpoints communicating with the C2",
+      "Extract and block additional IOCs from the C2 infrastructure",
+      "Submit samples to threat intel sharing platforms",
+      "Hunt for additional C2 channels the adversary may have established"
+    ],
+    splunk:`index=proxy\n| stats count, dc(src_ip) as unique_hosts, avg(bytes_out) as avg_bytes by dest_domain\n| where count > 100 AND unique_hosts < 3\n| lookup whois_lookup domain AS dest_domain OUTPUT creation_date\n| where creation_date > relative_time(now(), "-30d")`,
+    kql:`DeviceNetworkEvents\n| where RemoteUrl !has_any ("microsoft.com","google.com","amazonaws.com")\n| summarize BeaconCount=count(), AvgInterval=avg(datetime_diff('second',Timestamp, prev(Timestamp))) by RemoteUrl, DeviceName\n| where BeaconCount > 50`,
+    tools:["Palo Alto","Zscaler","Splunk","Sentinel","CrowdStrike","VirusTotal"]
+  },
+  {
+    id:"T1048",name:"Exfiltration Over Alternative Protocol",tactic:"Exfiltration",severity:"High",automation:"Partial",
+    desc:"Adversaries exfiltrate data over protocols like DNS, ICMP, or encrypted channels to bypass traditional network monitoring focused on HTTP/S.",
+    detection:"Monitor for unusually large DNS queries (DNS tunnelling), ICMP payload anomalies, and encrypted traffic to unusual ports. DLP and CASB solutions provide coverage.",
+    investigation:[
+      "Identify the protocol used for exfiltration (DNS, ICMP, FTP, etc.)",
+      "Analyse the data volume transferred and duration",
+      "Determine the destination — is it a known cloud service or suspicious infrastructure?",
+      "Check the source endpoint for data staging activities prior to exfiltration",
+      "Review what data was accessible to the compromised account",
+      "Check for encoding/encryption of the exfiltrated data (Base64 in DNS queries, etc.)"
+    ],
+    containment:[
+      "Block the exfiltration destination at all network egress points",
+      "Isolate the source endpoint",
+      "Restrict DNS to approved resolvers only",
+      "Enable DLP controls on the affected data repositories",
+      "Engage legal for breach notification assessment"
+    ],
+    splunk:`index=dns\n| eval query_len=len(query)\n| where query_len > 50\n| stats count, avg(query_len) as avg_len by src_ip, query_domain\n| where count > 100 AND avg_len > 60`,
+    kql:`DnsEvents\n| where strlen(Name) > 50\n| summarize QueryCount=count(), AvgLen=avg(strlen(Name)) by ClientIP, Name\n| where QueryCount > 50 and AvgLen > 60`,
+    tools:["Splunk","Sentinel","Palo Alto","Infoblox","Zscaler"]
+  },
+  {
+    id:"T1055",name:"Process Injection",tactic:"Defense Evasion",severity:"High",automation:"Full",
+    desc:"Adversaries inject code into legitimate processes to evade defences and elevate privileges. Techniques include DLL injection, process hollowing, and APC injection.",
+    detection:"Monitor for suspicious cross-process memory operations (Sysmon Event ID 8 — CreateRemoteThread, Event ID 10 — ProcessAccess with write permissions). EDR behavioural detections are key.",
+    investigation:[
+      "Identify the source process performing the injection (Sysmon Event ID 8 or 10)",
+      "Determine the target process — is it a common injection target (explorer.exe, svchost.exe)?",
+      "Check the source process binary hash and signing status",
+      "Review the injection technique used (CreateRemoteThread, NtMapViewOfSection, etc.)",
+      "Analyse memory of the target process for injected code",
+      "Correlate with subsequent network or file activity from the injected process"
+    ],
+    containment:[
+      "Kill the source process (the injector)",
+      "Kill and restart the injected target process",
+      "Block the source binary hash across EDR",
+      "Capture memory dump of the injected process for forensic analysis",
+      "Scan the endpoint for additional injected processes"
+    ],
+    splunk:`index=sysmon EventCode=8\n| where NOT match(SourceImage, "(?i)(csrss|services|lsass|svchost)")\n| table _time, Computer, SourceImage, TargetImage, StartFunction, SourceUser`,
+    kql:`DeviceEvents\n| where ActionType in ("CreateRemoteThreadApiCall","NtAllocateVirtualMemoryRemoteApiCall")\n| project Timestamp, DeviceName, InitiatingProcessFileName, FileName, AdditionalFields`,
+    tools:["Sysmon","CrowdStrike","SentinelOne","Splunk","Sentinel","Volatility"]
+  },
+  {
+    id:"T1110",name:"Brute Force",tactic:"Credential Access",severity:"Medium",automation:"Full",
+    desc:"Adversaries systematically guess passwords through brute force, password spraying, or credential stuffing attacks against authentication services.",
+    detection:"Monitor for high volumes of failed authentication events (Event ID 4625), account lockouts (4740), and distributed login failures across multiple accounts from single sources.",
+    investigation:[
+      "Identify the source IP(s) and target account(s) from failed login events",
+      "Determine the attack type: brute force (single account, many passwords) or spray (many accounts, few passwords)",
+      "Check if any accounts were successfully compromised (failed logins followed by success)",
+      "Review the source IP reputation and geolocation",
+      "Check if the targeted accounts exist in known credential dumps",
+      "Assess the authentication service targeted (RDP, OWA, VPN, cloud SSO)"
+    ],
+    containment:[
+      "Block the attacking source IP(s) at the firewall",
+      "Lock out targeted accounts that show signs of compromise",
+      "Force MFA re-enrollment for any account with a successful login from the attacker",
+      "Implement progressive lockout policies if not already in place",
+      "Add the source IPs to a threat intelligence blocklist"
+    ],
+    splunk:`index=wineventlog EventCode=4625\n| stats count by src_ip, TargetUserName, _time\n| where count > 20\n| sort -count`,
+    kql:`SigninLogs\n| where ResultType == 50126\n| summarize FailCount=count() by IPAddress, UserPrincipalName, bin(TimeGenerated, 5m)\n| where FailCount > 10`,
+    tools:["Azure AD","Splunk","Sentinel","CrowdStrike Falcon Identity","Duo"]
+  },
+  {
+    id:"T1070.001",name:"Clear Windows Event Logs",tactic:"Defense Evasion",severity:"High",automation:"Full",
+    desc:"Adversaries clear Windows event logs to remove evidence of their activities. Clearing Security, System, or PowerShell logs is a strong indicator of compromise.",
+    detection:"Monitor for Event ID 1102 (Security log cleared) and 104 (System log cleared). These events are generated even when the log is cleared, providing a reliable alert.",
+    investigation:[
+      "Identify which log was cleared and when (Event ID 1102 for Security, 104 for System)",
+      "Determine the user account that cleared the logs",
+      "Check what activity occurred on the host BEFORE the logs were cleared",
+      "Review other log sources (Sysmon, EDR, network) for the gap period",
+      "Assess whether log clearing correlates with other suspicious activity on the host",
+      "Check if log forwarding captured events before they were cleared (SIEM should have copies)"
+    ],
+    containment:[
+      "Isolate the endpoint for investigation",
+      "Disable the account that cleared the logs",
+      "Verify that SIEM has retained copies of the cleared logs",
+      "Enable protected event log forwarding to prevent future clearing",
+      "Conduct full forensic analysis of the endpoint"
+    ],
+    splunk:`index=wineventlog (EventCode=1102 OR EventCode=104)\n| table _time, ComputerName, EventCode, Account_Name, Message`,
+    kql:`SecurityEvent\n| where EventID in (1102, 104)\n| project TimeGenerated, Computer, EventID, Account, Activity`,
+    tools:["Splunk","Sentinel","Sysmon","Windows Event Forwarding"]
+  },
+  {
+    id:"T1027",name:"Obfuscated Files or Information",tactic:"Defense Evasion",severity:"Medium",automation:"Partial",
+    desc:"Adversaries obfuscate payloads and commands to evade detection. Includes Base64 encoding, string concatenation, XOR encryption, and packing/crypting executables.",
+    detection:"Monitor for high-entropy files, encoded command-line parameters, and packed executables. AMSI provides visibility into de-obfuscated script content.",
+    investigation:[
+      "Identify the obfuscation technique used (encoding, packing, encryption)",
+      "Attempt to de-obfuscate the content (CyberChef, AMSI logs, sandbox detonation)",
+      "Analyse the de-obfuscated payload for functionality and IOCs",
+      "Determine the delivery mechanism for the obfuscated content",
+      "Check if the obfuscation method matches known threat actor TTPs",
+      "Review related process execution and network activity"
+    ],
+    containment:[
+      "Quarantine the obfuscated file/payload",
+      "Block the file hash (both obfuscated and de-obfuscated versions)",
+      "Hunt for the same obfuscation pattern across the environment",
+      "Submit to sandbox and threat intel platforms",
+      "Review and strengthen AMSI and script-block logging coverage"
+    ],
+    splunk:`index=sysmon EventCode=1\n| where match(CommandLine, "(?i)(-enc|-encodedcommand|frombase64|convert.*byte)")\n| eval decoded=base64decode(CommandLine)\n| table _time, Computer, User, CommandLine, decoded`,
+    kql:`DeviceProcessEvents\n| where ProcessCommandLine matches regex @"(?i)(encodedcommand|frombase64|char\\[\\])"  \n| project Timestamp, DeviceName, ProcessCommandLine, AccountName`,
+    tools:["CyberChef","AMSI","Any.Run","Splunk","Sentinel"]
+  },
+  {
+    id:"T1098",name:"Account Manipulation",tactic:"Persistence",severity:"High",automation:"Partial",
+    desc:"Adversaries modify accounts to maintain access — adding credentials, changing permissions, adding MFA devices, or modifying group memberships on compromised accounts.",
+    detection:"Monitor for account modification events: password resets, MFA changes, group membership additions (especially privileged groups), and OAuth app consent grants.",
+    investigation:[
+      "Identify the specific modification made (password reset, group addition, MFA change)",
+      "Determine who made the change — was it the account owner or an admin?",
+      "Check if the change was requested through normal IT channels (ticketing system)",
+      "Review if the modified account has elevated privileges",
+      "Look for a chain: compromise → account modification → further access",
+      "Check for OAuth app consent grants or new API permissions added"
+    ],
+    containment:[
+      "Revert the unauthorised account modification",
+      "Force password reset and MFA re-enrollment on the affected account",
+      "Remove any unauthorised group memberships or permissions",
+      "Revoke OAuth apps consented during the compromise window",
+      "Disable the account if the scope of modification is unclear"
+    ],
+    splunk:`index=azure sourcetype=azure:aad:audit\n| where Operation IN ("Add member to role","Add owner to application","Reset user password","Update user")\n| table _time, Actor, Target, Operation, Result`,
+    kql:`AuditLogs\n| where OperationName in ("Add member to role","Add owner to application","Reset password (by admin)")\n| project TimeGenerated, InitiatedBy, TargetResources, OperationName, Result`,
+    tools:["Azure AD","Sentinel","Splunk","Okta","CyberArk"]
+  },
+  {
+    id:"T1562.001",name:"Disable or Modify Tools",tactic:"Defense Evasion",severity:"High",automation:"Full",
+    desc:"Adversaries disable security tools (AV, EDR, logging) to evade detection. Includes stopping services, uninstalling agents, or modifying security tool configurations.",
+    detection:"Monitor for security service stop events, agent heartbeat gaps, tamper protection alerts, and changes to security tool configurations or exclusion lists.",
+    investigation:[
+      "Identify which security tool was disabled or modified",
+      "Determine the process and user that made the change",
+      "Check if tamper protection was triggered (most EDR solutions log this)",
+      "Review what happened AFTER the security tool was disabled",
+      "Assess whether this was legitimate admin maintenance (check change tickets)",
+      "Check for agent heartbeat gaps across the fleet"
+    ],
+    containment:[
+      "Re-enable/reinstall the disabled security tool immediately",
+      "Enable tamper protection if not already active",
+      "Isolate the endpoint for investigation",
+      "Block the process that disabled the security tool",
+      "Conduct a full endpoint scan once tools are restored"
+    ],
+    splunk:`index=sysmon EventCode=1\n| where match(CommandLine, "(?i)(stop.*defender|uninstall.*agent|disable.*firewall|sc stop)")\n| table _time, Computer, User, CommandLine, ParentCommandLine`,
+    kql:`DeviceProcessEvents\n| where ProcessCommandLine has_any ("stop MsSense","disable-windowsoptionalfeature","sc stop","net stop")\n| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessFileName`,
+    tools:["CrowdStrike","SentinelOne","Microsoft Defender","Splunk","Sentinel"]
+  },
+  {
+    id:"T1136",name:"Create Account",tactic:"Persistence",severity:"Medium",automation:"Full",
+    desc:"Adversaries create new accounts (local, domain, or cloud) to maintain persistent access. New accounts may be given elevated privileges.",
+    detection:"Monitor for account creation events (Event ID 4720 for local/domain, Azure AD audit logs for cloud). Alert on accounts created outside of normal IT provisioning workflows.",
+    investigation:[
+      "Identify the new account name and where it was created (local, AD, cloud)",
+      "Determine who created the account (source admin account)",
+      "Check if the creation was part of a legitimate provisioning workflow (HR/IT ticket)",
+      "Review what permissions/groups were assigned to the new account",
+      "Check if the new account has been used to login anywhere",
+      "Look for naming patterns that mimic legitimate accounts"
+    ],
+    containment:[
+      "Disable the unauthorised account immediately",
+      "Remove any group memberships and permissions",
+      "Block the account from authentication at the identity provider",
+      "Review the admin account that created it for signs of compromise",
+      "Audit all recent account creations for similar suspicious patterns"
+    ],
+    splunk:`index=wineventlog EventCode=4720\n| where NOT match(SubjectUserName, "(?i)(sccm|svc-provisioning|servicedesk)")\n| table _time, SubjectUserName, TargetUserName, ComputerName`,
+    kql:`AuditLogs\n| where OperationName == "Add user"\n| where InitiatedBy !has_any ("SCIM","Provisioning")\n| project TimeGenerated, InitiatedBy, TargetResources, OperationName`,
+    tools:["Active Directory","Azure AD","Splunk","Sentinel","CyberArk"]
+  },
+  {
+    id:"T1204.002",name:"User Execution: Malicious File",tactic:"Execution",severity:"Medium",automation:"Partial",
+    desc:"Adversaries rely on users opening malicious files (executables, scripts, Office documents with macros) to execute their payloads. Social engineering drives the click.",
+    detection:"Monitor for suspicious child processes spawned by user applications (Office → cmd/PowerShell, browser → executable). Track file downloads followed by execution.",
+    investigation:[
+      "Identify the malicious file (name, hash, file type, origin URL)",
+      "Determine how the file arrived (email, web download, USB, file share)",
+      "Check the file in a sandbox and against threat intel",
+      "Identify the user who executed the file and their role",
+      "Review what happened after execution (child processes, network connections, file writes)",
+      "Check if other users received or executed the same file"
+    ],
+    containment:[
+      "Kill the malicious process and its child process tree",
+      "Quarantine the file on the endpoint and across the fleet",
+      "Block the file hash in EDR",
+      "Reset credentials for the executing user",
+      "Block the source URL/domain if delivered via web"
+    ],
+    splunk:`index=sysmon EventCode=1\n| where match(ParentImage, "(?i)(winword|excel|powerpnt|outlook|chrome|firefox|edge)")\n| where match(Image, "(?i)(cmd|powershell|wscript|cscript|mshta|rundll32)")\n| table _time, Computer, User, ParentImage, Image, CommandLine`,
+    kql:`DeviceProcessEvents\n| where InitiatingProcessFileName in~ ("WINWORD.EXE","EXCEL.EXE","OUTLOOK.EXE")\n| where FileName in~ ("cmd.exe","powershell.exe","wscript.exe","mshta.exe")\n| project Timestamp, DeviceName, AccountName, InitiatingProcessFileName, FileName, ProcessCommandLine`,
+    tools:["CrowdStrike","Microsoft Defender","Sysmon","Splunk","Sentinel"]
+  },
+  {
+    id:"T1018",name:"Remote System Discovery",tactic:"Discovery",severity:"Low",automation:"Full",
+    desc:"Adversaries discover remote systems on the network for targeting. Uses net view, ping sweeps, AD queries, ARP scans, and port scans.",
+    detection:"Monitor for reconnaissance commands (net view, nltest, dsquery), ping sweeps (high volume ICMP), and port scanning activity from endpoints.",
+    investigation:[
+      "Identify the discovery commands or scanning activity",
+      "Determine the user and process performing the discovery",
+      "Assess whether this is normal admin activity or post-compromise reconnaissance",
+      "Check the timing — does it correlate with other suspicious events on this host?",
+      "Review what targets were discovered and if any were subsequently accessed",
+      "Compare against baseline admin activity for this user/host"
+    ],
+    containment:[
+      "Kill the scanning/discovery process",
+      "Restrict the user account's network access if compromise is suspected",
+      "Enable micro-segmentation to limit discovery scope",
+      "Add the host to heightened monitoring",
+      "Review network firewall rules for unnecessary lateral access"
+    ],
+    splunk:`index=sysmon EventCode=1\n| where match(CommandLine, "(?i)(net view|net group|nltest|dsquery|ping -n|arp -a)")\n| table _time, Computer, User, CommandLine, ParentImage`,
+    kql:`DeviceProcessEvents\n| where ProcessCommandLine has_any ("net view","net group","nltest","dsquery","arp -a")\n| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessFileName`,
+    tools:["Sysmon","Splunk","Sentinel","CrowdStrike","Network IDS"]
+  },
+  {
+    id:"T1082",name:"System Information Discovery",tactic:"Discovery",severity:"Low",automation:"Full",
+    desc:"Adversaries gather system information (OS version, architecture, hostname, domain membership) during post-compromise reconnaissance to plan further attacks.",
+    detection:"Monitor for enumeration commands: systeminfo, hostname, whoami, ipconfig, wmic os. Context is key — these are normal admin commands but suspicious in chains.",
+    investigation:[
+      "Check the full chain of commands executed (not just one — look for recon clusters)",
+      "Determine the parent process launching the enumeration commands",
+      "Assess the user context — is this a regular user running admin enumeration?",
+      "Check timing against initial access indicators on this host",
+      "Review if the same pattern appears on other hosts (automated recon script)",
+      "Look for data staging of the enumeration output"
+    ],
+    containment:[
+      "Kill the process tree if part of an automated recon script",
+      "Restrict the compromised account",
+      "Increase monitoring verbosity on the endpoint",
+      "No immediate network isolation needed for discovery alone unless part of active compromise"
+    ],
+    splunk:`index=sysmon EventCode=1\n| where match(CommandLine, "(?i)(systeminfo|whoami|ipconfig /all|net config|wmic os)")\n| transaction Computer maxspan=5m\n| where eventcount > 3\n| table _time, Computer, User, CommandLine`,
+    kql:`DeviceProcessEvents\n| where ProcessCommandLine has_any ("systeminfo","whoami /all","ipconfig /all","wmic os")\n| summarize Commands=make_set(ProcessCommandLine), CmdCount=count() by DeviceName, AccountName, bin(Timestamp, 5m)\n| where CmdCount > 3`,
+    tools:["Sysmon","Splunk","Sentinel","CrowdStrike","Velociraptor"]
+  },
+  {
+    id:"T1105",name:"Ingress Tool Transfer",tactic:"Command and Control",severity:"Medium",automation:"Partial",
+    desc:"Adversaries transfer tools and payloads from external systems into the compromised environment. Uses certutil, BITSAdmin, PowerShell downloads, and curl/wget.",
+    detection:"Monitor for known download utilities (certutil, bitsadmin, PowerShell) fetching content from external URLs. Track unusual file writes to temp/user directories following network connections.",
+    investigation:[
+      "Identify the download utility used and the source URL",
+      "Retrieve and analyse the downloaded file (hash, sandbox, threat intel)",
+      "Check the source URL/domain reputation and registration date",
+      "Determine what happened after the file was downloaded (execution, persistence)",
+      "Identify the user and process chain that initiated the download",
+      "Check if the same URL was accessed from other endpoints"
+    ],
+    containment:[
+      "Block the source URL/domain at proxy and firewall",
+      "Quarantine the downloaded file across all endpoints",
+      "Block the file hash in EDR",
+      "Restrict download utilities via AppLocker/WDAC if not business-critical",
+      "Isolate the endpoint if further post-exploitation activity detected"
+    ],
+    splunk:`index=sysmon EventCode=1\n| where match(CommandLine, "(?i)(certutil.*urlcache|bitsadmin.*transfer|invoke-webrequest|wget|curl.*http)")\n| table _time, Computer, User, CommandLine, ParentImage`,
+    kql:`DeviceProcessEvents\n| where ProcessCommandLine has_any ("certutil","bitsadmin /transfer","Invoke-WebRequest","wget","curl")\n| where ProcessCommandLine has "http"\n| project Timestamp, DeviceName, AccountName, ProcessCommandLine`,
+    tools:["CrowdStrike","Sysmon","Splunk","Sentinel","Proxy Logs"]
+  },
+  {
+    id:"T1543.003",name:"Create or Modify System Service",tactic:"Persistence",severity:"Medium",automation:"Full",
+    desc:"Adversaries create or modify Windows services for persistence and privilege escalation. Services run as SYSTEM by default, providing high-privilege execution.",
+    detection:"Monitor for new service installations (Event ID 7045), service configuration changes (sc config), and services running from unusual paths (temp, user directories).",
+    investigation:[
+      "Examine the new service details: name, binary path, start type, account (Event ID 7045)",
+      "Check if the service binary is signed and its hash reputation",
+      "Determine who created the service (correlate 7045 with logon events)",
+      "Check the binary path — is it in a standard location or a temp/user directory?",
+      "Review the service start type — is it set to auto-start?",
+      "Look for similar suspicious services on other endpoints"
+    ],
+    containment:[
+      "Stop and disable the malicious service",
+      "Delete the service (sc delete <service_name>)",
+      "Remove/quarantine the service binary",
+      "Block the binary hash across EDR",
+      "Audit all services on the affected host for additional persistence"
+    ],
+    splunk:`index=wineventlog EventCode=7045\n| where NOT match(Service_File_Name, "(?i)(microsoft|windows|program files)")\n| table _time, ComputerName, Service_Name, Service_File_Name, Service_Start_Type, Service_Account`,
+    kql:`DeviceEvents\n| where ActionType == "ServiceInstalled"\n| where AdditionalFields !has_any ("Microsoft","Windows","Program Files")\n| project Timestamp, DeviceName, AdditionalFields`,
+    tools:["Sysmon","Splunk","Sentinel","Autoruns","CrowdStrike"]
+  },
+  {
+    id:"T1567",name:"Exfiltration Over Web Service",tactic:"Exfiltration",severity:"High",automation:"Partial",
+    desc:"Adversaries exfiltrate data to legitimate cloud services (Google Drive, Dropbox, OneDrive, Mega, Pastebin) to blend in with normal traffic and bypass DLP.",
+    detection:"Monitor for unusual upload volumes to cloud storage services, new cloud apps accessed by users, and large file uploads detected by CASB or proxy logs.",
+    investigation:[
+      "Identify the cloud service used for exfiltration",
+      "Determine the volume of data uploaded and the time window",
+      "Identify the user account and endpoint performing the upload",
+      "Check if the cloud service is sanctioned for business use",
+      "Review what files were accessed/staged before the upload",
+      "Check for CASB alerts or DLP policy violations"
+    ],
+    containment:[
+      "Block the cloud service URL if not business-sanctioned",
+      "Restrict the user's internet access pending investigation",
+      "Revoke the user's cloud service OAuth tokens",
+      "Enable DLP controls for sensitive data classifications",
+      "Engage legal for breach notification assessment"
+    ],
+    splunk:`index=proxy\n| where match(dest_domain, "(?i)(drive.google|dropbox|mega.nz|pastebin|transfer.sh)")\n| stats sum(bytes_out) as total_bytes by src_ip, dest_domain, user\n| where total_bytes > 104857600\n| eval MB=round(total_bytes/1048576,2)`,
+    kql:`DeviceNetworkEvents\n| where RemoteUrl has_any ("drive.google.com","dropbox.com","mega.nz","pastebin.com")\n| summarize TotalBytes=sum(SentBytes) by DeviceName, RemoteUrl, InitiatingProcessAccountName\n| where TotalBytes > 104857600`,
+    tools:["CASB","Zscaler","Netskope","Splunk","Sentinel","Microsoft Defender for Cloud Apps"]
+  }
+];
+
+// State
+let activeFilters = { tactic: 'all', severity: 'all', automation: 'all' };
+let searchQuery = '';
+
+// Extract unique tactics
+const allTactics = [...new Set(PLAYBOOKS.map(p => p.tactic))].sort();
+
+// Build tactic filters
+function buildTacticFilters() {
+    const container = document.getElementById('tacticFilters');
+    container.innerHTML = '<button class="filter-btn active" data-tactic="all">All</button>' +
+        allTactics.map(t => `<button class="filter-btn" data-tactic="${t}">${t}</button>`).join('');
+}
+
+// Render cards
+function renderCards() {
+    const grid = document.getElementById('cardsGrid');
+    const filtered = PLAYBOOKS.filter(p => {
+        const matchTactic = activeFilters.tactic === 'all' || p.tactic === activeFilters.tactic;
+        const matchSeverity = activeFilters.severity === 'all' || p.severity === activeFilters.severity;
+        const matchAuto = activeFilters.automation === 'all' || p.automation === activeFilters.automation;
+        const q = searchQuery.toLowerCase();
+        const matchSearch = !q || 
+            p.id.toLowerCase().includes(q) || 
+            p.name.toLowerCase().includes(q) || 
+            p.tactic.toLowerCase().includes(q) || 
+            p.desc.toLowerCase().includes(q) ||
+            p.detection.toLowerCase().includes(q) ||
+            p.tools.join(' ').toLowerCase().includes(q);
+        return matchTactic && matchSeverity && matchAuto && matchSearch;
+    });
+
+    document.getElementById('visibleCount').textContent = filtered.length;
+    document.getElementById('resultsCount').textContent = `Showing ${filtered.length} of ${PLAYBOOKS.length} playbooks`;
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-muted);font-family:var(--font-mono)">No playbooks match your filters. Try broadening your search.</div>';
+        return;
+    }
+
+    grid.innerHTML = filtered.map(p => {
+        const autoLevel = p.automation === 'Full' ? 3 : p.automation === 'Partial' ? 2 : 1;
+        const autoDots = Array.from({length:3}, (_,i) => `<div class="dot ${i < autoLevel ? 'filled' : ''}"></div>`).join('');
+        return `
+        <div class="playbook-card" data-id="${p.id}" onclick="toggleCard(this)">
+            <div class="card-header">
+                <span class="technique-id">${p.id}</span>
+                <span class="severity-badge severity-${p.severity.toLowerCase()}">${p.severity}</span>
+            </div>
+            <div class="card-title">${p.name}</div>
+            <div class="card-tactic">${p.tactic}</div>
+            <div class="card-desc">${p.desc}</div>
+            <div class="card-meta">
+                <span class="meta-tag">⚡ ${p.automation} Automation <span class="automation-indicator">${autoDots}</span></span>
+                <span class="meta-tag">🔧 ${p.tools.length} tools</span>
+            </div>
+            <div class="expand-hint">Click to expand playbook →</div>
+            <div class="playbook-detail">
+                <div class="detail-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h4>🔍 Detection Logic</h4>
+                            <p style="font-size:.85rem;color:var(--text-grey);line-height:1.6">${p.detection}</p>
+                        </div>
+                        <div class="detail-section">
+                            <h4>📋 Investigation Playbook</h4>
+                            <ol>${p.investigation.map(s => `<li>${s}</li>`).join('')}</ol>
+                        </div>
+                        <div class="detail-section">
+                            <h4>🛡️ Containment Actions</h4>
+                            <ol>${p.containment.map(s => `<li>${s}</li>`).join('')}</ol>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-section">
+                            <h4>⚡ Automation Level</h4>
+                            <p style="font-size:.85rem;color:var(--text-grey);margin-bottom:.5rem">${p.automation === 'Full' ? 'This playbook can be fully automated end-to-end in a SOAR platform.' : p.automation === 'Partial' ? 'Detection and initial triage can be automated. Investigation and containment require analyst judgment.' : 'This playbook requires manual analyst investigation and decision-making.'}</p>
+                            <div class="automation-bar"><div class="automation-fill" style="width:${autoLevel/3*100}%"></div></div>
+                        </div>
+                        <div class="detail-section">
+                            <h4>🔧 Tools & Integrations</h4>
+                            <div class="tools-list">${p.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4>📊 Splunk Query</h4>
+                            <div class="query-block"><button class="copy-btn" onclick="event.stopPropagation();copyQuery(this)">Copy</button><span class="query-label">Splunk SPL</span><code>${escapeHtml(p.splunk)}</code></div>
+                        </div>
+                        <div class="detail-section">
+                            <h4>📊 Sentinel KQL Query</h4>
+                            <div class="query-block"><button class="copy-btn" onclick="event.stopPropagation();copyQuery(this)">Copy</button><span class="query-label">Microsoft Sentinel KQL</span><code>${escapeHtml(p.kql)}</code></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function toggleCard(el) {
+    const wasExpanded = el.classList.contains('expanded');
+    document.querySelectorAll('.playbook-card.expanded').forEach(c => c.classList.remove('expanded'));
+    if (!wasExpanded) {
+        el.classList.add('expanded');
+        setTimeout(() => el.scrollIntoView({behavior:'smooth',block:'nearest'}), 100);
+    }
+}
+
+function copyQuery(btn) {
+    const code = btn.parentElement.querySelector('code').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+}
+
+function handleLeadSubmit() {
+    const email = document.getElementById('leadEmail').value;
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('leadSuccess').style.display = 'block';
+    // In production, this would POST to your email service (ConvertKit, Mailchimp, etc.)
+    console.log('Lead captured:', email);
+}
+
+// Event listeners
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    renderCards();
+});
+
+document.addEventListener('click', (e) => {
+    if (e.target.matches('[data-tactic]')) {
+        activeFilters.tactic = e.target.dataset.tactic;
+        document.querySelectorAll('[data-tactic]').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        renderCards();
+    }
+    if (e.target.matches('[data-severity]')) {
+        activeFilters.severity = e.target.dataset.severity;
+        document.querySelectorAll('[data-severity]').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        renderCards();
+    }
+    if (e.target.matches('[data-auto]')) {
+        activeFilters.automation = e.target.dataset.auto;
+        document.querySelectorAll('[data-auto]').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        renderCards();
+    }
+});
+
+// Init
+buildTacticFilters();
+document.querySelector('[data-tactic="all"]').classList.add('active');
+document.querySelector('[data-severity="all"]').classList.add('active');
+document.querySelector('[data-auto="all"]').classList.add('active');
+renderCards();
+</script>
+</body>
+</html>
