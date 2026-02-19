@@ -1,0 +1,950 @@
+---
+layout: null
+title: "Cyber Vendor Pricing Reality Checker | Know What You Should Really Pay"
+description: "Free interactive tool to check real-world pricing for 30+ cybersecurity vendors. Compare EDR, SIEM, MDR, identity, and more by company size. Stop overpaying for security."
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Cyber Vendor Pricing Reality Checker | Know What You Should Really Pay | Dobson Development</title>
+    <meta name="description" content="Free interactive tool to check real-world pricing for 30+ cybersecurity vendors. Compare EDR, SIEM, MDR, identity, and more by company size. Stop overpaying for security.">
+    <meta name="keywords" content="cybersecurity pricing, vendor comparison, EDR pricing, SIEM cost, MDR pricing, CrowdStrike pricing, Splunk cost, security vendor negotiation, cyber procurement">
+    <meta name="author" content="Dobson Development Pty Ltd">
+    <link rel="canonical" href="https://dobsondevelopment.com.au/tools/vendor-pricing-checker">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+    <link rel="apple-touch-icon" href="/assets/images/icon.svg">
+    <meta name="theme-color" content="#0B0C10">
+    <meta name="color-scheme" content="dark">
+
+    <meta property="og:title" content="Cyber Vendor Pricing Reality Checker | Know What You Should Really Pay">
+    <meta property="og:description" content="Real-world pricing ranges for 30+ cybersecurity vendors. Compare by company size, check negotiation tips, and stop overpaying.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dobsondevelopment.com.au/tools/vendor-pricing-checker">
+    <meta property="og:image" content="https://dobsondevelopment.com.au/assets/images/og-default.png">
+    <meta property="og:locale" content="en_AU">
+    <meta property="og:site_name" content="Dobson Development">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RADobson">
+    <meta name="twitter:title" content="Cyber Vendor Pricing Reality Checker">
+    <meta name="twitter:description" content="Real-world pricing for 30+ cyber vendors. Compare, negotiate, stop overpaying.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Cyber Vendor Pricing Reality Checker",
+        "description": "Interactive tool to check real-world pricing for 30+ cybersecurity vendors by company size.",
+        "url": "https://dobsondevelopment.com.au/tools/vendor-pricing-checker",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+        "author": { "@type": "Organization", "name": "Dobson Development Pty Ltd", "url": "https://dobsondevelopment.com.au" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dobsondevelopment.com.au"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://dobsondevelopment.com.au/tools/"},
+            {"@type": "ListItem", "position": 3, "name": "Vendor Pricing Checker", "item": "https://dobsondevelopment.com.au/tools/vendor-pricing-checker"}
+        ]
+    }
+    </script>
+
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/firacode-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Inter'; font-style:normal; font-weight:700; font-display:swap; src:url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Fira Code'; font-style:normal; font-weight:400; font-display:swap; src:url('/assets/fonts/firacode-latin.woff2') format('woff2'); }
+
+        :root {
+            --bg-main: #0B0C10;
+            --bg-secondary: #0f1014;
+            --bg-card: #141419;
+            --accent-neon: #00F0FF;
+            --accent-purple: #BC13FE;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #eab308;
+            --text-white: #FFFFFF;
+            --text-grey: #9ca3af;
+            --text-muted: #6b7280;
+            --border: #1e1e2e;
+            --radius: 12px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-main); color: var(--text-white); line-height: 1.6; min-height: 100vh; }
+        a { color: var(--accent-neon); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* NAV */
+        .top-nav { background: rgba(11,12,16,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0.75rem 1.5rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; }
+        .top-nav .logo { font-weight: 700; font-size: 1.1rem; color: var(--accent-neon); }
+        .top-nav .nav-links { display: flex; gap: 1.5rem; font-size: 0.85rem; }
+        .top-nav .nav-links a { color: var(--text-grey); }
+        .top-nav .nav-links a:hover { color: var(--accent-neon); text-decoration: none; }
+
+        /* HERO */
+        .hero { text-align: center; padding: 3rem 1.5rem 2rem; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 0.75rem; }
+        .hero h1 .neon { color: var(--accent-neon); }
+        .hero h1 .purple { color: var(--accent-purple); }
+        .hero p { color: var(--text-grey); font-size: 1.05rem; max-width: 600px; margin: 0 auto 1.5rem; }
+        .disclaimer-banner { background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.3); border-radius: var(--radius); padding: 0.75rem 1rem; font-size: 0.8rem; color: var(--accent-yellow); max-width: 700px; margin: 0 auto; }
+
+        /* CONTROLS */
+        .controls { max-width: 1200px; margin: 1.5rem auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+        .controls input, .controls select { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-white); padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.9rem; font-family: inherit; outline: none; transition: border-color 0.2s; }
+        .controls input:focus, .controls select:focus { border-color: var(--accent-neon); }
+        .controls input { flex: 1; min-width: 200px; }
+        .controls select { min-width: 160px; }
+        .controls option { background: var(--bg-card); }
+
+        /* TABS */
+        .tab-bar { max-width: 1200px; margin: 1rem auto 0; padding: 0 1.5rem; display: flex; gap: 0.5rem; border-bottom: 1px solid var(--border); overflow-x: auto; }
+        .tab-btn { background: none; border: none; color: var(--text-muted); font-family: inherit; font-size: 0.9rem; padding: 0.6rem 1rem; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--text-grey); }
+        .tab-btn.active { color: var(--accent-neon); border-bottom-color: var(--accent-neon); }
+
+        /* VENDOR GRID */
+        .vendor-grid { max-width: 1200px; margin: 1.5rem auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
+        .vendor-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; transition: border-color 0.2s, transform 0.2s; cursor: pointer; position: relative; }
+        .vendor-card:hover { border-color: var(--accent-purple); transform: translateY(-2px); }
+        .vendor-card.selected { border-color: var(--accent-neon); box-shadow: 0 0 20px rgba(0,240,255,0.1); }
+        .vendor-card .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+        .vendor-card .vendor-name { font-size: 1.1rem; font-weight: 700; }
+        .vendor-card .category-badge { font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 20px; background: rgba(188,19,254,0.15); color: var(--accent-purple); border: 1px solid rgba(188,19,254,0.3); white-space: nowrap; }
+        .vendor-card .pricing-model { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .vendor-card .price-range { font-family: 'Fira Code', monospace; font-size: 1.3rem; font-weight: 700; color: var(--accent-neon); margin-bottom: 0.25rem; }
+        .vendor-card .price-label { font-size: 0.75rem; color: var(--text-muted); }
+        .vendor-card .reality-check { font-size: 0.8rem; color: var(--accent-yellow); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+        .vendor-card .compare-check { position: absolute; top: 0.75rem; right: 0.75rem; width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+        .vendor-card.selected .compare-check { border-color: var(--accent-neon); background: rgba(0,240,255,0.15); color: var(--accent-neon); }
+
+        /* DETAIL MODAL */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
+        .modal-overlay.show { display: flex; }
+        .modal { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+        .modal-close:hover { color: var(--text-white); }
+        .modal h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+        .modal .modal-category { color: var(--accent-purple); font-size: 0.85rem; margin-bottom: 1.25rem; }
+        .modal h3 { font-size: 1rem; color: var(--accent-neon); margin: 1.25rem 0 0.5rem; }
+        .modal .price-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        .modal .price-table th, .modal .price-table td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+        .modal .price-table th { color: var(--text-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .modal .price-table td:last-child { font-family: 'Fira Code', monospace; color: var(--accent-neon); text-align: right; }
+        .modal ul { padding-left: 1.25rem; }
+        .modal li { font-size: 0.85rem; color: var(--text-grey); margin-bottom: 0.35rem; }
+        .modal .tip-box { background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.2); border-radius: 8px; padding: 0.75rem 1rem; margin-top: 0.5rem; }
+        .modal .tip-box li { color: var(--accent-neon); }
+        .modal .reality-note { background: rgba(234,179,8,0.08); border-left: 3px solid var(--accent-yellow); padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.85rem; color: var(--accent-yellow); border-radius: 0 8px 8px 0; }
+        .modal .alt-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .modal .alt-chip { font-size: 0.8rem; padding: 0.25rem 0.7rem; border-radius: 20px; background: rgba(188,19,254,0.1); color: var(--accent-purple); border: 1px solid rgba(188,19,254,0.25); }
+
+        /* COMPARE PANEL */
+        .compare-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(11,12,16,0.97); backdrop-filter: blur(12px); border-top: 1px solid var(--accent-neon); padding: 0.75rem 1.5rem; z-index: 150; }
+        .compare-bar.show { display: flex; align-items: center; justify-content: space-between; }
+        .compare-bar .compare-info { font-size: 0.9rem; color: var(--text-grey); }
+        .compare-bar .compare-info strong { color: var(--accent-neon); }
+        .compare-bar button { background: linear-gradient(135deg, var(--accent-neon), var(--accent-purple)); color: var(--bg-main); border: none; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 700; font-family: inherit; cursor: pointer; font-size: 0.9rem; }
+        .compare-bar .clear-btn { background: transparent; color: var(--text-muted); border: 1px solid var(--border); margin-left: 0.5rem; }
+
+        /* COMPARE VIEW */
+        .compare-view { display: none; max-width: 1200px; margin: 1.5rem auto; padding: 0 1.5rem; }
+        .compare-view.show { display: block; }
+        .compare-view h2 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .compare-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--radius); overflow: hidden; }
+        .compare-table th, .compare-table td { padding: 0.65rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+        .compare-table th { background: var(--bg-secondary); color: var(--text-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .compare-table td:first-child { color: var(--text-grey); font-weight: 600; width: 160px; }
+        .compare-table .price-cell { font-family: 'Fira Code', monospace; color: var(--accent-neon); }
+
+        /* OVERPAYING CALCULATOR */
+        .calculator-section { max-width: 700px; margin: 2rem auto; padding: 0 1.5rem; display: none; }
+        .calculator-section.show { display: block; }
+        .calculator-section h2 { font-size: 1.3rem; margin-bottom: 1rem; text-align: center; }
+        .calc-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+        .calc-form label { display: block; font-size: 0.85rem; color: var(--text-grey); margin-bottom: 0.3rem; }
+        .calc-form select, .calc-form input { width: 100%; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-white); padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.9rem; font-family: inherit; margin-bottom: 1rem; }
+        .calc-form select:focus, .calc-form input:focus { outline: none; border-color: var(--accent-neon); }
+        .calc-form button { width: 100%; background: linear-gradient(135deg, var(--accent-neon), var(--accent-purple)); color: var(--bg-main); border: none; padding: 0.75rem; border-radius: 8px; font-weight: 700; font-family: inherit; cursor: pointer; font-size: 1rem; }
+        .calc-result { margin-top: 1.25rem; padding: 1rem; border-radius: 8px; display: none; text-align: center; }
+        .calc-result.show { display: block; }
+        .calc-result.good { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: var(--accent-green); }
+        .calc-result.ok { background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.3); color: var(--accent-yellow); }
+        .calc-result.bad { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: var(--accent-red); }
+        .calc-result .verdict { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .calc-result .detail { font-size: 0.9rem; opacity: 0.85; }
+
+        /* CTA */
+        .cta-section { max-width: 600px; margin: 3rem auto; padding: 0 1.5rem; text-align: center; }
+        .cta-box { background: linear-gradient(135deg, rgba(0,240,255,0.08), rgba(188,19,254,0.08)); border: 1px solid rgba(0,240,255,0.2); border-radius: var(--radius); padding: 2rem; }
+        .cta-box h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .cta-box p { color: var(--text-grey); font-size: 0.9rem; margin-bottom: 1.25rem; }
+        .cta-box form { display: flex; gap: 0.5rem; max-width: 400px; margin: 0 auto; }
+        .cta-box form input { flex: 1; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-white); padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.9rem; font-family: inherit; }
+        .cta-box form input:focus { outline: none; border-color: var(--accent-neon); }
+        .cta-box form button { background: linear-gradient(135deg, var(--accent-neon), var(--accent-purple)); color: var(--bg-main); border: none; padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; }
+
+        /* FOOTER */
+        .site-footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid var(--border); margin-top: 3rem; }
+        .site-footer p { font-size: 0.8rem; color: var(--text-muted); }
+        .site-footer a { color: var(--accent-neon); }
+
+        .no-results { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 1.1rem; grid-column: 1 / -1; }
+
+        @media (max-width: 768px) {
+            .vendor-grid { grid-template-columns: 1fr; }
+            .controls { flex-direction: column; }
+            .controls input, .controls select { width: 100%; min-width: unset; }
+            .cta-box form { flex-direction: column; }
+            .compare-bar { flex-direction: column; gap: 0.5rem; text-align: center; }
+            .top-nav .nav-links { gap: 0.75rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <a href="/" class="logo">⚡ Dobson Dev</a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/tools/">Tools</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact/">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1><span class="neon">Cyber Vendor</span> <span class="purple">Pricing Reality Checker</span></h1>
+    <p>Real-world pricing ranges for 30+ security products. Know what you should actually pay before your next renewal.</p>
+    <div class="disclaimer-banner">⚠️ Prices are estimates based on publicly available data, community reports, and industry experience — not official vendor pricing. Actual costs vary by region, contract terms, and negotiation. All figures in USD.</div>
+</section>
+
+<div class="tab-bar" id="tabBar">
+    <button class="tab-btn active" data-tab="browse" onclick="switchTab('browse')">🔍 Browse Vendors</button>
+    <button class="tab-btn" data-tab="compare" onclick="switchTab('compare')">⚖️ Compare</button>
+    <button class="tab-btn" data-tab="calculator" onclick="switchTab('calculator')">💰 Am I Overpaying?</button>
+</div>
+
+<div id="browseSection">
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search vendors..." oninput="filterVendors()">
+        <select id="categoryFilter" onchange="filterVendors()">
+            <option value="">All Categories</option>
+            <option value="EDR/XDR">EDR/XDR</option>
+            <option value="SIEM">SIEM</option>
+            <option value="Email Security">Email Security</option>
+            <option value="Identity">Identity</option>
+            <option value="Vulnerability Management">Vuln Management</option>
+            <option value="MDR">MDR</option>
+            <option value="Firewall/Network">Firewall/Network</option>
+            <option value="Backup">Backup</option>
+        </select>
+        <select id="sizeFilter" onchange="filterVendors()">
+            <option value="">All Company Sizes</option>
+            <option value="small">1–50 employees</option>
+            <option value="mid">51–200 employees</option>
+            <option value="large">201–1,000 employees</option>
+            <option value="enterprise">1,000+ employees</option>
+        </select>
+    </div>
+    <div class="vendor-grid" id="vendorGrid"></div>
+</div>
+
+<div class="compare-view" id="compareSection">
+    <h2>Side-by-Side Comparison</h2>
+    <p style="color:var(--text-muted);margin-bottom:1rem;font-size:0.9rem;">Select 2–3 vendors from the Browse tab to compare.</p>
+    <div id="compareContent"></div>
+</div>
+
+<div class="calculator-section" id="calculatorSection">
+    <h2>💰 Am I Overpaying?</h2>
+    <div class="calc-form">
+        <label>Select Vendor/Product</label>
+        <select id="calcVendor"></select>
+        <label>Your Company Size</label>
+        <select id="calcSize">
+            <option value="small">1–50 employees</option>
+            <option value="mid">51–200 employees</option>
+            <option value="large">201–1,000 employees</option>
+            <option value="enterprise">1,000+ employees</option>
+        </select>
+        <label>What you currently pay (USD/year, total)</label>
+        <input type="number" id="calcPrice" placeholder="e.g. 25000">
+        <label>How many seats/endpoints/units?</label>
+        <input type="number" id="calcUnits" placeholder="e.g. 100">
+        <button onclick="checkOverpaying()">Check My Price</button>
+    </div>
+    <div class="calc-result" id="calcResult">
+        <div class="verdict" id="calcVerdict"></div>
+        <div class="detail" id="calcDetail"></div>
+    </div>
+</div>
+
+<div class="compare-bar" id="compareBar">
+    <div class="compare-info"><strong id="compareCount">0</strong> vendors selected for comparison</div>
+    <div>
+        <button onclick="switchTab('compare')">Compare Now</button>
+        <button class="clear-btn" onclick="clearCompare()">Clear</button>
+    </div>
+</div>
+
+<section class="cta-section">
+    <div class="cta-box">
+        <h2>📘 Free Vendor Negotiation Playbook</h2>
+        <p>Get our PDF guide with scripts, tactics, and timing strategies that save 20–40% on security contracts.</p>
+        <form action="https://formspree.io/f/xpwzgvba" method="POST">
+            <input type="email" name="email" placeholder="you@company.com" required>
+            <input type="hidden" name="_subject" value="Vendor Pricing Checker - Playbook Request">
+            <input type="hidden" name="source" value="vendor-pricing-checker">
+            <button type="submit">Get the Playbook</button>
+        </form>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <p>&copy; 2025 <a href="/">Dobson Development Pty Ltd</a>. Pricing data is approximate and for informational purposes only. <a href="/tools/">More Tools</a></p>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+const VENDORS = [
+    // EDR/XDR
+    {
+        name: "CrowdStrike Falcon",
+        category: "EDR/XDR",
+        model: "Per endpoint/year",
+        pricing: { small: [8,15], mid: [6,12], large: [4.50,9], enterprise: [3,7] },
+        included: ["Falcon Prevent (NGAV)", "Falcon Insight (EDR)", "Threat intelligence", "USB device control"],
+        upsold: ["Falcon Complete (MDR) +$10-18/ep", "Identity Protection +$3-5/ep", "Cloud Security +$4-8/ep", "LogScale (SIEM) separate", "Exposure Management separate"],
+        negotiation: ["Push for 3-year deal for 25-35% discount", "Bundle Falcon Complete with EDR for better per-endpoint rate", "Q4 (Oct-Dec) is CrowdStrike's fiscal year-end — best discounts", "Compete against SentinelOne or Defender to drive price down", "Ask for free OverWatch trial to prove MDR value before buying"],
+        alternatives: ["SentinelOne (similar, often 10-20% cheaper)", "Microsoft Defender for Endpoint (included in E5)", "Sophos Intercept X (budget option)"],
+        reality: "List price is $8-18/endpoint but most mid-market deals close at $5-9/ep. Enterprise deals with 5000+ endpoints can get below $4/ep. CrowdStrike rarely discounts below $3/ep."
+    },
+    {
+        name: "SentinelOne",
+        category: "EDR/XDR",
+        model: "Per endpoint/year",
+        pricing: { small: [6,12], mid: [5,10], large: [3.50,7], enterprise: [2.50,5.50] },
+        included: ["Singularity Core (EPP+EDR)", "Automated remediation", "Storyline technology", "1-click rollback"],
+        upsold: ["Singularity Complete +$3-5/ep (adds visibility)", "Vigilance MDR +$8-15/ep", "Ranger (network discovery) +$2/ep", "Cloud Workload Security separate", "Purple AI add-on"],
+        negotiation: ["Directly compete against CrowdStrike — S1 will undercut", "Multi-year commitments get 20-30% off", "Ask for free Vigilance MDR trial period", "End of quarter deals can be aggressive", "Negotiate Singularity Complete at Core pricing for large deals"],
+        alternatives: ["CrowdStrike Falcon (premium option)", "Microsoft Defender for Endpoint (budget/bundled)", "Sophos Intercept X (SMB-friendly)"],
+        reality: "SentinelOne is typically 15-25% cheaper than CrowdStrike. They're aggressive on competitive displacement deals. Complete tier is the sweet spot for most orgs."
+    },
+    {
+        name: "Microsoft Defender for Endpoint",
+        category: "EDR/XDR",
+        model: "Per user/month (via M365 licensing)",
+        pricing: { small: [2.50,5], mid: [2.50,5], large: [2.50,5], enterprise: [2,4.50] },
+        included: ["EDR capabilities", "Attack surface reduction", "Automated investigation", "Threat analytics", "Integration with M365 suite"],
+        upsold: ["Requires M365 E5 or standalone P2 license", "Sentinel (SIEM) is additional", "Defender for Identity additional", "Defender for Cloud Apps additional"],
+        negotiation: ["Bundle into M365 E5 agreement for best value", "If already on E3, the E5 Security add-on is often negotiable", "Microsoft EAs are heavily negotiable at 1000+ seats", "Use CSP partners for better pricing on smaller deals", "Compete against standalone EDR to justify E5 upgrade cost"],
+        alternatives: ["CrowdStrike Falcon (best-of-breed)", "SentinelOne (best-of-breed)", "Sophos (if not in M365 ecosystem)"],
+        reality: "Effectively 'free' if you're already on M365 E5. The real cost is the E5 uplift from E3 ($20-24/user/mo). Most orgs under-utilize Defender capabilities. Standalone P2 is $5/user/month."
+    },
+    {
+        name: "Carbon Black (Broadcom)",
+        category: "EDR/XDR",
+        model: "Per endpoint/year",
+        pricing: { small: [5,10], mid: [4,8], large: [3,6.50], enterprise: [2.50,5] },
+        included: ["Cloud-native EDR", "NGAV", "Behavioral analytics", "Threat hunting"],
+        upsold: ["Managed Detection separate", "Workload protection separate", "Audit & Remediation module"],
+        negotiation: ["Broadcom acquisition created uncertainty — use this as leverage", "Customers are leaving Carbon Black — ask for retention pricing", "Compare directly against CrowdStrike/S1 for aggressive discounts", "Multi-year lock-in with price caps"],
+        alternatives: ["CrowdStrike Falcon", "SentinelOne", "Microsoft Defender for Endpoint"],
+        reality: "Since Broadcom acquisition, many customers report support degradation and are migrating away. Pricing has become less transparent. Use competitor quotes to get retention discounts."
+    },
+    {
+        name: "Sophos Intercept X",
+        category: "EDR/XDR",
+        model: "Per endpoint/year",
+        pricing: { small: [3,6], mid: [2.50,5], large: [2,4], enterprise: [1.50,3.50] },
+        included: ["NGAV with deep learning", "Anti-ransomware", "Exploit prevention", "Root cause analysis", "Synchronized Security"],
+        upsold: ["MTR (Managed Threat Response) +$4-8/ep", "XDR add-on +$1-3/ep", "Firewall integration (separate product)", "ZTNA separate"],
+        negotiation: ["Sophos is very channel-driven — get quotes from multiple partners", "Bundle with Sophos Firewall for ecosystem discounts", "MTR Standard vs Advanced — most orgs only need Standard", "Push for 3-year pricing with rate lock"],
+        alternatives: ["Microsoft Defender (similar price, different ecosystem)", "SentinelOne (step up in capability)", "Huntress (MDR-focused for SMB)"],
+        reality: "Best value EDR for SMBs. Sophos doesn't compete well in enterprise but is hard to beat for <500 endpoints. MTR is decent MDR at a fraction of CrowdStrike Complete pricing."
+    },
+    // SIEM
+    {
+        name: "Splunk Enterprise/Cloud",
+        category: "SIEM",
+        model: "Per GB/day ingested or workload-based",
+        pricing: { small: [15000,40000], mid: [40000,120000], large: [100000,350000], enterprise: [250000,1000000] },
+        included: ["Log ingestion and search", "Dashboards and alerting", "Splunk Processing Language (SPL)", "App ecosystem", "Basic correlation rules"],
+        upsold: ["Splunk SOAR (Phantom) +$50-150K", "Enterprise Security (ES) premium +30-50%", "IT Service Intelligence separate", "Premium support tiers", "Ingest Actions (routing/filtering)"],
+        negotiation: ["Splunk's pricing is its biggest weakness — always negotiate hard", "SVCs (Splunk Virtual Compute) model can save 20-40% vs per-GB", "Commit to workload pricing if your data volumes fluctuate", "Fiscal year-end (Jan 31) offers the best deals", "Threaten to migrate to Elastic or Microsoft Sentinel", "Negotiate data ingest caps with overage buffers"],
+        alternatives: ["Microsoft Sentinel (cloud-native, consumption-based)", "Elastic Security (open source option)", "Sumo Logic (cloud-native)", "CrowdStrike LogScale (competitive on ingest pricing)"],
+        reality: "Splunk is notoriously expensive. Many customers pay 2-3x what they should because they haven't renegotiated. The Cisco acquisition may change pricing models. Budget 15-20% annual increases if you don't lock in rates."
+    },
+    {
+        name: "Microsoft Sentinel",
+        category: "SIEM",
+        model: "Per GB ingested/day (consumption-based)",
+        pricing: { small: [5000,20000], mid: [15000,60000], large: [50000,200000], enterprise: [150000,600000] },
+        included: ["Cloud-native SIEM", "200+ data connectors", "Built-in UEBA", "Fusion ML detection", "M365 data free/discounted ingest", "Jupyter notebooks"],
+        upsold: ["Commitment tiers for discounts", "Microsoft Defender XDR (better together)", "Additional Copilot for Security", "Logic Apps (SOAR) consumption costs", "Long-term retention costs"],
+        negotiation: ["Commitment tiers (100-500 GB/day) save 50%+", "M365 and Azure data ingestion is free or discounted — factor this in", "Compare total cost against Splunk including infrastructure", "Azure credits can offset Sentinel costs", "Negotiate as part of broader Azure/M365 EA"],
+        alternatives: ["Splunk (more mature, more expensive)", "Elastic Security (self-managed option)", "Sumo Logic (multi-cloud friendly)", "Google Chronicle (flat-rate option)"],
+        reality: "Sentinel looks cheap until you factor in all data sources. M365 log ingestion is free, which is huge. Real cost is 50-70% less than Splunk for M365-heavy environments. Commitment tiers are essential — pay-as-you-go is a trap."
+    },
+    {
+        name: "Elastic Security",
+        category: "SIEM",
+        model: "Per resource unit or self-managed (free)",
+        pricing: { small: [0,15000], mid: [10000,50000], large: [30000,150000], enterprise: [80000,400000] },
+        included: ["SIEM capabilities", "Endpoint detection", "Threat intelligence", "ML anomaly detection", "Free self-managed tier (basic)"],
+        upsold: ["Elastic Cloud managed service", "Platinum/Enterprise support tiers", "Advanced ML features", "Searchable snapshots (cold storage)"],
+        negotiation: ["Self-managed is free (open source) but factor in operational cost", "Elastic Cloud annual commit saves 20-30%", "Compare against Splunk Cloud pricing directly", "Ask for POC credits to prove value before commitment"],
+        alternatives: ["Splunk (mature but expensive)", "Microsoft Sentinel (if M365 shop)", "Sumo Logic (simpler cloud SIEM)"],
+        reality: "Elastic is the most cost-effective SIEM if you have the team to manage it. Self-managed is 'free' but requires 1-2 FTEs. Cloud version is competitive with Sentinel. Not as polished as Splunk for SOC workflows."
+    },
+    {
+        name: "LogRhythm",
+        category: "SIEM",
+        model: "Per MPS (messages per second) or device-based",
+        pricing: { small: [15000,35000], mid: [35000,90000], large: [80000,250000], enterprise: [200000,600000] },
+        included: ["SIEM + log management", "UEBA", "NDR capabilities", "Case management", "Built-in SOAR (basic)"],
+        upsold: ["LogRhythm Axon (cloud) separate", "Advanced NDR module", "Premium support", "Additional MPS capacity"],
+        negotiation: ["LogRhythm is losing market share — use this for aggressive pricing", "Compete against Sentinel and Elastic", "Ask for Axon cloud migration path pricing", "Multi-year deals with rate locks"],
+        alternatives: ["Microsoft Sentinel (cloud-native)", "Splunk (if budget allows)", "Elastic (cost-effective alternative)"],
+        reality: "LogRhythm is a solid mid-market SIEM but struggling against cloud-native competitors. Good for compliance-driven orgs. Expect aggressive retention pricing if you threaten to leave."
+    },
+    {
+        name: "Sumo Logic",
+        category: "SIEM",
+        model: "Per GB/day ingested (credit-based)",
+        pricing: { small: [6000,20000], mid: [18000,60000], large: [50000,180000], enterprise: [150000,500000] },
+        included: ["Cloud-native SIEM", "Log analytics", "Cloud infrastructure monitoring", "Built-in threat intel", "Compliance dashboards"],
+        upsold: ["Cloud SOAR module", "Additional storage retention", "Premium threat intelligence", "Dedicated support"],
+        negotiation: ["Credit-based model is flexible — negotiate credit pool sizes", "Compete against Sentinel pricing", "Ask for free tier extension for POC", "Annual commit vs monthly saves 20-25%"],
+        alternatives: ["Microsoft Sentinel", "Elastic Security", "Datadog Security Monitoring"],
+        reality: "Good middle-ground SIEM. Less mature than Splunk but much cheaper. Strong for cloud-native environments. Credits model can be confusing — get clarity on consumption projections upfront."
+    },
+    // Email Security
+    {
+        name: "Proofpoint",
+        category: "Email Security",
+        model: "Per user/year",
+        pricing: { small: [3,6], mid: [2.50,5], large: [2,4.50], enterprise: [1.50,3.50] },
+        included: ["Email filtering (inbound/outbound)", "Targeted Attack Protection (TAP)", "URL defense", "Attachment sandboxing", "Impostor email protection"],
+        upsold: ["Security Awareness Training +$1-3/user", "Email DLP +$1-2/user", "Email Archiving separate", "Insider Threat Management separate", "TRAP (auto-remediation) +$0.50-1/user"],
+        negotiation: ["Bundle email protection + awareness training for discount", "Compete against Mimecast for best pricing", "3-year agreements save 20-30%", "Ask for free awareness training pilot", "Q4 fiscal year-end (June) — best deals"],
+        alternatives: ["Mimecast (similar capabilities)", "Microsoft Defender for O365 (budget/bundled)", "Abnormal Security (AI-based, different approach)"],
+        reality: "Proofpoint is the market leader but aggressively prices at renewal. Initial deal is competitive; watch for 10-15% renewal increases. Always get competitive quotes before renewal."
+    },
+    {
+        name: "Mimecast",
+        category: "Email Security",
+        model: "Per user/year",
+        pricing: { small: [3.50,7], mid: [3,5.50], large: [2,4.50], enterprise: [1.75,3.50] },
+        included: ["Email security gateway", "URL protection", "Attachment protect", "Impersonation protection", "Spam/malware filtering"],
+        upsold: ["Awareness Training +$1-2.50/user", "Archive & Continuity +$2-4/user", "Web Security +$1-2/user", "DMARC Analyzer separate", "Brand Exploit Protect separate"],
+        negotiation: ["Directly compete against Proofpoint", "Bundle gateway + archive + continuity for 25-35% discount", "Ask about the new Mimecast integrated cloud platform pricing", "Multi-year with price caps"],
+        alternatives: ["Proofpoint (market leader)", "Microsoft Defender for O365", "Abnormal Security"],
+        reality: "Mimecast and Proofpoint are nearly interchangeable in capability. Mimecast is often slightly cheaper. Their archive product is strong if you need compliance archiving. Integration with M365 has improved significantly."
+    },
+    {
+        name: "Abnormal Security",
+        category: "Email Security",
+        model: "Per user/year",
+        pricing: { small: [4,8], mid: [3,6], large: [2,4.50], enterprise: [1.50,3.50] },
+        included: ["AI-based email security", "Account takeover protection", "BEC detection", "Supply chain fraud detection", "API-based (no MX change)"],
+        upsold: ["Security Awareness (AI-generated)", "Email account compromise detection", "Multi-cloud email protection"],
+        negotiation: ["Abnormal is growing fast — ask for competitive displacement pricing", "API integration means faster deployment — use this to justify premium", "Negotiate per-mailbox vs per-user if you have shared mailboxes", "Ask for multi-year discount"],
+        alternatives: ["Proofpoint (gateway-based)", "Mimecast (gateway-based)", "Microsoft Defender for O365 (bundled)"],
+        reality: "Abnormal is the hot newcomer. More expensive than gateway solutions but catches what they miss (especially BEC). Many orgs layer Abnormal behind Proofpoint/Mimecast or native M365 security. ROI is best for orgs with significant BEC/fraud exposure."
+    },
+    {
+        name: "Microsoft Defender for Office 365",
+        category: "Email Security",
+        model: "Per user/month",
+        pricing: { small: [2,3], mid: [2,3], large: [2,3], enterprise: [1.50,2.50] },
+        included: ["Safe Attachments", "Safe Links", "Anti-phishing policies", "Real-time reports", "Attack simulation training (P2)"],
+        upsold: ["Plan 2 vs Plan 1 ($2 vs $3/user/mo)", "Included in M365 E5 at no extra cost", "Defender for Cloud Apps separate"],
+        negotiation: ["Included free in M365 E5 — factor into E3-to-E5 upgrade math", "Plan 1 is often sufficient — don't oversell to P2", "CSP partners can offer better standalone pricing"],
+        alternatives: ["Proofpoint (market leader)", "Mimecast (similar gateway)", "Abnormal Security (AI complement)"],
+        reality: "Good enough for most SMBs on M365. Enterprise orgs typically layer Proofpoint or Abnormal on top for advanced BEC protection. Plan 2 is essentially free with E5, which makes it hard to justify standalone email security spend."
+    },
+    // Identity
+    {
+        name: "Okta",
+        category: "Identity",
+        model: "Per user/month",
+        pricing: { small: [4,8], mid: [3,6], large: [2,5], enterprise: [1.50,4] },
+        included: ["SSO (Single Sign-On)", "Universal Directory", "Lifecycle Management (basic)", "MFA (basic)", "Okta Integration Network"],
+        upsold: ["Adaptive MFA +$3-6/user/mo", "Advanced Lifecycle Management +$4-8/user/mo", "API Access Management +$2-4/user/mo", "Identity Governance +$4-9/user/mo", "Privileged Access separate (acquired product)"],
+        negotiation: ["Bundle SSO + MFA + Lifecycle for package discount", "Compete against Microsoft Entra ID — Okta will discount", "Multi-year deals save 15-25%", "Negotiate external user pricing separately (much cheaper)", "Ask about customer identity (CIAM) vs workforce pricing"],
+        alternatives: ["Microsoft Entra ID (included with M365)", "Duo (MFA-focused, simpler)", "JumpCloud (SMB alternative)"],
+        reality: "Okta SSO alone is reasonable but costs add up fast with add-ons. A fully-loaded Okta deployment can hit $15-20/user/month. For M365-heavy shops, Entra ID provides 80% of the value at a fraction of the cost."
+    },
+    {
+        name: "Microsoft Entra ID (Azure AD)",
+        category: "Identity",
+        model: "Per user/month",
+        pricing: { small: [0,6], mid: [0,6], large: [0,6], enterprise: [0,5] },
+        included: ["SSO to M365 and Azure apps (free tier)", "Basic MFA (free with M365)", "Conditional Access (P1)", "Self-service password reset", "App proxy (P1)"],
+        upsold: ["P1 ($6/user/mo) — Conditional Access, hybrid identity", "P2 ($9/user/mo) — PIM, Identity Protection, access reviews", "Entra Permissions Management separate", "Entra Verified ID separate", "Included in M365 E3 (P1) and E5 (P2)"],
+        negotiation: ["P1 is included in M365 E3 — don't buy separately", "P2 is included in M365 E5 — factor into E5 math", "Standalone pricing only makes sense for non-M365 orgs", "Negotiate as part of broader M365/Azure EA"],
+        alternatives: ["Okta (best-of-breed, vendor neutral)", "Duo (simpler MFA)", "Ping Identity (enterprise alternative)"],
+        reality: "Effectively free for M365 shops. P1 (included in E3) covers 90% of identity needs. P2 is worth it for large orgs needing PIM and access reviews. Only consider Okta if you're multi-cloud/multi-IDP or non-Microsoft."
+    },
+    {
+        name: "CyberArk",
+        category: "Identity",
+        model: "Per user/year (PAM) or per privileged account",
+        pricing: { small: [20000,50000], mid: [50000,150000], large: [100000,350000], enterprise: [250000,1000000] },
+        included: ["Privileged Access Manager", "Session recording", "Password vault", "Threat analytics", "Secure connect"],
+        upsold: ["Endpoint Privilege Manager +$4-8/ep", "Cloud Entitlements Manager separate", "Secrets Manager separate", "Identity Security Intelligence separate", "CyberArk Blueprint services"],
+        negotiation: ["CyberArk is expensive — always get BeyondTrust quotes too", "Implementation costs can equal license costs — negotiate services", "Subscription model is replacing perpetual — compare both", "Multi-year deals with professional services bundled", "Ask about their SaaS (Identity Security Platform) vs self-hosted pricing"],
+        alternatives: ["BeyondTrust (often 20-30% cheaper)", "Delinea (formerly Thycotic + Centrify)", "HashiCorp Vault (secrets-focused)"],
+        reality: "CyberArk is the PAM market leader but carries a premium. Total cost of ownership (license + implementation + operations) is typically 2-3x the license cost alone. SaaS deployment is significantly cheaper and faster than self-hosted."
+    },
+    {
+        name: "BeyondTrust",
+        category: "Identity",
+        model: "Per user/year or per asset",
+        pricing: { small: [15000,40000], mid: [35000,100000], large: [80000,250000], enterprise: [200000,700000] },
+        included: ["Privileged Remote Access", "Password Safe", "Endpoint Privilege Management", "Session monitoring"],
+        upsold: ["Identity Security Insights", "Cloud Privilege Broker", "AD Bridge", "Professional services"],
+        negotiation: ["Directly compete against CyberArk", "BeyondTrust is typically 20-30% cheaper than CyberArk", "Bundle remote access + password safe + EPM for best rate", "Ask for self-guided POC to reduce pre-sales costs"],
+        alternatives: ["CyberArk (market leader)", "Delinea (competitive alternative)", "1Password (basic secrets for SMB)"],
+        reality: "Strong alternative to CyberArk at lower cost. Endpoint Privilege Management product is particularly strong. Less complex to deploy than CyberArk, which saves on implementation costs too."
+    },
+    {
+        name: "Cisco Duo",
+        category: "Identity",
+        model: "Per user/month",
+        pricing: { small: [3,6], mid: [3,6], large: [2,5], enterprise: [1.50,4] },
+        included: ["MFA (push, TOTP, phone)", "Device trust", "Adaptive access policies", "SSO (single sign-on)", "Self-service portal"],
+        upsold: ["Duo Beyond/Advantage tiers ($6-9/user)", "Duo Trusted Endpoints", "Duo Network Gateway", "Cisco+ Secure Connect (ZTNA)"],
+        negotiation: ["Free tier for up to 10 users — test before buying", "Bundle with other Cisco products (Umbrella, SecureX)", "Cisco EA discounts can significantly reduce Duo pricing", "Compete against Microsoft native MFA (free with M365)"],
+        alternatives: ["Microsoft Entra MFA (free with M365)", "Okta (broader identity platform)", "YubiKey (hardware token approach)"],
+        reality: "Duo is the simplest MFA to deploy. Free tier is generous for tiny orgs. For M365 shops, hard to justify the cost vs native Entra MFA unless you need the device trust and adaptive policies. Best value at the Duo Advantage tier."
+    },
+    // Vulnerability Management
+    {
+        name: "Tenable (Nessus/Tenable.io)",
+        category: "Vulnerability Management",
+        model: "Per asset/year",
+        pricing: { small: [3000,8000], mid: [8000,30000], large: [25000,100000], enterprise: [80000,300000] },
+        included: ["Vulnerability scanning", "Asset discovery", "Risk-based prioritization (VPR)", "Compliance auditing", "Web app scanning (basic)"],
+        upsold: ["Tenable.io vs on-prem Nessus pricing differs", "Tenable.cs (cloud security) separate", "Tenable.ad (AD security) separate", "Lumin Exposure View +$2-4/asset", "Professional services/deployment"],
+        negotiation: ["Nessus Professional ($3,590/yr) is fine for small teams", "Tenable.io per-asset pricing is negotiable at scale", "Compete against Qualys and Rapid7 for best pricing", "Multi-year saves 15-20%", "Negotiate 'asset' definition — containers and cloud instances count differently"],
+        alternatives: ["Qualys (similar, different pricing model)", "Rapid7 InsightVM (good mid-market option)", "CrowdStrike Exposure Management (emerging)"],
+        reality: "Tenable is the vulnerability management market leader. Nessus Pro is the cheapest entry point for small teams. Enterprise pricing depends heavily on asset count and definition. Watch for asset overcount with cloud/container environments."
+    },
+    {
+        name: "Qualys",
+        category: "Vulnerability Management",
+        model: "Per asset/year (subscription)",
+        pricing: { small: [4000,10000], mid: [10000,35000], large: [30000,120000], enterprise: [100000,400000] },
+        included: ["VMDR (Vulnerability Management)", "Asset inventory", "Patch management (basic)", "Cloud agent", "API access"],
+        upsold: ["Web Application Scanning +$5-10K", "Container Security +$3-8K", "Policy Compliance separate", "Patch Management (full) +$2-4/asset", "TotalCloud separate"],
+        negotiation: ["Qualys all-in-one platform bundle saves vs à la carte", "Compete against Tenable directly", "Community edition is free for basic scanning", "Per-asset pricing drops significantly at scale (10K+ assets)", "Ask about GlobalAssetView free tier"],
+        alternatives: ["Tenable (market leader)", "Rapid7 InsightVM", "Microsoft Defender for vulnerability management"],
+        reality: "Qualys has a broader platform than Tenable (CSAM, patch, compliance all in one) but the per-module upsell adds up. VM-only is comparable in price to Tenable. Best value when you buy the full platform."
+    },
+    {
+        name: "Rapid7 InsightVM",
+        category: "Vulnerability Management",
+        model: "Per asset/year",
+        pricing: { small: [3000,8000], mid: [8000,25000], large: [20000,80000], enterprise: [60000,250000] },
+        included: ["Vulnerability assessment", "Risk prioritization", "Remediation workflows", "Dashboard and reporting", "Lightweight agent + agentless"],
+        upsold: ["InsightIDR (SIEM/XDR) bundled deal", "InsightConnect (SOAR) separate", "InsightCloudSec separate", "Managed services (MDR) separate"],
+        negotiation: ["Bundle InsightVM + InsightIDR for 20-30% discount", "Rapid7 is often cheapest of the big 3 VM vendors", "Compete against Tenable for discount", "Annual billing saves over monthly"],
+        alternatives: ["Tenable (market leader)", "Qualys (broader platform)", "CrowdStrike Exposure Management"],
+        reality: "Best mid-market value in vulnerability management. Remediation workflow is better than Tenable/Qualys out of the box. The Insight platform bundle (VM+IDR+Connect) is compelling for mid-sized orgs who want one vendor."
+    },
+    {
+        name: "CrowdStrike Exposure Management",
+        category: "Vulnerability Management",
+        model: "Per asset/year",
+        pricing: { small: [4000,10000], mid: [10000,35000], large: [30000,100000], enterprise: [80000,300000] },
+        included: ["External attack surface management", "Vulnerability assessment", "Risk prioritization with threat intelligence", "Integration with Falcon platform"],
+        upsold: ["Best value bundled with Falcon EDR", "Full Falcon platform add-ons"],
+        negotiation: ["Bundle with existing CrowdStrike EDR for best rate", "New product — ask for introductory/beta pricing", "Compete against Tenable for standalone pricing"],
+        alternatives: ["Tenable (mature, proven)", "Qualys (broad platform)", "Rapid7 InsightVM (mid-market)"],
+        reality: "Newer entrant leveraging CrowdStrike's threat intel. Best value for existing CrowdStrike customers who want to consolidate. Standalone, it's not yet as mature as Tenable or Qualys for pure VM use cases."
+    },
+    // MDR
+    {
+        name: "Arctic Wolf",
+        category: "MDR",
+        model: "Per user/month (all-inclusive)",
+        pricing: { small: [12,25], mid: [8,18], large: [6,14], enterprise: [4,10] },
+        included: ["24/7 SOC monitoring", "Managed detection & response", "Log collection and analysis", "Vulnerability scanning (Managed Risk)", "Security awareness (Managed Security Awareness)"],
+        upsold: ["Managed Risk (vuln management) — may be separate tier", "Incident Response retainer separate", "Managed Security Awareness add-on"],
+        negotiation: ["Arctic Wolf bundles heavily — push for all-inclusive pricing", "Compete against Expel and Red Canary", "Multi-year commitments for 15-20% discount", "Ask what log sources are included vs extra", "Ensure 24/7 coverage is truly included, not just 8/5"],
+        alternatives: ["Expel (more transparent, similar price)", "Red Canary (strong detection)", "Huntress (budget SMB option)", "CrowdStrike Complete (vendor-native MDR)"],
+        reality: "Arctic Wolf is the largest pure-play MDR. Pricing is competitive but watch the fine print on what's truly included. They provide the SIEM/logging platform, which is a huge value but creates lock-in. Good for orgs without a SOC."
+    },
+    {
+        name: "Expel",
+        category: "MDR",
+        model: "Per user/month or custom",
+        pricing: { small: [10,20], mid: [7,15], large: [5,12], enterprise: [3.50,9] },
+        included: ["24/7 detection and response", "Transparent investigation", "Resilience recommendations", "Automated remediation actions", "Works with your existing tools"],
+        upsold: ["Phishing response add-on", "Vulnerability prioritization add-on", "Additional integrations"],
+        negotiation: ["Expel is transparent about pricing — less negotiation room but fair", "Works with existing EDR (no rip and replace) — factor in savings", "Compete against Arctic Wolf for best pricing", "Ask about startup/growth pricing tiers"],
+        alternatives: ["Arctic Wolf (similar, provides own SIEM)", "Red Canary (strong detection engine)", "Secureworks (enterprise-focused)"],
+        reality: "Expel is the most transparent MDR provider. They don't provide their own SIEM (they use yours), which avoids lock-in but means you need existing tools. Best for orgs that already have EDR/SIEM and need expert eyes. High customer satisfaction."
+    },
+    {
+        name: "Red Canary",
+        category: "MDR",
+        model: "Per endpoint/month",
+        pricing: { small: [10,18], mid: [7,14], large: [5,11], enterprise: [3.50,8] },
+        included: ["24/7 threat detection", "Endpoint monitoring", "Cloud detection", "Identity detection", "Actionable reporting"],
+        upsold: ["Additional cloud workload coverage", "Readiness exercises", "IR retainer"],
+        negotiation: ["Endpoint-based pricing is straightforward — negotiate per-ep rate", "Compete against Arctic Wolf and Expel", "Ask about server vs workstation pricing", "Multi-year for 15-20% off"],
+        alternatives: ["Expel (tool-agnostic)", "Arctic Wolf (all-inclusive)", "Huntress (SMB budget)"],
+        reality: "Red Canary has one of the best detection engines in MDR. They work across multiple EDR platforms (CrowdStrike, S1, Defender). Strong for detection quality but less breadth than Arctic Wolf's all-in-one approach."
+    },
+    {
+        name: "Huntress",
+        category: "MDR",
+        model: "Per endpoint/month",
+        pricing: { small: [3,5], mid: [2.50,4.50], large: [2,4], enterprise: [1.75,3.50] },
+        included: ["Managed EDR", "Persistent foothold detection", "Ransomware canaries", "External recon", "Process insights", "24/7 SOC"],
+        upsold: ["SAT (Security Awareness Training) +$2/user", "Managed SIEM (newer product)"],
+        negotiation: ["Huntress is MSP-channel focused — go through an MSP for best pricing", "Volume discounts at 500+ endpoints", "Bundle EDR + SAT for discount", "Very competitive against Sophos MTR"],
+        alternatives: ["Sophos MTR (similar market)", "Arctic Wolf (more comprehensive)", "SentinelOne Vigilance (vendor-native)"],
+        reality: "Best value MDR for SMBs, hands down. Purpose-built for the MSP channel. Not as feature-rich as Arctic Wolf or Expel but exceptional detection at a fraction of the price. The team is highly regarded in the security community."
+    },
+    {
+        name: "Secureworks",
+        category: "MDR",
+        model: "Custom pricing (typically per asset or flat fee)",
+        pricing: { small: [40000,80000], mid: [60000,150000], large: [120000,350000], enterprise: [250000,800000] },
+        included: ["Taegis XDR platform", "24/7 managed detection", "Threat hunting", "Incident response support", "Vulnerability management integration"],
+        upsold: ["Incident Response retainer separate", "Red Team services", "Additional threat intelligence feeds", "Consulting engagements"],
+        negotiation: ["Secureworks is enterprise-focused — smaller orgs may be deprioritized", "Dell relationship can provide bundled deals", "Compete against CrowdStrike Complete and Arctic Wolf", "Taegis XDR platform included — factor in SIEM/XDR value"],
+        alternatives: ["Arctic Wolf (mid-market focused)", "CrowdStrike Complete (vendor-native)", "Expel (more transparent pricing)"],
+        reality: "Legacy MSSP transitioning to modern MDR. Taegis XDR platform is solid but Secureworks is losing market share to born-in-the-cloud MDRs. Pricing tends to be higher than pure-play MDRs. Best for large enterprises who want a traditional security partner."
+    },
+    // Firewall/Network
+    {
+        name: "Palo Alto Networks (NGFW)",
+        category: "Firewall/Network",
+        model: "Appliance + subscription/year",
+        pricing: { small: [5000,15000], mid: [15000,50000], large: [40000,150000], enterprise: [100000,500000] },
+        included: ["Next-gen firewall (hardware or VM)", "App-ID", "User-ID", "Basic threat prevention", "URL filtering"],
+        upsold: ["Threat Prevention subscription +20-30% of base", "WildFire (sandboxing) +15-20%", "DNS Security +10-15%", "SD-WAN license separate", "Prisma Access (SASE) separate product", "Cortex XDR separate product"],
+        negotiation: ["PAN is premium — always get Fortinet quotes for comparison", "Bundle all subscriptions for 'best practice' bundle discount (15-20%)", "End of fiscal year (July) drives best deals", "Ask about virtual/cloud NGFW vs hardware pricing", "Trade-in program for competitor hardware", "Negotiate support tier — premium support is rarely worth 2x standard"],
+        alternatives: ["Fortinet FortiGate (30-50% cheaper)", "Zscaler (cloud-native, no hardware)", "Cloudflare Zero Trust (emerging)"],
+        reality: "Palo Alto is the firewall gold standard but you pay for it. Subscription stack can double the hardware cost. Fortinet offers 80% of the capability at 50% of the price for most use cases. Consider Prisma Access/SASE if you're moving away from on-prem."
+    },
+    {
+        name: "Fortinet FortiGate",
+        category: "Firewall/Network",
+        model: "Appliance + FortiGuard subscription/year",
+        pricing: { small: [2000,8000], mid: [8000,30000], large: [25000,80000], enterprise: [60000,300000] },
+        included: ["NGFW with custom ASICs (high performance)", "FortiGuard security services (various bundles)", "SD-WAN built-in", "SSL inspection", "Basic management"],
+        upsold: ["FortiGuard 360 bundle vs individual services", "FortiAnalyzer (logging) separate", "FortiManager (central mgmt) separate", "FortiSASE separate", "FortiEDR separate"],
+        negotiation: ["Fortinet is aggressively priced vs Palo Alto — use PAN quotes to show value", "Bundle FortiGuard subscriptions (360 Protection) for best per-service rate", "Fortigate performance/$ is best in class — lead with this", "Multi-year deals save 15-25%", "Ask for NFR (not-for-resale) units for lab/DR"],
+        alternatives: ["Palo Alto (premium option)", "Sophos XGS (SMB-friendly)", "pfSense (open source budget option)"],
+        reality: "Best price-performance ratio in firewalls. Custom ASICs mean you get 2-3x the throughput per dollar vs Palo Alto. The Security Fabric ecosystem is growing. Main weakness is management UX compared to PAN."
+    },
+    {
+        name: "Zscaler",
+        category: "Firewall/Network",
+        model: "Per user/year",
+        pricing: { small: [80,150], mid: [60,130], large: [40,100], enterprise: [25,80] },
+        included: ["ZIA (Zscaler Internet Access) — secure web gateway", "SSL inspection", "Cloud firewall", "URL filtering", "Bandwidth control"],
+        upsold: ["ZPA (Zscaler Private Access/ZTNA) +$80-200/user", "ZDX (Digital Experience) separate", "Data Protection add-ons", "Workload segmentation separate", "Advanced threat protection tiers"],
+        negotiation: ["Bundle ZIA + ZPA for 20-30% discount", "Compete against Netskope for best pricing", "Zscaler's pricing is based on user count — negotiate seat bands", "Multi-year (3yr) saves 25-35%", "Ask about business vs transformation bundle pricing"],
+        alternatives: ["Netskope (similar SASE/SSE)", "Cloudflare Zero Trust (simpler, cheaper)", "Palo Alto Prisma Access (for PAN shops)"],
+        reality: "Zscaler is the SSE/SASE market leader but pricing is complex. ZIA alone is reasonable; ZIA+ZPA gets expensive fast. Per-user pricing means it scales linearly — no volume break for larger orgs unless you negotiate hard. Transformation bundle is the way to go."
+    },
+    {
+        name: "Cloudflare Zero Trust",
+        category: "Firewall/Network",
+        model: "Per user/month",
+        pricing: { small: [0,7], mid: [5,7], large: [5,7], enterprise: [3,7] },
+        included: ["Zero Trust Network Access", "Secure Web Gateway", "DNS filtering", "Browser isolation (basic)", "Free tier for <50 users"],
+        upsold: ["DLP capabilities", "CASB functionality", "Browser Isolation (full)", "Logpush to SIEM", "Dedicated support"],
+        negotiation: ["Free tier for up to 50 users — test before buying", "Enterprise pricing is negotiable below list", "Compare against Zscaler (Cloudflare is significantly cheaper)", "Annual vs monthly saves 15%"],
+        alternatives: ["Zscaler (mature enterprise option)", "Netskope (SSE leader)", "Tailscale (simpler zero trust for small teams)"],
+        reality: "Cloudflare Zero Trust is the most disruptive product in this space. Free tier is genuinely useful for <50 person orgs. Paid tier is 50-70% cheaper than Zscaler for similar capabilities. Not as mature for large enterprise but closing the gap fast."
+    },
+    // Backup
+    {
+        name: "Veeam",
+        category: "Backup",
+        model: "Per workload/year (subscription) or perpetual + maintenance",
+        pricing: { small: [2000,8000], mid: [8000,30000], large: [25000,100000], enterprise: [60000,300000] },
+        included: ["Backup for VMs, physical, cloud", "Instant recovery", "Ransomware protection (immutability)", "Monitoring and reporting", "Free Community Edition (10 workloads)"],
+        upsold: ["VUL (Veeam Universal License) vs per-workload", "Veeam ONE (monitoring) separate or bundled", "Microsoft 365 backup separate", "Kasten (Kubernetes backup) separate", "Premium support"],
+        negotiation: ["VUL (Universal License) is most flexible — negotiate per-unit rate", "Compete against Commvault and Rubrik", "Community Edition is free for up to 10 workloads", "Multi-year saves 15-20%", "Ask about NFR licenses for lab environments"],
+        alternatives: ["Rubrik (premium, ransomware-focused)", "Cohesity (data management platform)", "Datto (MSP-focused)", "Nakivo (budget alternative)"],
+        reality: "Veeam dominates mid-market backup. Pricing is straightforward compared to legacy vendors (Commvault, Veritas). VUL licensing simplified things but per-workload costs add up with cloud. Best value in backup for VMware/Hyper-V environments."
+    },
+    {
+        name: "Rubrik",
+        category: "Backup",
+        model: "Per TB managed or subscription",
+        pricing: { small: [10000,30000], mid: [30000,100000], large: [80000,300000], enterprise: [200000,800000] },
+        included: ["Zero Trust Data Security", "Immutable backups by design", "Ransomware investigation", "SLA-driven policy engine", "Multi-cloud support"],
+        upsold: ["Cloud data management modules", "Rubrik Security Cloud premium tiers", "Sensitive data monitoring", "Cyber recovery orchestration"],
+        negotiation: ["Rubrik is premium — always get Veeam quotes for comparison", "Recently IPO'd — may be more flexible on deals to show growth", "Appliance vs cloud edition pricing differs significantly", "Negotiate TB-based pricing with growth buffers", "Multi-year for 20-30% discount"],
+        alternatives: ["Veeam (more cost-effective)", "Cohesity (similar positioning)", "Commvault (legacy but capable)"],
+        reality: "Rubrik is the premium backup/data security option. 2-3x the cost of Veeam but genuinely better ransomware recovery capabilities. IPO means they need to show revenue growth, which can work in your favor for negotiations. Best for enterprises with serious ransomware concerns."
+    },
+    {
+        name: "Cohesity",
+        category: "Backup",
+        model: "Per TB or per node (appliance-based)",
+        pricing: { small: [10000,25000], mid: [25000,80000], large: [70000,250000], enterprise: [150000,600000] },
+        included: ["Data protection", "Anti-ransomware (DataLock)", "File and object services", "Test/dev cloning", "Multi-cloud tiering"],
+        upsold: ["Cohesity DataHawk (threat scanning)", "Disaster recovery orchestration", "FortKnox (SaaS isolation vault)", "Marketplace apps"],
+        negotiation: ["Compete against Rubrik directly (similar positioning)", "Veritas acquisition changes dynamics — use uncertainty as leverage", "Appliance vs software-defined pricing", "Multi-year with growth accommodation"],
+        alternatives: ["Rubrik (closest competitor)", "Veeam (more cost-effective)", "Commvault (legacy option)"],
+        reality: "Cohesity and Rubrik are near-identical in positioning. Cohesity tends to be 10-20% cheaper than Rubrik. The Veritas acquisition is creating market uncertainty — use this for negotiation leverage. Strong platform but complex to price."
+    },
+    {
+        name: "Datto (Kaseya)",
+        category: "Backup",
+        model: "Per device/month (MSP channel)",
+        pricing: { small: [200,600], mid: [500,2000], large: [1500,5000], enterprise: [4000,12000] },
+        included: ["BCDR (backup + disaster recovery)", "Screenshot verification", "Instant virtualization", "Cloud backup and replication", "Ransomware detection"],
+        upsold: ["Datto SaaS Protection (M365/Google backup) separate", "Datto Networking separate", "Datto RMM separate (Kaseya bundle)", "Cloud deletion detection"],
+        negotiation: ["Datto is MSP-channel only — negotiate through your MSP", "Volume discounts at 20+ appliances (for MSPs)", "Ask your MSP what their margin is — Datto MSP pricing is transparent", "Compare against Veeam Cloud Connect for similar capability"],
+        alternatives: ["Veeam (direct/larger orgs)", "Axcient (MSP alternative)", "N-able Backup (budget MSP option)"],
+        reality: "Datto is purpose-built for the MSP channel. End-customer pricing depends entirely on MSP markup (typically 50-100% over MSP cost). Great product for SMBs who work with MSPs. Since Kaseya acquisition, some MSPs have moved away due to cultural concerns."
+    }
+];
+
+// State
+let selectedVendors = [];
+let currentSize = '';
+
+function getDisplayPrice(vendor, size) {
+    const s = size || 'mid';
+    const p = vendor.pricing[s];
+    if (!p) return 'N/A';
+    const isAnnual = p[0] >= 1000;
+    if (isAnnual) {
+        return `$${p[0].toLocaleString()} – $${p[1].toLocaleString()}/yr`;
+    }
+    return `$${p[0]} – $${p[1]}/${vendor.model.includes('month') ? 'mo' : 'yr'}`;
+}
+
+function getPriceUnit(vendor) {
+    const m = vendor.model.toLowerCase();
+    if (m.includes('endpoint')) return 'per endpoint';
+    if (m.includes('user')) return 'per user';
+    if (m.includes('gb')) return 'per GB/day';
+    if (m.includes('asset')) return 'per asset';
+    if (m.includes('workload')) return 'per workload';
+    if (m.includes('device')) return 'per device/mo';
+    return vendor.model;
+}
+
+function renderVendors(vendors) {
+    const grid = document.getElementById('vendorGrid');
+    if (vendors.length === 0) {
+        grid.innerHTML = '<div class="no-results">No vendors match your filters. Try adjusting your search.</div>';
+        return;
+    }
+    grid.innerHTML = vendors.map(v => {
+        const size = document.getElementById('sizeFilter').value || 'mid';
+        const isSelected = selectedVendors.includes(v.name);
+        return `
+        <div class="vendor-card ${isSelected ? 'selected' : ''}" onclick="openModal('${v.name.replace(/'/g, "\\'")}')">
+            <div class="compare-check" onclick="event.stopPropagation();toggleCompare('${v.name.replace(/'/g, "\\'")}')">${isSelected ? '✓' : ''}</div>
+            <div class="card-head">
+                <div class="vendor-name">${v.name}</div>
+                <span class="category-badge">${v.category}</span>
+            </div>
+            <div class="pricing-model">${v.model}</div>
+            <div class="price-range">${getDisplayPrice(v, size)}</div>
+            <div class="price-label">${getPriceUnit(v)} · ${size === 'small' ? '1–50' : size === 'mid' ? '51–200' : size === 'large' ? '201–1K' : '1K+'} employees</div>
+            <div class="reality-check">💡 ${v.reality.substring(0, 120)}${v.reality.length > 120 ? '...' : ''}</div>
+        </div>`;
+    }).join('');
+}
+
+function filterVendors() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const cat = document.getElementById('categoryFilter').value;
+    const size = document.getElementById('sizeFilter').value;
+    let filtered = VENDORS.filter(v => {
+        if (search && !v.name.toLowerCase().includes(search) && !v.category.toLowerCase().includes(search)) return false;
+        if (cat && v.category !== cat) return false;
+        return true;
+    });
+    renderVendors(filtered);
+}
+
+function toggleCompare(name) {
+    const idx = selectedVendors.indexOf(name);
+    if (idx >= 0) {
+        selectedVendors.splice(idx, 1);
+    } else if (selectedVendors.length < 3) {
+        selectedVendors.push(name);
+    } else {
+        return; // max 3
+    }
+    document.getElementById('compareCount').textContent = selectedVendors.length;
+    document.getElementById('compareBar').className = selectedVendors.length > 0 ? 'compare-bar show' : 'compare-bar';
+    filterVendors();
+}
+
+function clearCompare() {
+    selectedVendors = [];
+    document.getElementById('compareCount').textContent = '0';
+    document.getElementById('compareBar').className = 'compare-bar';
+    filterVendors();
+}
+
+function openModal(name) {
+    const v = VENDORS.find(x => x.name === name);
+    if (!v) return;
+    const sizes = ['small','mid','large','enterprise'];
+    const sizeLabels = ['1–50','51–200','201–1,000','1,000+'];
+    document.getElementById('modalContent').innerHTML = `
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <h2>${v.name}</h2>
+        <div class="modal-category">${v.category} · ${v.model}</div>
+
+        <h3>💰 Pricing by Company Size</h3>
+        <table class="price-table">
+            <tr><th>Company Size</th><th style="text-align:right">Price Range</th></tr>
+            ${sizes.map((s,i) => `<tr><td>${sizeLabels[i]} employees</td><td>${getDisplayPrice(v, s)}</td></tr>`).join('')}
+        </table>
+
+        <div class="reality-note">💡 <strong>Reality Check:</strong> ${v.reality}</div>
+
+        <h3>✅ What's Included</h3>
+        <ul>${v.included.map(x => `<li>${x}</li>`).join('')}</ul>
+
+        <h3>💸 Common Upsells</h3>
+        <ul>${v.upsold.map(x => `<li>${x}</li>`).join('')}</ul>
+
+        <h3>🎯 Negotiation Tips</h3>
+        <div class="tip-box"><ul>${v.negotiation.map(x => `<li>${x}</li>`).join('')}</ul></div>
+
+        <h3>🔄 Alternatives</h3>
+        <div class="alt-list">${v.alternatives.map(x => `<span class="alt-chip">${x}</span>`).join('')}</div>
+    `;
+    document.getElementById('modalOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    document.getElementById('browseSection').style.display = tab === 'browse' ? '' : 'none';
+    document.getElementById('compareSection').className = tab === 'compare' ? 'compare-view show' : 'compare-view';
+    document.getElementById('calculatorSection').className = tab === 'calculator' ? 'calculator-section show' : 'calculator-section';
+    if (tab === 'compare') renderComparison();
+}
+
+function renderComparison() {
+    const content = document.getElementById('compareContent');
+    if (selectedVendors.length < 2) {
+        content.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:2rem;">Select 2–3 vendors from the Browse tab by clicking the checkbox on each card.</p>';
+        return;
+    }
+    const vendors = selectedVendors.map(n => VENDORS.find(v => v.name === n)).filter(Boolean);
+    const size = document.getElementById('sizeFilter').value || 'mid';
+    const rows = [
+        ['Category', v => v.category],
+        ['Pricing Model', v => v.model],
+        ['Price (1–50)', v => getDisplayPrice(v, 'small')],
+        ['Price (51–200)', v => getDisplayPrice(v, 'mid')],
+        ['Price (201–1K)', v => getDisplayPrice(v, 'large')],
+        ['Price (1K+)', v => getDisplayPrice(v, 'enterprise')],
+        ['Included', v => v.included.slice(0,3).join(', ')],
+        ['Top Upsell', v => v.upsold[0] || 'N/A'],
+        ['#1 Negotiation Tip', v => v.negotiation[0] || 'N/A'],
+        ['Reality Check', v => v.reality.substring(0, 150) + '...']
+    ];
+    content.innerHTML = `<div style="overflow-x:auto"><table class="compare-table">
+        <tr><th></th>${vendors.map(v => `<th style="color:var(--accent-neon)">${v.name}</th>`).join('')}</tr>
+        ${rows.map(([label, fn]) => `<tr><td>${label}</td>${vendors.map(v => `<td class="${label.includes('Price') ? 'price-cell' : ''}">${fn(v)}</td>`).join('')}</tr>`).join('')}
+    </table></div>`;
+}
+
+function checkOverpaying() {
+    const vendorName = document.getElementById('calcVendor').value;
+    const size = document.getElementById('calcSize').value;
+    const totalPrice = parseFloat(document.getElementById('calcPrice').value);
+    const units = parseFloat(document.getElementById('calcUnits').value);
+    if (!vendorName || !totalPrice || !units) return;
+
+    const vendor = VENDORS.find(v => v.name === vendorName);
+    if (!vendor) return;
+    const range = vendor.pricing[size];
+    const isAnnual = range[0] >= 100;
+    const perUnit = isAnnual ? totalPrice / 1 : totalPrice / units;
+    const effectivePerUnit = isAnnual ? totalPrice : totalPrice / units;
+
+    // For annual flat-fee-ish products, compare total; for per-unit, compare per-unit
+    let low, high, userVal;
+    if (range[0] >= 1000) {
+        low = range[0]; high = range[1]; userVal = totalPrice;
+    } else {
+        // Per unit pricing — annualize if monthly
+        const isMonthly = vendor.model.toLowerCase().includes('month');
+        low = isMonthly ? range[0] * 12 : range[0];
+        high = isMonthly ? range[1] * 12 : range[1];
+        userVal = totalPrice / units;
+    }
+
+    const result = document.getElementById('calcResult');
+    const verdict = document.getElementById('calcVerdict');
+    const detail = document.getElementById('calcDetail');
+    result.classList.add('show');
+
+    if (userVal <= low) {
+        result.className = 'calc-result show good';
+        verdict.textContent = '🎉 Great Deal!';
+        detail.textContent = `You're paying below the typical range ($${low.toFixed(2)}–$${high.toFixed(2)}). Well negotiated!`;
+    } else if (userVal <= high) {
+        result.className = 'calc-result show ok';
+        verdict.textContent = '👍 Fair Price';
+        detail.textContent = `You're within the typical range ($${low.toFixed(2)}–$${high.toFixed(2)}). There may be room to negotiate 10-20% off at renewal.`;
+    } else {
+        const overpay = ((userVal - high) / high * 100).toFixed(0);
+        result.className = 'calc-result show bad';
+        verdict.textContent = '⚠️ Likely Overpaying';
+        detail.textContent = `You're ${overpay}% above the typical range ($${low.toFixed(2)}–$${high.toFixed(2)}). Get competitive quotes before your next renewal.`;
+    }
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+    // Populate calculator vendor dropdown
+    const calcSelect = document.getElementById('calcVendor');
+    calcSelect.innerHTML = '<option value="">Select a vendor...</option>' +
+        VENDORS.map(v => `<option value="${v.name}">${v.name} (${v.category})</option>`).join('');
+
+    // Keyboard shortcut to close modal
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    filterVendors();
+});
+</script>
+</body>
+</html>
