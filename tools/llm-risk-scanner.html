@@ -1,0 +1,420 @@
+---
+layout: default
+title: "Can I Upload This To ChatGPT? | Free LLM Data Risk Scanner"
+description: "Scan text for PII, secrets, credentials, and sensitive data before pasting into ChatGPT or other LLMs. 100% client-side, your data never leaves your browser."
+image: /assets/images/og-default.png
+---
+
+<style>
+.scanner-trust {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(188, 19, 254, 0.08));
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--accent-neon);
+    margin-bottom: 2rem;
+}
+.scanner-trust a { color: var(--accent-neon); text-decoration: underline; text-underline-offset: 3px; }
+.scanner-header { margin-bottom: 2rem; }
+.scanner-header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.75rem; line-height: 1.2; }
+.scanner-header p { color: var(--text-grey); font-size: 1rem; line-height: 1.6; }
+
+.scan-input-wrap { position: relative; margin-bottom: 1rem; }
+#scan-input {
+    width: 100%; min-height: 300px; padding: 1.25rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--bg-card); color: var(--text-white); border: 1px solid var(--border-subtle);
+    border-radius: 12px; resize: vertical; line-height: 1.6; outline: none;
+    transition: border-color 0.3s;
+}
+#scan-input:focus { border-color: var(--accent-neon); box-shadow: 0 0 0 2px rgba(0,240,255,0.1); }
+#scan-input::placeholder { color: var(--text-muted); }
+
+.scan-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.btn {
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; padding: 0.75rem 1.5rem;
+    border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s var(--transition-smooth);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-neon), #00c4cc); color: var(--bg-main);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,240,255,0.3); }
+.btn-secondary { background: var(--bg-card); color: var(--text-grey); border: 1px solid var(--border-subtle); }
+.btn-secondary:hover { border-color: var(--accent-neon); color: var(--accent-neon); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+/* Traffic light */
+.traffic-light { display: none; align-items: center; gap: 1.5rem; padding: 1.5rem; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-subtle); margin-bottom: 1.5rem; }
+.traffic-light.visible { display: flex; flex-wrap: wrap; }
+.traffic-lights { display: flex; gap: 0.5rem; }
+.light { width: 32px; height: 32px; border-radius: 50%; opacity: 0.15; transition: all 0.4s; }
+.light-red { background: #ef4444; }
+.light-yellow { background: #eab308; }
+.light-green { background: #22c55e; }
+.light.active { opacity: 1; box-shadow: 0 0 20px currentColor; }
+.light-red.active { color: #ef4444; }
+.light-yellow.active { color: #eab308; }
+.light-green.active { color: #22c55e; }
+.risk-label { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; }
+.risk-label.safe { color: #22c55e; }
+.risk-label.caution { color: #eab308; }
+.risk-label.danger { color: #ef4444; }
+
+/* Summary */
+.scan-summary { display: none; margin-bottom: 1.5rem; }
+.scan-summary.visible { display: block; }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+.summary-card {
+    background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 10px;
+    padding: 1rem 1.25rem; border-left: 3px solid var(--text-muted);
+}
+.summary-card.pii { border-left-color: #ef4444; }
+.summary-card.secrets { border-left-color: #f97316; }
+.summary-card.internal { border-left-color: #eab308; }
+.summary-card.financial { border-left-color: #a855f7; }
+.summary-card.credentials { border-left-color: #ec4899; }
+.summary-card h3 { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+.summary-card ul { list-style: none; font-family: var(--font-mono); font-size: 0.8rem; }
+.summary-card li { color: var(--text-grey); padding: 2px 0; }
+.summary-card li span { color: var(--text-white); font-weight: 600; }
+
+/* Highlighted output */
+.scan-output { display: none; margin-bottom: 1.5rem; }
+.scan-output.visible { display: block; }
+.scan-output h3 { font-size: 0.95rem; margin-bottom: 0.75rem; }
+#highlighted-output {
+    background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px;
+    padding: 1.25rem; font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.6;
+    white-space: pre-wrap; word-break: break-all; color: var(--text-grey); max-height: 500px; overflow-y: auto;
+}
+.hl-pii { background: rgba(239,68,68,0.25); color: #fca5a5; border-radius: 3px; padding: 1px 3px; }
+.hl-secrets { background: rgba(249,115,22,0.25); color: #fdba74; border-radius: 3px; padding: 1px 3px; }
+.hl-credentials { background: rgba(236,72,153,0.25); color: #f9a8d4; border-radius: 3px; padding: 1px 3px; }
+.hl-internal { background: rgba(234,179,8,0.25); color: #fde047; border-radius: 3px; padding: 1px 3px; }
+.hl-financial { background: rgba(168,85,247,0.25); color: #d8b4fe; border-radius: 3px; padding: 1px 3px; }
+
+/* Lead capture */
+.lead-capture {
+    background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px;
+    padding: 2rem; margin-top: 3rem;
+}
+.lead-capture h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.lead-capture p { color: var(--text-grey); font-size: 0.9rem; margin-bottom: 1rem; }
+.lead-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.lead-form input[type="email"] {
+    flex: 1; min-width: 200px; padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--bg-main); color: var(--text-white); border: 1px solid var(--border-subtle);
+    border-radius: 8px; outline: none;
+}
+.lead-form input[type="email"]:focus { border-color: var(--accent-neon); }
+
+/* Toast */
+.toast {
+    position: fixed; bottom: 2rem; right: 2rem; background: var(--bg-card); border: 1px solid var(--accent-neon);
+    border-radius: 10px; padding: 1rem 1.5rem; font-family: var(--font-mono); font-size: 0.85rem;
+    color: var(--accent-neon); z-index: 1000; transform: translateY(100px); opacity: 0; transition: all 0.3s;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+@media (max-width: 640px) {
+    .scan-actions { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+    .traffic-light { flex-direction: column; text-align: center; }
+    .lead-form { flex-direction: column; }
+}
+</style>
+
+<div class="scanner-header">
+    <h1>Can I Upload This To ChatGPT?</h1>
+    <p>Paste your text below and scan for PII, secrets, credentials, and sensitive data before sharing with any LLM.</p>
+</div>
+
+<div class="scanner-trust">
+    🔒 100% client-side. Your text never leaves your browser. No data is stored or transmitted.
+    <br><small><a href="https://github.com/RADobson/dobson-dev-site/blob/main/tools/llm-risk-scanner.html" target="_blank" rel="noopener">View source code on GitHub</a></small>
+</div>
+
+<div class="scan-input-wrap">
+    <textarea id="scan-input" placeholder="Paste your text here — log snippets, emails, code, config files, documents...
+
+Example things that will be detected:
+  • Email addresses, phone numbers, SSN/TFN
+  • API keys (AWS, Azure, GCP), JWT tokens
+  • Database connection strings, passwords
+  • Internal IPs (10.x, 192.168.x), file paths
+  • Credit card numbers, ABN/ACN numbers"></textarea>
+</div>
+
+<div class="scan-actions">
+    <button class="btn btn-primary" id="scan-btn" onclick="runScan()">🔍 Scan Text</button>
+    <button class="btn btn-secondary" id="sanitize-btn" onclick="sanitizeText()" disabled>🧹 Sanitize</button>
+    <button class="btn btn-secondary" id="copy-btn" onclick="copySanitized()" disabled>📋 Copy Sanitized</button>
+    <button class="btn btn-secondary" onclick="clearAll()">✕ Clear</button>
+</div>
+
+<div class="traffic-light" id="traffic-light">
+    <div class="traffic-lights">
+        <div class="light light-red" id="tl-red"></div>
+        <div class="light light-yellow" id="tl-yellow"></div>
+        <div class="light light-green" id="tl-green"></div>
+    </div>
+    <div class="risk-label" id="risk-label"></div>
+</div>
+
+<div class="scan-summary" id="scan-summary">
+    <div class="summary-grid" id="summary-grid"></div>
+</div>
+
+<div class="scan-output" id="scan-output">
+    <h3>Highlighted Findings</h3>
+    <div id="highlighted-output"></div>
+</div>
+
+<div class="lead-capture">
+    <h3>📄 Corporate AI Data Security Policy Template</h3>
+    <p>Get our free template to set data handling policies for your team's use of ChatGPT and other AI tools.</p>
+    <form class="lead-form" action="https://formspree.io/f/xzznoayg" method="POST">
+        <input type="hidden" name="_subject" value="LLM Risk Scanner - Policy Template Download">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Download Template</button>
+    </form>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "LLM Data Risk Scanner",
+  "url": "https://dobsondevelopment.com.au/tools/llm-risk-scanner",
+  "description": "Scan text for PII, secrets, credentials, and sensitive data before pasting into ChatGPT or other LLMs. 100% client-side, your data never leaves your browser.",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "author": { "@type": "Organization", "name": "Dobson Development", "url": "https://dobsondevelopment.com.au" },
+  "browserRequirements": "Requires JavaScript"
+}
+</script>
+
+<script>
+(function(){
+'use strict';
+
+const PATTERNS = [
+  // PII
+  { re: /\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b/g, label: 'Email Address', cat: 'pii', tag: 'EMAIL' },
+  { re: /\b(?:\+?61|0)[2-478](?:[ \-]?\d){8}\b/g, label: 'Phone Number (AU)', cat: 'pii', tag: 'PHONE' },
+  { re: /(?:\+?1[ \-]?)?\(?\d{3}\)?[ \-]?\d{3}[ \-]?\d{4}\b/g, label: 'Phone Number (US)', cat: 'pii', tag: 'PHONE' },
+  { re: /\b\d{3}[ \-]?\d{3}[ \-]?\d{3}\b/g, label: 'TFN (Australian Tax File Number)', cat: 'pii', tag: 'TFN' },
+  { re: /\b\d{3}[ \-]?\d{2}[ \-]?\d{4}\b/g, label: 'SSN Pattern', cat: 'pii', tag: 'SSN' },
+  { re: /\b(?:0[1-9]|[12]\d|3[01])[\/\-](?:0[1-9]|1[0-2])[\/\-](?:19|20)\d{2}\b/g, label: 'Date of Birth', cat: 'pii', tag: 'DOB' },
+
+  // Secrets
+  { re: /\bAKIA[0-9A-Z]{16}\b/g, label: 'AWS Access Key', cat: 'secrets', tag: 'AWS_KEY' },
+  { re: /\bAIza[0-9A-Za-z\-_]{35}\b/g, label: 'GCP API Key', cat: 'secrets', tag: 'GCP_KEY' },
+  { re: /\b[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\b/gi, label: 'UUID/Azure Key Pattern', cat: 'secrets', tag: 'API_KEY' },
+  { re: /\beyJ[A-Za-z0-9\-_]+\.eyJ[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_.+\/=]+/g, label: 'JWT Token', cat: 'secrets', tag: 'JWT' },
+  { re: /[Bb]earer\s+[A-Za-z0-9\-_\.~\+\/]+=*/g, label: 'Bearer Token', cat: 'secrets', tag: 'BEARER_TOKEN' },
+  { re: /-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----/g, label: 'Private Key', cat: 'secrets', tag: 'PRIVATE_KEY' },
+  { re: /(?:api[_\-]?key|apikey|api[_\-]?secret|secret[_\-]?key)\s*[:=]\s*['"]?[A-Za-z0-9\-_\.]{16,}['"]?/gi, label: 'API Key/Secret', cat: 'secrets', tag: 'API_KEY' },
+  { re: /(?:sk|pk)[-_](?:live|test)[-_][A-Za-z0-9]{20,}/g, label: 'Stripe Key', cat: 'secrets', tag: 'STRIPE_KEY' },
+  { re: /ghp_[A-Za-z0-9]{36}/g, label: 'GitHub Token', cat: 'secrets', tag: 'GITHUB_TOKEN' },
+  { re: /xox[bposa]-[A-Za-z0-9\-]{10,}/g, label: 'Slack Token', cat: 'secrets', tag: 'SLACK_TOKEN' },
+
+  // Credentials
+  { re: /(?:password|passwd|pwd)\s*[:=]\s*['"]?[^\s'"]{4,}['"]?/gi, label: 'Password', cat: 'credentials', tag: 'PASSWORD' },
+  { re: /(?:mongodb(?:\+srv)?|postgres(?:ql)?|mysql|redis|amqp):\/\/[^\s'"]+/gi, label: 'Database Connection String', cat: 'credentials', tag: 'DB_CONNECTION' },
+  { re: /(?:username|user)\s*[:=]\s*['"]?[A-Za-z0-9._\-]{3,}['"]?/gi, label: 'Username', cat: 'credentials', tag: 'USERNAME' },
+
+  // Internal
+  { re: /\b10\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g, label: 'Internal IP (10.x)', cat: 'internal', tag: 'INTERNAL_IP' },
+  { re: /\b172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}\b/g, label: 'Internal IP (172.16-31.x)', cat: 'internal', tag: 'INTERNAL_IP' },
+  { re: /\b192\.168\.\d{1,3}\.\d{1,3}\b/g, label: 'Internal IP (192.168.x)', cat: 'internal', tag: 'INTERNAL_IP' },
+  { re: /\b[a-zA-Z0-9\-]+\.(?:internal|local|corp|intranet|lan)\b/g, label: 'Internal Hostname', cat: 'internal', tag: 'INTERNAL_HOST' },
+  { re: /(?:\/(?:home|Users|var|etc|opt|tmp)\/[^\s'"]{3,})|(?:[A-Z]:\\(?:Users|Program Files)[^\s'"]{3,})/g, label: 'File Path', cat: 'internal', tag: 'FILE_PATH' },
+
+  // Financial
+  { re: /\b(?:4\d{3}|5[1-5]\d{2}|3[47]\d{2}|6(?:011|5\d{2}))[- ]?\d{4}[- ]?\d{4}[- ]?\d{1,4}\b/g, label: 'Credit Card Number', cat: 'financial', tag: 'CREDIT_CARD', validate: luhnCheck },
+  { re: /\b\d{2}\s?\d{3}\s?\d{3}\s?\d{3}\b/g, label: 'ABN (Australian Business Number)', cat: 'financial', tag: 'ABN' },
+  { re: /\b\d{3}\s?\d{3}\s?\d{3}\b/g, label: 'ACN (Australian Company Number)', cat: 'financial', tag: 'ACN' },
+
+  // Code secrets (.env)
+  { re: /^[A-Z_]{2,}=.+$/gm, label: '.env Variable', cat: 'secrets', tag: 'ENV_VAR' },
+];
+
+function luhnCheck(num) {
+  const digits = num.replace(/\D/g, '');
+  if (digits.length < 13 || digits.length > 19) return false;
+  let sum = 0, alt = false;
+  for (let i = digits.length - 1; i >= 0; i--) {
+    let n = parseInt(digits[i], 10);
+    if (alt) { n *= 2; if (n > 9) n -= 9; }
+    sum += n;
+    alt = !alt;
+  }
+  return sum % 10 === 0;
+}
+
+let findings = [];
+let sanitizedText = '';
+
+window.runScan = function() {
+  const text = document.getElementById('scan-input').value;
+  if (!text.trim()) return;
+
+  findings = [];
+  const seen = new Set();
+
+  for (const pat of PATTERNS) {
+    pat.re.lastIndex = 0;
+    let m;
+    while ((m = pat.re.exec(text)) !== null) {
+      const key = m.index + ':' + m[0].length;
+      if (seen.has(key)) continue;
+      if (pat.validate && !pat.validate(m[0])) continue;
+      seen.add(key);
+      findings.push({ start: m.index, end: m.index + m[0].length, text: m[0], label: pat.label, cat: pat.cat, tag: pat.tag });
+    }
+  }
+
+  // Remove overlapping: keep longest
+  findings.sort((a, b) => a.start - b.start || b.end - a.end);
+  const filtered = [];
+  let lastEnd = -1;
+  for (const f of findings) {
+    if (f.start >= lastEnd) { filtered.push(f); lastEnd = f.end; }
+    else if (f.end > lastEnd) { /* skip overlap */ }
+  }
+  findings = filtered;
+
+  renderResults(text);
+};
+
+function renderResults(text) {
+  // Traffic light
+  const tl = document.getElementById('traffic-light');
+  const label = document.getElementById('risk-label');
+  tl.classList.add('visible');
+  document.getElementById('tl-red').classList.remove('active');
+  document.getElementById('tl-yellow').classList.remove('active');
+  document.getElementById('tl-green').classList.remove('active');
+
+  const hasDanger = findings.some(f => ['secrets','credentials','financial'].includes(f.cat));
+  const hasCaution = findings.length > 0;
+
+  if (hasDanger) {
+    document.getElementById('tl-red').classList.add('active');
+    label.textContent = '❌ DANGER — Contains secrets/credentials/PII. DO NOT paste into LLMs.';
+    label.className = 'risk-label danger';
+  } else if (hasCaution) {
+    document.getElementById('tl-yellow').classList.add('active');
+    label.textContent = '⚠️ CAUTION — Found items that may be sensitive. Review highlighted items.';
+    label.className = 'risk-label caution';
+  } else {
+    document.getElementById('tl-green').classList.add('active');
+    label.textContent = '✅ SAFE — No sensitive data detected. OK to paste into LLMs.';
+    label.className = 'risk-label safe';
+  }
+
+  // Summary
+  const summaryEl = document.getElementById('scan-summary');
+  const grid = document.getElementById('summary-grid');
+  grid.innerHTML = '';
+  if (findings.length > 0) {
+    summaryEl.classList.add('visible');
+    const byCat = {};
+    for (const f of findings) {
+      if (!byCat[f.cat]) byCat[f.cat] = {};
+      if (!byCat[f.cat][f.label]) byCat[f.cat][f.label] = 0;
+      byCat[f.cat][f.label]++;
+    }
+    const catNames = { pii: 'PII', secrets: 'Secrets', credentials: 'Credentials', internal: 'Internal Info', financial: 'Financial' };
+    for (const [cat, items] of Object.entries(byCat)) {
+      const card = document.createElement('div');
+      card.className = 'summary-card ' + cat;
+      let html = '<h3>' + (catNames[cat] || cat) + '</h3><ul>';
+      for (const [lbl, cnt] of Object.entries(items)) {
+        html += '<li><span>' + cnt + '</span> ' + lbl + '</li>';
+      }
+      html += '</ul>';
+      card.innerHTML = html;
+      grid.appendChild(card);
+    }
+  } else {
+    summaryEl.classList.remove('visible');
+  }
+
+  // Highlighted output
+  const outEl = document.getElementById('scan-output');
+  const hlEl = document.getElementById('highlighted-output');
+  if (findings.length > 0) {
+    outEl.classList.add('visible');
+    let html = '';
+    let pos = 0;
+    for (const f of findings) {
+      html += escapeHtml(text.slice(pos, f.start));
+      html += '<span class="hl-' + f.cat + '" title="' + f.label + '">' + escapeHtml(f.text) + '</span>';
+      pos = f.end;
+    }
+    html += escapeHtml(text.slice(pos));
+    hlEl.innerHTML = html;
+  } else {
+    outEl.classList.remove('visible');
+  }
+
+  document.getElementById('sanitize-btn').disabled = findings.length === 0;
+  document.getElementById('copy-btn').disabled = true;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+window.sanitizeText = function() {
+  const text = document.getElementById('scan-input').value;
+  let result = '';
+  let pos = 0;
+  for (const f of findings) {
+    result += text.slice(pos, f.start);
+    result += '[REDACTED_' + f.tag + ']';
+    pos = f.end;
+  }
+  result += text.slice(pos);
+  sanitizedText = result;
+  document.getElementById('scan-input').value = result;
+  document.getElementById('copy-btn').disabled = false;
+  document.getElementById('sanitize-btn').disabled = true;
+
+  // Re-scan to show clean
+  findings = [];
+  renderResults(result);
+  showToast('Text sanitized! ' + findings.length + ' items remain.');
+};
+
+window.copySanitized = function() {
+  const text = document.getElementById('scan-input').value;
+  navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard!'));
+};
+
+window.clearAll = function() {
+  document.getElementById('scan-input').value = '';
+  document.getElementById('traffic-light').classList.remove('visible');
+  document.getElementById('scan-summary').classList.remove('visible');
+  document.getElementById('scan-output').classList.remove('visible');
+  document.getElementById('sanitize-btn').disabled = true;
+  document.getElementById('copy-btn').disabled = true;
+  findings = [];
+};
+
+function showToast(msg) {
+  let t = document.querySelector('.toast');
+  if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+})();
+</script>
