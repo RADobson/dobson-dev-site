@@ -1,0 +1,549 @@
+---
+layout: default
+title: "AI Agent Consulting — Automate Your Business With Intelligent Agents"
+description: "We build autonomous AI agents that handle your repetitive workflows — email triage, scheduling, invoicing, follow-ups, and data entry. For Sunshine Coast and regional QLD small businesses."
+image: /assets/images/og-default.png
+sitemap: true
+---
+
+<style>
+    .service-hero {
+        padding: 4rem 0 3rem;
+        position: relative;
+    }
+    .service-hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .service-hero .subtitle {
+        font-size: 1.15rem;
+        color: var(--text-grey);
+        max-width: 700px;
+        margin-bottom: 1.5rem;
+    }
+    .service-hero .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.9rem;
+        background: rgba(188, 19, 254, 0.08);
+        border: 1px solid rgba(188, 19, 254, 0.2);
+        border-radius: 50px;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent-purple);
+        margin-bottom: 1.5rem;
+    }
+    .problem-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .problem-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent-purple);
+    }
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+        margin: 2rem 0;
+    }
+    .stat-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    .stat-box:hover {
+        border-color: rgba(188, 19, 254, 0.3);
+        transform: translateY(-2px);
+    }
+    .stat-box .number {
+        font-family: var(--font-mono);
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-purple);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .stat-box .label {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+    .services-offered {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .services-offered h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--accent-purple);
+    }
+    .services-offered .section-note {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+    }
+    .service-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+    }
+    .service-item {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    .service-item:hover {
+        border-color: rgba(188, 19, 254, 0.3);
+        transform: translateY(-2px);
+    }
+    .service-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-white);
+    }
+    .service-item p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+    .service-item .icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+    .how-it-works {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .how-it-works h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: var(--accent-purple);
+    }
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .step {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.5rem;
+        position: relative;
+        text-align: center;
+    }
+    .step .step-num {
+        font-family: var(--font-mono);
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-purple);
+        display: block;
+        margin-bottom: 0.75rem;
+        opacity: 0.6;
+    }
+    .step h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-white);
+    }
+    .step p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+    .differentiator {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .differentiator h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent-purple);
+    }
+    .differentiator blockquote {
+        border-left: 3px solid var(--accent-purple);
+        padding-left: 1.25rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: var(--text-grey);
+        font-size: 1.15rem;
+    }
+    .pricing-note {
+        background: var(--bg-card);
+        border: 1px solid rgba(188, 19, 254, 0.2);
+        border-radius: 10px;
+        padding: 1.75rem;
+        margin: 2rem 0;
+    }
+    .pricing-note h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+        color: var(--accent-purple);
+    }
+    .pricing-note p {
+        color: var(--text-grey);
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+    .cta-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .cta-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    .cta-section .cta-subtitle {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+    }
+    .cta-form {
+        max-width: 600px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .cta-form .terminal-bar {
+        background: #1a1a1e;
+        padding: 0.6rem 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .cta-form .terminal-bar .dots {
+        display: flex;
+        gap: 5px;
+        margin-right: 0.75rem;
+    }
+    .cta-form .terminal-bar .dots span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .cta-form .terminal-bar .dots span:nth-child(1) { background: #ff5f56; }
+    .cta-form .terminal-bar .dots span:nth-child(2) { background: #ffbd2e; }
+    .cta-form .terminal-bar .dots span:nth-child(3) { background: #27ca40; }
+    .cta-form form {
+        padding: 1.5rem;
+    }
+    .cta-form .form-group {
+        margin-bottom: 1.25rem;
+    }
+    .cta-form label {
+        display: block;
+        font-family: var(--font-mono);
+        color: var(--accent-purple);
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+    .cta-form input,
+    .cta-form textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.02);
+        border: none;
+        border-bottom: 1px solid var(--border-subtle);
+        color: var(--text-white);
+        font-family: var(--font-mono);
+        padding: 0.7rem 0.5rem;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+        border-radius: 4px 4px 0 0;
+    }
+    .cta-form input:focus,
+    .cta-form textarea:focus {
+        outline: none;
+        border-bottom-color: var(--accent-purple);
+    }
+    .cta-form input::placeholder,
+    .cta-form textarea::placeholder {
+        color: var(--text-muted);
+    }
+    .cta-form button {
+        width: 100%;
+        background: transparent;
+        color: var(--accent-purple);
+        border: 1px solid var(--accent-purple);
+        padding: 0.9rem;
+        font-family: var(--font-mono);
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+    .cta-form button:hover {
+        background: var(--accent-purple);
+        color: var(--bg-main);
+        box-shadow: 0 0 30px rgba(188, 19, 254, 0.4);
+    }
+    .faq-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .faq-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: var(--accent-purple);
+    }
+    .faq-item {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .faq-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-white);
+    }
+    .faq-item p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+    .back-nav {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+    }
+    .back-nav:hover { color: var(--accent-purple); }
+</style>
+
+<!-- Structured Data: Service -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Agent Consulting — Business Workflow Automation",
+    "description": "We build autonomous AI agents that handle repetitive business workflows including email triage, scheduling, invoicing, customer follow-ups, and data entry for small businesses.",
+    "provider": {
+        "@type": "Organization",
+        "name": "Dobson Development Pty Ltd",
+        "url": "https://dobsondevelopment.com.au"
+    },
+    "areaServed": {
+        "@type": "State",
+        "name": "Queensland",
+        "addressCountry": "AU"
+    },
+    "serviceType": "AI Automation Consulting",
+    "url": "https://dobsondevelopment.com.au/services/ai-consulting",
+    "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "AUD",
+        "price": "1000",
+        "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "1000-3000",
+            "priceCurrency": "AUD",
+            "unitText": "month"
+        }
+    }
+}
+</script>
+
+<a href="/" class="back-nav">← Back to Home</a>
+
+<section class="service-hero">
+    <div class="badge">🤖 AI Agent Consulting</div>
+    <h1>Stop Drowning in Admin.<br>Let <span style="color: var(--accent-purple);">AI Agents</span> Do the Work.</h1>
+    <p class="subtitle">
+        We build autonomous AI agents that handle your repetitive workflows — email, scheduling, invoicing, follow-ups — so you can focus on what you're actually good at.
+    </p>
+</section>
+
+<section class="problem-section">
+    <h2><span style="color: var(--accent-purple);">//</span> THE PROBLEM</h2>
+    <p style="color: var(--text-grey); line-height: 1.8; margin-bottom: 1rem;">
+        You spend <strong style="color: var(--text-white);">10-20 hours every week</strong> on email, scheduling, follow-ups, invoicing, and data entry. That's $20-50K per year in lost productivity — time you could spend on billable work, clients, or growing your business.
+    </p>
+    <p style="color: var(--text-grey); line-height: 1.8; margin-bottom: 1rem;">
+        You've probably tried ChatGPT. It's great for answering questions, but it doesn't actually <em>do</em> things for you. It can't send emails, book appointments, chase invoices, or update your CRM. You need agents, not chatbots.
+    </p>
+    
+    <div class="stat-grid">
+        <div class="stat-box">
+            <span class="number">10-20hrs</span>
+            <span class="label">per week spent on repetitive admin tasks</span>
+        </div>
+        <div class="stat-box">
+            <span class="number">$20-50K</span>
+            <span class="label">per year in lost productivity per employee</span>
+        </div>
+        <div class="stat-box">
+            <span class="number">68%</span>
+            <span class="label">of small business owners say admin is their biggest time drain</span>
+        </div>
+    </div>
+</section>
+
+<section class="services-offered">
+    <h2><span style="color: var(--accent-purple);">//</span> WHAT WE BUILD</h2>
+    <p class="section-note">We don't build chatbots. We build agents that take <strong style="color: var(--text-white);">whole workflows</strong> off your plate.</p>
+    
+    <div class="service-list">
+        <div class="service-item">
+            <span class="icon">📧</span>
+            <h3>AI Email Triage & Response</h3>
+            <p>Agents that read, categorise, draft, and send emails on your behalf. They learn your tone and priorities, and handle the 80% of emails that don't need your brain.</p>
+        </div>
+        <div class="service-item">
+            <span class="icon">📅</span>
+            <h3>Scheduling & Calendar Management</h3>
+            <p>Agents that book appointments, send reminders, handle reschedules, and manage your calendar across multiple tools. No more back-and-forth emails.</p>
+        </div>
+        <div class="service-item">
+            <span class="icon">🎯</span>
+            <h3>Customer Follow-up Automation</h3>
+            <p>Agents that track leads, send personalised follow-ups at the right time, and flag hot prospects for your attention. Never let a lead go cold again.</p>
+        </div>
+        <div class="service-item">
+            <span class="icon">💰</span>
+            <h3>Invoice & Payment Processing</h3>
+            <p>Agents that generate invoices, send them to clients, track payments, send reminders, and reconcile against your accounting software.</p>
+        </div>
+        <div class="service-item">
+            <span class="icon">📊</span>
+            <h3>Data Entry & Reporting</h3>
+            <p>Agents that pull data from multiple sources, enter it into your systems, and generate reports — automatically, on schedule, without errors.</p>
+        </div>
+        <div class="service-item">
+            <span class="icon">⚙️</span>
+            <h3>Custom Workflow Automation</h3>
+            <p>If it's repetitive, we can probably automate it. Tell us what's eating your time and we'll build an agent that handles it.</p>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h2><span style="color: var(--accent-purple);">//</span> HOW IT WORKS</h2>
+    
+    <div class="steps">
+        <div class="step">
+            <span class="step-num">01</span>
+            <h3>Free Discovery Call</h3>
+            <p>30-minute call to understand your workflows, pain points, and where you're losing the most time.</p>
+        </div>
+        <div class="step">
+            <span class="step-num">02</span>
+            <h3>Automation Opportunity Map</h3>
+            <p>We map out exactly which tasks can be automated, the expected time savings, and prioritise by impact.</p>
+        </div>
+        <div class="step">
+            <span class="step-num">03</span>
+            <h3>2-Week Pilot</h3>
+            <p>We build and deploy your first agent. You see real results in two weeks, not two months.</p>
+        </div>
+        <div class="step">
+            <span class="step-num">04</span>
+            <h3>Ongoing Support</h3>
+            <p>We monitor, tune, and expand your agents as your business needs evolve. You focus on growth.</p>
+        </div>
+    </div>
+</section>
+
+<section class="differentiator">
+    <h2><span style="color: var(--accent-purple);">//</span> WHY US</h2>
+    <blockquote>
+        "We don't build chatbots. We build agents that take whole workflows off your plate."
+    </blockquote>
+    <p style="color: var(--text-grey); line-height: 1.8; margin-bottom: 1rem;">
+        Most "AI consultants" will sell you a chatbot that answers FAQs. That's not what we do. We build <strong style="color: var(--text-white);">autonomous agents</strong> that actually execute tasks — reading emails, booking appointments, sending invoices, updating systems — without you lifting a finger.
+    </p>
+    <p style="color: var(--text-grey); line-height: 1.8;">
+        We're based on the Sunshine Coast and work with local businesses across regional QLD. We understand that you need practical solutions, not Silicon Valley hype. Things that work on day one and save you real time.
+    </p>
+
+    <div class="pricing-note">
+        <h3>💡 Pricing</h3>
+        <p>
+            <strong style="color: var(--text-white);">Free pilot</strong> for qualified businesses — we're actively building case studies and want to prove the value before you pay a cent. After the pilot, ongoing support runs <strong style="color: var(--text-white);">$1,000-$3,000/month</strong> depending on the number of agents and complexity.
+        </p>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <h2>Book a Free Automation Discovery Call</h2>
+    <p class="cta-subtitle">30 minutes. We'll identify your biggest automation opportunities and show you what's possible.</p>
+    
+    <div class="cta-form">
+        <div class="terminal-bar">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span>discovery-call.sh</span>
+        </div>
+        <form action="https://formspree.io/f/xzznoayg" method="POST">
+            <input type="hidden" name="_subject" value="AI Automation Discovery Call Request">
+            <input type="hidden" name="service" value="ai-consulting">
+            <div class="form-group">
+                <label for="ai-name">var name =</label>
+                <input type="text" id="ai-name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <label for="ai-email">var email =</label>
+                <input type="email" id="ai-email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="ai-business">var business =</label>
+                <input type="text" id="ai-business" name="business" placeholder="Your business name & industry">
+            </div>
+            <div class="form-group">
+                <label for="ai-message">var biggest_time_drain =</label>
+                <textarea id="ai-message" name="message" rows="3" placeholder="What repetitive tasks eat most of your time?"></textarea>
+            </div>
+            <button type="submit">[ BOOK DISCOVERY CALL ]</button>
+        </form>
+    </div>
+</section>
+
+<section class="faq-section">
+    <h2><span style="color: var(--accent-purple);">//</span> FAQ</h2>
+    
+    <div class="faq-item">
+        <h3>What's the difference between an AI agent and a chatbot?</h3>
+        <p>A chatbot answers questions. An agent takes action. Our agents can read your emails, draft responses, book meetings, send invoices, and update your systems — autonomously, without you typing a prompt.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>Is my data safe?</h3>
+        <p>Yes. We follow strict data handling practices. Your data stays within your existing systems (email provider, calendar, accounting software). We don't store your business data on our servers, and all integrations use encrypted connections.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>What if the agent makes a mistake?</h3>
+        <p>We build in guardrails. For the first few weeks, agents work in "supervised mode" — they draft actions and wait for your approval before executing. As you build trust, you can gradually increase their autonomy.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>What tools/software do I need?</h3>
+        <p>We work with whatever you're already using — Gmail, Outlook, Google Calendar, Xero, MYOB, most CRMs, and hundreds of other tools. No need to change your existing setup.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>How long before I see results?</h3>
+        <p>Our pilot runs 2 weeks. Most clients see measurable time savings within the first week. The free discovery call will give you a realistic estimate for your specific workflows.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>What kind of businesses is this for?</h3>
+        <p>Any small business (1-20 employees) drowning in repetitive admin. We work particularly well with accounting firms, healthcare practices, professional services, trades, and hospitality businesses on the Sunshine Coast and across regional QLD.</p>
+    </div>
+</section>
