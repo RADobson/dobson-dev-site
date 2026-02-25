@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -1748,11 +1750,12 @@
                     <p>Insights on security automation, AI tools, and building things that work.</p>
                 </div>
                 
-                <article class="blog-preview reveal" data-delay="1">
-                    <h3>Agentic AI in the SOC — What the Major Platforms Are Actually Building</h3>
-                    <div class="meta">February 25, 2026 • #cybersecurity #agentic-AI #SOC</div>
-                    <p>A technical comparison of 8 agentic AI platforms for security operations — CrowdStrike Charlotte AI, Palo Alto XSIAM, Torq HyperSOC, Tuskira, Dropzone AI, Radiant Security, Prophet Security, and Exabeam Nova. What's actually shipping versus what's still on a roadmap.</p>
-                    <a href="/blog/agentic-ai-soc-comparison/" class="card-link">
+                {% assign latest = site.posts.first %}
+                <article class="blog-preview reveal visible">
+                    <h3>{{ latest.title }}</h3>
+                    <div class="meta">{{ latest.date | date: "%B %-d, %Y" }}{% if latest.tags %} • {% for tag in latest.tags limit:3 %}#{{ tag }}{% unless forloop.last %} {% endunless %}{% endfor %}{% endif %}</div>
+                    <p>{{ latest.description | default: latest.excerpt | strip_html | truncate: 250 }}</p>
+                    <a href="{{ latest.url }}" class="card-link">
                         <span>Read Article</span>
                         <span class="arrow">→</span>
                     </a>
