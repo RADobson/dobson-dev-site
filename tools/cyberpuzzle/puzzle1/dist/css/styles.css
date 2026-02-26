@@ -1,0 +1,119 @@
+/*css reset */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+code,
+small,
+strike,
+strong,
+sub,
+sup,
+b,
+u,
+i {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font: normal 0.9em/1em 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: linear-gradient(135deg, #0b0c10 0%, #0f1014 100%);
+  color: #ffffff;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+#frame {
+  max-width: 620px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #141419;
+  padding: 10px;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+}
+
+#content {
+  font: normal normal 1em/1.5em 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  margin: 0 40px 10px;
+}
+
+h1 {
+  font: normal bold 2em/1.8em 'Fira Code', Consolas, Monaco, monospace;
+  text-align: left;
+  background: #0f1014;
+  color: #00f0ff;
+  padding: 0 15px;
+  width: auto;
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+}
+
+h2 {
+  font: italic bold 1.3em/1.2em 'Fira Code', Consolas, Monaco, monospace;
+  padding: 5px 15px 15px;
+  color: #bc13fe;
+}
+
+input[type="radio"] {
+  margin: 0 10px 5px -22px;
+}
+
+label {
+  margin: 0 0 5px;
+}
+
+#score p {
+  font-size: 0.95em;
+  font-style: italic;
+  color: #9ca3af;
+  float: right;
+  margin: 5px 5px 0 0;
+}
+
+#score:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+#response {
+  min-height: 70px;
+  margin: 10px;
+}
+
+#response h3 {
+  font: normal bold 1.2em/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 5px 0;
+}
