@@ -59,7 +59,7 @@ The old way: Invoice arrives by email → someone opens it → types the details
 
 The AI way: Invoice arrives → agent extracts all details (OCR + understanding) → matches to PO automatically → flags discrepancies → routes for approval → schedules payment → updates your books.
 
-**Real numbers:** An accounting firm processing invoices for 40 clients cut processing time by 70%. Their staff went from data entry to quality control.
+**Typical results:** Firms processing invoices for 40+ clients routinely report cutting processing time by 60-70% with AI automation. Staff shift from data entry to quality control.
 
 ### 4. Customer Inquiry Triage
 
