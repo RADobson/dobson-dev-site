@@ -211,7 +211,7 @@
         "applicationCategory": "EducationalApplication",
         "applicationSubCategory": "Cybersecurity Training",
         "operatingSystem": "Web",
-        "url": "https://cyberpuzzle.fun",
+        "url": "https://dobsondevelopment.com.au/tools/cyberpuzzle/",
         "description": "Interactive cybersecurity skill challenges for hiring and training. Gamified CTF-style puzzles that test real-world security knowledge.",
         "author": {
             "@type": "Organization",
@@ -853,12 +853,7 @@
             color: var(--text-muted);
         }
 
-        /* --- PORTFOLIO SECTION --- */
-        #portfolio { 
-            padding: 8rem 0;
-            position: relative;
-        }
-        
+        /* --- CARD STYLES (shared by consulting section) --- */
         .portfolio-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
@@ -934,24 +929,6 @@
         }
         .portfolio-card:hover .card-preview-text {
             transform: scale(1.05);
-        }
-        .card-preview-doppeldown {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-        }
-        .card-preview-doppeldown .card-preview-text {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .card-preview-cyberpuzzle {
-            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%);
-        }
-        .card-preview-cyberpuzzle .card-preview-text {
-            background: linear-gradient(135deg, #a855f7, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .card-content {
@@ -1489,7 +1466,7 @@
         }
         
         /* === PERFORMANCE: content-visibility for below-fold sections === */
-        #services, #portfolio, #blog, #about, #contact {
+        #services, #blog, #about, #contact {
             content-visibility: auto;
             contain-intrinsic-size: auto 800px;
         }
@@ -1545,7 +1522,6 @@
             
             <nav class="nav-links" role="navigation" aria-label="Main navigation">
                 <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
                 <a href="#consulting">Consulting</a>
                 <a href="#blog">Blog</a>
                 <a href="#tools">Tools</a>
@@ -1563,7 +1539,6 @@
 
     <div class="mobile-nav-overlay" id="mobileNav" role="dialog" aria-label="Mobile navigation">
         <a href="#services">// SERVICES</a>
-        <a href="#portfolio">// PORTFOLIO</a>
         <a href="#consulting">// CONSULTING</a>
         <a href="#blog">// BLOG</a>
         <a href="#tools">// TOOLS</a>
@@ -1629,62 +1604,6 @@
                         <span class="service-icon">🤝</span>
                         <h3>One Relationship</h3>
                         <p>One provider, one invoice, one point of contact. No juggling five vendors. We know your business and handle both sides.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="portfolio" aria-labelledby="portfolio-title">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2 id="portfolio-title"><span class="mono-accent">//</span> LIVE PROJECTS</h2>
-                    <p>Products we've built and shipped to production. All are live and serving real users.</p>
-                </div>
-                
-                <div class="portfolio-grid">
-                    <article class="portfolio-card reveal" data-delay="1">
-                        <div class="card-preview card-preview-doppeldown">
-                            <div class="card-preview-text">DoppelDown</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>DoppelDown</h3>
-                            <span class="card-status status-live">LIVE</span>
-                            <p>
-                                AI-powered brand protection for SMBs. Monitors newly registered domains daily to detect lookalike domains, typosquatting, and phishing attempts targeting your brand.
-                            </p>
-                            <div class="card-tags">
-                                <span class="tag">SaaS</span>
-                                <span class="tag">Cybersecurity</span>
-                                <span class="tag">Next.js</span>
-                                <span class="tag">AI/ML</span>
-                            </div>
-                            <a href="https://doppeldown.com" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Visit DoppelDown website">
-                                <span>Visit Site</span>
-                                <span class="arrow">→</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="portfolio-card purple-theme reveal" data-delay="2">
-                        <div class="card-preview card-preview-cyberpuzzle">
-                            <div class="card-preview-text">CyberPuzzle</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>CyberPuzzle.fun</h3>
-                            <span class="card-status status-live">LIVE</span>
-                            <p>
-                                Interactive cybersecurity skill challenges for hiring and training. Gamified CTF-style puzzles that actually test real-world security knowledge.
-                            </p>
-                            <div class="card-tags">
-                                <span class="tag purple">Gamification</span>
-                                <span class="tag purple">HR Tech</span>
-                                <span class="tag purple">Cybersecurity</span>
-                            </div>
-                            <a href="https://cyberpuzzle.fun" target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Try CyberPuzzle">
-                                <span>Try It</span>
-                                <span class="arrow">→</span>
-                            </a>
-                        </div>
                     </article>
                 </div>
             </div>
@@ -1831,6 +1750,16 @@
                         <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Real-world pricing ranges for 32 security vendors. Compare products, check if you're overpaying, and get negotiation tips.</p>
                         <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Check pricing →</span>
                     </a>
+                    <a href="/tools/cyberpuzzle/" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
+                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🧩 CyberPuzzle</h3>
+                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Interactive cybersecurity skill challenges. Gamified CTF-style puzzles that test real-world security knowledge — from transposition ciphers to network forensics.</p>
+                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Play now →</span>
+                    </a>
+                    <a href="https://doppeldown.com" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
+                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🔍 DoppelDown</h3>
+                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">AI-powered brand protection. Enter your domain and instantly detect lookalike domains, typosquatting, and phishing attempts targeting your brand.</p>
+                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Scan your brand →</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1848,7 +1777,7 @@
                             Our background is in cybersecurity engineering — SIEM, SOAR, and SOC operations. Now we're channeling that expertise into building products that solve real problems.
                         </p>
                         <p>
-                            Every project in our portfolio is live, serving real users. We ship fast, iterate often, and don't believe in slideware.
+                            Every tool we build is live and serving real users. We ship fast, iterate often, and don't believe in slideware.
                         </p>
                         <p>
                             Based on the Sunshine Coast, Queensland, we work with clients across Australia and beyond.
@@ -1874,8 +1803,8 @@
                         </div>
 
                         <div class="stat-row">
-                            <span class="stat-label">PROJECTS_LIVE:</span>
-                            <span class="stat-value">2</span>
+                            <span class="stat-label">TOOLS_LIVE:</span>
+                            <span class="stat-value">12</span>
                         </div>
                         
                         <div class="stat-row">
