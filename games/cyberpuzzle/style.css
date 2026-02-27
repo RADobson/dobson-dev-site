@@ -1,0 +1,292 @@
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #0d0d0d;
+  color: #39FF14;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5em;
+}
+
+header p {
+  font-size: 1.2em;
+}
+
+/* Puzzle Block Styles */
+.puzzle-block {
+  background-color: #1a1a1a;
+  border: 2px solid #39FF14;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.puzzle-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+.puzzle-text {
+  font-size: 1em;
+  white-space: pre-wrap;
+  margin-bottom: 15px;
+}
+
+.answer-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.answer-input {
+  padding: 8px;
+  font-size: 1em;
+  border: 1px solid #39FF14;
+  background-color: #333;
+  color: #39FF14;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.answer-button {
+  padding: 8px 15px;
+  font-size: 1em;
+  background-color: #39FF14;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.feedback {
+  font-size: 1.1em;
+  min-height: 1.5em;
+}
+
+.hint-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.hint-toggle {
+  background-color: #39FF14;
+  color: #0d0d0d;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.hint-content {
+  background-color: #333;
+  padding: 10px;
+  border: 1px solid #39FF14;
+  border-radius: 4px;
+}
+
+/* Cookie Banner Styles */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: #39FF14;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  z-index: 1000;
+  display: none; /* Hidden by default; will show if consent is missing */
+}
+
+#cookie-banner p {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+#cookie-banner button {
+  background-color: #39FF14;
+  color: #0d0d0d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* Toggle Switch Container */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* The circle inside the slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* When the checkbox is checked, change background color */
+input:checked + .slider {
+  background-color: #39FF14;
+}
+
+/* Move the circle to the right when checked */
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Optional: styling for the toggle labels */
+.toggle-label {
+  font-size: 0.9em;
+  color: #39FF14;
+}
+
+.puzzle-img {
+  max-width: 100%;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  /* Default drop shadow indicating clickability */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* On hover, increase the drop shadow */
+.puzzle-img:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Optionally, on active state (when tapped/clicked) reduce the shadow slightly */
+.puzzle-img:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* When the image is magnified, adjust the transform origin and shadow */
+.puzzle-img.magnified {
+  transform: scale(3);
+  transform-origin: left center;
+  z-index: 10;
+  position: relative;
+  /* A stronger shadow to emphasize the zoomed state */
+  box-shadow: 0 12px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* Apply a transition on the puzzle container for opacity changes */
+#puzzle-container {
+  transition: opacity 0.3s ease;
+}
+
+/* When the container has the fade-out class, it becomes transparent */
+#puzzle-container.fade-out {
+  opacity: 0;
+}
+
+.multi-input-form {
+  /* Override the display:flex from .answer-form */
+  display: block !important;
+  align-items: initial !important; /* or remove if not needed */
+  gap: 0 !important;              /* remove the spacing if you want */
+}
+
+/*
+.multi-input-form div {
+  display: block !important;
+  margin-bottom: 1em;
+} */
+
+.multi-input-form label {
+  display: block !important;
+  margin-bottom: 4px !important;
+}
+
+.multi-input-form input {
+  display: block !important;
+  width: 200px !important;
+}
+#xp-overlay {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #39FF14;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 1em;
+  z-index: 9999;
+}
+/* === Leaderboard look-and-feel =================================== */
+.leaderboard-block {           /* same neon frame as puzzles */
+  border: 2px solid #39FF14;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+.leaderboard-table {           /* tidy column alignment */
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Courier New", monospace;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 4px 6px;
+}
+
+.leaderboard-table tr:nth-child(even) {
+  background: #111;
+}

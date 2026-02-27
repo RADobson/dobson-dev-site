@@ -1,0 +1,7 @@
+{
+  "puzzleText": "You text back the correct PIN number to Crooked Kenny, and suddenly your phone DINGS! again.\n\nThis time its an email.\n\nThe sending address is from gr3yh4t@hacker.com\n\nIt reads:\n-------------------------------\nSubject: Meet Me Here\n\naT the tOp of Western Nook\nat Home Around Lonely Lanes\nat Sunset, don't Trust Anyone\nThough I Obvously already kNow\n-------------------------------\n\nIt doesn't make sense. You don't know of any western nooks or lonely lanes.\n\nNo, it must be a code. The real meeting place must be encoded into the message somehow.\n\nBut <em>how</em>?\n\nWhere is the meeting place?",
+  "correctAnswer": "Town Hall Station",
+  "hint": "\"It is a CAPITAL mistake to theorise without data\" - <em>Sherlock Holmes</em>",
+  "xp_bounty": 10,
+  "title": "Theorise Without Data"
+}

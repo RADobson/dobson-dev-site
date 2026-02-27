@@ -1,0 +1,8 @@
+{
+  "puzzleText": "Crooked Kenny has been released for good behaviour - he helped the warden secure the prison database from a biometric data leak - so he's been let out early.\n\nChief wants you to do surveillance on him because he thinks Crooked Kenny is planning a huge hack.\n\nYou're sure that Kenny is going to visit his three girlfriends - one by one by one - but you're not sure which girlfriend he's going to visit first: Jenny, Harriet or Maddie.\n\nThey all have different jobs and live in different suburbs.\n\nYou decide to go to Surrey Hills first, and you need to know which girl lives there and what she does for her job.\n\nYou should be able to figure it out from the following facts:\n\n- Maddie isn't the Pharmacist\n- Harriet works as an Accountant\n- The person living in Paddington isn't the Nurse\n- Maddie isn't the one living in Marrickville\n\nWho is the one living in Surrey Hills and what is her job?",
+  "correctAnswer": "Maddie Nurse|Nurse Maddie|Maddie the Nurse|Maddie, Nurse|Maddie is the Nurse|Maddie is a Nurse in Surrey Hills|Maddie is a nurse|Maddie lives in Surrey Hills, and is a nurse",
+  "hint": "Jenny is the Pharmacist",
+  "xp_bounty": 15,
+  "puzzleType": "normal",
+  "title": "Girlfriend Stakeout"
+}
