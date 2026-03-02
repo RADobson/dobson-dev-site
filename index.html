@@ -1191,12 +1191,12 @@
         }
 
         /* --- CONTACT --- */
-        #hire {
+        #contact {
             padding: 8rem 0;
             background: var(--bg-secondary);
             position: relative;
         }
-        #hire::before {
+        #contact::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1466,7 +1466,7 @@
         }
         
         /* === PERFORMANCE: content-visibility for below-fold sections === */
-        #projects, #blog, #tools, #games, #about, #hire {
+        #projects, #blog, #about, #contact {
             content-visibility: auto;
             contain-intrinsic-size: auto 800px;
         }
@@ -1522,11 +1522,10 @@
             
             <nav class="nav-links" role="navigation" aria-label="Main navigation">
                 <a href="#projects">Projects</a>
+                <a href="/e8cr/">E8CR Squad</a>
                 <a href="#blog">Writing</a>
-                <a href="#tools">Tools</a>
-                <a href="#games">Games</a>
                 <a href="#about">About</a>
-                <a href="#hire" class="nav-cta">[ Hire me ]</a>
+                <a href="#contact" class="nav-cta">[ Contact ]</a>
             </nav>
 
             <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -1539,11 +1538,10 @@
 
     <div class="mobile-nav-overlay" id="mobileNav" role="dialog" aria-label="Mobile navigation">
         <a href="#projects">// PROJECTS</a>
+        <a href="/e8cr/">// E8CR SQUAD</a>
         <a href="#blog">// WRITING</a>
-        <a href="#tools">// TOOLS</a>
-        <a href="#games">// GAMES</a>
         <a href="#about">// ABOUT</a>
-        <a href="#hire">// HIRE ME</a>
+        <a href="#contact">// CONTACT</a>
     </div>
 
     <main id="main-content">
@@ -1562,11 +1560,11 @@
                     I build practical security tools, open-source automation, and agentic systems — then publish the work openly. The goal: raise the bar for the community, and help organisations move faster with less risk.
                 </p>
                 <div class="hero-buttons reveal visible">
-                    <a href="#projects" class="btn-neon">
-                        <span>🚀 SEE PROJECTS</span>
+                    <a href="/e8cr/" class="btn-neon">
+                        <span>🛡️ E8CR SQUAD</span>
                         <span class="arrow">→</span>
                     </a>
-                    <a href="#hire" class="btn-ghost">Hire me ($2,000/day)</a>
+                    <a href="#projects" class="btn-ghost">See all projects</a>
                 </div>
             </div>
             
@@ -1584,11 +1582,13 @@
                 </div>
                 
                 <div class="services-grid">
-                    <article class="service-card reveal visible">
+                    <a href="/e8cr/" style="text-decoration:none;color:inherit;">
+                    <article class="service-card reveal visible" style="cursor:pointer;">
                         <span class="service-icon">🤖</span>
-                        <h3>E8CR Bots (Open Source)</h3>
-                        <p>Autonomous security/compliance bots for patching, identity checks, application control and backup verification. Published as an open-source reference implementation.</p>
+                        <h3>E8CR Squad (Open Source)</h3>
+                        <p>4 autonomous bots covering all 8 Essential Eight ML2 controls — patching, identity, application control, and backup. On-prem, open source, audit-ready. <span style="color:var(--accent-neon);font-family:var(--font-mono);font-size:0.85rem;">Learn more →</span></p>
                     </article>
+                    </a>
 
                     <article class="service-card reveal visible">
                         <span class="service-icon">🛰️</span>
@@ -1647,8 +1647,8 @@
                                 <span class="tag">Audit-ready reports</span>
                                 <span class="tag">ML2 ready</span>
                             </div>
-                            <a href="#hire" class="card-link" aria-label="Hire Richard">
-                                <span>Hire me ($2,000/day)</span>
+                            <a href="/e8cr/" class="card-link" aria-label="See E8CR Squad">
+                                <span>See the E8CR Squad</span>
                                 <span class="arrow">→</span>
                             </a>
                         </div>
@@ -1670,8 +1670,8 @@
                                 <span class="tag purple">You own the data</span>
                                 <span class="tag purple">No lock-in</span>
                             </div>
-                            <a href="#hire" class="card-link" aria-label="Hire Richard">
-                                <span>Hire me ($2,000/day)</span>
+                            <a href="#contact" class="card-link" aria-label="Get in touch">
+                                <span>Get in touch</span>
                                 <span class="arrow">→</span>
                             </a>
                         </div>
@@ -1707,89 +1707,7 @@
             </div>
         </section>
 
-        <section id="tools" aria-labelledby="tools-title" style="padding:4rem 0;border-top:1px solid rgba(255,255,255,0.06)">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2 id="tools-title"><span class="mono-accent">//</span> FREE TOOLS</h2>
-                    <p>Open resources for the cybersecurity community.</p>
-                </div>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2rem" class="reveal">
-                    <a href="/tools/ai-security-landscape" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🛡️ AI Security Landscape Explorer</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Interactive directory of 50+ AI-powered cybersecurity tools. Filter by category, deployment, pricing tier, and more.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Explore tools →</span>
-                    </a>
-                    <a href="/tools/log-source-calculator" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">📋 Log Source Priority Calculator</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Answer a few questions about your org and get a ranked list of which log sources to ingest first for your SIEM.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Calculate priorities →</span>
-                    </a>
-                    <a href="/tools/llm-risk-scanner" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🔍 Upload-to-LLM Risk Scanner</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Paste text and detect PII, secrets, credentials, and sensitive data before sharing with ChatGPT. 100% client-side.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Scan text →</span>
-                    </a>
-                    <a href="/tools/essential-eight-assessment" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🇦🇺 Essential Eight Gap Assessment</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Assess your organisation against the ASD Essential Eight maturity model. Get a gap analysis with prioritised remediation steps.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Start assessment →</span>
-                    </a>
-                    <a href="/tools/security-control-coverage" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🎯 Security Control Coverage Calculator</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Select your security stack and see coverage across NIST CSF, Essential Eight, and CIS Controls. Find gaps and overlaps.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Check coverage →</span>
-                    </a>
-                    <a href="/tools/soc-playbook-library" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">📖 SOC Automation Playbook Library</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">25 MITRE ATT&CK playbooks with detection logic, investigation steps, and ready-to-use Splunk SPL &amp; Sentinel KQL queries.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Browse playbooks →</span>
-                    </a>
-                    <a href="/tools/ai-prompt-library" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🤖 AI Prompt Library for Security Teams</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">40 copy-paste prompts for incident response, threat hunting, malware analysis, and more. Organised by difficulty and LLM recommendation.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Browse prompts →</span>
-                    </a>
-                    <a href="/tools/breach-blast-radius" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">💥 Breach Blast Radius Simulator</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Input your security posture and get estimated dwell time, ransomware probability, blast radius, and recovery cost based on real breach data.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Run simulation →</span>
-                    </a>
-                    <a href="/tools/security-maturity-score" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">📊 Security Stack Maturity Score</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Assess your security maturity across 8 domains. Get a radar chart, industry comparison, and prioritised roadmap to the next level.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Take assessment →</span>
-                    </a>
-                    <a href="/tools/vendor-pricing-checker" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">💰 Cyber Vendor Pricing Reality Checker</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Real-world pricing ranges for 32 security vendors. Compare products, check if you're overpaying, and get negotiation tips.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Check pricing →</span>
-                    </a>
 
-
-                </div>
-            </div>
-        </section>
-
-        <section id="games" aria-labelledby="games-title" style="padding:4rem 0;border-top:1px solid rgba(255,255,255,0.06)">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2 id="games-title"><span class="mono-accent">//</span> GAMES</h2>
-                    <p>Cybersecurity challenges and puzzles. Play, learn, and level up.</p>
-                </div>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;margin-top:2rem" class="reveal">
-                    <a href="/tools/cyberpuzzle/" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🍾 Message in a Bottle</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">A mysterious cipher washed ashore. Decode the message hidden inside before time runs out. Cryptography meets storytelling in this immersive puzzle experience.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Play now →</span>
-                    </a>
-                    <a href="/games/cyberpuzzle/" style="display:block;background:var(--bg-card,#141419);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2rem;text-decoration:none;transition:all .3s">
-                        <h3 style="color:#00F0FF;font-family:'Fira Code',monospace;font-size:1.1rem;margin-bottom:.5rem">🧩 CyberPuzzle</h3>
-                        <p style="color:#9ca3af;font-size:.95rem;margin-bottom:1rem">Daily cyber-themed puzzles and cryptic crosswords. Test your hacking and cryptography skills with fresh challenges every day.</p>
-                        <span style="color:#BC13FE;font-family:'Fira Code',monospace;font-size:.85rem">Play today's puzzle →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
 
         <section id="about" aria-labelledby="about-title">
             <div class="about-gradient"></div>
@@ -1831,12 +1749,12 @@
 
                         <div class="stat-row">
                             <span class="stat-label">AGENTS:</span>
-                            <span class="stat-value">5 autonomous bots</span>
+                            <span class="stat-value">4 autonomous bots</span>
                         </div>
 
                         <div class="stat-row">
                             <span class="stat-label">E8_CONTROLS:</span>
-                            <span class="stat-value">8/8 + EDR</span>
+                            <span class="stat-value">8/8 covered</span>
                         </div>
                         
                         <div class="stat-row">
@@ -1852,13 +1770,12 @@
             </div>
         </section>
 
-        <section id="hire" aria-labelledby="hire-title">
+        <section id="contact" aria-labelledby="contact-title">
             <div class="contact-gradient"></div>
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 id="hire-title"><span class="mono-accent">//</span> HIRE ME</h2>
-                    <p>Need hands-on help with cyber strategy, AI automation, security tooling, or Microsoft security stack? I take on a limited number of engagements.</p>
-                    <p style="margin-top: 0.75rem; color: var(--text-white); font-weight: 600;">Day rate: <span style="color: var(--accent-cyan);">$2,000 AUD</span> (ex GST) · Remote or onsite (SE QLD)</p>
+                    <h2 id="contact-title"><span class="mono-accent">//</span> CONTACT</h2>
+                    <p>Got questions about E8CR, need help with Essential Eight ML2, or want to talk cyber + AI? Drop us a line.</p>
                 </div>
 
                 <div class="contact-container reveal-scale" data-delay="1">
@@ -1868,7 +1785,7 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <span>root@dobson-dev:~# ./hire_richard.sh</span>
+                        <span>root@dobson-dev:~# ./contact.sh</span>
                     </div>
                     
                     <form action="https://formspree.io/f/xzznoayg" method="POST" class="contact-form" aria-label="Contact form">
@@ -1887,7 +1804,7 @@
                             <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="What's on your mind?" required aria-required="true"></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit">[ REQUEST AVAILABILITY ]</button>
+                        <button type="submit" class="btn-submit">[ SEND MESSAGE ]</button>
                     </form>
                 </div>
 
