@@ -1,6 +1,0 @@
-{
-  "puzzleText": "A confidential informant is trying to organise a clandestine rendezvous with you.\n\nHe has sent a cryptic postcard.\n\nFrom the picture on the front of the card, you can deduce that the meeting place is Central Station.\n\nBut what time will your contact be there?\n\nOn the back of the card you find these symbols:\n[[ASCII]]\n\n                                                    \n         _                       _     ___        \n   __   | |_|   • •   |_|_|   |_| |    _|_|   |_|_| \n   ↺     ↻      ↺      ↺      ↻       ↺     ↻↻\n   \n[[/ASCII]]\nCan you solve the puzzle and figure out when he'll be there?\n",
-  "correctAnswer": "12:35am|12:35 am",
-  "hint": "The answer will be a time in digital clock format. Use the arrows to turn the numbers and symbols the right way up.",
-  "title": "Rendevouz at Central Station"
-}

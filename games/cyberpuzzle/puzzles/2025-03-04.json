@@ -1,6 +1,0 @@
-{
-  "puzzleText": "The illuminaughty are planning a bank heist and it's up to you to stop them.\n\nIf you don't, they'll have more than enough money for their cyberterrorist campaign to turn all the people into sheeple.\n\nBut there's just one problem - you don't know which bank they are planning to rob.\n\nIs it Commonwealth, National, ANZ or Westpac?\n\nYou have an undercover spy inside the illuminaughty who might know which bank is the target.\n\nBut they are monitoring all outgoing emails so he can't tell you.\n\nSuddenly you receive a text message - DING!\n\nIt's from a number you've never seen before.\n\n#### **Message** ####\nIs This Coarse Mode?\n🎯 is 😐😯, 😯😐, 😐 😯 😯 😯\n10-7 out\n#####################\n\nFrom this coded message - you can figure out which bank is the target.\n\nWhich bank is it?",
-  "correctAnswer": "NAB|National|National Australia Bank",
-  "hint": "A ● ▬ <br>B ▬ ● ● ● <br>C ▬ ● ▬ ● <br>D ▬ ● ● <br>E ● <br>F ● ● ▬ ● <br>G ▬ ▬ ● <br>H ● ● ● ● <br>I ● ● <br>J ● ▬ ▬ ▬ <br>K ▬ ● ▬ <br>L ● ▬ ● ● <br>M ▬ ▬ <br>N ▬ ● <br>O ▬ ▬ ▬ <br>P ● ▬ ▬ ● <br>Q ▬ ▬ ● ▬ <br>R ● ▬ ● <br>S ● ● ● <br>T ▬<br>U ● ● ▬ <br>V ● ● ● ▬ <br>W ● ▬ ▬ <br>X ▬ ● ● ▬<br>Y ▬ ● ▬ ▬<br>Z ▬ ▬ ● ●",
-  "title": "Emojicode Enigma"
-}

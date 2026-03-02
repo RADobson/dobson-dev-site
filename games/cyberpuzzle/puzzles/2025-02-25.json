@@ -1,6 +1,0 @@
-{
-  "puzzleText": "The details of your next mission are in a PDF file on the phone.\n\nJust one problem - the PDF file is password-protected.\n\nSuddenly, the phone vibrates - DING!\n  - you've received a text message.\n\nAnd then another one - DING!\n  - a second text message.\n\nYou realize that combining these messages somehow will give you the password you need.\n\nCan you work out what the password is?\n\n#### **Message 1** ####\n\t1804\n\tADJS\n\n\n#### **Message 2** ####\n\t27365\n\tMNEOB\n\n",
-  "correctAnswer": "JAMESBOND",
-  "hint": "\"Shaken, not stirred\"",
-  "title": "For Your Eyes Only"
-}

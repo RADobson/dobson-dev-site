@@ -5,2087 +5,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dobson Development | Agentic AI Essential Eight — Autonomous ML2 Compliance</title>
-    <meta name="description" content="Autonomous AI agents that implement and operate Essential Eight ML2 controls on your hardware. Vulnerability management, patch management, EDR, application control, identity — all automated. No data leaves your building.">
-    <meta name="keywords" content="Essential Eight ML2, Essential Eight compliance, autonomous AI agents, on-prem cybersecurity, vulnerability management, patch management, WDAC application control, MFA enforcement, data sovereignty Australia, federal government supply chain security">
-    <meta name="author" content="Dobson Development Pty Ltd">
+    <title>Richard Dobson — Building Autonomous AI Agents for Cybersecurity</title>
+    <meta name="description" content="I'm building autonomous AI agents that do Essential Eight compliance work — and publishing everything openly. Cyber + AI, Sunshine Coast, Australia.">
+    <meta name="author" content="Richard Dobson">
     <link rel="canonical" href="https://dobsondevelopment.com.au/">
-    
-    <!-- Performance: Resource Hints -->
-    <link rel="dns-prefetch" href="https://formspree.io">
-    
-    <!-- Performance: Preload self-hosted fonts (critical for LCP) -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+
+    <!-- Fonts -->
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/firacode-latin.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- SEO: Sitemap link -->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icon.svg">
-    <link rel="apple-touch-icon" href="/assets/images/icon.svg">
 
-    <!-- Self-hosted fonts with font-display: swap for fast LCP -->
-    <style>
-        /* Inter - Primary body font (Latin subset) */
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('/assets/fonts/inter-latin.woff2') format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url('/assets/fonts/inter-latin.woff2') format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url('/assets/fonts/inter-latin.woff2') format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        /* Fira Code - Monospace font (Latin subset) */
-        @font-face {
-            font-family: 'Fira Code';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('/assets/fonts/firacode-latin.woff2') format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
-            font-family: 'Fira Code';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url('/assets/fonts/firacode-latin.woff2') format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-    </style>
-
-    <!-- SEO: Enhanced Meta Tags -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta name="geo.region" content="AU-QLD">
-    <meta name="geo.placename" content="Sunshine Coast">
-    <meta name="language" content="en-AU">
-
-    <!-- PWA / Mobile -->
-    <meta name="theme-color" content="#0B0C10">
-    <meta name="color-scheme" content="dark">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Dobson Dev">
-    <meta name="application-name" content="Dobson Development">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="/manifest.webmanifest">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Dobson Development | Agentic AI Essential Eight — Autonomous ML2 Compliance">
-    <meta property="og:description" content="Autonomous AI agents that implement Essential Eight ML2 controls on your hardware. No cloud. No consultants. Affordable.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Richard Dobson — Autonomous AI Agents for Cybersecurity">
+    <meta property="og:description" content="Building autonomous AI agents that do Essential Eight compliance work. Open source. On-prem. Published openly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dobsondevelopment.com.au">
-    <meta property="og:image" content="https://dobsondevelopment.com.au/assets/images/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Dobson Development - Australian software studio building cybersecurity and business tools">
     <meta property="og:locale" content="en_AU">
-    <meta property="og:site_name" content="Dobson Development">
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@RADobson">
-    <meta name="twitter:creator" content="@RADobson">
-    <meta name="twitter:title" content="Dobson Development | Agentic AI Essential Eight — Autonomous ML2 Compliance">
-    <meta name="twitter:description" content="Autonomous AI agents that implement Essential Eight ML2 controls on your hardware. No cloud. No consultants.">
-    <meta name="twitter:image" content="https://dobsondevelopment.com.au/assets/images/og-image.png">
-    <meta name="twitter:image:alt" content="Dobson Development - Australian software studio">
-
-    <!-- Structured Data: Organization (enhanced) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Dobson Development Pty Ltd",
-        "legalName": "Dobson Development Pty Ltd",
-        "url": "https://dobsondevelopment.com.au",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "https://dobsondevelopment.com.au/assets/images/logo.png",
-            "width": 512,
-            "height": 512
-        },
-        "description": "Australian software studio building practical tools for cybersecurity and business",
-        "foundingDate": "2025",
-        "founder": {
-            "@type": "Person",
-            "name": "Ernie Dobson",
-            "jobTitle": "Founder & Developer",
-            "sameAs": [
-                "https://github.com/RADobson",
-                "https://www.linkedin.com/in/ernie-dobson",
-                "https://twitter.com/RADobson"
-            ]
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Sunshine Coast",
-            "addressRegion": "Queensland",
-            "postalCode": "4556",
-            "addressCountry": "AU"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "ernie@dobsondevelopment.com.au",
-            "contactType": "customer service",
-            "availableLanguage": "English"
-        },
-        "sameAs": [
-            "https://github.com/RADobson",
-            "https://www.linkedin.com/in/ernie-dobson",
-            "https://twitter.com/RADobson"
-        ],
-        "knowsAbout": [
-            "Essential Eight",
-            "Cybersecurity Compliance",
-            "AI Agents",
-            "Vulnerability Management",
-            "Patch Management",
-            "Data Sovereignty"
-        ]
-    }
-    </script>
-    
-    <!-- Structured Data: WebSite with SearchAction -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Dobson Development",
-        "alternateName": "Dobson Dev",
-        "url": "https://dobsondevelopment.com.au",
-        "description": "Australian software studio building practical tools for cybersecurity and business",
-        "inLanguage": "en-AU",
-        "publisher": {
-            "@type": "Organization",
-            "name": "Dobson Development Pty Ltd"
-        }
-    }
-    </script>
-    
-    <!-- Structured Data: SoftwareApplication entities (separate, properly typed) -->
-    <script type="application/ld+json">
-    [{
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "DoppelDown",
-        "applicationCategory": "SecurityApplication",
-        "applicationSubCategory": "Brand Protection",
-        "operatingSystem": "Web",
-        "url": "https://doppeldown.com",
-        "description": "AI-powered brand protection for SMBs. Monitors newly registered domains daily to detect lookalike domains, typosquatting, and phishing attempts targeting your brand.",
-        "author": {
-            "@type": "Organization",
-            "name": "Dobson Development Pty Ltd",
-            "url": "https://dobsondevelopment.com.au"
-        },
-        "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "priceCurrency": "AUD"
-        }
-    },
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "CyberPuzzle",
-        "applicationCategory": "EducationalApplication",
-        "applicationSubCategory": "Cybersecurity Training",
-        "operatingSystem": "Web",
-        "url": "https://dobsondevelopment.com.au/tools/cyberpuzzle/",
-        "description": "Interactive cybersecurity skill challenges for hiring and training. Gamified CTF-style puzzles that test real-world security knowledge.",
-        "author": {
-            "@type": "Organization",
-            "name": "Dobson Development Pty Ltd",
-            "url": "https://dobsondevelopment.com.au"
-        },
-        "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "priceCurrency": "AUD"
-        }
-    }]
-    </script>
-    
-    <!-- Structured Data: BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://dobsondevelopment.com.au"
-        }]
-    }
-    </script>
 
     <style>
+        @font-face { font-family: 'Inter'; font-weight: 400; font-display: swap; src: url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family: 'Inter'; font-weight: 600; font-display: swap; src: url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family: 'Inter'; font-weight: 700; font-display: swap; src: url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family: 'Fira Code'; font-weight: 400; font-display: swap; src: url('/assets/fonts/firacode-latin.woff2') format('woff2'); }
+        @font-face { font-family: 'Fira Code'; font-weight: 600; font-display: swap; src: url('/assets/fonts/firacode-latin.woff2') format('woff2'); }
+
         :root {
-            --bg-main: #0B0C10;       
-            --bg-secondary: #0f1014;  
-            --bg-card: #141419;
-            --accent-neon: #00F0FF;   
-            --accent-purple: #BC13FE;
-            --accent-green: #22c55e;
-            --text-white: #FFFFFF;    
-            --text-grey: #9ca3af;
-            --text-muted: #6b7280;
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            --border-hover: rgba(0, 240, 255, 0.3);
-            --font-mono: 'Fira Code', monospace; 
-            --font-body: 'Inter', sans-serif;
-            --glow-neon: 0 0 30px rgba(0, 240, 255, 0.4);
-            --glow-purple: 0 0 30px rgba(188, 19, 254, 0.4);
-            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --bg: #0a0a0f;
+            --surface: #111118;
+            --card: #16161f;
+            --border: #222233;
+            --text: #e8e8f0;
+            --muted: #8888a0;
+            --dim: #55556a;
+            --accent: #00d4ff;
+            --accent-glow: rgba(0, 212, 255, 0.12);
+            --green: #22c55e;
+            --purple: #a855f7;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --mono: 'Fira Code', 'SF Mono', monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-main); }
-        ::-webkit-scrollbar-thumb { 
-            background: linear-gradient(180deg, var(--accent-neon), var(--accent-purple));
-            border-radius: 3px;
-        }
-        
         html { scroll-behavior: smooth; }
-        
-        /* CLS FIX: Use system fonts until web fonts load */
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-grey);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        /* CLS FIX: Swap to web fonts only after loaded */
-        .fonts-loaded body {
-            font-family: var(--font-body);
-        }
-        .fonts-loaded h1, .fonts-loaded h2, .fonts-loaded h3, .fonts-loaded h4,
-        .fonts-loaded .mono-accent, .fonts-loaded .nav-links a,
-        .fonts-loaded .logo-terminal, .fonts-loaded code {
-            font-family: var(--font-mono);
-        }
-        
-        /* Reduced motion: disable all animations */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .scanlines::after { display: none; }
-            #particles-canvas { display: none; }
-        }
-        
-        h1, h2, h3, h4 { 
-            color: var(--text-white); 
-            font-family: var(--font-mono); 
-            letter-spacing: -0.5px;
-            font-weight: 600;
-        }
-        
-        a { 
-            text-decoration: none; 
-            color: var(--accent-neon); 
-            transition: all 0.3s var(--transition-smooth);
-        }
-        
-        .container { 
-            width: 90%; 
-            max-width: 1200px; 
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .mono-accent { font-family: var(--font-mono); color: var(--accent-neon); }
-        .purple-accent { color: var(--accent-purple); }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
-        /* Skip to content link for accessibility */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--accent-neon);
-            color: var(--bg-main);
-            padding: 8px 16px;
-            z-index: 1000;
-            font-family: var(--font-mono);
-            font-weight: 600;
-            border-radius: 0 0 4px 0;
-        }
-        .skip-link:focus { top: 0; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+        a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+        a:hover { opacity: 0.8; }
 
-        /* --- PARTICLE CANVAS --- */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.5;
+        /* === NAV === */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.8rem 0;
         }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-name { font-family: var(--mono); font-weight: 700; font-size: 0.95rem; color: var(--text); text-decoration: none; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a { color: var(--muted); font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--text); }
 
-        /* --- SCANLINE OVERLAY --- */
-        .scanlines::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(0, 0, 0, 0.015) 2px,
-                rgba(0, 0, 0, 0.015) 4px
-            );
-            opacity: 0.4;
+        /* === HERO === */
+        .hero {
+            padding: 10rem 0 6rem;
+            display: flex; align-items: center; gap: 3rem;
         }
-
-        /* --- SCROLL REVEAL ANIMATIONS --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
-        }
-        .reveal-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
-        }
-        .reveal-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 0.6s var(--transition-smooth), transform 0.6s var(--transition-smooth);
-        }
-        .reveal-scale.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        /* Stagger delays */
-        [data-delay="1"] { transition-delay: 0.1s !important; }
-        [data-delay="2"] { transition-delay: 0.2s !important; }
-        [data-delay="3"] { transition-delay: 0.3s !important; }
-        [data-delay="4"] { transition-delay: 0.4s !important; }
-        [data-delay="5"] { transition-delay: 0.5s !important; }
-
-        /* --- NAV --- */
-        header {
-            background: rgba(11, 12, 16, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 1.25rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border-subtle);
-            transition: all 0.4s var(--transition-smooth);
-        }
-        header.scrolled {
-            padding: 0.75rem 0;
-            background: rgba(11, 12, 16, 0.95);
-            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-        }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        
-        .logo-terminal {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--accent-neon);
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        .logo-terminal::before {
-            content: '';
-            position: absolute;
-            inset: -8px -12px;
-            background: rgba(0, 240, 255, 0.05);
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .logo-terminal:hover::before { opacity: 1; }
-        
-        .typing-text {
-            overflow: hidden; 
-            white-space: nowrap; 
-            border-right: 2px solid var(--accent-neon);
-            animation: typing 2s steps(14, end), blink-caret .75s step-end infinite;
-        }
-        
-        .nav-links { display: flex; gap: 0.5rem; align-items: center; }
-        .nav-links a { 
-            font-family: var(--font-mono); 
-            font-size: 0.85rem; 
-            color: var(--text-grey);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .nav-links a:hover { 
-            color: var(--text-white);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .nav-links a.nav-cta {
-            color: var(--accent-neon);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            background: rgba(0, 240, 255, 0.05);
-            margin-left: 0.5rem;
-        }
-        .nav-links a.nav-cta:hover {
-            background: var(--accent-neon);
-            color: var(--bg-main);
-            box-shadow: var(--glow-neon);
-        }
-
-        /* --- MOBILE MENU --- */
-        .mobile-menu-btn {
-            display: none;
-            width: 44px;
-            height: 44px;
-            background: rgba(0, 240, 255, 0.05);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            border-radius: 8px;
-            cursor: pointer;
-            z-index: 101;
-            transition: all 0.3s ease;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .mobile-menu-btn:hover {
-            background: rgba(0, 240, 255, 0.1);
-            border-color: var(--accent-neon);
-        }
-        .mobile-menu-btn span {
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: var(--accent-neon);
-            transition: all 0.3s ease;
-            border-radius: 1px;
-        }
-        .mobile-menu-btn.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .mobile-menu-btn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-        .mobile-menu-btn.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        .mobile-nav-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(11, 12, 16, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 99;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s var(--transition-smooth);
-        }
-        .mobile-nav-overlay.active { opacity: 1; visibility: visible; }
-        .mobile-nav-overlay a {
-            font-family: var(--font-mono);
-            font-size: 1.5rem;
-            color: var(--text-grey);
-            padding: 1rem 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease, color 0.3s ease;
-        }
-        .mobile-nav-overlay a:hover { color: var(--accent-neon); }
-        .mobile-nav-overlay.active a {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .mobile-nav-overlay.active a:nth-child(1) { transition-delay: 0.1s; }
-        .mobile-nav-overlay.active a:nth-child(2) { transition-delay: 0.15s; }
-        .mobile-nav-overlay.active a:nth-child(3) { transition-delay: 0.2s; }
-        .mobile-nav-overlay.active a:nth-child(4) { transition-delay: 0.25s; }
-        .mobile-nav-overlay.active a:nth-child(5) { transition-delay: 0.3s; }
-
-        /* --- HERO --- */
-        #hero {
-            min-height: 100vh;
-            min-height: 100dvh; /* Dynamic viewport height — fixes mobile address bar issue */
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 8rem 0 4rem;
-            padding-top: max(8rem, env(safe-area-inset-top, 0px));
-            overflow: hidden;
-        }
-        
-        /* Gradient orbs */
-        .hero-gradient {
-            position: absolute;
+        .hero-photo {
+            width: 160px; height: 160px;
             border-radius: 50%;
-            filter: blur(100px);
-            pointer-events: none;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--card), var(--surface));
         }
-        .hero-gradient-1 {
-            width: 600px;
-            height: 600px;
-            background: rgba(0, 240, 255, 0.08);
-            top: -200px;
-            left: -200px;
-            animation: float 20s ease-in-out infinite;
+        .hero-text h1 {
+            font-size: 2.2rem; font-weight: 700;
+            letter-spacing: -0.03em; line-height: 1.2;
+            margin-bottom: 1rem;
         }
-        .hero-gradient-2 {
-            width: 500px;
-            height: 500px;
-            background: rgba(188, 19, 254, 0.08);
-            bottom: -150px;
-            right: -150px;
-            animation: float 25s ease-in-out infinite reverse;
+        .hero-text h1 span { color: var(--accent); }
+        .hero-text p {
+            font-size: 1.15rem; color: var(--muted); line-height: 1.8;
+            max-width: 550px;
         }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.1); }
+        .hero-links {
+            display: flex; gap: 1.2rem; margin-top: 1.5rem;
+            font-family: var(--mono); font-size: 0.85rem;
         }
-        
-        /* Grid pattern */
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+        .hero-links a {
+            color: var(--dim);
+            display: flex; align-items: center; gap: 0.4rem;
         }
-        
-        .hero-content { 
-            max-width: 800px; 
-            position: relative;
-            z-index: 2;
+        .hero-links a:hover { color: var(--accent); }
+
+        /* === SECTIONS === */
+        section { padding: 4rem 0; }
+        .section-sep { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+        .section-label {
+            font-family: var(--mono); font-size: 0.8rem;
+            color: var(--dim); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 2rem;
         }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.5rem 1rem;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            border-radius: 50px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--accent-green);
-            margin-bottom: 1.5rem;
+
+        /* === THE WORK === */
+        .work-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 2rem;
+            transition: border-color 0.2s;
         }
-        .hero-badge .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-green);
-            border-radius: 50%;
+        .work-card:hover { border-color: rgba(0, 212, 255, 0.3); }
+        .work-card h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+        .work-card .tagline {
+            font-family: var(--mono); font-size: 0.8rem;
+            color: var(--accent); margin-bottom: 1rem;
+        }
+        .work-card p { color: var(--muted); margin-bottom: 1.2rem; }
+        .work-card .stats {
+            display: flex; gap: 2rem; margin-bottom: 1.2rem;
+            font-family: var(--mono); font-size: 0.85rem;
+        }
+        .work-card .stats span { color: var(--dim); }
+        .work-card .stats strong { color: var(--text); }
+        .work-links { display: flex; gap: 1rem; }
+        .work-links a {
+            font-family: var(--mono); font-size: 0.85rem; font-weight: 600;
+            padding: 0.5rem 1rem; border-radius: 6px;
+        }
+        .btn-primary {
+            background: var(--accent); color: #000;
+        }
+        .btn-primary:hover { opacity: 0.85; }
+        .btn-secondary {
+            border: 1px solid var(--border); color: var(--muted);
+        }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--text); }
+
+        .now-building {
+            margin-top: 1.5rem; padding: 1.2rem 1.5rem;
+            background: var(--surface); border: 1px dashed var(--border);
+            border-radius: 8px;
+        }
+        .now-building h4 {
+            font-family: var(--mono); font-size: 0.85rem;
+            color: var(--green); margin-bottom: 0.5rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .now-building h4::before {
+            content: ''; width: 8px; height: 8px;
+            background: var(--green); border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
         }
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+            0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
         }
-        
-        h1.hero-title { 
-            font-size: clamp(2.5rem, 7vw, 4.5rem); 
-            line-height: 1.1; 
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
-        }
-        .hero-title .highlight {
-            position: relative;
-            display: inline-block;
-        }
-        .hero-title .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 0.1em;
-            left: -0.1em;
-            right: -0.1em;
-            height: 0.35em;
-            background: linear-gradient(90deg, rgba(188, 19, 254, 0.3), rgba(0, 240, 255, 0.3));
-            z-index: -1;
-            transform: skewX(-3deg);
-        }
-        
-        .hero-subtitle { 
-            font-size: 1.2rem; 
-            max-width: 580px; 
-            margin-bottom: 2.5rem;
-            color: var(--text-grey);
-            line-height: 1.8;
-        }
-        
-        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-        
-        .btn-neon {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2rem;
-            font-family: var(--font-mono);
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--accent-neon);
-            border: 2px solid var(--accent-neon);
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-neon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .btn-neon:hover::before { left: 100%; }
-        .btn-neon:hover { 
-            background: var(--accent-neon); 
-            color: var(--bg-main); 
-            box-shadow: var(--glow-neon);
-            transform: translateY(-2px);
-        }
-        .btn-neon .arrow { transition: transform 0.3s ease; }
-        .btn-neon:hover .arrow { transform: translateX(4px); }
-        
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 1.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--text-grey);
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn-ghost:hover { color: var(--text-white); }
+        .now-building p { color: var(--muted); font-size: 0.9rem; }
 
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0.4;
-            animation: bob 2s ease-in-out infinite;
+        /* === WRITING === */
+        .post-list { display: flex; flex-direction: column; gap: 1rem; }
+        .post-item {
+            display: block; padding: 1.5rem;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; text-decoration: none;
+            transition: border-color 0.2s, transform 0.2s;
         }
-        .scroll-indicator .mouse {
-            width: 24px;
-            height: 38px;
-            border: 2px solid var(--text-grey);
-            border-radius: 12px;
-            position: relative;
+        .post-item:hover { border-color: rgba(0,212,255,0.3); transform: translateX(4px); }
+        .post-item h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.3rem; }
+        .post-item .meta {
+            font-family: var(--mono); font-size: 0.78rem;
+            color: var(--accent); margin-bottom: 0.5rem;
         }
-        .scroll-indicator .mouse::before {
-            content: '';
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 8px;
-            background: var(--accent-neon);
-            border-radius: 2px;
-            animation: scrollWheel 1.5s ease-in-out infinite;
-        }
-        .scroll-indicator span {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        @keyframes bob {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-8px); }
-        }
-        @keyframes scrollWheel {
-            0% { opacity: 1; top: 6px; }
-            100% { opacity: 0; top: 18px; }
-        }
+        .post-item p { color: var(--muted); font-size: 0.9rem; }
 
-        /* --- SERVICES SECTION --- */
-        #services {
-            padding: 8rem 0;
-            background: var(--bg-secondary);
-            position: relative;
-        }
-        #services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-        }
-        
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-header h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-        }
-        .section-header p { 
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .service-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            padding: 2rem;
-            border-radius: 12px;
-            transition: all 0.4s var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-        .service-card:hover::before { transform: scaleX(1); }
-        .service-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -20px rgba(0, 240, 255, 0.15);
-        }
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.25rem;
-            display: block;
-        }
-        .service-card h3 {
-            margin-bottom: 0.75rem;
-            font-size: 1.15rem;
-            color: var(--text-white);
-        }
-        .service-card p {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: var(--text-muted);
-        }
+        /* === ABOUT === */
+        .about p { color: var(--muted); margin-bottom: 1rem; max-width: 650px; }
+        .about p strong { color: var(--text); }
 
-        /* --- CARD STYLES (shared by consulting section) --- */
-        .portfolio-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
-            gap: 2rem; 
+        /* === CONTACT === */
+        .contact-box {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; overflow: hidden;
+            max-width: 550px;
         }
-        
-        .portfolio-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.4s var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
-            position: relative;
+        .terminal-bar {
+            background: #1a1a22; padding: 0.6rem 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 12px;
-            padding: 1px;
-            background: linear-gradient(135deg, transparent 40%, var(--accent-neon) 50%, transparent 60%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .portfolio-card:hover::before { opacity: 1; }
-        .portfolio-card:hover { 
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px -20px rgba(0, 240, 255, 0.2);
-        }
-        .portfolio-card.purple-theme::before {
-            background: linear-gradient(135deg, transparent 40%, var(--accent-purple) 50%, transparent 60%);
-        }
-        .portfolio-card.purple-theme:hover { 
-            box-shadow: 0 30px 60px -20px rgba(188, 19, 254, 0.2);
-        }
-        
-        .card-preview {
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .card-preview::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.03), transparent 30%);
-            animation: rotate 10s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .portfolio-card:hover .card-preview::after { opacity: 1; }
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
-        
-        .card-preview-text {
-            font-family: var(--font-mono);
-            font-size: 2.5rem;
-            font-weight: bold;
-            position: relative;
-            z-index: 1;
-            transition: transform 0.4s ease;
-        }
-        .portfolio-card:hover .card-preview-text {
-            transform: scale(1.05);
-        }
-        
-        .card-content {
-            padding: 1.75rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .card-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        .portfolio-card:hover .card-content h3 { color: var(--accent-neon); }
-        .purple-theme:hover .card-content h3 { color: var(--accent-purple); }
-        
-        .card-status {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .status-live { color: var(--accent-green); }
-        .status-live::before { 
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
-        }
-        
-        .card-content > p {
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            line-height: 1.7;
-            color: var(--text-muted);
-        }
-        
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .tag {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            padding: 0.3rem 0.75rem;
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            color: var(--accent-neon);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        .tag:hover {
-            background: rgba(0, 240, 255, 0.15);
-            transform: translateY(-2px);
-        }
-        .tag.purple {
-            background: rgba(188, 19, 254, 0.08);
-            border-color: rgba(188, 19, 254, 0.15);
-            color: var(--accent-purple);
-        }
-        .tag.purple:hover { background: rgba(188, 19, 254, 0.15); }
-        
-        .card-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-family: var(--font-mono);
-            font-weight: 600;
-            font-size: 0.85rem;
-            padding: 0.85rem 1.5rem;
-            border: 1px solid var(--accent-neon);
-            color: var(--accent-neon);
-            border-radius: 6px;
-            transition: all 0.3s var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-        .card-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.15), transparent);
-            transition: left 0.4s ease;
-        }
-        .card-link:hover::before { left: 100%; }
-        .card-link:hover {
-            background: var(--accent-neon);
-            color: var(--bg-main);
-            box-shadow: var(--glow-neon);
-        }
-        .card-link .arrow { transition: transform 0.3s ease; }
-        .card-link:hover .arrow { transform: translateX(4px); }
-        .purple-theme .card-link {
-            border-color: var(--accent-purple);
-            color: var(--accent-purple);
-        }
-        .purple-theme .card-link::before {
-            background: linear-gradient(90deg, transparent, rgba(188, 19, 254, 0.15), transparent);
-        }
-        .purple-theme .card-link:hover {
-            background: var(--accent-purple);
-            color: var(--bg-main);
-            box-shadow: var(--glow-purple);
-        }
-
-        /* --- BLOG SECTION --- */
-        #blog {
-            padding: 8rem 0;
-            background: var(--bg-secondary);
-            position: relative;
-        }
-        #blog::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-        }
-        
-        .blog-preview {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 2rem;
-            transition: all 0.4s var(--transition-smooth);
-        }
-        .blog-preview:hover {
-            border-color: var(--border-hover);
-            transform: translateX(8px);
-        }
-        .blog-preview h3 {
-            color: var(--text-white);
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-            transition: color 0.3s ease;
-        }
-        .blog-preview:hover h3 { color: var(--accent-neon); }
-        .blog-preview .meta {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--accent-neon);
-            margin-bottom: 1rem;
-        }
-        .blog-preview p {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            color: var(--text-muted);
-        }
-        .blog-cta { margin-top: 2.5rem; text-align: center; }
-
-        /* --- ABOUT SECTION --- */
-        #about {
-            padding: 8rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .about-gradient {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(188, 19, 254, 0.06) 0%, transparent 70%);
-            top: 50%;
-            right: -200px;
-            transform: translateY(-50%);
-            pointer-events: none;
-        }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        .about-text h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 2rem;
-        }
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            color: var(--text-grey);
-        }
-        
-        .stats-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border: 1px dashed rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            font-family: var(--font-mono);
-            position: relative;
-            transition: all 0.4s ease;
-        }
-        .stats-card::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 12px;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, transparent 50%, rgba(188, 19, 254, 0.2) 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .stats-card:hover::before { opacity: 1; }
-        .stats-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-hover);
-        }
-        .stats-card h3 {
-            padding-bottom: 1rem;
-            margin-bottom: 1.25rem;
-            border-bottom: 1px solid var(--border-subtle);
-            font-size: 1rem;
-        }
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-        .stat-row:hover {
-            padding-left: 0.5rem;
-            border-color: rgba(0, 240, 255, 0.2);
-        }
-        .stat-row:last-of-type { border-bottom: none; }
-        .stat-label { color: var(--text-muted); }
-        .stat-value { color: var(--accent-neon); }
-        .stats-quote {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-subtle);
-        }
-        .stats-quote p {
-            color: var(--accent-purple);
-            font-size: 0.9rem;
-        }
-        .stats-quote p::before {
-            content: '> ';
-            animation: blink-caret 0.75s step-end infinite;
-        }
-
-        /* --- CONTACT --- */
-        #contact {
-            padding: 8rem 0;
-            background: var(--bg-secondary);
-            position: relative;
-        }
-        #contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-        }
-        .contact-gradient {
-            position: absolute;
-            width: 600px;
-            height: 400px;
-            background: radial-gradient(ellipse, rgba(0, 240, 255, 0.05) 0%, transparent 70%);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            pointer-events: none;
-        }
-        
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 0;
-            background: var(--bg-card);
-            overflow: hidden;
-            position: relative;
-            transition: all 0.4s ease;
-        }
-        .contact-container:hover {
-            border-color: var(--border-hover);
-            box-shadow: 0 30px 60px -20px rgba(0, 240, 255, 0.1);
-        }
-        
-        .terminal-header {
-            background: #1a1a1e;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border-subtle);
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .terminal-dots {
-            display: flex;
-            gap: 6px;
-        }
-        .terminal-dots span {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
+        .terminal-dots { display: flex; gap: 6px; }
+        .terminal-dots span { width: 10px; height: 10px; border-radius: 50%; }
         .terminal-dots span:nth-child(1) { background: #ff5f56; }
         .terminal-dots span:nth-child(2) { background: #ffbd2e; }
         .terminal-dots span:nth-child(3) { background: #27ca40; }
-        .terminal-header:hover .terminal-dots span { transform: scale(1.15); }
-        
-        .contact-form { padding: 2rem; }
-        .form-group { margin-bottom: 1.5rem; }
+        .terminal-bar .title { font-family: var(--mono); font-size: 0.78rem; color: var(--dim); }
+
+        .contact-form { padding: 1.5rem; }
+        .form-group { margin-bottom: 1.2rem; }
         .form-label {
-            display: block;
-            font-family: var(--font-mono);
-            color: var(--accent-neon);
-            margin-bottom: 0.5rem;
-            font-size: 0.85rem;
+            display: block; font-family: var(--mono); font-size: 0.8rem;
+            color: var(--accent); margin-bottom: 0.4rem;
         }
         .form-input, .form-textarea {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border: none;
-            border-bottom: 1px solid var(--border-subtle);
-            color: var(--text-white);
-            font-family: var(--font-mono);
-            padding: 0.75rem 0.5rem;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border-radius: 4px 4px 0 0;
+            width: 100%; background: rgba(255,255,255,0.02);
+            border: none; border-bottom: 1px solid var(--border);
+            color: var(--text); font-family: var(--mono);
+            padding: 0.6rem 0.4rem; font-size: 0.9rem;
         }
         .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-bottom-color: var(--accent-neon);
-            background: rgba(0, 240, 255, 0.03);
+            outline: none; border-bottom-color: var(--accent);
         }
-        .form-input::placeholder, .form-textarea::placeholder {
-            color: var(--text-muted);
-        }
-        
+        .form-input::placeholder, .form-textarea::placeholder { color: var(--dim); }
         .btn-submit {
-            width: 100%;
-            background: transparent;
-            color: var(--accent-neon);
-            border: 1px solid var(--accent-neon);
-            padding: 1rem 2rem;
-            font-family: var(--font-mono);
-            font-weight: 600;
-            cursor: pointer;
+            width: 100%; background: transparent; color: var(--accent);
+            border: 1px solid var(--accent); padding: 0.8rem;
+            font-family: var(--mono); font-weight: 600; cursor: pointer;
+            border-radius: 6px; transition: all 0.2s;
             margin-top: 0.5rem;
-            border-radius: 6px;
-            transition: all 0.3s var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
         }
-        .btn-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.15), transparent);
-            transition: left 0.4s ease;
+        .btn-submit:hover { background: var(--accent); color: #000; }
+
+        /* === FOOTER === */
+        footer {
+            padding: 3rem 0; text-align: center;
+            font-size: 0.8rem; color: var(--dim);
+            border-top: 1px solid var(--border);
         }
-        .btn-submit:hover::before { left: 100%; }
-        .btn-submit:hover {
-            background: var(--accent-neon);
-            color: var(--bg-main);
-            box-shadow: var(--glow-neon);
-            transform: translateY(-2px);
+        footer a { color: var(--dim); }
+        footer a:hover { color: var(--accent); }
+
+        /* === MOBILE === */
+        @media (max-width: 640px) {
+            .hero { flex-direction: column; text-align: center; padding: 8rem 0 4rem; gap: 1.5rem; }
+            .hero-photo { width: 120px; height: 120px; }
+            .hero-text h1 { font-size: 1.7rem; }
+            .hero-text p { font-size: 1rem; }
+            .hero-links { justify-content: center; }
+            .work-card .stats { flex-wrap: wrap; gap: 1rem; }
+            .work-links { flex-wrap: wrap; }
         }
 
-        /* --- FOOTER --- */
-        .footer-credits {
-            text-align: center;
-            padding: 3rem 0;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        .footer-credits p { margin-bottom: 0.5rem; }
-        .footer-credits a {
-            color: var(--text-muted);
-            transition: color 0.3s ease;
-        }
-        .footer-credits a:hover { color: var(--accent-neon); }
-
-        /* --- SCROLL PROGRESS BAR --- */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple));
-            z-index: 1001;
-            transition: width 0.1s linear;
-        }
-
-        /* --- BACK TO TOP --- */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 48px;
-            height: 48px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            color: var(--accent-neon);
-            border-radius: 12px;
-            font-family: var(--font-mono);
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .back-to-top:hover {
-            background: var(--accent-neon);
-            color: var(--bg-main);
-            transform: translateY(-4px);
-            box-shadow: var(--glow-neon);
-        }
-
-        /* --- ANIMATIONS --- */
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent-neon); } }
-
-        /* --- MOBILE-FIRST RESPONSIVE --- */
-        /* Small phones (320px+) */
-        @media (max-width: 480px) {
-            .container { width: 92%; }
-            h1.hero-title { font-size: 2rem; letter-spacing: -1px; }
-            .hero-subtitle { font-size: 1rem; }
-            .hero-buttons { flex-direction: column; gap: 0.75rem; width: 100%; }
-            .hero-buttons .btn-neon,
-            .hero-buttons .btn-ghost { width: 100%; justify-content: center; }
-            .card-content { padding: 1.25rem; }
-            .card-preview { height: 150px; }
-            .service-card { padding: 1.5rem; }
-            .contact-form { padding: 1.25rem; }
-            /* Ensure all interactive elements meet 44px minimum tap target */
-            .btn-neon, .btn-ghost, .btn-submit, .card-link,
-            .nav-links a, .form-input, .form-textarea {
-                min-height: 44px;
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
             }
-        }
-
-        /* Tablets and below */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .mobile-menu-btn { display: flex !important; }
-            #hero { min-height: auto; min-height: auto; padding: 7rem 0 4rem; }
-            .hero-content { text-align: center; }
-            .hero-buttons { justify-content: center; }
-            .hero-badge { margin-left: auto; margin-right: auto; }
-            .scroll-indicator { display: none; }
-            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: 1fr; }
-            .section-header h2 { font-size: 1.6rem; }
-            .back-to-top { bottom: 20px; right: 20px; width: 48px; height: 48px; }
-            /* CLS: Reserve space for mobile menu button */
-            .mobile-menu-btn { min-width: 44px; min-height: 44px; }
-            /* Improve touch targets for links */
-            .mobile-nav-overlay a { 
-                padding: 1.25rem 2rem;
-                min-height: 48px;
-                display: flex;
-                align-items: center;
-            }
-            /* Safe area insets for notched phones */
-            .container {
-                padding-left: max(5%, env(safe-area-inset-left, 0px));
-                padding-right: max(5%, env(safe-area-inset-right, 0px));
-            }
-        }
-        
-        /* Touch device hover fix */
-        @media (hover: none) {
-            .service-card:hover,
-            .portfolio-card:hover,
-            .blog-preview:hover,
-            .stats-card:hover {
-                transform: none;
-            }
-        }
-        
-        /* High contrast mode support */
-        @media (forced-colors: active) {
-            .btn-neon, .card-link, .btn-submit {
-                border: 2px solid ButtonText;
-            }
-        }
-        
-        /* Print styles for SEO (Google sometimes indexes print) */
-        @media print {
-            header, #particles-canvas, .scanlines::after, .scroll-progress,
-            .back-to-top, .scroll-indicator, .hero-gradient, .hero-grid,
-            .mobile-menu-btn, .mobile-nav-overlay { display: none !important; }
-            body { background: white; color: black; }
-            h1, h2, h3, h4 { color: black; }
-            a { color: #0066cc; }
-            .container { max-width: 100%; }
-        }
-        
-        /* === PERFORMANCE: content-visibility for below-fold sections === */
-        #projects, #blog, #about, #contact {
-            content-visibility: auto;
-            contain-intrinsic-size: auto 800px;
-        }
-        
-        /* === ACCESSIBILITY: Enhanced focus states === */
-        :focus-visible {
-            outline: 2px solid var(--accent-neon);
-            outline-offset: 3px;
-        }
-        
-        /* Remove outline for mouse users */
-        :focus:not(:focus-visible) {
-            outline: none;
-        }
-        
-        /* Focus styles for interactive elements */
-        .btn-neon:focus-visible,
-        .btn-ghost:focus-visible,
-        .card-link:focus-visible,
-        .btn-submit:focus-visible {
-            outline: 2px solid var(--accent-neon);
-            outline-offset: 3px;
-            box-shadow: var(--glow-neon);
-        }
-        
-        .nav-links a:focus-visible,
-        .mobile-nav-overlay a:focus-visible {
-            background: rgba(0, 240, 255, 0.15);
-            outline: 2px solid var(--accent-neon);
-            outline-offset: 2px;
-        }
-        
-        .form-input:focus-visible,
-        .form-textarea:focus-visible {
-            outline: none;
-            border-bottom-color: var(--accent-neon);
-            box-shadow: 0 2px 0 0 var(--accent-neon);
         }
     </style>
 </head>
-<body class="scanlines">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <!-- Particle canvas -->
-    <canvas id="particles-canvas"></canvas>
+<body>
 
-    <header role="banner">
-        <div class="container nav-flex">
-            <a href="/" class="logo-terminal" aria-label="Dobson Development Home">
-                <span>> </span>
-                <div class="typing-text">dobson_dev_</div>
-            </a>
-            
-            <nav class="nav-links" role="navigation" aria-label="Main navigation">
-                <a href="#projects">Projects</a>
-                <a href="/e8cr/">E8CR Squad</a>
-                <a href="#blog">Writing</a>
-                <a href="#about">About</a>
-                <a href="#contact" class="nav-cta">[ Contact ]</a>
-            </nav>
-
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+<nav>
+    <div class="container">
+        <a href="/" class="nav-name">Richard Dobson</a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#writing">Writing</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
-    </header>
-
-    <div class="mobile-nav-overlay" id="mobileNav" role="dialog" aria-label="Mobile navigation">
-        <a href="#projects">// PROJECTS</a>
-        <a href="/e8cr/">// E8CR SQUAD</a>
-        <a href="#blog">// WRITING</a>
-        <a href="#about">// ABOUT</a>
-        <a href="#contact">// CONTACT</a>
     </div>
+</nav>
 
-    <main id="main-content">
-        <section id="hero" aria-labelledby="hero-title">
-            <div class="hero-gradient hero-gradient-1"></div>
-            <div class="hero-gradient hero-gradient-2"></div>
-            <div class="hero-grid"></div>
-            
-            <div class="container hero-content">
-                <div class="hero-badge reveal visible">
-                    <span class="pulse-dot"></span>
-                    <span>Cybersecurity × AI · Building useful things in public</span>
-                </div>
-                <h1 id="hero-title" class="hero-title">Richard Dobson.<br><span class="purple-accent highlight">Cyber + AI builder.</span></h1>
-                <p class="hero-subtitle">
-                    I build practical security tools, open-source automation, and agentic systems — then publish the work openly. The goal: raise the bar for the community, and help organisations move faster with less risk.
-                </p>
-                <div class="hero-buttons reveal visible">
-                    <a href="/e8cr/" class="btn-neon">
-                        <span>🛡️ E8CR SQUAD</span>
-                        <span class="arrow">→</span>
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container" style="display:flex;align-items:center;gap:3rem;">
+            <img src="/assets/images/richard.jpg" alt="Richard Dobson" class="hero-photo">
+            <div class="hero-text">
+                <h1>I build <span>autonomous AI agents</span> for cybersecurity.</h1>
+                <p>Right now I'm building open-source bots that do Essential Eight compliance work — scanning, patching, enforcing, reporting — and publishing everything openly. Cyber + AI, from the Sunshine Coast.</p>
+                <div class="hero-links">
+                    <a href="https://github.com/RADobson" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        GitHub
                     </a>
-                    <a href="#projects" class="btn-ghost">See all projects</a>
-                </div>
-            </div>
-            
-            <div class="scroll-indicator">
-                <div class="mouse"></div>
-                <span>scroll</span>
-            </div>
-        </section>
-
-        <section id="projects" aria-labelledby="projects-title">
-            <div class="container">
-                <div class="section-header reveal visible">
-                    <h2 id="projects-title"><span class="mono-accent">//</span> PROJECTS</h2>
-                    <p>A mix of open-source security automation, interactive tools, and experiments. Most of this is free — built in public.</p>
-                </div>
-                
-                <div class="services-grid">
-                    <a href="/e8cr/" style="text-decoration:none;color:inherit;">
-                    <article class="service-card reveal visible" style="cursor:pointer;">
-                        <span class="service-icon">🤖</span>
-                        <h3>E8CR Squad (Open Source)</h3>
-                        <p>4 autonomous bots covering all 8 Essential Eight ML2 controls — patching, identity, application control, and backup. On-prem, open source, audit-ready. <span style="color:var(--accent-neon);font-family:var(--font-mono);font-size:0.85rem;">Learn more →</span></p>
-                    </article>
-                    </a>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🛰️</span>
-                        <h3>SOC Squad Specs</h3>
-                        <p>Design docs for an on-prem SOC agent team (XDR, SIEM, SOAR, UEBA). Built to reduce alert fatigue and make response measurable.</p>
-                    </article>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🧰</span>
-                        <h3>AI Security Landscape Explorer</h3>
-                        <p>50+ AI security tools indexed across categories with filtering and lead capture. A practical map of the ecosystem.</p>
-                    </article>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🔎</span>
-                        <h3>Upload-to-LLM Risk Scanner</h3>
-                        <p>Client-side scanner that flags secrets, tokens and PII before you paste text into ChatGPT/Claude. Designed to be fast and zero-trust.</p>
-                    </article>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🕹️</span>
-                        <h3>Cyber Games</h3>
-                        <p>Small games like CyberPuzzle — playful projects that teach security concepts without being a lecture.</p>
-                    </article>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">✍️</span>
-                        <h3>Writing in Public</h3>
-                        <p>Posts on agentic automation, defensive engineering, and what actually works in real environments.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="consulting" aria-labelledby="consulting-title" style="padding: 8rem 0; position: relative;">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2 id="consulting-title"><span class="mono-accent">//</span> WHY WE'RE DIFFERENT</h2>
-                    <p>Most security vendors want your vulnerability data, your admin logs, your endpoint telemetry — all of it shipped to their cloud. That's their moat. We think that's backwards. Your security telemetry is the roadmap to attacking your organisation. It shouldn't leave your building.</p>
-                </div>
-                
-                <div class="portfolio-grid">
-                    <article class="portfolio-card reveal" data-delay="1">
-                        <div class="card-preview" style="background: linear-gradient(135deg, #0a1628 0%, #1a3a5a 100%); height: 160px;">
-                            <div class="card-preview-text" style="font-size: 1.8rem; background: linear-gradient(135deg, #00F0FF, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🤖 Agents, Not Dashboards</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>They Do The Work</h3>
-                            <span class="card-status status-live">24/7 AUTONOMOUS</span>
-                            <p>
-                                Stop hiring consultants to patch servers. Stop manually testing backups. Stop hoping your admin access policy is actually being enforced. Our agents do this stuff 24/7 — scanning, patching, testing, enforcing, and automatically generating evidence your auditors want. They don't sleep. They don't forget. They keep going while you sleep.
-                            </p>
-                            <div class="card-tags">
-                                <span class="tag">No manual work</span>
-                                <span class="tag">Runs while you sleep</span>
-                                <span class="tag">Audit-ready reports</span>
-                                <span class="tag">ML2 ready</span>
-                            </div>
-                            <a href="/e8cr/" class="card-link" aria-label="See E8CR Squad">
-                                <span>See the E8CR Squad</span>
-                                <span class="arrow">→</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="portfolio-card purple-theme reveal" data-delay="2">
-                        <div class="card-preview" style="background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%); height: 160px;">
-                            <div class="card-preview-text" style="font-size: 1.8rem; background: linear-gradient(135deg, #BC13FE, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🏠 Your Data Stays Home</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Full Sovereignty. No Cloud.</h3>
-                            <span class="card-status status-live">ON-PREM ONLY</span>
-                            <p>
-                                Think about what you're giving away when you use cloud-based security tools: every vulnerability scan, every admin role, every endpoint detail, shipped to someone else's servers. That's the blueprint for attacking you. We don't do that. Our agents run on open source tools, on your hardware, in your building. No cloud. No vendor lock-in. You own everything. Full stop.
-                            </p>
-                            <div class="card-tags">
-                                <span class="tag purple">On-prem only</span>
-                                <span class="tag purple">Open source</span>
-                                <span class="tag purple">You own the data</span>
-                                <span class="tag purple">No lock-in</span>
-                            </div>
-                            <a href="#contact" class="card-link" aria-label="Get in touch">
-                                <span>Get in touch</span>
-                                <span class="arrow">→</span>
-                            </a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="blog" aria-labelledby="blog-title">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2 id="blog-title"><span class="mono-accent">//</span> LATEST FROM THE BLOG</h2>
-                    <p>Insights on security automation, AI tools, and building things that work.</p>
-                </div>
-                
-                {% assign latest = site.posts.first %}
-                <article class="blog-preview reveal visible">
-                    <h3>{{ latest.title }}</h3>
-                    <div class="meta">{{ latest.date | date: "%B %-d, %Y" }}{% if latest.tags %} • {% for tag in latest.tags limit:3 %}#{{ tag }}{% unless forloop.last %} {% endunless %}{% endfor %}{% endif %}</div>
-                    <p>{{ latest.description | default: latest.excerpt | strip_html | truncate: 250 }}</p>
-                    <a href="{{ latest.url }}" class="card-link">
-                        <span>Read Article</span>
-                        <span class="arrow">→</span>
-                    </a>
-                </article>
-                
-                <div class="blog-cta reveal" data-delay="2">
-                    <a href="/blog/" class="btn-neon">
-                        <span>VIEW ALL POSTS</span>
-                        <span class="arrow">→</span>
+                    <a href="https://www.linkedin.com/in/richard-dobson-au/" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+                        LinkedIn
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
+    <hr class="section-sep">
 
+    <!-- THE WORK -->
+    <section id="work">
+        <div class="container">
+            <div class="section-label">// The work</div>
 
-        <section id="about" aria-labelledby="about-title">
-            <div class="about-gradient"></div>
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text reveal-left">
-                        <h2 id="about-title"><span class="mono-accent">//</span> ABOUT US</h2>
-                        <p style="font-size: 1.15rem; color: var(--text-white);">
-                            We built this because we got sick of the status quo.
-                        </p>
-                        <p>
-                            Our background is in SIEM and SOC operations — years of watching organisations struggle with Essential Eight ML2 compliance. It's this massive manual workload: patch servers, scan for vulnerabilities, manage admin access, test backups, generate evidence. Most companies either can't afford to staff it (so nothing happens) or they hire expensive consultants (and get left in the lurch when they leave). We thought: why not build agents to do this stuff? Autonomous. 24/7. On-prem so your data doesn't leave your building.
-                        </p>
-                        <p>
-                            We're opinionated about data sovereignty. Your vulnerability scan results, your admin logs, your endpoint telemetry — that's the attack surface. It shouldn't live in a cloud vendor's database. Our agents run on your hardware, on open source tools, with zero cloud dependency.
-                        </p>
-                        <p>
-                            We're based on the Sunshine Coast, Queensland. We serve Australian organisations in the federal government supply chain — places where data sovereignty actually matters.
-                        </p>
+            <a href="/e8cr/" style="text-decoration:none;color:inherit;">
+            <div class="work-card">
+                <h3>E8CR Squad</h3>
+                <div class="tagline">Open-source Essential Eight compliance bots</div>
+                <p>4 autonomous agents that cover all 8 Essential Eight ML2 controls — vulnerability & patch management, identity & MFA, application control, and backup verification. Runs on your hardware, connects to your M365 tenant, generates audit-ready evidence. Apache 2.0 licensed.</p>
+                <div class="stats">
+                    <div><span>Bots:</span> <strong>4</strong></div>
+                    <div><span>E8 controls:</span> <strong>8/8</strong></div>
+                    <div><span>License:</span> <strong>Apache 2.0</strong></div>
+                    <div><span>Cloud dependency:</span> <strong>None</strong></div>
+                </div>
+                <div class="work-links">
+                    <a href="https://github.com/RADobson/e8cr-squad" target="_blank" rel="noopener" class="btn-primary" onclick="event.stopPropagation();">View on GitHub</a>
+                    <a href="/e8cr/" class="btn-secondary">Learn more →</a>
+                </div>
+            </div>
+            </a>
+
+            <div class="now-building">
+                <h4>Currently building</h4>
+                <p><strong>SOC Squad</strong> — 4 autonomous agents for security operations (XDR, SIEM, SOAR, UEBA). The next step after compliance: detection and response, fully automated, on-prem.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-sep">
+
+    <!-- WRITING -->
+    <section id="writing">
+        <div class="container">
+            <div class="section-label">// Writing</div>
+            <div class="post-list">
+                {% for post in site.posts limit:5 %}
+                <a href="{{ post.url }}" class="post-item">
+                    <h3>{{ post.title }}</h3>
+                    <div class="meta">{{ post.date | date: "%B %-d, %Y" }}</div>
+                    <p>{{ post.description | default: post.excerpt | strip_html | truncate: 200 }}</p>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-sep">
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container about">
+            <div class="section-label">// About</div>
+            <p><strong>I've spent years in SIEM and SOC engineering</strong> — watching organisations struggle with Essential Eight compliance. The same story everywhere: manual patching, manual access reviews, manual backup checks, manual evidence gathering. Most companies either can't staff it or hire expensive consultants who leave them a PDF and a gap.</p>
+            <p>I started building agents to do this work autonomously. Scan for vulnerabilities. Enforce MFA. Test backups. Generate evidence. 24/7, on-prem, open source. The kind of tooling I wished existed when I was on the other side of the table.</p>
+            <p>I'm based on the <strong>Sunshine Coast, Queensland</strong>. I publish my work openly because I think the community gets stronger when people share what they build — not just what they sell.</p>
+            <p style="color: var(--dim); font-size: 0.9rem; margin-top: 2rem;">This site is Richard's personal platform. The work is done through <strong style="color: var(--muted);">Dobson Development Pty Ltd</strong>.</p>
+        </div>
+    </section>
+
+    <hr class="section-sep">
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-label">// Contact</div>
+            <p style="color: var(--muted); margin-bottom: 1.5rem;">Want to talk about E8CR, agentic AI, or cybersecurity? I'm always up for a conversation.</p>
+
+            <div class="contact-box">
+                <div class="terminal-bar">
+                    <div class="terminal-dots"><span></span><span></span><span></span></div>
+                    <span class="title">./contact.sh</span>
+                </div>
+                <form action="https://formspree.io/f/xzznoayg" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label class="form-label" for="name">name =</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
                     </div>
-
-                    <div class="stats-card reveal-right">
-                        <h3>[ SYSTEM_INFO ]</h3>
-                        
-                        <div class="stat-row">
-                            <span class="stat-label">ENTITY:</span>
-                            <span class="stat-value">Dobson Development Pty Ltd</span>
-                        </div>
-                        
-                        <div class="stat-row">
-                            <span class="stat-label">LOCATION:</span>
-                            <span style="color: var(--text-white);">Sunshine Coast, QLD, AU</span>
-                        </div>
-
-                        <div class="stat-row">
-                            <span class="stat-label">FOCUS:</span>
-                            <span class="stat-value">Essential Eight ML2</span>
-                        </div>
-
-                        <div class="stat-row">
-                            <span class="stat-label">AGENTS:</span>
-                            <span class="stat-value">4 autonomous bots</span>
-                        </div>
-
-                        <div class="stat-row">
-                            <span class="stat-label">E8_CONTROLS:</span>
-                            <span class="stat-value">8/8 covered</span>
-                        </div>
-                        
-                        <div class="stat-row">
-                            <span class="stat-label">STACK:</span>
-                            <span style="color: var(--text-white);">Python, OpenClaw, Apple Silicon</span>
-                        </div>
-
-                        <div class="stats-quote">
-                            <p>"Your data stays in your building."</p>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">email =</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" aria-labelledby="contact-title">
-            <div class="contact-gradient"></div>
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2 id="contact-title"><span class="mono-accent">//</span> CONTACT</h2>
-                    <p>Got questions about E8CR, need help with Essential Eight ML2, or want to talk cyber + AI? Drop us a line.</p>
-                </div>
-
-                <div class="contact-container reveal-scale" data-delay="1">
-                    <div class="terminal-header">
-                        <div class="terminal-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <span>root@dobson-dev:~# ./contact.sh</span>
+                    <div class="form-group">
+                        <label class="form-label" for="message">message =</label>
+                        <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="What's on your mind?" required></textarea>
                     </div>
-                    
-                    <form action="https://formspree.io/f/xzznoayg" method="POST" class="contact-form" aria-label="Contact form">
-                        <div class="form-group">
-                            <label class="form-label" for="name">var name =</label>
-                            <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required aria-required="true">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="email">var email =</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required aria-required="true">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="message">var message =</label>
-                            <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="What's on your mind?" required aria-required="true"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit">[ SEND MESSAGE ]</button>
-                    </form>
-                </div>
-
-                <footer class="footer-credits">
-                    <p><strong>Dobson Development Pty Ltd</strong> © 2026</p>
-                    <p>Sunshine Coast, Queensland, Australia</p>
-                    <p style="margin-top: 1rem;">
-                        <a href="https://github.com/RADobson" target="_blank" rel="noopener noreferrer">GitHub</a> • 
-                        <a href="/blog/">Blog</a> • 
-                        <a href="mailto:ernie@dobsondevelopment.com.au">Email</a>
-                    </p>
-                </footer>
+                    <button type="submit" class="btn-submit">[ SEND ]</button>
+                </form>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
+<footer>
+    <div class="container">
+        <p>Richard Dobson · Sunshine Coast, QLD, Australia</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://github.com/RADobson">GitHub</a> ·
+            <a href="https://www.linkedin.com/in/richard-dobson-au/">LinkedIn</a> ·
+            <a href="mailto:richard@dobsondevelopment.com.au">Email</a>
+        </p>
+    </div>
+</footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+});
+// Nav scroll effect
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 50 ? 'var(--border)' : 'transparent';
+}, { passive: true });
+</script>
 
-    <!-- Performance: Font loading CLS fix -->
-    <script>
-    // Detect font loading to prevent CLS
-    if ('fonts' in document) {
-        Promise.all([
-            document.fonts.load('400 1em Inter'),
-            document.fonts.load('600 1em "Fira Code"')
-        ]).then(function() {
-            document.documentElement.classList.add('fonts-loaded');
-        }).catch(function() {
-            setTimeout(function() { document.documentElement.classList.add('fonts-loaded'); }, 3000);
-        });
-    } else {
-        document.documentElement.classList.add('fonts-loaded');
-    }
-    </script>
-
-    <!-- Core functionality (deferred to not block render) -->
-    <script>
-    (function() {
-        'use strict';
-        
-        // ===== OPTIMIZED SCROLL HANDLER (single rAF-throttled handler) =====
-        var scrollTicking = false;
-        var header = document.querySelector('header');
-        var scrollProgress = document.getElementById('scrollProgress');
-        var backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (!scrollTicking) {
-                requestAnimationFrame(function() {
-                    var scrollY = window.pageYOffset;
-                    
-                    // Header state
-                    if (header) header.classList.toggle('scrolled', scrollY > 50);
-                    
-                    // Scroll progress bar
-                    if (scrollProgress) {
-                        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                        scrollProgress.style.width = (docHeight > 0 ? (scrollY / docHeight) * 100 : 0) + '%';
-                    }
-                    
-                    // Back to top button
-                    if (backToTop) backToTop.classList.toggle('visible', scrollY > 400);
-                    
-                    scrollTicking = false;
-                });
-                scrollTicking = true;
-            }
-        }, { passive: true });
-
-        // ===== MOBILE MENU =====
-        var menuBtn = document.getElementById('menuBtn');
-        var mobileNav = document.getElementById('mobileNav');
-        
-        function toggleMenu() {
-            var isOpen = mobileNav.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-            menuBtn.setAttribute('aria-expanded', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        }
-        
-        menuBtn.addEventListener('click', toggleMenu);
-        mobileNav.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', toggleMenu);
-        });
-        mobileNav.addEventListener('click', function(e) {
-            if (e.target === mobileNav) toggleMenu();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileNav.classList.contains('active')) toggleMenu();
-        });
-
-        // ===== SCROLL REVEAL (IntersectionObserver) =====
-        if ('IntersectionObserver' in window) {
-            var revealObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
-                revealObserver.observe(el);
-            });
-        } else {
-            // Fallback: show everything
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
-                el.classList.add('visible');
-            });
-        }
-
-        // ===== BACK TO TOP =====
-        if (backToTop) {
-            backToTop.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-
-        // ===== FORM SUBMISSION =====
-        var form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', function() {
-                var btn = this.querySelector('.btn-submit');
-                if (btn) { btn.textContent = '[ SENDING... ]'; btn.disabled = true; }
-            });
-        }
-
-        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                var targetEl = document.querySelector(this.getAttribute('href'));
-                if (targetEl) {
-                    e.preventDefault();
-                    var headerHeight = header ? header.offsetHeight : 0;
-                    var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-            });
-        });
-
-        // ===== PARTICLE SYSTEM (deferred, optimized) =====
-        function initParticles() {
-            var canvas = document.getElementById('particles-canvas');
-            if (!canvas) return;
-            
-            // Skip on reduced motion or very small screens
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                canvas.style.display = 'none';
-                return;
-            }
-            
-            var ctx = canvas.getContext('2d');
-            var particles = [];
-            var isVisible = true;
-            var isMobile = window.innerWidth < 768;
-            
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            
-            // Debounced resize
-            var resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(resizeCanvas, 200);
-            }, { passive: true });
-            
-            // Reduced particle count for performance
-            var count = isMobile ? 
-                Math.min(25, Math.floor(window.innerWidth / 30)) : 
-                Math.min(50, Math.floor(window.innerWidth / 25));
-            
-            for (var i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 1.5 + 0.5,
-                    speedX: (Math.random() - 0.5) * 0.3,
-                    speedY: (Math.random() - 0.5) * 0.3,
-                    opacity: Math.random() * 0.4 + 0.1,
-                    color: Math.random() > 0.5 ? '0,240,255' : '188,19,254'
-                });
-            }
-            
-            var connDist = isMobile ? 70 : 100;
-            var connDistSq = connDist * connDist;
-            
-            function animate() {
-                if (!isVisible) {
-                    requestAnimationFrame(animate);
-                    return;
-                }
-                
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                for (var i = 0; i < particles.length; i++) {
-                    var p = particles[i];
-                    p.x += p.speedX;
-                    p.y += p.speedY;
-                    
-                    if (p.x < 0 || p.x > canvas.width) { p.x = Math.random() * canvas.width; }
-                    if (p.y < 0 || p.y > canvas.height) { p.y = Math.random() * canvas.height; }
-                    
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, 6.283);
-                    ctx.fillStyle = 'rgba(' + p.color + ',' + p.opacity + ')';
-                    ctx.fill();
-                    
-                    // Connect only to nearby particles (capped loop)
-                    for (var j = i + 1; j < Math.min(particles.length, i + 12); j++) {
-                        var dx = p.x - particles[j].x;
-                        var dy = p.y - particles[j].y;
-                        var dSq = dx * dx + dy * dy;
-                        if (dSq < connDistSq) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = 'rgba(0,240,255,' + (0.06 * (1 - Math.sqrt(dSq) / connDist)) + ')';
-                            ctx.lineWidth = 0.4;
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                
-                requestAnimationFrame(animate);
-            }
-            
-            // Pause when tab hidden (save CPU/battery)
-            document.addEventListener('visibilitychange', function() {
-                isVisible = !document.hidden;
-            });
-            
-            animate();
-        }
-        
-        // Defer particle init until after main content paints
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(initParticles, { timeout: 2000 });
-        } else {
-            setTimeout(initParticles, 300);
-        }
-
-        // ===== LINK PREFETCH ON HOVER =====
-        var prefetched = {};
-        document.querySelectorAll('a[href^="/"]').forEach(function(link) {
-            link.addEventListener('mouseenter', function() {
-                var href = this.getAttribute('href');
-                if (href && !prefetched[href]) {
-                    var pf = document.createElement('link');
-                    pf.rel = 'prefetch';
-                    pf.href = href;
-                    document.head.appendChild(pf);
-                    prefetched[href] = true;
-                }
-            }, { once: true, passive: true });
-        });
-
-        // ===== CONSOLE EASTER EGG =====
-        console.log('%c> Dobson Development', 'color: #00F0FF; font-family: monospace; font-size: 20px; font-weight: bold;');
-        console.log('%c> Essential Eight ML2. Autonomous. On-prem.', 'color: #BC13FE; font-family: monospace; font-size: 14px;');
-        console.log('%c> Found a bug? We pay bounties! Contact: ernie@dobsondevelopment.com.au', 'color: #9ca3af; font-family: monospace; font-size: 12px;');
-
-        // ===== SERVICE WORKER REGISTRATION =====
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(function(registration) {
-                        console.log('%c[SW] Registered:', 'color: #22c55e;', registration.scope);
-                    })
-                    .catch(function(error) {
-                        console.log('%c[SW] Registration failed:', 'color: #ef4444;', error);
-                    });
-            });
-        }
-    })();
-    </script>
 </body>
 </html>

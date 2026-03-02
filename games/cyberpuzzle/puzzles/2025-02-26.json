@@ -1,6 +1,0 @@
-{
-  "puzzleText": "To help you on your mission, the Quartermaster has given you a state-of-the art new spy-bike.\n\nIt will help you to get around the city quickly and easily.\n\nIt has all the latest tech:\n  - lithium-ion batteries\n  - pedal-assist\n  - and smartphone integration.\n\nQ has left your bike chained up in the bike rack at the front lobby.\n\nThe combination to unlock it is a 4-digit number.\n\nSolve this number square to get the combination and unlock your new bike:[[ASCII]]\n\n\t\t\t-----------------\n\t\t\t| 8 | 4 | 6 | 2 |\n\t\t\t-----------------\n\t\t\t| 2 | 6 | 4 | 8 |\n\t\t\t-----------------\n\t\t\t| 4 | 2 | 8 | 6 |\n\t\t\t-----------------\n\t\t\t|   |   |   |   |\n\t\t\t-----------------\n[[/ASCII]]",
-  "correctAnswer": "6824",
-  "hint": "Each digit must appear only once in each column and each row.",
-  "title": "A Present From Q"
-}
