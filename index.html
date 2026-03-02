@@ -1191,12 +1191,12 @@
         }
 
         /* --- CONTACT --- */
-        #contact {
+        #hire {
             padding: 8rem 0;
             background: var(--bg-secondary);
             position: relative;
         }
-        #contact::before {
+        #hire::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1466,7 +1466,7 @@
         }
         
         /* === PERFORMANCE: content-visibility for below-fold sections === */
-        #services, #blog, #about, #contact {
+        #projects, #blog, #tools, #games, #about, #hire {
             content-visibility: auto;
             contain-intrinsic-size: auto 800px;
         }
@@ -1521,12 +1521,12 @@
             </a>
             
             <nav class="nav-links" role="navigation" aria-label="Main navigation">
-                <a href="#services">The Squad</a>
-                <a href="#consulting">Why Us</a>
-                <a href="#blog">Blog</a>
+                <a href="#projects">Projects</a>
+                <a href="#blog">Writing</a>
                 <a href="#tools">Tools</a>
+                <a href="#games">Games</a>
                 <a href="#about">About</a>
-                <a href="#contact" class="nav-cta">[ Book a Fit Check ]</a>
+                <a href="#hire" class="nav-cta">[ Hire me ]</a>
             </nav>
 
             <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -1538,12 +1538,12 @@
     </header>
 
     <div class="mobile-nav-overlay" id="mobileNav" role="dialog" aria-label="Mobile navigation">
-        <a href="#services">// THE SQUAD</a>
-        <a href="#consulting">// WHY US</a>
-        <a href="#blog">// BLOG</a>
+        <a href="#projects">// PROJECTS</a>
+        <a href="#blog">// WRITING</a>
         <a href="#tools">// TOOLS</a>
+        <a href="#games">// GAMES</a>
         <a href="#about">// ABOUT</a>
-        <a href="#contact">// BOOK A FIT CHECK</a>
+        <a href="#hire">// HIRE ME</a>
     </div>
 
     <main id="main-content">
@@ -1555,18 +1555,18 @@
             <div class="container hero-content">
                 <div class="hero-badge reveal visible">
                     <span class="pulse-dot"></span>
-                    <span>For Australian orgs in the federal government supply chain</span>
+                    <span>Cybersecurity × AI · Building useful things in public</span>
                 </div>
-                <h1 id="hero-title" class="hero-title">Essential Eight ML2.<br><span class="purple-accent highlight">Stop doing it manually.</span></h1>
+                <h1 id="hero-title" class="hero-title">Richard Dobson.<br><span class="purple-accent highlight">Cyber + AI builder.</span></h1>
                 <p class="hero-subtitle">
-                    Your government contract requires Essential Eight Maturity Level 2 compliance. It's a massive workload: scanning for vulnerabilities, patching servers, managing admin access, testing backups, enforcing policies. Most organisations either hire a security team (expensive) or cobble together dashboards (time-consuming). We built a third way: autonomous AI agents that live on your hardware, do the work 24/7, and generate the evidence your auditors want. No cloud. No consultants. No six-figure bills.
+                    I build practical security tools, open-source automation, and agentic systems — then publish the work openly. The goal: raise the bar for the community, and help organisations move faster with less risk.
                 </p>
                 <div class="hero-buttons reveal visible">
-                    <a href="#services" class="btn-neon">
-                        <span>🤖 MEET THE SQUAD</span>
+                    <a href="#projects" class="btn-neon">
+                        <span>🚀 SEE PROJECTS</span>
                         <span class="arrow">→</span>
                     </a>
-                    <a href="#contact" class="btn-ghost">Book a 15-min fit check</a>
+                    <a href="#hire" class="btn-ghost">Hire me ($2,000/day)</a>
                 </div>
             </div>
             
@@ -1576,48 +1576,48 @@
             </div>
         </section>
 
-        <section id="services" aria-labelledby="services-title">
+        <section id="projects" aria-labelledby="projects-title">
             <div class="container">
                 <div class="section-header reveal visible">
-                    <h2 id="services-title"><span class="mono-accent">//</span> THE E8CR SQUAD</h2>
-                    <p>Five specialised AI agents that handle Essential Eight compliance. Each one does the actual work — not monitoring dashboards, but scanning, patching, enforcing policies, and running the tests your auditors want. They run 24/7. They don't get sick. And they generate evidence reports automatically.</p>
+                    <h2 id="projects-title"><span class="mono-accent">//</span> PROJECTS</h2>
+                    <p>A mix of open-source security automation, interactive tools, and experiments. Most of this is free — built in public.</p>
                 </div>
                 
                 <div class="services-grid">
                     <article class="service-card reveal visible">
-                        <span class="service-icon">🔍</span>
-                        <h3>VM+PM Bot</h3>
-                        <p>Finds every vulnerability on your network, prioritises them by real-world exploit likelihood (not generic severity), patches them automatically, and proves the fix worked. Runs every day. Evidence ready for your auditors.</p>
-                    </article>
-                    
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🛡️</span>
-                        <h3>EDR Operator</h3>
-                        <p>Your always-on security analyst. Watches Defender for Endpoint 24/7, triages alerts with context and threat intelligence, isolates confirmed threats automatically before damage spreads. Sleeps never.</p>
-                    </article>
-                    
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🔒</span>
-                        <h3>Application Control</h3>
-                        <p>Enforces what software can run on your endpoints — WDAC policies, Office macro lockdown, browser hardening. Start in audit mode. Graduate to enforcement when you're confident. Full control.</p>
+                        <span class="service-icon">🤖</span>
+                        <h3>E8CR Bots (Open Source)</h3>
+                        <p>Autonomous security/compliance bots for patching, identity checks, application control and backup verification. Published as an open-source reference implementation.</p>
                     </article>
 
                     <article class="service-card reveal visible">
-                        <span class="service-icon">🔑</span>
-                        <h3>Identity Bot</h3>
-                        <p>Enforces MFA everywhere. Audits admin roles and privilege creep continuously. Detects legacy authentication and policy drift. Manages just-in-time access so people get power when they need it, not all the time.</p>
-                    </article>
-                    
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">💾</span>
-                        <h3>Backup Bot</h3>
-                        <p>The part everyone forgets about: actually testing your backups. Monitors jobs, finds coverage gaps, runs restores automatically, and proves they work. When auditors ask "can you actually restore?" you'll have evidence.</p>
+                        <span class="service-icon">🛰️</span>
+                        <h3>SOC Squad Specs</h3>
+                        <p>Design docs for an on-prem SOC agent team (XDR, SIEM, SOAR, UEBA). Built to reduce alert fatigue and make response measurable.</p>
                     </article>
 
                     <article class="service-card reveal visible">
-                        <span class="service-icon">🏠</span>
-                        <h3>All On-Prem</h3>
-                        <p>Every agent runs on your hardware, in your building, on open source tools. Your security data never touches a cloud vendor's servers. You own everything. Full sovereignty.</p>
+                        <span class="service-icon">🧰</span>
+                        <h3>AI Security Landscape Explorer</h3>
+                        <p>50+ AI security tools indexed across categories with filtering and lead capture. A practical map of the ecosystem.</p>
+                    </article>
+
+                    <article class="service-card reveal visible">
+                        <span class="service-icon">🔎</span>
+                        <h3>Upload-to-LLM Risk Scanner</h3>
+                        <p>Client-side scanner that flags secrets, tokens and PII before you paste text into ChatGPT/Claude. Designed to be fast and zero-trust.</p>
+                    </article>
+
+                    <article class="service-card reveal visible">
+                        <span class="service-icon">🕹️</span>
+                        <h3>Cyber Games</h3>
+                        <p>Small games like CyberPuzzle — playful projects that teach security concepts without being a lecture.</p>
+                    </article>
+
+                    <article class="service-card reveal visible">
+                        <span class="service-icon">✍️</span>
+                        <h3>Writing in Public</h3>
+                        <p>Posts on agentic automation, defensive engineering, and what actually works in real environments.</p>
                     </article>
                 </div>
             </div>
@@ -1647,8 +1647,8 @@
                                 <span class="tag">Audit-ready reports</span>
                                 <span class="tag">ML2 ready</span>
                             </div>
-                            <a href="#contact" class="card-link" aria-label="Book a fit check">
-                                <span>Book a Fit Check</span>
+                            <a href="#hire" class="card-link" aria-label="Hire Richard">
+                                <span>Hire me ($2,000/day)</span>
                                 <span class="arrow">→</span>
                             </a>
                         </div>
@@ -1670,8 +1670,8 @@
                                 <span class="tag purple">You own the data</span>
                                 <span class="tag purple">No lock-in</span>
                             </div>
-                            <a href="#contact" class="card-link" aria-label="Book a fit check">
-                                <span>Book a Fit Check</span>
+                            <a href="#hire" class="card-link" aria-label="Hire Richard">
+                                <span>Hire me ($2,000/day)</span>
                                 <span class="arrow">→</span>
                             </a>
                         </div>
@@ -1852,12 +1852,13 @@
             </div>
         </section>
 
-        <section id="contact" aria-labelledby="contact-title">
+        <section id="hire" aria-labelledby="hire-title">
             <div class="contact-gradient"></div>
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 id="contact-title"><span class="mono-accent">//</span> TALK TO US</h2>
-                    <p>15 minutes. We'll ask about your setup, tell you honestly whether E8CR is right for your org, and answer any questions. No pitch deck. No high-pressure nonsense. Just a conversation with people who actually know what they're doing.</p>
+                    <h2 id="hire-title"><span class="mono-accent">//</span> HIRE ME</h2>
+                    <p>Need hands-on help with cyber strategy, AI automation, security tooling, or Microsoft security stack? I take on a limited number of engagements.</p>
+                    <p style="margin-top: 0.75rem; color: var(--text-white); font-weight: 600;">Day rate: <span style="color: var(--accent-cyan);">$2,000 AUD</span> (ex GST) · Remote or onsite (SE QLD)</p>
                 </div>
 
                 <div class="contact-container reveal-scale" data-delay="1">
@@ -1867,7 +1868,7 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <span>root@dobson-dev:~# ./contact.sh</span>
+                        <span>root@dobson-dev:~# ./hire_richard.sh</span>
                     </div>
                     
                     <form action="https://formspree.io/f/xzznoayg" method="POST" class="contact-form" aria-label="Contact form">
@@ -1886,7 +1887,7 @@
                             <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="What's on your mind?" required aria-required="true"></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit">[ SEND MESSAGE ]</button>
+                        <button type="submit" class="btn-submit">[ REQUEST AVAILABILITY ]</button>
                     </form>
                 </div>
 
