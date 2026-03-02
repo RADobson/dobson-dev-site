@@ -1466,7 +1466,7 @@
         }
         
         /* === PERFORMANCE: content-visibility for below-fold sections === */
-        #projects, #blog, #tools, #games, #about, #contact {
+        #blog, #tools, #games, #about, #contact {
             content-visibility: auto;
             contain-intrinsic-size: auto 800px;
         }
@@ -1521,7 +1521,7 @@
             </a>
             
             <nav class="nav-links" role="navigation" aria-label="Main navigation">
-                <a href="#projects">Projects</a>
+                <a href="#tools">Tools</a>
                 <a href="#blog">Writing</a>
                 <a href="#tools">Tools</a>
                 <a href="#games">Games</a>
@@ -1538,7 +1538,7 @@
     </header>
 
     <div class="mobile-nav-overlay" id="mobileNav" role="dialog" aria-label="Mobile navigation">
-        <a href="#projects">// PROJECTS</a>
+        <a href="#tools">// TOOLS</a>
         <a href="#blog">// WRITING</a>
         <a href="#tools">// TOOLS</a>
         <a href="#games">// GAMES</a>
@@ -1562,8 +1562,8 @@
                     I build practical security tools, open-source automation, and agentic systems — then publish the work openly. The goal: raise the bar for the community, and help organisations move faster with less risk.
                 </p>
                 <div class="hero-buttons reveal visible">
-                    <a href="#projects" class="btn-neon">
-                        <span>🚀 SEE PROJECTS</span>
+                    <a href="#tools" class="btn-neon">
+                        <span>🛡️ E8CR SQUAD</span>
                         <span class="arrow">→</span>
                     </a>
                     <a href="#contact" class="btn-ghost">Get in touch</a>
@@ -1573,112 +1573,6 @@
             <div class="scroll-indicator">
                 <div class="mouse"></div>
                 <span>scroll</span>
-            </div>
-        </section>
-
-        <section id="projects" aria-labelledby="projects-title">
-            <div class="container">
-                <div class="section-header reveal visible">
-                    <h2 id="projects-title"><span class="mono-accent">//</span> PROJECTS</h2>
-                    <p>A mix of open-source security automation, interactive tools, and experiments. Most of this is free — built in public.</p>
-                </div>
-                
-                <div class="services-grid">
-                    <a href="/e8cr/" style="text-decoration:none;color:inherit;display:block;">
-                    <article class="service-card reveal visible" style="cursor:pointer;">
-                        <span class="service-icon">🤖</span>
-                        <h3>E8CR Squad (Open Source)</h3>
-                        <p>4 autonomous bots covering all 8 Essential Eight ML2 controls — patching, identity, application control, and backup. On-prem, open source, audit-ready. <span style="color:var(--accent-neon);font-family:var(--font-mono);font-size:0.85rem;">Learn more →</span></p>
-                    </article>
-                    </a>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🛰️</span>
-                        <h3>SOC Squad Specs</h3>
-                        <p>Design docs for an on-prem SOC agent team (XDR, SIEM, SOAR, UEBA). Built to reduce alert fatigue and make response measurable.</p>
-                    </article>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🧰</span>
-                        <h3>AI Security Landscape Explorer</h3>
-                        <p>50+ AI security tools indexed across categories with filtering and lead capture. A practical map of the ecosystem.</p>
-                    </article>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🔎</span>
-                        <h3>Upload-to-LLM Risk Scanner</h3>
-                        <p>Client-side scanner that flags secrets, tokens and PII before you paste text into ChatGPT/Claude. Designed to be fast and zero-trust.</p>
-                    </article>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">🕹️</span>
-                        <h3>Cyber Games</h3>
-                        <p>Small games like CyberPuzzle — playful projects that teach security concepts without being a lecture.</p>
-                    </article>
-
-                    <article class="service-card reveal visible">
-                        <span class="service-icon">✍️</span>
-                        <h3>Writing in Public</h3>
-                        <p>Posts on agentic automation, defensive engineering, and what actually works in real environments.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="consulting" aria-labelledby="consulting-title" style="padding: 8rem 0; position: relative;">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2 id="consulting-title"><span class="mono-accent">//</span> WHY THIS IS DIFFERENT</h2>
-                    <p>Most security vendors want your vulnerability data, your admin logs, your endpoint telemetry — all shipped to their cloud. That's their moat. I think that's backwards. Your security telemetry is the roadmap to attacking your organisation. It shouldn't leave your building.</p>
-                </div>
-                
-                <div class="portfolio-grid">
-                    <article class="portfolio-card reveal" data-delay="1">
-                        <div class="card-preview" style="background: linear-gradient(135deg, #0a1628 0%, #1a3a5a 100%); height: 160px;">
-                            <div class="card-preview-text" style="font-size: 1.8rem; background: linear-gradient(135deg, #00F0FF, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🤖 Agents, Not Dashboards</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>They Do The Work</h3>
-                            <span class="card-status status-live">24/7 AUTONOMOUS</span>
-                            <p>
-                                Stop hiring consultants to patch servers. Stop manually testing backups. Stop hoping your admin access policy is actually being enforced. These agents do this stuff 24/7 — scanning, patching, testing, enforcing, and automatically generating evidence your auditors want. They don't sleep. They don't forget. They keep going while you sleep.
-                            </p>
-                            <div class="card-tags">
-                                <span class="tag">No manual work</span>
-                                <span class="tag">Runs while you sleep</span>
-                                <span class="tag">Audit-ready reports</span>
-                                <span class="tag">ML2 ready</span>
-                            </div>
-                            <a href="/e8cr/" class="card-link" aria-label="See E8CR Squad">
-                                <span>See the E8CR Squad</span>
-                                <span class="arrow">→</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="portfolio-card purple-theme reveal" data-delay="2">
-                        <div class="card-preview" style="background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%); height: 160px;">
-                            <div class="card-preview-text" style="font-size: 1.8rem; background: linear-gradient(135deg, #BC13FE, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🏠 Your Data Stays Home</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Full Sovereignty. No Cloud.</h3>
-                            <span class="card-status status-live">ON-PREM ONLY</span>
-                            <p>
-                                Think about what you're giving away when you use cloud-based security tools: every vulnerability scan, every admin role, every endpoint detail, shipped to someone else's servers. That's the blueprint for attacking you. I don't do that. These agents run on open source tools, on your hardware, in your building. No cloud. No vendor lock-in. You own everything. Full stop.
-                            </p>
-                            <div class="card-tags">
-                                <span class="tag purple">On-prem only</span>
-                                <span class="tag purple">Open source</span>
-                                <span class="tag purple">You own the data</span>
-                                <span class="tag purple">No lock-in</span>
-                            </div>
-                            <a href="#contact" class="card-link" aria-label="Get in touch">
-                                <span>Get in touch</span>
-                                <span class="arrow">→</span>
-                            </a>
-                        </div>
-                    </article>
-                </div>
             </div>
         </section>
 
