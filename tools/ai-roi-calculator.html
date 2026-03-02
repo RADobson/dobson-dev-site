@@ -1,0 +1,176 @@
+---
+layout: default
+title: AI Automation ROI Calculator | Dobson Development
+description: Calculate how much time and money your business could save with AI automation. Free interactive tool for Australian SMBs.
+---
+
+<style>
+  .roi-calc { max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+  .roi-calc h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .roi-calc .subtitle { color: #666; margin-bottom: 2rem; font-size: 1.1rem; }
+  .roi-section { background: #f8f9fa; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .roi-section h2 { font-size: 1.2rem; margin: 0 0 1rem; color: #1a1a2e; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.95rem; }
+  .form-group .hint { color: #888; font-size: 0.82rem; margin-bottom: 0.3rem; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #ddd; border-radius: 8px;
+    font-size: 1rem; box-sizing: border-box;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: #4a6cf7; outline: none; }
+  .roi-results { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff;
+    border-radius: 12px; padding: 2rem; margin: 2rem 0; display: none; }
+  .roi-results h2 { color: #4af; margin: 0 0 1.5rem; font-size: 1.4rem; }
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .result-card { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 1.2rem; text-align: center; }
+  .result-card .number { font-size: 2rem; font-weight: 700; color: #4af; }
+  .result-card .label { font-size: 0.85rem; color: #aab; margin-top: 0.3rem; }
+  .result-highlight { grid-column: 1/-1; background: rgba(74,170,247,0.15); border: 1px solid rgba(74,170,247,0.3); }
+  .result-highlight .number { color: #4f8; font-size: 2.4rem; }
+  .btn-calc {
+    display: block; width: 100%; padding: 1rem; background: #4a6cf7; color: #fff;
+    border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-calc:hover { background: #3a5ce5; }
+  .cta-box { background: #f0f4ff; border: 2px solid #4a6cf7; border-radius: 12px; padding: 1.5rem;
+    text-align: center; margin-top: 1.5rem; }
+  .cta-box h3 { margin: 0 0 0.5rem; color: #1a1a2e; }
+  .cta-box p { color: #555; margin: 0 0 1rem; }
+  .cta-box a {
+    display: inline-block; padding: 0.7rem 2rem; background: #4a6cf7; color: #fff;
+    text-decoration: none; border-radius: 8px; font-weight: 600;
+  }
+  .breakdown { margin-top: 1.5rem; }
+  .breakdown h3 { color: #aab; font-size: 0.95rem; margin-bottom: 0.8rem; }
+  .breakdown-row { display: flex; justify-content: space-between; padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.9rem; }
+  .breakdown-row .val { color: #4af; font-weight: 600; }
+  @media (max-width: 500px) { .result-grid { grid-template-columns: 1fr; } }
+</style>
+
+<div class="roi-calc">
+  <h1>🤖 AI Automation ROI Calculator</h1>
+  <p class="subtitle">Estimate how much time and money your business could save by automating repetitive tasks with AI agents.</p>
+
+  <div class="roi-section">
+    <h2>👥 Your Team</h2>
+    <div class="form-group">
+      <label>Number of employees involved in repetitive tasks</label>
+      <div class="hint">Customer support, data entry, scheduling, email handling, etc.</div>
+      <input type="number" id="employees" value="5" min="1" max="500">
+    </div>
+    <div class="form-group">
+      <label>Average annual salary per employee (AUD)</label>
+      <input type="number" id="salary" value="65000" min="30000" max="300000" step="5000">
+    </div>
+  </div>
+
+  <div class="roi-section">
+    <h2>⏱️ Time Spent on Repetitive Tasks</h2>
+    <div class="form-group">
+      <label>Hours per employee per week on automatable tasks</label>
+      <div class="hint">Think: answering FAQs, copy-pasting data, scheduling, sorting emails, generating reports</div>
+      <input type="range" id="hours" min="2" max="35" value="12" oninput="document.getElementById('hoursVal').textContent=this.value">
+      <div style="text-align:center;font-size:1.3rem;font-weight:700;color:#4a6cf7;margin-top:0.3rem"><span id="hoursVal">12</span> hrs/week</div>
+    </div>
+  </div>
+
+  <div class="roi-section">
+    <h2>🎯 Automation Potential</h2>
+    <div class="form-group">
+      <label>What percentage of those tasks could AI handle?</label>
+      <div class="hint">Conservative: 40-50% | Moderate: 60-70% | Aggressive: 80%+</div>
+      <select id="autoRate">
+        <option value="0.4">Conservative (40%)</option>
+        <option value="0.6" selected>Moderate (60%)</option>
+        <option value="0.75">Aggressive (75%)</option>
+        <option value="0.85">Full automation (85%)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Estimated monthly AI tool cost (AUD)</label>
+      <div class="hint">Typical range: $300-$2,000/mo depending on scale</div>
+      <input type="number" id="aiCost" value="599" min="0" max="50000" step="100">
+    </div>
+  </div>
+
+  <button class="btn-calc" onclick="calculate()">Calculate My ROI →</button>
+
+  <div class="roi-results" id="results">
+    <h2>📊 Your Estimated AI ROI</h2>
+    <div class="result-grid">
+      <div class="result-card result-highlight">
+        <div class="number" id="rNetSavings">—</div>
+        <div class="label">Net Annual Savings (AUD)</div>
+      </div>
+      <div class="result-card">
+        <div class="number" id="rHoursSaved">—</div>
+        <div class="label">Hours Saved Per Year</div>
+      </div>
+      <div class="result-card">
+        <div class="number" id="rROI">—</div>
+        <div class="label">Return on Investment</div>
+      </div>
+      <div class="result-card">
+        <div class="number" id="rPayback">—</div>
+        <div class="label">Payback Period</div>
+      </div>
+      <div class="result-card">
+        <div class="number" id="rFTE">—</div>
+        <div class="label">FTE Equivalent Freed Up</div>
+      </div>
+    </div>
+
+    <div class="breakdown">
+      <h3>BREAKDOWN</h3>
+      <div class="breakdown-row"><span>Gross time savings</span><span class="val" id="bHours">—</span></div>
+      <div class="breakdown-row"><span>Gross dollar savings</span><span class="val" id="bGross">—</span></div>
+      <div class="breakdown-row"><span>Annual AI cost</span><span class="val" id="bCost">—</span></div>
+      <div class="breakdown-row"><span>Net savings</span><span class="val" id="bNet">—</span></div>
+      <div class="breakdown-row"><span>Cost per automated hour</span><span class="val" id="bCPH">—</span></div>
+    </div>
+
+    <div class="cta-box" style="background:rgba(255,255,255,0.05);border-color:rgba(74,170,247,0.3);margin-top:1.5rem;">
+      <h3 style="color:#fff;">Want to see these savings in your business?</h3>
+      <p style="color:#aab;">Book a free 30-minute discovery call. We'll identify your highest-ROI automation opportunities.</p>
+      <a href="/services/ai-consulting.html">Book Free Discovery Call →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function fmt(n) { return new Intl.NumberFormat('en-AU', {maximumFractionDigits:0}).format(n); }
+function calculate() {
+  const emp = +document.getElementById('employees').value;
+  const sal = +document.getElementById('salary').value;
+  const hrs = +document.getElementById('hours').value;
+  const rate = +document.getElementById('autoRate').value;
+  const aiMo = +document.getElementById('aiCost').value;
+
+  const hourlyRate = sal / (48 * 38); // 48 working weeks, 38hr week
+  const weeklyHoursSaved = emp * hrs * rate;
+  const annualHoursSaved = weeklyHoursSaved * 48;
+  const grossSavings = annualHoursSaved * hourlyRate;
+  const annualAICost = aiMo * 12;
+  const netSavings = grossSavings - annualAICost;
+  const roi = annualAICost > 0 ? ((netSavings / annualAICost) * 100) : 0;
+  const paybackMonths = grossSavings > 0 ? (annualAICost / (grossSavings / 12)) : 0;
+  const fte = annualHoursSaved / (48 * 38);
+
+  document.getElementById('rNetSavings').textContent = '$' + fmt(netSavings);
+  document.getElementById('rHoursSaved').textContent = fmt(annualHoursSaved);
+  document.getElementById('rROI').textContent = fmt(roi) + '%';
+  document.getElementById('rPayback').textContent = paybackMonths < 1 ? '< 1 month' : fmt(paybackMonths) + ' months';
+  document.getElementById('rFTE').textContent = fte.toFixed(1);
+
+  document.getElementById('bHours').textContent = fmt(annualHoursSaved) + ' hrs/yr';
+  document.getElementById('bGross').textContent = '$' + fmt(grossSavings);
+  document.getElementById('bCost').textContent = '$' + fmt(annualAICost);
+  document.getElementById('bNet').textContent = '$' + fmt(netSavings);
+  document.getElementById('bCPH').textContent = annualHoursSaved > 0 ? ('$' + (annualAICost/annualHoursSaved).toFixed(2)) : '—';
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+}
+</script>

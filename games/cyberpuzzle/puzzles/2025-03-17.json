@@ -1,0 +1,17 @@
+{
+  "puzzleText": "Black hat hackers use a variety of tools to pursue their malicious activities.\nDecode each of the software tools below using the following clues to learn about their nefarious ways:\n\n    1. Laptop lumberjack pays attention to each stroke.\n\n    2. Subterranean software stealthily sowing seeds of control.\n\n    3. Digital detective dog with a nose for network mischief.\n\nCan you fill in the blanks to get the correct name for each hacker software tool?",
+  "puzzleType": "multi-input",
+  "correctAnswers": [
+    "LOGGER",
+    "KIT",
+    "SNIFFER"
+  ],
+  "inputPrompts": [
+    "KEY",
+    "ROOT",
+    "PACKET"
+  ],
+  "xp_bounty": 15,
+  "hint": "Fill-in Format:<br>    KEY _ _ _ _ _ _ (6 letters)<br>    ROOT _ _ _ (3 letters)<br>    PACKET _ _ _ _ _ _ _ (7 letters)",
+  "title": "Hacker's Tool Box"
+}

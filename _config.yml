@@ -1,63 +1,108 @@
-# Jekyll Configuration
-title: Richard Dobson
-description: Building autonomous AI agents for cybersecurity. Open source. On-prem. Published openly.
+# Jekyll Configuration for Dobson Development
+title: Dobson Development
+description: Australian software studio building practical tools for cybersecurity and business
 url: "https://dobsondevelopment.com.au"
 baseurl: ""
 
-# Author
+# Author information
 author:
-  name: Richard Dobson
-  email: richard@dobsondevelopment.com.au
-  bio: "Building autonomous AI agents for Essential Eight compliance. Cyber + AI, Sunshine Coast."
-  avatar: /assets/images/richard.jpg
+  name: Ernie Dobson
+  email: ernie@dobsondevelopment.com.au
+  bio: "Founder at Dobson Development. Building AI-powered tools for cybersecurity and business. Former SOC engineer turned indie hacker."
+  avatar: /assets/images/author-ernie.jpg
+  twitter: RADobson
   github: RADobson
-  linkedin: richard-dobson-au
+  linkedin: ernie-dobson
 
-# Build
+# Build settings
 markdown: kramdown
 highlighter: rouge
 theme: minima
 
+# Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-paginate
 
+# Pagination
+paginate: 5
+paginate_path: "/blog/page/:num/"
+
+# Permalinks
 permalink: /blog/:title/
 
+# Collections
 collections:
   posts:
     output: true
 
+# Default front matter
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-      author: "Richard Dobson"
+      author: "Ernie Dobson"
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.png
 
+# Exclude files from build
 exclude:
   - README.md
   - CNAME
   - Gemfile
   - Gemfile.lock
-  - PERFORMANCE_BENCHMARK_REPORT.md
+  - IMPROVEMENTS_PLAN.md
   - SEO_PERFORMANCE_STRATEGY.md
   - ".git"
   - ".gitignore"
 
+# SEO Tag settings
+twitter:
+  username: RADobson
+  card: summary_large_image
+
+facebook:
+  app_id: 
+  publisher: 
+
 social:
-  name: Richard Dobson
+  name: Ernie Dobson
   links:
     - https://github.com/RADobson
-    - https://www.linkedin.com/in/richard-dobson-au
+    - https://www.linkedin.com/in/ernie-dobson
 
+# Google Analytics (replace with your ID when ready)
+google_analytics: 
+
+# Newsletter signup form URL (Formspree)
 newsletter_form_url: https://formspree.io/f/xzznoayg
 
+# Comments (Giscus - GitHub Discussions)
+giscus:
+  repo: RADobson/dobson-dev-site
+  repo_id: 
+  category: Blog Comments
+  category_id: 
+  mapping: pathname
+  reactions_enabled: 1
+  emit_metadata: 0
+  theme: dark_dimmed
+  lang: en
+  crossorigin: anonymous
+
+# Syntax highlighting settings
 kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:
     css_class: 'highlight'
+    span:
+      line_numbers: false
     block:
       line_numbers: true
+      start_line: 1

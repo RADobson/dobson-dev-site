@@ -1,12 +1,81 @@
 ---
 layout: default
-title: Writing — Richard Dobson
-description: Technical writing on agentic AI, cybersecurity automation, Essential Eight, and building in public.
+title: Blog
+description: Insights on SIEM, SOAR, XDR, security automation, and building with AI. Technical articles from an Australian cybersecurity developer.
 ---
 
+<!-- Structured Data: Blog -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Dobson Development Blog",
+    "description": "Insights on security automation, AI tools, and building things that work",
+    "url": "{{ site.url }}/blog/",
+    "inLanguage": "en-AU",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dobson Development Pty Ltd",
+        "url": "{{ site.url }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.url }}/assets/images/icon.svg"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ernie Dobson",
+        "url": "{{ site.url }}",
+        "sameAs": [
+            "https://github.com/RADobson",
+            "https://twitter.com/RADobson",
+            "https://www.linkedin.com/in/ernie-dobson"
+        ]
+    },
+    "blogPost": [
+        {% for post in site.posts %}
+        {
+            "@type": "BlogPosting",
+            "headline": "{{ post.title | escape }}",
+            "url": "{{ post.url | absolute_url }}",
+            "datePublished": "{{ post.date | date_to_xmlschema }}",
+            "dateModified": "{{ post.last_modified_at | default: post.date | date_to_xmlschema }}",
+            "description": "{{ post.excerpt | strip_html | truncatewords: 30 | escape }}",
+            "author": {
+                "@type": "Person",
+                "name": "Ernie Dobson"
+            }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ]
+}
+</script>
+
+<!-- Structured Data: BreadcrumbList -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ site.url }}"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "{{ site.url }}/blog/"
+        }
+    ]
+}
+</script>
+
 <div class="blog-header reveal">
-    <h1><span class="mono-accent">//</span> Writing</h1>
-    <p>Technical notes, build logs, and opinions on agentic AI and cybersecurity.</p>
+    <h1><span class="mono-accent">//</span> Blog</h1>
+    <p>Insights on security automation, AI tools, and building things that work.</p>
 </div>
 
 <div class="post-list">
@@ -23,13 +92,12 @@ description: Technical writing on agentic AI, cybersecurity automation, Essentia
             {% endfor %}
             {% endif %}
         </div>
-        {% if post.description %}
-        <p>{{ post.description | truncatewords: 40 }}</p>
-        {% elsif post.excerpt %}
+        {% if post.excerpt %}
         <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
         {% endif %}
         <a href="{{ post.url }}" class="read-more">
-            <span>Read →</span>
+            <span>Read Article</span>
+            <span class="arrow">→</span>
         </a>
     </article>
     {% endfor %}
@@ -37,6 +105,6 @@ description: Technical writing on agentic AI, cybersecurity automation, Essentia
 
 {% if site.posts.size == 0 %}
 <div class="empty-state reveal">
-    <p>Nothing here yet. Writing is in progress.</p>
+    <p>No posts yet. Check back soon.</p>
 </div>
 {% endif %}

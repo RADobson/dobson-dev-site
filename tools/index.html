@@ -1,0 +1,111 @@
+---
+layout: default
+title: "Free Cybersecurity Tools | Dobson Development"
+description: "10 free interactive cybersecurity tools for security teams and IT managers. Assess your security posture, find gaps, compare vendors, and get actionable recommendations."
+image: /assets/images/og-default.png
+---
+
+<style>
+.tools-hero { padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 2.5rem; }
+.tools-hero h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: .75rem; background: linear-gradient(135deg, #00F0FF, #BC13FE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: 'Fira Code', monospace; }
+.tools-hero p { max-width: 600px; margin: 0 auto; font-size: 1.05rem; color: #9ca3af; }
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+.tool-card { display: block; background: var(--bg-card, #141419); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 1.75rem; text-decoration: none; transition: all .3s; position: relative; overflow: hidden; }
+.tool-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00F0FF, #BC13FE); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
+.tool-card:hover::before { transform: scaleX(1); }
+.tool-card:hover { border-color: rgba(0,240,255,0.3); transform: translateY(-3px); box-shadow: 0 15px 30px -15px rgba(0,0,0,.5); }
+.tool-card h3 { color: #00F0FF; font-family: 'Fira Code', monospace; font-size: 1.1rem; margin-bottom: .5rem; }
+.tool-card p { color: #9ca3af; font-size: .92rem; margin-bottom: 1rem; line-height: 1.5; }
+.tool-card .cta { color: #BC13FE; font-family: 'Fira Code', monospace; font-size: .85rem; }
+.tool-tag { display: inline-block; padding: .15rem .5rem; border-radius: 4px; font-size: .7rem; font-family: 'Fira Code', monospace; background: rgba(0,240,255,0.1); color: #00F0FF; margin-bottom: .75rem; }
+.section-label { font-family: 'Fira Code', monospace; font-size: .9rem; color: #00F0FF; margin-bottom: 1rem; display: block; }
+</style>
+
+<div class="container">
+    <section class="tools-hero">
+        <h1>Free Cybersecurity Tools</h1>
+        <p>Interactive assessments, calculators, and libraries for security teams and IT managers. No signup required — all tools run 100% in your browser.</p>
+    </section>
+
+    <span class="section-label">// ASSESSMENTS & SIMULATORS</span>
+    <div class="tools-grid">
+        <a href="/tools/essential-eight-assessment" class="tool-card">
+            <span class="tool-tag">Assessment</span>
+            <h3>🇦🇺 Essential Eight Gap Assessment</h3>
+            <p>Assess your organisation against the ASD Essential Eight maturity model. Get a gap analysis with prioritised remediation steps.</p>
+            <span class="cta">Start assessment →</span>
+        </a>
+        <a href="/tools/security-maturity-score" class="tool-card">
+            <span class="tool-tag">Assessment</span>
+            <h3>📊 Security Stack Maturity Score</h3>
+            <p>Evaluate your security maturity across 8 domains. Get a radar chart, industry comparison, and prioritised roadmap to the next level.</p>
+            <span class="cta">Take assessment →</span>
+        </a>
+        <a href="/tools/breach-blast-radius" class="tool-card">
+            <span class="tool-tag">Simulator</span>
+            <h3>💥 Breach Blast Radius Simulator</h3>
+            <p>Input your security posture and get estimated dwell time, ransomware probability, blast radius, and recovery cost based on real breach data.</p>
+            <span class="cta">Run simulation →</span>
+        </a>
+        <a href="/tools/security-control-coverage" class="tool-card">
+            <span class="tool-tag">Calculator</span>
+            <h3>🎯 Security Control Coverage Calculator</h3>
+            <p>Select your security stack and see coverage across NIST CSF, Essential Eight, and CIS Controls. Find gaps and overlaps instantly.</p>
+            <span class="cta">Check coverage →</span>
+        </a>
+    </div>
+
+    <span class="section-label">// REFERENCES & LIBRARIES</span>
+    <div class="tools-grid">
+        <a href="/tools/ai-security-landscape" class="tool-card">
+            <span class="tool-tag">Directory</span>
+            <h3>🛡️ AI Security Landscape Explorer</h3>
+            <p>Interactive directory of 50+ AI-powered cybersecurity tools. Filter by category, deployment model, pricing tier, and complexity.</p>
+            <span class="cta">Explore tools →</span>
+        </a>
+        <a href="/tools/soc-playbook-library" class="tool-card">
+            <span class="tool-tag">Library</span>
+            <h3>📖 SOC Automation Playbook Library</h3>
+            <p>25 MITRE ATT&CK playbooks with detection logic, investigation steps, and ready-to-use Splunk SPL &amp; Sentinel KQL queries.</p>
+            <span class="cta">Browse playbooks →</span>
+        </a>
+        <a href="/tools/ai-prompt-library" class="tool-card">
+            <span class="tool-tag">Library</span>
+            <h3>🤖 AI Prompt Library for Security Teams</h3>
+            <p>40 copy-paste prompts for incident response, threat hunting, malware analysis, and more. Organised by difficulty and LLM recommendation.</p>
+            <span class="cta">Browse prompts →</span>
+        </a>
+        <a href="/tools/vendor-pricing-checker" class="tool-card">
+            <span class="tool-tag">Reference</span>
+            <h3>💰 Cyber Vendor Pricing Reality Checker</h3>
+            <p>Real-world pricing ranges for 32 security vendors. Compare products, check if you're overpaying, and get negotiation tips.</p>
+            <span class="cta">Check pricing →</span>
+        </a>
+    </div>
+
+    <span class="section-label">// AI & AUTOMATION</span>
+    <div class="tools-grid">
+        <a href="/tools/ai-roi-calculator" class="tool-card">
+            <span class="tool-tag">Calculator</span>
+            <h3>🤖 AI Automation ROI Calculator</h3>
+            <p>Estimate how much time and money your business could save by automating repetitive tasks with AI agents. Get net savings, payback period, and FTE impact.</p>
+            <span class="cta">Calculate ROI →</span>
+        </a>
+    </div>
+
+    <span class="section-label">// UTILITIES</span>
+    <div class="tools-grid">
+        <a href="/tools/llm-risk-scanner" class="tool-card">
+            <span class="tool-tag">Scanner</span>
+            <h3>🔍 Upload-to-LLM Risk Scanner</h3>
+            <p>Paste text and detect PII, secrets, credentials, and sensitive data before sharing with ChatGPT. 100% client-side — your data never leaves your browser.</p>
+            <span class="cta">Scan text →</span>
+        </a>
+        <a href="/tools/log-source-calculator" class="tool-card">
+            <span class="tool-tag">Calculator</span>
+            <h3>📋 Log Source Priority Calculator</h3>
+            <p>Answer a few questions about your organisation and get a ranked list of which log sources to ingest first for your SIEM deployment.</p>
+            <span class="cta">Calculate priorities →</span>
+        </a>
+    </div>
+</div>

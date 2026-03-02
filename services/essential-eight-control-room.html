@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Essential Eight Control Room (E8CR) | Dobson Development</title>
+  <meta name="description" content="On-prem appliance + subscription that accelerates your path to Essential Eight ML2 with continuous evidence, vulnerability management, and Tier-1 triage workflows." />
+
+  <style>
+    :root {
+      --bg-main: #0B0C10;
+      --bg-secondary: #0f1014;
+      --bg-card: #141419;
+      --accent-neon: #00F0FF;
+      --accent-purple: #BC13FE;
+      --text-white: #FFFFFF;
+      --text-grey: #9ca3af;
+      --text-muted: #6b7280;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-hover: rgba(0,240,255,0.3);
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --glow-neon: 0 0 30px rgba(0, 240, 255, 0.25);
+    }
+
+    body{
+      margin:0; background:var(--bg-main); color:var(--text-grey);
+      font-family: var(--font-body); line-height:1.7;
+    }
+    a{ color:var(--accent-neon); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .nav{
+      position:sticky; top:0; z-index:10;
+      background: rgba(11,12,16,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--border-subtle);
+    }
+    .nav-inner{ max-width:1100px; margin:0 auto; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .brand{ font-family: var(--font-mono); color:var(--accent-neon); letter-spacing:0.06em; }
+    .cta{ border:1px solid var(--accent-neon); padding:10px 14px; border-radius:10px; font-family: var(--font-mono); }
+    .cta:hover{ box-shadow: var(--glow-neon); text-decoration:none; }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding: 56px 20px 90px; }
+    .hero{
+      display:grid; gap:24px;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items:start;
+    }
+    @media (max-width: 900px){ .hero{ grid-template-columns:1fr; } }
+
+    .h-eyebrow{ font-family: var(--font-mono); color: var(--accent-purple); }
+    h1{ margin:8px 0 12px; font-size: 44px; line-height:1.1; color:var(--text-white); }
+    .sub{ color:var(--text-grey); font-size: 18px; }
+
+    .card{
+      background: var(--bg-card);
+      border:1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .grid{ display:grid; gap:16px; grid-template-columns: repeat(2, minmax(0,1fr)); }
+    @media (max-width: 900px){ .grid{ grid-template-columns:1fr; } }
+
+    .k{ font-family: var(--font-mono); color: var(--accent-neon); font-size: 13px; letter-spacing:0.04em; }
+    .v{ color: var(--text-white); font-size: 18px; margin-top:6px; }
+
+    ul{ margin: 12px 0 0 18px; }
+    li{ margin: 6px 0; }
+
+    .muted{ color: var(--text-muted); }
+    .pill{ display:inline-block; border:1px solid var(--border-subtle); border-radius:999px; padding:6px 10px; font-family: var(--font-mono); font-size:12px; color: var(--text-muted); }
+
+    .section{ margin-top: 44px; }
+    h2{ color: var(--text-white); font-size: 24px; margin:0 0 12px; }
+    h3{ color: var(--text-white); margin: 0 0 8px; font-size:18px; }
+
+    .warning{
+      border:1px solid rgba(188,19,254,0.25);
+      background: rgba(188,19,254,0.06);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .footer{ margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--border-subtle); color: var(--text-muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">dobson_dev_</a>
+      <a class="cta" href="/contact">[ Book a 15‑min fit check ]</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <div class="h-eyebrow">// Essential Eight</div>
+        <h1>Essential Eight Control Room (E8CR)</h1>
+        <p class="sub">An on‑prem appliance + subscription that accelerates your path toward <b>Essential Eight ML2</b> with continuous evidence capture, vulnerability management, and Tier‑1 triage workflows.</p>
+        <p class="muted"><span class="pill">On‑prem appliance</span> <span class="pill">Microsoft‑native controls</span> <span class="pill">Evidence packs</span></p>
+      </div>
+
+      <div class="card">
+        <div class="k">What you get in the first 30 days</div>
+        <ul>
+          <li>ML2 accelerator plan (what’s done / missing / next actions)</li>
+          <li>Vulnerability baseline + weekly remediation queue</li>
+          <li>Evidence pack starter + first evidence snapshot</li>
+          <li>Microsoft control-plane support (Intune/Entra/WDAC) where licensed</li>
+        </ul>
+        <div style="height:12px"></div>
+        <div class="k">CTA</div>
+        <div class="v">Book a 15‑minute fit check</div>
+        <p class="muted" style="margin:8px 0 0">We’ll tell you in 15 minutes if E8CR is a fit and what we can implement in 30 days.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>What E8CR is (and isn’t)</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>It is</h3>
+          <ul>
+            <li>A hardened on‑prem appliance that runs your security workflows</li>
+            <li>A repeatable Essential Eight ML2 <b>accelerator</b></li>
+            <li>Continuous evidence + remediation tracking</li>
+            <li>Optional Tier‑1 triage (Wazuh or your SIEM)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>It isn’t</h3>
+          <ul>
+            <li>A magic “ML2 overnight” button</li>
+            <li>A replacement for your entire SOC/IR function</li>
+            <li>A generic MSP hygiene checklist</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="height:16px"></div>
+      <div class="warning">
+        <b>Reality check:</b> Essential Eight maturity requires approvals and participation. E8CR gives you the control room, implementation support, evidence packs, and the operational cadence to actually sustain ML2.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>How it works</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="k">1) Deploy</div>
+          <div class="v">We ship an appliance into your network</div>
+          <p class="muted">Segmented VLAN preferred. Hardened baseline, encrypted storage, monitored services.</p>
+        </div>
+        <div class="card">
+          <div class="k">2) Integrate</div>
+          <div class="v">We connect to your Microsoft control plane</div>
+          <p class="muted">Intune / Entra / WDAC / macro policies where you’re licensed.</p>
+        </div>
+        <div class="card">
+          <div class="k">3) Operate</div>
+          <div class="v">Weekly readiness + remediation loop</div>
+          <p class="muted">Evidence packs, exception workflows, and prioritized fixes.</p>
+        </div>
+        <div class="card">
+          <div class="k">4) Expand</div>
+          <div class="v">Optional triage workflows (Tier‑1)</div>
+          <p class="muted">Wazuh if you don’t have a SIEM, or integrate with what you already use.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tiers</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>E8CR Core</h3>
+          <p class="muted">Essential Eight accelerator + vuln management + evidence cadence.</p>
+          <ul>
+            <li>Appliance deployment + hardening</li>
+            <li>Vuln baseline + weekly delta</li>
+            <li>Weekly ML2 readiness report</li>
+            <li>Monthly evidence snapshot</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>E8CR Core + Triage</h3>
+          <p class="muted">Adds Tier‑1 triage summaries + escalation workflows.</p>
+          <ul>
+            <li>Wazuh configured or SIEM integrated</li>
+            <li>Triage summaries + ticket creation</li>
+            <li>Escalation thresholds + safe auto-actions</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:12px">Private (no‑cloud) inference is available as an enterprise add‑on.</p>
+    </div>
+
+    <div class="footer">
+      © 2026 dobson_dev_ — Essential Eight Control Room
+    </div>
+  </div>
+</body>
+</html>

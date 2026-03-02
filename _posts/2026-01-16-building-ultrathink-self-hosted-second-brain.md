@@ -7,7 +7,7 @@ tags: [automation, python, telegram, ai, claude]
 excerpt: "How a complex stack of no-code tools became a simple 600-line Python script, thanks to Claude Code."
 description: "How I built Ultrathink, a private self-hosted second brain system using Python and Claude AI, replacing a complex Slack/Notion/Zapier stack with a simple 600-line script."
 image: /assets/images/og-default.png
-author: "Richard Dobson"
+author: "Ernie Dobson"
 ---
 
 *How a complex stack of no-code tools became a simple 600-line Python script*

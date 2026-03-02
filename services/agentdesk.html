@@ -1,0 +1,757 @@
+---
+layout: default
+title: "AgentDesk — AI Customer Support Agent, Fully Managed"
+description: "Get a custom AI support agent handling your customer enquiries 24/7. No coding, no chatbot builders — we set it up, you watch it work. From $299/mo."
+image: /assets/images/og-default.png
+sitemap: true
+---
+
+<style>
+    .service-hero {
+        padding: 4rem 0 3rem;
+        position: relative;
+    }
+    .service-hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .service-hero .subtitle {
+        font-size: 1.15rem;
+        color: var(--text-grey);
+        max-width: 700px;
+        margin-bottom: 1.5rem;
+    }
+    .service-hero .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.9rem;
+        background: rgba(188, 19, 254, 0.08);
+        border: 1px solid rgba(188, 19, 254, 0.2);
+        border-radius: 50px;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent-purple);
+        margin-bottom: 1.5rem;
+    }
+    .pain-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .pain-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent-purple);
+    }
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+        margin: 2rem 0;
+    }
+    .stat-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    .stat-box:hover {
+        border-color: rgba(188, 19, 254, 0.3);
+        transform: translateY(-2px);
+    }
+    .stat-box .number {
+        font-family: var(--font-mono);
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-purple);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .stat-box .label {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+    .pricing-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .pricing-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--accent-purple);
+    }
+    .pricing-section .section-note {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+    }
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+    }
+    .pricing-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 2rem 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    .pricing-card:hover {
+        border-color: rgba(188, 19, 254, 0.3);
+        transform: translateY(-2px);
+    }
+    .pricing-card.featured {
+        border-color: rgba(188, 19, 254, 0.4);
+        box-shadow: 0 0 30px rgba(188, 19, 254, 0.08);
+    }
+    .pricing-card .plan-name {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: var(--accent-purple);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+    }
+    .pricing-card .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-white);
+        margin-bottom: 0.25rem;
+    }
+    .pricing-card .price span {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-muted);
+    }
+    .pricing-card .price-note {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+    .pricing-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .pricing-card ul li {
+        font-size: 0.9rem;
+        color: var(--text-grey);
+        padding: 0.4rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    .pricing-card ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent-purple);
+        font-weight: 700;
+    }
+    .popular-badge {
+        position: absolute;
+        top: -10px;
+        right: 16px;
+        background: var(--accent-purple);
+        color: #fff;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .features-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .features-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: var(--accent-purple);
+    }
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+    }
+    .feature-item {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    .feature-item:hover {
+        border-color: rgba(188, 19, 254, 0.3);
+        transform: translateY(-2px);
+    }
+    .feature-item .icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+    .feature-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-white);
+    }
+    .feature-item p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+    .how-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .how-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: var(--accent-purple);
+    }
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .step {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+    }
+    .step .step-num {
+        font-family: var(--font-mono);
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-purple);
+        display: block;
+        margin-bottom: 0.75rem;
+        opacity: 0.6;
+    }
+    .step h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-white);
+    }
+    .step p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+    .verticals-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .verticals-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent-purple);
+    }
+    .vertical-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    .vertical-tag {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--text-grey);
+        transition: all 0.3s ease;
+    }
+    .vertical-tag:hover {
+        border-color: rgba(188, 19, 254, 0.3);
+    }
+    .vertical-tag .v-icon {
+        font-size: 1.5rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .faq-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .faq-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent-purple);
+    }
+    .faq-item {
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 1.25rem 0;
+    }
+    .faq-item h3 {
+        font-size: 0.95rem;
+        color: var(--text-white);
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+    }
+    .faq-item p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+    }
+    .cta-section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .cta-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    .cta-section .cta-subtitle {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+    }
+    .cta-form {
+        max-width: 600px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .cta-form .terminal-bar {
+        background: #1a1a1e;
+        padding: 0.6rem 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .cta-form .terminal-bar .dots {
+        display: flex;
+        gap: 5px;
+        margin-right: 0.75rem;
+    }
+    .cta-form .terminal-bar .dots span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .cta-form .terminal-bar .dots span:nth-child(1) { background: #ff5f56; }
+    .cta-form .terminal-bar .dots span:nth-child(2) { background: #ffbd2e; }
+    .cta-form .terminal-bar .dots span:nth-child(3) { background: #27ca40; }
+    .cta-form form {
+        padding: 1.5rem;
+    }
+    .cta-form .form-group {
+        margin-bottom: 1.25rem;
+    }
+    .cta-form label {
+        display: block;
+        font-family: var(--font-mono);
+        color: var(--accent-purple);
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+    .cta-form input,
+    .cta-form select,
+    .cta-form textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.02);
+        border: none;
+        border-bottom: 1px solid var(--border-subtle);
+        color: var(--text-white);
+        font-family: var(--font-mono);
+        padding: 0.7rem 0.5rem;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+        border-radius: 4px 4px 0 0;
+    }
+    .cta-form input:focus,
+    .cta-form select:focus,
+    .cta-form textarea:focus {
+        outline: none;
+        border-bottom-color: var(--accent-purple);
+    }
+    .cta-form input::placeholder,
+    .cta-form textarea::placeholder {
+        color: var(--text-muted);
+    }
+    .cta-form select {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    .cta-form button {
+        width: 100%;
+        background: transparent;
+        color: var(--accent-purple);
+        border: 1px solid var(--accent-purple);
+        padding: 0.9rem;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+    .cta-form button:hover {
+        background: rgba(188, 19, 254, 0.1);
+    }
+    .comparison-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    .comparison-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.5rem;
+    }
+    .comparison-box h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    .comparison-box.old h3 { color: #ff5f56; }
+    .comparison-box.new h3 { color: #27ca40; }
+    .comparison-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .comparison-box ul li {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        padding: 0.3rem 0;
+    }
+    @media (max-width: 600px) {
+        .comparison-row { grid-template-columns: 1fr; }
+    }
+</style>
+
+<section class="service-hero">
+    <div class="container">
+        <div class="badge">🤖 MANAGED AI SUPPORT</div>
+        <h1>Your support inbox.<br>Handled by AI.<br><span style="color: var(--accent-purple)">Managed by us.</span></h1>
+        <p class="subtitle">
+            We deploy a custom AI support agent trained on your business — answering customer questions 24/7 via chat, email, or your website. You don't build anything. You don't maintain anything. It just works.
+        </p>
+        <a href="#signup" style="display: inline-block; padding: 0.8rem 2rem; border: 1px solid var(--accent-purple); color: var(--accent-purple); font-family: var(--font-mono); font-size: 0.9rem; border-radius: 6px; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(188,19,254,0.1)'" onmouseout="this.style.background='transparent'">
+            Start free trial →
+        </a>
+    </div>
+</section>
+
+<section class="pain-section">
+    <div class="container">
+        <h2>The support problem for small businesses</h2>
+        <div class="stat-grid">
+            <div class="stat-box">
+                <span class="number">62%</span>
+                <span class="label">of customers expect a response within 1 hour</span>
+            </div>
+            <div class="stat-box">
+                <span class="number">$15-25</span>
+                <span class="label">average cost per human support ticket</span>
+            </div>
+            <div class="stat-box">
+                <span class="number">0</span>
+                <span class="label">staff you have available at 2am Sunday</span>
+            </div>
+            <div class="stat-box">
+                <span class="number">73%</span>
+                <span class="label">of support queries are repetitive FAQ</span>
+            </div>
+        </div>
+
+        <div class="comparison-row">
+            <div class="comparison-box old">
+                <h3>❌ Without AgentDesk</h3>
+                <ul>
+                    <li>• Customers wait hours (or days) for replies</li>
+                    <li>• You answer the same questions over and over</li>
+                    <li>• Hiring support staff costs $50-70K/year</li>
+                    <li>• Chatbot builders take weeks to configure</li>
+                    <li>• Chatbots break on anything not pre-scripted</li>
+                </ul>
+            </div>
+            <div class="comparison-box new">
+                <h3>✓ With AgentDesk</h3>
+                <ul>
+                    <li>• Instant, accurate replies 24/7/365</li>
+                    <li>• AI trained on YOUR docs, products, and policies</li>
+                    <li>• From $299/mo — less than a day of wages</li>
+                    <li>• We handle all setup and ongoing tuning</li>
+                    <li>• Understands nuance, context, and intent</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how-section">
+    <div class="container">
+        <h2>How it works</h2>
+        <div class="steps">
+            <div class="step">
+                <span class="step-num">01</span>
+                <h3>Send us your docs</h3>
+                <p>FAQs, product info, policies, past support tickets — whatever you've got. We'll handle the rest.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">02</span>
+                <h3>We build your agent</h3>
+                <p>Custom-trained on your business. Speaks in your tone. Knows your products inside out. Ready in 48 hours.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">03</span>
+                <h3>Deploy anywhere</h3>
+                <p>Website widget, email integration, or chat platform. One line of code or zero code — your choice.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">04</span>
+                <h3>We monitor & improve</h3>
+                <p>We watch the conversations, fix gaps, update knowledge, and improve accuracy every week.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container">
+        <h2>What's included</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="icon">🧠</span>
+                <h3>Custom knowledge base</h3>
+                <p>Your agent is trained on your specific products, services, policies, and processes. Not a generic chatbot.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">🔄</span>
+                <h3>Human handoff</h3>
+                <p>When the agent can't help, it escalates to you with full context. No customer left hanging.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">📊</span>
+                <h3>Weekly reports</h3>
+                <p>See what customers ask, resolution rates, satisfaction scores, and knowledge gaps — every week.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">🌏</span>
+                <h3>Multilingual</h3>
+                <p>Your agent speaks 50+ languages natively. Serve international customers without hiring translators.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">🔒</span>
+                <h3>Guardrails built in</h3>
+                <p>Your agent won't make promises you can't keep, share confidential info, or go off-script. We set the boundaries.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">⚡</span>
+                <h3>48-hour setup</h3>
+                <p>Send us your materials, and your agent is live within two business days. No months-long implementations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pricing-section">
+    <div class="container">
+        <h2>Simple, predictable pricing</h2>
+        <p class="section-note">No per-message fees. No hidden costs. Cancel anytime.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Starter</div>
+                <div class="price">$299<span>/mo</span></div>
+                <div class="price-note">Up to 500 conversations/month</div>
+                <ul>
+                    <li>1 AI support agent</li>
+                    <li>Website chat widget</li>
+                    <li>Custom knowledge base</li>
+                    <li>Human handoff</li>
+                    <li>Weekly performance report</li>
+                    <li>Email support from us</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <div class="plan-name">Professional</div>
+                <div class="price">$599<span>/mo</span></div>
+                <div class="price-note">Up to 2,000 conversations/month</div>
+                <ul>
+                    <li>Everything in Starter, plus:</li>
+                    <li>Email integration</li>
+                    <li>Multilingual support</li>
+                    <li>CRM integration (Hubspot, etc.)</li>
+                    <li>Weekly tuning & optimization</li>
+                    <li>Priority support from us</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <div class="plan-name">Business</div>
+                <div class="price">$999<span>/mo</span></div>
+                <div class="price-note">Unlimited conversations</div>
+                <ul>
+                    <li>Everything in Professional, plus:</li>
+                    <li>Multiple agents / departments</li>
+                    <li>Voice agent add-on</li>
+                    <li>Custom integrations</li>
+                    <li>Dedicated account manager</li>
+                    <li>SLA guarantee</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="verticals-section">
+    <div class="container">
+        <h2>Built for your industry</h2>
+        <div class="vertical-grid">
+            <div class="vertical-tag">
+                <span class="v-icon">🛒</span>
+                E-Commerce
+            </div>
+            <div class="vertical-tag">
+                <span class="v-icon">💻</span>
+                SaaS
+            </div>
+            <div class="vertical-tag">
+                <span class="v-icon">🏥</span>
+                Healthcare
+            </div>
+            <div class="vertical-tag">
+                <span class="v-icon">🏗️</span>
+                Trades & Services
+            </div>
+            <div class="vertical-tag">
+                <span class="v-icon">📚</span>
+                Education
+            </div>
+            <div class="vertical-tag">
+                <span class="v-icon">🏨</span>
+                Hospitality
+            </div>
+            <div class="vertical-tag">
+                <span class="v-icon">⚖️</span>
+                Professional Services
+            </div>
+            <div class="vertical-tag">
+                <span class="v-icon">🏋️</span>
+                Fitness & Wellness
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="container">
+        <h2>Frequently asked questions</h2>
+
+        <div class="faq-item">
+            <h3>How is this different from a chatbot?</h3>
+            <p>Traditional chatbots follow rigid scripts — if a customer asks something not pre-programmed, they fail. AgentDesk uses large language models trained on your specific business knowledge. It understands context, handles nuance, and actually resolves issues instead of frustrating customers.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What if the AI gets something wrong?</h3>
+            <p>We build guardrails into every agent — it won't make promises, share sensitive data, or go off-brand. When it's unsure, it escalates to you with full context. We also review conversations weekly and continuously improve accuracy.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How long does setup take?</h3>
+            <p>48 hours from when you send us your materials. Most of that is us building and testing your agent. You'll be live before the end of the week.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What do I need to provide?</h3>
+            <p>Your FAQ page, product/service descriptions, pricing info, return/refund policies, and any common questions you get. Past support emails or chat logs are gold — the more examples, the better your agent performs.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can it handle complex queries?</h3>
+            <p>Yes — and when it can't, it hands off to a human seamlessly. The handoff includes the full conversation context so your team doesn't ask the customer to repeat themselves.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is there a free trial?</h3>
+            <p>Yes. We'll set up your agent and let you run 50 conversations free. If you're not impressed, you owe us nothing.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I need technical knowledge?</h3>
+            <p>Zero. We handle everything — setup, training, deployment, monitoring, and optimization. You just review the weekly reports and tell us if anything needs adjusting.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="signup">
+    <div class="container">
+        <h2>Get your AI support agent</h2>
+        <p class="cta-subtitle">Free 50-conversation trial. Live in 48 hours. No credit card required.</p>
+
+        <div class="cta-form">
+            <div class="terminal-bar">
+                <div class="dots"><span></span><span></span><span></span></div>
+                agentdesk --deploy
+            </div>
+            <form action="https://formspree.io/f/xwpkvpjn" method="POST" id="agentdesk-form">
+                <input type="hidden" name="_subject" value="🤖 AgentDesk Signup">
+                <input type="hidden" name="source" value="agentdesk-landing">
+
+                <div class="form-group">
+                    <label>$ name</label>
+                    <input type="text" name="name" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>$ email</label>
+                    <input type="email" name="email" placeholder="you@company.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>$ business</label>
+                    <input type="text" name="business" placeholder="Company name">
+                </div>
+
+                <div class="form-group">
+                    <label>$ website</label>
+                    <input type="url" name="website" placeholder="https://yoursite.com">
+                </div>
+
+                <div class="form-group">
+                    <label>$ industry</label>
+                    <select name="industry">
+                        <option value="">Select your industry...</option>
+                        <option value="ecommerce">E-Commerce / Retail</option>
+                        <option value="saas">SaaS / Software</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="trades">Trades & Services</option>
+                        <option value="education">Education</option>
+                        <option value="hospitality">Hospitality</option>
+                        <option value="professional">Professional Services</option>
+                        <option value="fitness">Fitness & Wellness</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>$ monthly_support_volume</label>
+                    <select name="volume">
+                        <option value="">How many support queries/month?</option>
+                        <option value="0-100">0 - 100</option>
+                        <option value="100-500">100 - 500</option>
+                        <option value="500-2000">500 - 2,000</option>
+                        <option value="2000+">2,000+</option>
+                    </select>
+                </div>
+
+                <button type="submit">Start free trial →</button>
+            </form>
+        </div>
+    </div>
+</section>
