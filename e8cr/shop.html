@@ -1,0 +1,467 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E8CR Shop | Pre-Configured Hardware + Autonomous Compliance Agents</title>
+    <meta name="description" content="Order pre-configured hardware with E8CR autonomous compliance agents installed. Plug in, connect to your M365 tenant, done. Mac Mini or custom PC options. Hardware at cost + 5%.">
+    <link rel="canonical" href="https://dobsondevelopment.com.au/e8cr/shop">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+
+    <meta property="og:title" content="E8CR Shop — Pre-Configured Compliance Hardware">
+    <meta property="og:description" content="Order a pre-configured appliance with E8CR agents installed. Plug it in. Connect to M365. Done.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dobsondevelopment.com.au/e8cr/shop">
+
+    <style>
+        :root {
+            --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26;
+            --border: #2a2a3a; --border-hover: #3a3a5a;
+            --text: #e4e4ef; --muted: #8888a0; --dim: #55556a;
+            --accent: #00d4ff; --accent-glow: rgba(0, 212, 255, 0.15);
+            --green: #22c55e; --yellow: #eab308; --orange: #f97316; --red: #ef4444;
+            --purple: #a855f7;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+        section { padding: 5rem 0; }
+
+        /* Nav */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(10,10,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; padding: 1rem 0; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--accent); text-decoration: none; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { background: var(--accent); color: #000 !important; padding: 0.5rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: opacity 0.2s; }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* Hero */
+        .hero { padding: 10rem 0 5rem; text-align: center; }
+        .hero-badge { display: inline-block; background: var(--accent-glow); border: 1px solid rgba(0,212,255,0.3); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1.5rem; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 1.15rem; color: var(--muted); max-width: 620px; margin: 0 auto 1rem; }
+        .hero-sub { color: var(--dim); font-size: 0.9rem; }
+
+        /* How it works */
+        .how-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3rem 0; }
+        .how-steps { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .how-step { text-align: center; max-width: 200px; }
+        .how-step .num { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; background: var(--accent-glow); border: 1px solid rgba(0,212,255,0.3); border-radius: 50%; font-weight: 700; color: var(--accent); margin-bottom: 0.6rem; font-size: 1rem; }
+        .how-step h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+        .how-step p { color: var(--muted); font-size: 0.85rem; }
+        .how-arrow { color: var(--dim); font-size: 1.5rem; display: flex; align-items: center; }
+
+        /* Products */
+        .products h2 { font-size: 1.8rem; margin-bottom: 0.6rem; text-align: center; }
+        .products .subtitle { text-align: center; color: var(--muted); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .product-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+        .product-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+        .product-card.featured { border-color: var(--accent); box-shadow: 0 0 40px var(--accent-glow); }
+        .product-card.featured .product-badge { display: inline-block; }
+
+        .product-visual { background: var(--surface); padding: 2.5rem 2rem; text-align: center; border-bottom: 1px solid var(--border); position: relative; }
+        .product-visual .emoji { font-size: 4rem; }
+        .product-badge { display: none; position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: #000; padding: 0.2rem 0.7rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+
+        .product-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+        .product-body h3 { font-size: 1.25rem; margin-bottom: 0.3rem; }
+        .product-type { color: var(--accent); font-size: 0.8rem; font-family: var(--mono); margin-bottom: 1rem; }
+
+        .product-price { margin: 0.5rem 0 1rem; }
+        .hw-price { font-size: 1.8rem; font-weight: 800; }
+        .hw-price-note { color: var(--dim); font-size: 0.8rem; display: block; margin-top: 0.2rem; }
+        .sub-price { color: var(--accent); font-size: 1rem; font-weight: 600; margin-top: 0.5rem; }
+        .sub-price span { color: var(--muted); font-weight: 400; font-size: 0.85rem; }
+
+        .product-specs { list-style: none; margin-bottom: 1.5rem; flex: 1; }
+        .product-specs li { padding: 0.35rem 0; font-size: 0.9rem; color: var(--muted); }
+        .product-specs li::before { content: "→ "; color: var(--accent); font-weight: 700; }
+        .product-specs li.hw::before { content: "⚙ "; }
+        .product-specs li.sw::before { content: "🤖 "; }
+        .product-specs li.inc::before { content: "✓ "; color: var(--green); }
+
+        .product-btn { display: block; text-align: center; padding: 0.9rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.2s; }
+        .product-btn.primary { background: var(--accent); color: #000; }
+        .product-btn.secondary { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--border); }
+        .product-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* Comparison */
+        .compare { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .compare h2 { font-size: 1.5rem; margin-bottom: 0.5rem; text-align: center; }
+        .compare .subtitle { text-align: center; color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+        .compare-table { width: 100%; border-collapse: collapse; max-width: 800px; margin: 0 auto; }
+        .compare-table th, .compare-table td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .compare-table th { color: var(--accent); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .compare-table td { color: var(--muted); }
+        .compare-table td:first-child { color: var(--text); font-weight: 500; }
+        .compare-table tr:last-child td { border-bottom: none; }
+
+        /* Subscription add-on */
+        .subscriptions { text-align: center; }
+        .subscriptions h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .subscriptions .subtitle { color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+        .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+        .sub-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: left; }
+        .sub-card.featured { border-color: var(--accent); }
+        .sub-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .sub-card .sub-amount { font-size: 2rem; font-weight: 800; margin: 0.5rem 0; }
+        .sub-card .sub-amount span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+        .sub-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .sub-card ul { list-style: none; margin-bottom: 1.5rem; }
+        .sub-card li { padding: 0.3rem 0; font-size: 0.88rem; color: var(--muted); }
+        .sub-card li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+
+        /* FAQ */
+        .faq h2 { font-size: 1.5rem; margin-bottom: 2rem; text-align: center; }
+        .faq-list { max-width: 700px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border); padding: 1.2rem 0; }
+        .faq-item h3 { font-size: 1rem; margin-bottom: 0.5rem; cursor: pointer; }
+        .faq-item p { color: var(--muted); font-size: 0.92rem; }
+
+        /* CTA */
+        .final-cta { text-align: center; padding: 5rem 0; }
+        .final-cta h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .final-cta p { color: var(--muted); max-width: 500px; margin: 0 auto 2rem; font-size: 1rem; }
+
+        footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; color: var(--dim); font-size: 0.85rem; }
+
+        @media (max-width: 640px) {
+            section { padding: 3.5rem 0; }
+            .hero { padding: 7rem 0 3rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .sub-grid { grid-template-columns: 1fr; }
+            .how-arrow { display: none; }
+            .compare-table { font-size: 0.8rem; }
+            .compare-table th, .compare-table td { padding: 0.6rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="/e8cr/" class="nav-brand">E8CR</a>
+        <div class="nav-links">
+            <a href="/e8cr/">Overview</a>
+            <a href="/e8cr/shop" style="color: var(--text);">Shop</a>
+            <a href="/e8cr/#pricing">Pricing</a>
+            <a href="/e8cr/#contact" class="nav-cta">Get Started</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">Hardware at cost + 5% — we make money on the service, not the box</div>
+        <h1>Order your <span>E8CR appliance.</span><br>Plug in. Connect. Done.</h1>
+        <p>Pre-configured hardware with E8CR agents already installed. Ships to your door. Connect to your M365 tenant. Autonomous compliance starts immediately.</p>
+        <p class="hero-sub">Choose Mac Mini (silent, zero-maintenance) or Custom PC (faster, upgradeable).</p>
+    </div>
+</section>
+
+<section class="how-strip">
+    <div class="container">
+        <div class="how-steps">
+            <div class="how-step">
+                <div class="num">1</div>
+                <h3>Order</h3>
+                <p>Choose hardware + subscription plan</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step">
+                <div class="num">2</div>
+                <h3>We Build</h3>
+                <p>Pre-configured, hardened, tested</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step">
+                <div class="num">3</div>
+                <h3>Ships</h3>
+                <p>Arrives ready to deploy</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step">
+                <div class="num">4</div>
+                <h3>Plug In</h3>
+                <p>Connect to network + M365 tenant</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step">
+                <div class="num">5</div>
+                <h3>Compliant</h3>
+                <p>Agents start working immediately</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products" id="hardware">
+    <div class="container">
+        <h2>Choose Your Hardware</h2>
+        <p class="subtitle">Both options run the same E8CR agents. Pick based on your environment and preferences.</p>
+
+        <div class="product-grid">
+
+            <!-- Mac Mini Standard -->
+            <div class="product-card">
+                <div class="product-visual">
+                    <div class="emoji">🖥️</div>
+                </div>
+                <div class="product-body">
+                    <h3>E8CR Mac Mini</h3>
+                    <div class="product-type">APPLE SILICON · SILENT · ZERO-MAINTENANCE</div>
+                    <div class="product-price">
+                        <div class="hw-price">$945</div>
+                        <span class="hw-price-note">Hardware — cost + 5%</span>
+                        <div class="sub-price">+ subscription from $800/mo <span>(see below)</span></div>
+                    </div>
+                    <ul class="product-specs">
+                        <li class="hw">Apple M4, 10-core CPU, 16GB unified memory</li>
+                        <li class="hw">256GB SSD · Wi-Fi 6E · Gigabit Ethernet</li>
+                        <li class="hw">Silent operation — no fans under normal load</li>
+                        <li class="sw">Runs up to 4 E8CR bots (time-shared)</li>
+                        <li class="sw">Local AI inference via Qwen 2.5 7B — no cloud needed</li>
+                        <li class="inc">Pre-installed: macOS, OpenClaw, E8CR agents, Ollama</li>
+                        <li class="inc">Hardened: firewall, encrypted disk, minimal attack surface</li>
+                    </ul>
+                    <!-- Replace href with your Stripe Payment Link -->
+                    <a href="#order" class="product-btn secondary" data-product="mac-mini-16">Order Mac Mini 16GB →</a>
+                </div>
+            </div>
+
+            <!-- Mac Mini 32GB -->
+            <div class="product-card featured">
+                <div class="product-visual">
+                    <div class="emoji">🖥️</div>
+                    <div class="product-badge">Recommended</div>
+                </div>
+                <div class="product-body">
+                    <h3>E8CR Mac Mini 32GB</h3>
+                    <div class="product-type">APPLE SILICON · MORE HEADROOM · FUTURE-PROOF</div>
+                    <div class="product-price">
+                        <div class="hw-price">$1,155</div>
+                        <span class="hw-price-note">Hardware — cost + 5%</span>
+                        <div class="sub-price">+ subscription from $800/mo <span>(see below)</span></div>
+                    </div>
+                    <ul class="product-specs">
+                        <li class="hw">Apple M4, 10-core CPU, 32GB unified memory</li>
+                        <li class="hw">256GB SSD · Wi-Fi 6E · Gigabit Ethernet</li>
+                        <li class="hw">Silent operation — no fans under normal load</li>
+                        <li class="sw">Runs all 4 E8CR bots + SOC Squad bots comfortably</li>
+                        <li class="sw">Local AI: Qwen 3.5 35B — frontier-level intelligence locally</li>
+                        <li class="inc">Pre-installed: macOS, OpenClaw, E8CR agents, Ollama</li>
+                        <li class="inc">Hardened: firewall, encrypted disk, minimal attack surface</li>
+                        <li class="inc">Headroom for future models and workloads</li>
+                    </ul>
+                    <a href="#order" class="product-btn primary" data-product="mac-mini-32">Order Mac Mini 32GB →</a>
+                </div>
+            </div>
+
+            <!-- Custom PC -->
+            <div class="product-card">
+                <div class="product-visual">
+                    <div class="emoji">🔧</div>
+                </div>
+                <div class="product-body">
+                    <h3>E8CR Custom PC</h3>
+                    <div class="product-type">NVIDIA RTX · FASTER INFERENCE · UPGRADEABLE</div>
+                    <div class="product-price">
+                        <div class="hw-price">$840</div>
+                        <span class="hw-price-note">Hardware — cost + 5%</span>
+                        <div class="sub-price">+ subscription from $800/mo <span>(see below)</span></div>
+                    </div>
+                    <ul class="product-specs">
+                        <li class="hw">AMD Ryzen 5 · 32GB DDR5 RAM</li>
+                        <li class="hw">NVIDIA RTX 5060 Ti 16GB GDDR7 — 448 GB/s bandwidth</li>
+                        <li class="hw">500GB NVMe SSD · Gigabit Ethernet</li>
+                        <li class="sw">2-3× faster inference than Mac Mini</li>
+                        <li class="sw">Native NVFP4 quantization — purpose-built for AI</li>
+                        <li class="sw">Runs all 4 E8CR bots + SOC Squad bots</li>
+                        <li class="inc">Pre-installed: Ubuntu Server, OpenClaw, E8CR agents, Ollama</li>
+                        <li class="inc">Hardened: UFW firewall, encrypted disk, SSH hardened</li>
+                        <li class="inc">Upgradeable: swap GPU, add RAM, expand storage</li>
+                    </ul>
+                    <a href="#order" class="product-btn secondary" data-product="custom-pc">Order Custom PC →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="compare">
+    <div class="container">
+        <h2>Mac Mini vs Custom PC</h2>
+        <p class="subtitle">Both do the job. Here's how they differ.</p>
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Mac Mini 32GB</th>
+                    <th>Custom PC (RTX 5060 Ti)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Inference speed (7B model)</td>
+                    <td>~26-35 tokens/sec</td>
+                    <td>~60-80+ tokens/sec</td>
+                </tr>
+                <tr>
+                    <td>Noise level</td>
+                    <td>Silent</td>
+                    <td>Audible under load</td>
+                </tr>
+                <tr>
+                    <td>Physical size</td>
+                    <td>12.7 × 12.7 cm</td>
+                    <td>Mid-tower case</td>
+                </tr>
+                <tr>
+                    <td>Power consumption</td>
+                    <td>~15-25W</td>
+                    <td>~200-350W under load</td>
+                </tr>
+                <tr>
+                    <td>Electricity cost (24/7)</td>
+                    <td>~$20/year</td>
+                    <td>~$200-300/year</td>
+                </tr>
+                <tr>
+                    <td>Maintenance</td>
+                    <td>Near zero</td>
+                    <td>Linux updates, GPU drivers</td>
+                </tr>
+                <tr>
+                    <td>Upgradeable</td>
+                    <td>No (sealed unit)</td>
+                    <td>Yes (GPU, RAM, storage)</td>
+                </tr>
+                <tr>
+                    <td>Best for</td>
+                    <td>Office desk, reception, server room</td>
+                    <td>Server room, MSP hosting multiple clients</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="subscriptions" id="subscriptions">
+    <div class="container">
+        <h2>Add Your Subscription</h2>
+        <p class="subtitle">Hardware gets you the box. Subscription turns it on. Cancel anytime.</p>
+
+        <div class="sub-grid">
+            <div class="sub-card">
+                <h3>Single Bot</h3>
+                <div class="sub-amount">$800 <span>/mo</span></div>
+                <p>Start with one compliance domain. Most customers start here with VM+PM.</p>
+                <ul>
+                    <li>Choose any 1 E8CR bot</li>
+                    <li>Weekly compliance reports</li>
+                    <li>Monthly evidence snapshots</li>
+                    <li>Email alerts on drift</li>
+                    <li>Remote support</li>
+                </ul>
+                <a href="#order" class="product-btn secondary">Select</a>
+            </div>
+
+            <div class="sub-card featured">
+                <h3>Full E8CR Squad</h3>
+                <div class="sub-amount">$2,500 <span>/mo</span></div>
+                <p>All 4 bots. Complete ML2 coverage. Less than a junior analyst.</p>
+                <ul>
+                    <li>VM+PM + Identity + App Control + Backup</li>
+                    <li>All 8 Essential Eight controls covered</li>
+                    <li>Weekly reports + evidence packs</li>
+                    <li>Drift detection + auto-remediation</li>
+                    <li>Priority support</li>
+                    <li>ML2 assessment-ready evidence</li>
+                </ul>
+                <a href="#order" class="product-btn primary">Select</a>
+            </div>
+
+            <div class="sub-card">
+                <h3>Full Squad + SOC</h3>
+                <div class="sub-amount">$5,500 <span>/mo</span></div>
+                <p>E8CR + SOC Squad. Compliance and security operations — the whole stack.</p>
+                <ul>
+                    <li>All 4 E8CR bots</li>
+                    <li>+ XDR, SIEM, SOAR, UEBA bots</li>
+                    <li>24/7 alert triage + auto-containment</li>
+                    <li>Detection tuning + threat hunting</li>
+                    <li>Behavioral analytics</li>
+                    <li>Dedicated success manager</li>
+                </ul>
+                <a href="#order" class="product-btn secondary">Select</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq">
+    <div class="container">
+        <h2>Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>Why is the hardware so cheap?</h3>
+                <p>We sell hardware at our cost + 5%. We're not a hardware company — we make money on the subscription service that makes the hardware useful. This means you're never overpaying for the box.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I use my own hardware instead?</h3>
+                <p>Yes. If you already have a Mac Mini, spare PC, or server — we can deploy E8CR agents on it. You just pay the subscription. Hardware specs: minimum 16GB RAM, 256GB storage, Gigabit Ethernet.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does any data leave my network?</h3>
+                <p>No. The E8CR agents run entirely on-prem. AI inference runs locally on the device. Your vulnerability scans, MFA status, patch data, and compliance reports never leave your building. Zero cloud dependencies.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What Microsoft licensing do I need?</h3>
+                <p>Microsoft 365 Business Premium, E3, or E5. The agents connect via Microsoft Graph API using a service account with read permissions (and write for remediation, if you opt in).</p>
+            </div>
+            <div class="faq-item">
+                <h3>How long does setup take?</h3>
+                <p>Hardware ships within 5 business days. Once you plug it in and grant Graph API access, the agents start their first compliance scan within hours. First full report within 24 hours.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What if I want to cancel?</h3>
+                <p>Cancel the subscription anytime — no lock-in, no exit fees. The hardware is yours to keep. We'll help you gracefully decommission the agents.</p>
+            </div>
+            <div class="faq-item">
+                <h3>I'm an MSP — can I resell this to my clients?</h3>
+                <p>Yes. We have a partner program with wholesale pricing. You white-label the reports, set your own client pricing, and we handle the tech backend. <a href="mailto:richard@dobsondevelopment.com.au?subject=MSP%20Partnership" style="color: var(--accent);">Get in touch</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta" id="order">
+    <div class="container">
+        <h2>Ready to order?</h2>
+        <p>Email us your hardware choice + subscription tier. We'll send you an invoice and get your appliance built.</p>
+        <a href="mailto:richard@dobsondevelopment.com.au?subject=E8CR%20Order&body=Hi%20Richard%2C%0A%0AI%27d%20like%20to%20order%20an%20E8CR%20appliance.%0A%0AHardware%3A%20%5BMac%20Mini%2016GB%20%2F%20Mac%20Mini%2032GB%20%2F%20Custom%20PC%5D%0ASubscription%3A%20%5BSingle%20Bot%20%2F%20Full%20Squad%20%2F%20Full%20Squad%20%2B%20SOC%5D%0ACompany%3A%20%0AEndpoints%3A%20%0AMicrosoft%20licensing%3A%20%0A%0AThanks!" class="product-btn primary" style="display: inline-block; padding: 0.9rem 2.5rem; font-size: 1.05rem;">Place an Order →</a>
+        <p style="margin-top: 1rem; color: var(--dim); font-size: 0.85rem;">Or email richard@dobsondevelopment.com.au · We'll replace this with Stripe checkout soon.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Dobson Development Pty Ltd · Sunshine Coast, Queensland · ABN pending</p>
+    </div>
+</footer>
+
+</body>
+</html>
