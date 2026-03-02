@@ -3,7 +3,7 @@ layout: post
 title: "AI Security Tools: The Complete Guide to AI-Powered Cybersecurity in 2026"
 description: "A practical guide to AI security tools in 2026. Covers AI-powered SOC tools, threat detection, vulnerability management, and how to evaluate AI cybersecurity products without falling for the hype."
 date: 2026-02-20
-author: Dobson Development
+author: Richard Dobson
 categories: [cybersecurity, AI]
 tags: [AI-security, AI-cybersecurity, SOC-tools, AI-threat-detection, security-automation, machine-learning]
 ---

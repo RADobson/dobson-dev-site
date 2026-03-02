@@ -3,7 +3,7 @@ layout: post
 title: "How Much Should You Pay for EDR? A Real-World Pricing Guide (2026)"
 description: "Realistic EDR pricing for CrowdStrike, SentinelOne, Microsoft Defender, and more. Actual costs by company size, what's included vs upsold, and negotiation tips from someone who's seen the quotes."
 date: 2026-02-20
-author: Dobson Development
+author: Richard Dobson
 categories: [cybersecurity, tools]
 tags: [EDR, endpoint-security, CrowdStrike, SentinelOne, pricing, Microsoft-Defender, cybersecurity-budget]
 ---

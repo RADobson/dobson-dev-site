@@ -6,13 +6,13 @@ baseurl: ""
 
 # Author information
 author:
-  name: Ernie Dobson
-  email: ernie@dobsondevelopment.com.au
+  name: Richard Dobson
+  email: richard@dobsondevelopment.com.au
   bio: "Founder at Dobson Development. Building AI-powered tools for cybersecurity and business. Former SOC engineer turned indie hacker."
-  avatar: /assets/images/author-ernie.jpg
+  avatar: /assets/images/richard.jpg
   twitter: RADobson
   github: RADobson
-  linkedin: ernie-dobson
+  linkedin: richard-dobson-au
 
 # Build settings
 markdown: kramdown
@@ -45,7 +45,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "Ernie Dobson"
+      author: "Richard Dobson"
   - scope:
       path: ""
     values:
@@ -72,10 +72,10 @@ facebook:
   publisher: 
 
 social:
-  name: Ernie Dobson
+  name: Richard Dobson
   links:
     - https://github.com/RADobson
-    - https://www.linkedin.com/in/ernie-dobson
+    - https://www.linkedin.com/in/richard-dobson-au
 
 # Google Analytics (replace with your ID when ready)
 google_analytics: 

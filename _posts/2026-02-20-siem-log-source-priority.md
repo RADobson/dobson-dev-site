@@ -3,7 +3,7 @@ layout: post
 title: "What Log Sources Should You Ingest First? A SIEM Priority Guide"
 description: "A practical prioritisation framework for SIEM log sources. Learn which logs deliver the most detection value per dollar, common mistakes, and how to build your log ingestion strategy without blowing your budget."
 date: 2026-02-20
-author: Dobson Development
+author: Richard Dobson
 categories: [cybersecurity, SIEM]
 tags: [SIEM, log-sources, log-management, detection-engineering, security-monitoring, SIEM-implementation]
 ---

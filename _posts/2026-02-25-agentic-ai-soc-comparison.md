@@ -3,7 +3,7 @@ layout: post
 title: "Agentic AI in the SOC — What the Major Platforms Are Actually Building"
 description: "A technical comparison of agentic AI platforms for security operations in 2026. Covers CrowdStrike Charlotte AI, Palo Alto XSIAM, Torq HyperSOC, Tuskira, Dropzone AI, Radiant Security, Prophet Security, and Exabeam Nova."
 date: 2026-02-25
-author: Dobson Development
+author: Richard Dobson
 categories: [cybersecurity, AI]
 tags: [agentic-AI, SOC, security-operations, MDR, SIEM, CrowdStrike, Palo-Alto, Torq, Tuskira, Dropzone-AI, Radiant-Security, Prophet-Security, Exabeam]
 ---

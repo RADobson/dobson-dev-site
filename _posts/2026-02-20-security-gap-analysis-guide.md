@@ -3,7 +3,7 @@ layout: post
 title: "Is Your Security Stack Actually Protecting You? How to Find the Gaps"
 description: "A practical guide to security gap analysis for IT managers. Learn how to identify control gaps in your security stack, use frameworks for structured assessment, and prioritise remediation based on real risk."
 date: 2026-02-20
-author: Dobson Development
+author: Richard Dobson
 categories: [cybersecurity, strategy]
 tags: [security-gap-analysis, security-posture, security-assessment, security-controls, risk-management, security-stack]
 ---

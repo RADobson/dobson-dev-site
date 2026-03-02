@@ -128,11 +128,11 @@
         "foundingDate": "2025",
         "founder": {
             "@type": "Person",
-            "name": "Ernie Dobson",
+            "name": "Richard Dobson",
             "jobTitle": "Founder & Developer",
             "sameAs": [
                 "https://github.com/RADobson",
-                "https://www.linkedin.com/in/ernie-dobson",
+                "https://www.linkedin.com/in/richard-dobson-au",
                 "https://twitter.com/RADobson"
             ]
         },
@@ -145,13 +145,13 @@
         },
         "contactPoint": {
             "@type": "ContactPoint",
-            "email": "ernie@dobsondevelopment.com.au",
+            "email": "richard@dobsondevelopment.com.au",
             "contactType": "customer service",
             "availableLanguage": "English"
         },
         "sameAs": [
             "https://github.com/RADobson",
-            "https://www.linkedin.com/in/ernie-dobson",
+            "https://www.linkedin.com/in/richard-dobson-au",
             "https://twitter.com/RADobson"
         ],
         "knowsAbout": [
@@ -1191,12 +1191,12 @@
         }
 
         /* --- CONTACT --- */
-        #hire {
+        #contact {
             padding: 8rem 0;
             background: var(--bg-secondary);
             position: relative;
         }
-        #hire::before {
+        #contact::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1466,7 +1466,7 @@
         }
         
         /* === PERFORMANCE: content-visibility for below-fold sections === */
-        #projects, #blog, #tools, #games, #about, #hire {
+        #projects, #blog, #tools, #games, #about, #contact {
             content-visibility: auto;
             contain-intrinsic-size: auto 800px;
         }
@@ -1526,7 +1526,7 @@
                 <a href="#tools">Tools</a>
                 <a href="#games">Games</a>
                 <a href="#about">About</a>
-                <a href="#hire" class="nav-cta">[ Hire me ]</a>
+                <a href="#contact" class="nav-cta">[ Contact ]</a>
             </nav>
 
             <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -1543,7 +1543,7 @@
         <a href="#tools">// TOOLS</a>
         <a href="#games">// GAMES</a>
         <a href="#about">// ABOUT</a>
-        <a href="#hire">// HIRE ME</a>
+        <a href="#contact">// CONTACT</a>
     </div>
 
     <main id="main-content">
@@ -1566,7 +1566,7 @@
                         <span>🚀 SEE PROJECTS</span>
                         <span class="arrow">→</span>
                     </a>
-                    <a href="#hire" class="btn-ghost">Hire me ($2,000/day)</a>
+                    <a href="#contact" class="btn-ghost">Get in touch</a>
                 </div>
             </div>
             
@@ -1584,11 +1584,13 @@
                 </div>
                 
                 <div class="services-grid">
-                    <article class="service-card reveal visible">
+                    <a href="/e8cr/" style="text-decoration:none;color:inherit;display:block;">
+                    <article class="service-card reveal visible" style="cursor:pointer;">
                         <span class="service-icon">🤖</span>
-                        <h3>E8CR Bots (Open Source)</h3>
-                        <p>Autonomous security/compliance bots for patching, identity checks, application control and backup verification. Published as an open-source reference implementation.</p>
+                        <h3>E8CR Squad (Open Source)</h3>
+                        <p>4 autonomous bots covering all 8 Essential Eight ML2 controls — patching, identity, application control, and backup. On-prem, open source, audit-ready. <span style="color:var(--accent-neon);font-family:var(--font-mono);font-size:0.85rem;">Learn more →</span></p>
                     </article>
+                    </a>
 
                     <article class="service-card reveal visible">
                         <span class="service-icon">🛰️</span>
@@ -1626,8 +1628,8 @@
         <section id="consulting" aria-labelledby="consulting-title" style="padding: 8rem 0; position: relative;">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 id="consulting-title"><span class="mono-accent">//</span> WHY WE'RE DIFFERENT</h2>
-                    <p>Most security vendors want your vulnerability data, your admin logs, your endpoint telemetry — all of it shipped to their cloud. That's their moat. We think that's backwards. Your security telemetry is the roadmap to attacking your organisation. It shouldn't leave your building.</p>
+                    <h2 id="consulting-title"><span class="mono-accent">//</span> WHY THIS IS DIFFERENT</h2>
+                    <p>Most security vendors want your vulnerability data, your admin logs, your endpoint telemetry — all shipped to their cloud. That's their moat. I think that's backwards. Your security telemetry is the roadmap to attacking your organisation. It shouldn't leave your building.</p>
                 </div>
                 
                 <div class="portfolio-grid">
@@ -1639,7 +1641,7 @@
                             <h3>They Do The Work</h3>
                             <span class="card-status status-live">24/7 AUTONOMOUS</span>
                             <p>
-                                Stop hiring consultants to patch servers. Stop manually testing backups. Stop hoping your admin access policy is actually being enforced. Our agents do this stuff 24/7 — scanning, patching, testing, enforcing, and automatically generating evidence your auditors want. They don't sleep. They don't forget. They keep going while you sleep.
+                                Stop hiring consultants to patch servers. Stop manually testing backups. Stop hoping your admin access policy is actually being enforced. These agents do this stuff 24/7 — scanning, patching, testing, enforcing, and automatically generating evidence your auditors want. They don't sleep. They don't forget. They keep going while you sleep.
                             </p>
                             <div class="card-tags">
                                 <span class="tag">No manual work</span>
@@ -1647,8 +1649,8 @@
                                 <span class="tag">Audit-ready reports</span>
                                 <span class="tag">ML2 ready</span>
                             </div>
-                            <a href="#hire" class="card-link" aria-label="Hire Richard">
-                                <span>Hire me ($2,000/day)</span>
+                            <a href="/e8cr/" class="card-link" aria-label="See E8CR Squad">
+                                <span>See the E8CR Squad</span>
                                 <span class="arrow">→</span>
                             </a>
                         </div>
@@ -1662,7 +1664,7 @@
                             <h3>Full Sovereignty. No Cloud.</h3>
                             <span class="card-status status-live">ON-PREM ONLY</span>
                             <p>
-                                Think about what you're giving away when you use cloud-based security tools: every vulnerability scan, every admin role, every endpoint detail, shipped to someone else's servers. That's the blueprint for attacking you. We don't do that. Our agents run on open source tools, on your hardware, in your building. No cloud. No vendor lock-in. You own everything. Full stop.
+                                Think about what you're giving away when you use cloud-based security tools: every vulnerability scan, every admin role, every endpoint detail, shipped to someone else's servers. That's the blueprint for attacking you. I don't do that. These agents run on open source tools, on your hardware, in your building. No cloud. No vendor lock-in. You own everything. Full stop.
                             </p>
                             <div class="card-tags">
                                 <span class="tag purple">On-prem only</span>
@@ -1670,8 +1672,8 @@
                                 <span class="tag purple">You own the data</span>
                                 <span class="tag purple">No lock-in</span>
                             </div>
-                            <a href="#hire" class="card-link" aria-label="Hire Richard">
-                                <span>Hire me ($2,000/day)</span>
+                            <a href="#contact" class="card-link" aria-label="Get in touch">
+                                <span>Get in touch</span>
                                 <span class="arrow">→</span>
                             </a>
                         </div>
@@ -1796,18 +1798,18 @@
             <div class="container">
                 <div class="about-grid">
                     <div class="about-text reveal-left">
-                        <h2 id="about-title"><span class="mono-accent">//</span> ABOUT US</h2>
+                        <h2 id="about-title"><span class="mono-accent">//</span> ABOUT</h2>
                         <p style="font-size: 1.15rem; color: var(--text-white);">
-                            We built this because we got sick of the status quo.
+                            I built this because I got sick of the status quo.
                         </p>
                         <p>
-                            Our background is in SIEM and SOC operations — years of watching organisations struggle with Essential Eight ML2 compliance. It's this massive manual workload: patch servers, scan for vulnerabilities, manage admin access, test backups, generate evidence. Most companies either can't afford to staff it (so nothing happens) or they hire expensive consultants (and get left in the lurch when they leave). We thought: why not build agents to do this stuff? Autonomous. 24/7. On-prem so your data doesn't leave your building.
+                            My background is in SIEM and SOC engineering — years of watching organisations struggle with Essential Eight ML2 compliance. It's this massive manual workload: patch servers, scan for vulnerabilities, manage admin access, test backups, generate evidence. Most companies either can't afford to staff it (so nothing happens) or they hire expensive consultants (and get left in the lurch when they leave). I thought: why not build agents to do this stuff? Autonomous. 24/7. On-prem so your data doesn't leave your building.
                         </p>
                         <p>
-                            We're opinionated about data sovereignty. Your vulnerability scan results, your admin logs, your endpoint telemetry — that's the attack surface. It shouldn't live in a cloud vendor's database. Our agents run on your hardware, on open source tools, with zero cloud dependency.
+                            I'm opinionated about data sovereignty. Your vulnerability scan results, your admin logs, your endpoint telemetry — that's the attack surface. It shouldn't live in a cloud vendor's database. These agents run on your hardware, on open source tools, with zero cloud dependency.
                         </p>
                         <p>
-                            We're based on the Sunshine Coast, Queensland. We serve Australian organisations in the federal government supply chain — places where data sovereignty actually matters.
+                            I'm based on the Sunshine Coast, Queensland. I publish my work openly and serve Australian organisations — especially those in the federal government supply chain where data sovereignty actually matters.
                         </p>
                     </div>
 
@@ -1831,12 +1833,12 @@
 
                         <div class="stat-row">
                             <span class="stat-label">AGENTS:</span>
-                            <span class="stat-value">5 autonomous bots</span>
+                            <span class="stat-value">4 autonomous bots</span>
                         </div>
 
                         <div class="stat-row">
                             <span class="stat-label">E8_CONTROLS:</span>
-                            <span class="stat-value">8/8 + EDR</span>
+                            <span class="stat-value">8/8 covered</span>
                         </div>
                         
                         <div class="stat-row">
@@ -1852,13 +1854,12 @@
             </div>
         </section>
 
-        <section id="hire" aria-labelledby="hire-title">
+        <section id="contact" aria-labelledby="contact-title">
             <div class="contact-gradient"></div>
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 id="hire-title"><span class="mono-accent">//</span> HIRE ME</h2>
-                    <p>Need hands-on help with cyber strategy, AI automation, security tooling, or Microsoft security stack? I take on a limited number of engagements.</p>
-                    <p style="margin-top: 0.75rem; color: var(--text-white); font-weight: 600;">Day rate: <span style="color: var(--accent-cyan);">$2,000 AUD</span> (ex GST) · Remote or onsite (SE QLD)</p>
+                    <h2 id="contact-title"><span class="mono-accent">//</span> CONTACT</h2>
+                    <p>Want to talk about E8CR, agentic AI, cybersecurity automation, or anything else? Drop me a line.</p>
                 </div>
 
                 <div class="contact-container reveal-scale" data-delay="1">
@@ -1868,7 +1869,7 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <span>root@dobson-dev:~# ./hire_richard.sh</span>
+                        <span>root@dobson-dev:~# ./contact.sh</span>
                     </div>
                     
                     <form action="https://formspree.io/f/xzznoayg" method="POST" class="contact-form" aria-label="Contact form">
@@ -1887,7 +1888,7 @@
                             <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="What's on your mind?" required aria-required="true"></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit">[ REQUEST AVAILABILITY ]</button>
+                        <button type="submit" class="btn-submit">[ SEND MESSAGE ]</button>
                     </form>
                 </div>
 
@@ -1897,7 +1898,7 @@
                     <p style="margin-top: 1rem;">
                         <a href="https://github.com/RADobson" target="_blank" rel="noopener noreferrer">GitHub</a> • 
                         <a href="/blog/">Blog</a> • 
-                        <a href="mailto:ernie@dobsondevelopment.com.au">Email</a>
+                        <a href="mailto:richard@dobsondevelopment.com.au">Email</a>
                     </p>
                 </footer>
             </div>
@@ -2154,7 +2155,7 @@
         // ===== CONSOLE EASTER EGG =====
         console.log('%c> Dobson Development', 'color: #00F0FF; font-family: monospace; font-size: 20px; font-weight: bold;');
         console.log('%c> Essential Eight ML2. Autonomous. On-prem.', 'color: #BC13FE; font-family: monospace; font-size: 14px;');
-        console.log('%c> Found a bug? We pay bounties! Contact: ernie@dobsondevelopment.com.au', 'color: #9ca3af; font-family: monospace; font-size: 12px;');
+        console.log('%c> Found a bug? We pay bounties! Contact: richard@dobsondevelopment.com.au', 'color: #9ca3af; font-family: monospace; font-size: 12px;');
 
         // ===== SERVICE WORKER REGISTRATION =====
         if ('serviceWorker' in navigator) {
