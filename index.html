@@ -1756,6 +1756,15 @@
                             <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="What's on your mind?" required aria-required="true"></textarea>
                         </div>
 
+                        <!-- Attribution fields (captured automatically for lead-source tracking) -->
+                        <input type="hidden" name="utm_source" id="utm_source">
+                        <input type="hidden" name="utm_medium" id="utm_medium">
+                        <input type="hidden" name="utm_campaign" id="utm_campaign">
+                        <input type="hidden" name="utm_term" id="utm_term">
+                        <input type="hidden" name="utm_content" id="utm_content">
+                        <input type="hidden" name="first_page" id="first_page">
+                        <input type="hidden" name="initial_referrer" id="initial_referrer">
+
                         <button type="submit" class="btn-submit">[ SEND MESSAGE ]</button>
                     </form>
                 </div>
@@ -1879,9 +1888,41 @@
             });
         }
 
-        // ===== FORM SUBMISSION =====
+        // ===== FORM SUBMISSION + ATTRIBUTION CAPTURE =====
         var form = document.querySelector('form');
         if (form) {
+            // Capture first-touch and UTM attribution for lead tracking (stored in Formspree submission)
+            (function captureAttribution() {
+                var params = new URLSearchParams(window.location.search);
+                var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+                var firstPage = localStorage.getItem('dd_first_page') || window.location.pathname + window.location.search;
+                var initialReferrer = localStorage.getItem('dd_initial_referrer') || document.referrer || 'direct';
+
+                if (!localStorage.getItem('dd_first_page')) {
+                    localStorage.setItem('dd_first_page', firstPage);
+                }
+                if (!localStorage.getItem('dd_initial_referrer')) {
+                    localStorage.setItem('dd_initial_referrer', initialReferrer);
+                }
+
+                utmKeys.forEach(function(key) {
+                    var value = params.get(key);
+                    if (value) {
+                        localStorage.setItem('dd_' + key, value);
+                    }
+                    var input = document.getElementById(key);
+                    if (input) {
+                        input.value = localStorage.getItem('dd_' + key) || '';
+                    }
+                });
+
+                var firstPageInput = document.getElementById('first_page');
+                var initialReferrerInput = document.getElementById('initial_referrer');
+                if (firstPageInput) firstPageInput.value = localStorage.getItem('dd_first_page') || firstPage;
+                if (initialReferrerInput) initialReferrerInput.value = localStorage.getItem('dd_initial_referrer') || initialReferrer;
+            })();
+
             form.addEventListener('submit', function() {
                 var btn = this.querySelector('.btn-submit');
                 if (btn) { btn.textContent = '[ SENDING... ]'; btn.disabled = true; }

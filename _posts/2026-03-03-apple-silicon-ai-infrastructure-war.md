@@ -1,5 +1,6 @@
 ---
 layout: post
+featured: true
 title: "Founder Notes: Running LLMs on Apple Silicon (What's Real, What's Hype)"
 date: 2026-03-03
 description: "A practical founder breakdown of local LLM infrastructure: where Apple Silicon works, where NVIDIA still wins, and how we're deciding. Hard numbers, real benchmarks, no fanboy energy."
