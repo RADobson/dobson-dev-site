@@ -86,9 +86,9 @@ newsletter_form_url: https://formspree.io/f/xzznoayg
 # Comments (Giscus - GitHub Discussions)
 giscus:
   repo: RADobson/dobson-dev-site
-  repo_id: 
-  category: Blog Comments
-  category_id: 
+  repo_id: R_kgDOQoAeuQ
+  category: Announcements
+  category_id: DIC_kwDOQoAeuc4C3oQG
   mapping: pathname
   reactions_enabled: 1
   emit_metadata: 0
