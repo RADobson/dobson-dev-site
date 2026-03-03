@@ -1,9 +1,9 @@
 ---
 layout: post
 featured: true
-title: "Founder Notes: Running LLMs on Apple Silicon (What's Real, What's Hype)"
+title: "Running LLMs on Apple Silicon — What's Real, What's Hype"
 date: 2026-03-03
-description: "A practical founder breakdown of local LLM infrastructure: where Apple Silicon works, where NVIDIA still wins, and how we're deciding. Hard numbers, real benchmarks, no fanboy energy."
+description: "A practical breakdown of local LLM infrastructure: where Apple Silicon works, where NVIDIA still wins, and how we're deciding. Hard numbers, real benchmarks, no fanboy energy."
 author: Richard Dobson
 categories: [AI, Infrastructure, Apple Silicon]
 tags: [apple-silicon, nvidia, llm, inference, mlx, unified-memory, edge-ai, deepseek, m5-max]
