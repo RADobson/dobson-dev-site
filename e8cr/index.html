@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Essential Eight Control Room | Autonomous ML2 Compliance Agents</title>
-    <meta name="description" content="Autonomous AI agents that implement and operate Essential Eight ML2 controls on your hardware. No data leaves your building. Vulnerability management, patch management, EDR, application control, identity — all automated.">
+    <title>E8CR Squad — Autonomous Essential Eight ML2 Compliance Agents</title>
+    <meta name="description" content="4 autonomous AI agents covering all 8 Essential Eight ML2 controls. On your hardware, in your building. Open source, audit-ready. No cloud dependency.">
     <link rel="canonical" href="https://dobsondevelopment.com.au/e8cr/">
     <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
 
-    <meta property="og:title" content="Essential Eight Control Room — Autonomous ML2 Compliance">
-    <meta property="og:description" content="4 autonomous agents that implement Essential Eight ML2 controls on your hardware. No cloud. No consultants. Affordable.">
+    <meta property="og:title" content="E8CR Squad — Autonomous Essential Eight ML2 Compliance">
+    <meta property="og:description" content="4 autonomous agents covering all 8 Essential Eight ML2 controls. On-prem, open source, audit-ready.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dobsondevelopment.com.au/e8cr/">
 
@@ -30,15 +30,18 @@
         html { scroll-behavior: smooth; }
         body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* Layout */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
         section { padding: 5rem 0; }
+        a { color: var(--accent); text-decoration: none; }
 
         /* Nav */
         nav { position: fixed; top: 0; width: 100%; background: rgba(10,10,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; padding: 1rem 0; }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--accent); text-decoration: none; letter-spacing: -0.02em; }
-        .nav-cta { background: var(--accent); color: #000; padding: 0.5rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: opacity 0.2s; }
+        .nav-links { display: flex; gap: 1.2rem; align-items: center; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { background: var(--accent); color: #000 !important; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: opacity 0.2s; }
         .nav-cta:hover { opacity: 0.85; }
 
         /* Hero */
@@ -69,7 +72,6 @@
         .bot-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
         .bot-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
         .bot-icon.vm { background: rgba(34,197,94,0.15); }
-        .bot-icon.edr { background: rgba(239,68,68,0.15); }
         .bot-icon.app { background: rgba(168,85,247,0.15); }
         .bot-icon.id { background: rgba(0,212,255,0.15); }
         .bot-icon.backup { background: rgba(234,179,8,0.15); }
@@ -79,7 +81,11 @@
         .bot-controls { display: flex; flex-wrap: wrap; gap: 0.4rem; }
         .control-badge { background: rgba(255,255,255,0.06); border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; color: var(--muted); font-family: var(--mono); }
 
-        /* How it works */
+        /* Quickstart */
+        .quickstart h2 { font-size: 1.8rem; margin-bottom: 0.8rem; text-align: center; }
+        .quickstart .subtitle { text-align: center; color: var(--muted); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* How */
         .how { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
         .how h2 { font-size: 1.8rem; margin-bottom: 2.5rem; text-align: center; }
         .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
@@ -96,25 +102,6 @@
         .diff-item h3 { font-size: 1rem; margin-bottom: 0.3rem; }
         .diff-item p { color: var(--muted); font-size: 0.9rem; }
 
-        /* Pricing */
-        .pricing { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .pricing h2 { font-size: 1.8rem; margin-bottom: 0.8rem; text-align: center; }
-        .pricing .subtitle { text-align: center; color: var(--muted); margin-bottom: 2.5rem; }
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
-        .price-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
-        .price-card.featured { border-color: var(--accent); box-shadow: 0 0 40px var(--accent-glow); }
-        .price-card h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
-        .price-card .price { font-size: 2.2rem; font-weight: 800; margin: 1rem 0; }
-        .price-card .price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
-        .price-card .setup { color: var(--dim); font-size: 0.85rem; margin-bottom: 1.2rem; }
-        .price-card ul { list-style: none; margin-bottom: 1.5rem; }
-        .price-card li { padding: 0.4rem 0; font-size: 0.92rem; color: var(--muted); }
-        .price-card li::before { content: "✓ "; color: var(--green); font-weight: 700; }
-        .price-btn { display: block; text-align: center; padding: 0.8rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
-        .price-btn.primary { background: var(--accent); color: #000; }
-        .price-btn.secondary { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--border); }
-        .price-btn:hover { transform: translateY(-2px); }
-
         /* CTA */
         .final-cta { text-align: center; padding: 6rem 0; }
         .final-cta h2 { font-size: 2rem; margin-bottom: 1rem; }
@@ -122,6 +109,8 @@
 
         /* Footer */
         footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; color: var(--dim); font-size: 0.85rem; }
+        footer a { color: var(--dim); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
 
         /* Mobile */
         @media (max-width: 640px) {
@@ -129,7 +118,6 @@
             .hero { padding: 7rem 0 4rem; }
             .hero h1 { font-size: 1.8rem; }
             .bot-grid { grid-template-columns: 1fr; }
-            .price-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -137,21 +125,24 @@
 
 <nav>
     <div class="container">
-        <a href="/e8cr/" class="nav-brand">E8CR</a>
-        <div style="display:flex;gap:1rem;align-items:center;">
-            <a href="/e8cr/shop" style="color:var(--muted);text-decoration:none;font-size:0.9rem;">Shop</a>
-            <a href="#contact" class="nav-cta">Book a Fit Check</a>
+        <a href="/e8cr/" class="nav-brand">E8CR Squad</a>
+        <div class="nav-links">
+            <a href="/">← Home</a>
+            <a href="#bots">Bots</a>
+            <a href="#quickstart">Quick Start</a>
+            <a href="https://github.com/RADobson/e8cr-squad" target="_blank" rel="noopener">GitHub</a>
+            <a href="#contact" class="nav-cta">Get in Touch</a>
         </div>
     </div>
 </nav>
 
 <section class="hero">
     <div class="container">
-        <div class="hero-badge">For Australian organisations in the federal government supply chain</div>
+        <div class="hero-badge">Open source · Apache 2.0 · On-prem</div>
         <h1>Essential Eight ML2.<br><span>Autonomous. On-prem. Affordable.</span></h1>
-        <p>Your government contract requires Essential Eight Maturity Level 2. We deploy autonomous AI agents — on your hardware, in your building — that do the work. No consultants. No cloud. No six-figure engagement.</p>
-        <a href="#contact" class="hero-cta">Book a 15-Minute Fit Check</a>
-        <small class="hero-sub">Free. No obligation. We'll tell you honestly if we're a fit.</small>
+        <p>4 autonomous AI agents covering all 8 Essential Eight ML2 controls. They run on your hardware, connect to your M365 tenant, and generate audit-ready evidence. No cloud. No consultants. No six-figure engagement.</p>
+        <a href="https://github.com/RADobson/e8cr-squad" target="_blank" rel="noopener" class="hero-cta">View on GitHub</a>
+        <small class="hero-sub">Python 3.10+ · No pip install · Demo mode included</small>
     </div>
 </section>
 
@@ -251,24 +242,78 @@
     </div>
 </section>
 
+<section id="quickstart" style="padding:5rem 0;">
+    <div class="container">
+        <h2 style="font-size:1.8rem;margin-bottom:0.8rem;text-align:center;">Quick Start — Try It Now</h2>
+        <p style="text-align:center;color:var(--muted);margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto;">Run a full compliance assessment with synthetic data in under 2 minutes. No tenant needed.</p>
+
+        <div style="max-width:700px;margin:0 auto;">
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+                <div style="background:#1a1a22;padding:0.6rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+                    <div style="display:flex;gap:6px;">
+                        <span style="width:10px;height:10px;border-radius:50%;background:#ff5f56;display:inline-block;"></span>
+                        <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;display:inline-block;"></span>
+                        <span style="width:10px;height:10px;border-radius:50%;background:#27ca40;display:inline-block;"></span>
+                    </div>
+                    <span style="font-family:var(--mono);font-size:0.8rem;color:var(--dim);">terminal</span>
+                </div>
+                <div style="padding:1.5rem;font-family:var(--mono);font-size:0.9rem;line-height:1.8;">
+                    <div style="color:var(--dim);"># Clone the repo</div>
+                    <div style="color:var(--text);">git clone https://github.com/RADobson/e8cr-squad.git</div>
+                    <div style="color:var(--text);">cd e8cr-squad</div>
+                    <br>
+                    <div style="color:var(--dim);"># Run all 4 bots with synthetic data</div>
+                    <div style="color:var(--text);">python3 run_all.py --demo --output ./my-assessment</div>
+                    <br>
+                    <div style="color:var(--dim);"># Open the unified compliance dashboard</div>
+                    <div style="color:var(--text);">open ./my-assessment/e8cr-assessment.html</div>
+                </div>
+            </div>
+
+            <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;">
+                    <h3 style="font-size:1rem;margin-bottom:0.5rem;">📊 What You Get</h3>
+                    <ul style="list-style:none;font-size:0.9rem;color:var(--muted);">
+                        <li style="padding:0.3rem 0;">✓ Unified compliance dashboard</li>
+                        <li style="padding:0.3rem 0;">✓ Per-bot detailed reports (HTML)</li>
+                        <li style="padding:0.3rem 0;">✓ Evidence files (JSON) for auditors</li>
+                        <li style="padding:0.3rem 0;">✓ E8 control coverage matrix</li>
+                        <li style="padding:0.3rem 0;">✓ Priority issues & findings</li>
+                    </ul>
+                </div>
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;">
+                    <h3 style="font-size:1rem;margin-bottom:0.5rem;">⚡ Requirements</h3>
+                    <ul style="list-style:none;font-size:0.9rem;color:var(--muted);">
+                        <li style="padding:0.3rem 0;">✓ Python 3.10+</li>
+                        <li style="padding:0.3rem 0;">✓ No pip install needed (stdlib only)</li>
+                        <li style="padding:0.3rem 0;">✓ Demo mode = no tenant needed</li>
+                        <li style="padding:0.3rem 0;">✓ Live mode = M365 + app registration</li>
+                        <li style="padding:0.3rem 0;">✓ Apache 2.0 license</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="how">
     <div class="container">
-        <h2>How It Works</h2>
+        <h2>How It Works (Managed Service)</h2>
         <div class="steps">
             <div class="step">
                 <div class="step-num">1</div>
                 <h3>Fit Check</h3>
-                <p>15-minute call. We confirm your Microsoft licensing, scope, and which bots you need.</p>
+                <p>15-minute call. I confirm your Microsoft licensing, scope, and which bots you need.</p>
             </div>
             <div class="step">
                 <div class="step-num">2</div>
                 <h3>Deploy</h3>
-                <p>Hardware arrives. We configure, harden, and connect to your Microsoft tenant. Takes days, not months.</p>
+                <p>Hardware arrives. I configure, harden, and connect to your Microsoft tenant. Takes days, not months.</p>
             </div>
             <div class="step">
                 <div class="step-num">3</div>
                 <h3>Baseline</h3>
-                <p>First scan. First compliance report. You see exactly where you stand against ML2. Usually the "oh shit" moment.</p>
+                <p>First scan. First compliance report. You see exactly where you stand against ML2.</p>
             </div>
             <div class="step">
                 <div class="step-num">4</div>
@@ -294,7 +339,7 @@
                 <div class="diff-icon">🤖</div>
                 <div>
                     <h3>Agents, not dashboards.</h3>
-                    <p>These don't just monitor. They implement controls, enforce policies, orchestrate patching, triage alerts, and produce evidence. They do the work.</p>
+                    <p>These don't just monitor. They implement controls, enforce policies, orchestrate patching, and produce evidence. They do the work.</p>
                 </div>
             </div>
             <div class="diff-item">
@@ -315,7 +360,7 @@
                 <div class="diff-icon">🎯</div>
                 <div>
                     <h3>Honest about scope.</h3>
-                    <p>We accelerate you to ML2 and keep you there. We don't promise ML3 out of a box. ML2 requires your participation — we handle the technical side.</p>
+                    <p>I accelerate you to ML2 and keep you there. I don't promise ML3 out of a box. ML2 requires your participation — I handle the technical side.</p>
                 </div>
             </div>
             <div class="diff-item">
@@ -329,53 +374,19 @@
     </div>
 </section>
 
-<section class="pricing" id="pricing">
-    <div class="container">
-        <h2>Pricing</h2>
-        <p class="subtitle">Start with one bot. Add more as you need them. No lock-in.</p>
-        <div class="price-grid">
-            <div class="price-card">
-                <h3>Single Bot</h3>
-                <div class="price">$1,200 <span>/mo</span></div>
-                <div class="setup">From $1,500 one-time setup</div>
-                <ul>
-                    <li>Choose any one bot</li>
-                    <li>Dedicated hardware (BYOD or we supply)</li>
-                    <li>Weekly compliance reports</li>
-                    <li>Monthly evidence snapshots</li>
-                    <li>Start with VM+PM — easiest win</li>
-                </ul>
-                <a href="#contact" class="price-btn secondary">Get Started</a>
-            </div>
-            <div class="price-card featured">
-                <h3>Full Squad</h3>
-                <div class="price">$2,500 <span>/mo</span></div>
-                <div class="setup">Hardware from $945 — <a href="/e8cr/shop" style="color: var(--accent);">order in the shop</a></div>
-                <ul>
-                    <li>All 4 bots — complete ML2 coverage</li>
-                    <li>All 8 Essential Eight controls</li>
-                    <li>Less than a junior analyst salary</li>
-                    <li>24/7 autonomous operation</li>
-                    <li>Full evidence packs for assessors</li>
-                </ul>
-                <a href="/e8cr/shop" class="price-btn primary">Order Now</a>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="final-cta" id="contact">
     <div class="container">
-        <h2>Ready to get ML2 sorted?</h2>
-        <p>15 minutes. We'll tell you honestly if we're a fit. No pitch deck. No "let me loop in my manager." Just a straight conversation.</p>
-        <a href="mailto:richard@dobsondevelopment.com.au?subject=E8CR%20Fit%20Check&body=Hi%20Richard%2C%0A%0AI%27d%20like%20to%20book%20a%20fit%20check%20for%20E8CR.%0A%0ACompany%3A%20%0ANumber%20of%20endpoints%3A%20%0AMicrosoft%20licensing%20(E3%2FE5%2FBusiness%20Premium)%3A%20%0AWhat%27s%20driving%20E8%20for%20you%3A%20%0A" class="hero-cta">Book a Fit Check →</a>
-        <small class="hero-sub">Or email richard@dobsondevelopment.com.au directly</small>
+        <h2>Want to talk?</h2>
+        <p>Whether you want to run E8CR yourself, need help deploying it, or just want to chat about Essential Eight — I'm happy to talk.</p>
+        <a href="mailto:richard@dobsondevelopment.com.au?subject=E8CR%20Squad&body=Hi%20Richard%2C%0A%0A" class="hero-cta">Get in Touch →</a>
+        <small class="hero-sub">richard@dobsondevelopment.com.au</small>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <p>© 2026 Dobson Development Pty Ltd · Sunshine Coast, Queensland · ABN pending</p>
+        <p><a href="/">← Back to dobsondevelopment.com.au</a></p>
+        <p style="margin-top:0.5rem;">© 2026 Richard Dobson · Sunshine Coast, Queensland · <a href="https://github.com/RADobson/e8cr-squad">GitHub</a></p>
     </div>
 </footer>
 
