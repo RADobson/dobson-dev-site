@@ -1,5 +1,6 @@
 ---
 layout: post
+featured: true
 title: "Essential Eight Compliance Guide for Australian SMBs in 2026"
 description: "A practical guide to the ASD Essential Eight maturity model for Australian small and mid-sized businesses. Learn what each mitigation strategy requires, how maturity levels work, and how to assess your current state."
 date: 2026-02-20

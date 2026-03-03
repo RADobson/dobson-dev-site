@@ -1,5 +1,6 @@
 ---
 layout: post
+featured: true
 title: "Building Ultrathink: A Private, Self-Hosted Second Brain"
 date: 2026-01-16
 last_modified_at: 2026-01-16
