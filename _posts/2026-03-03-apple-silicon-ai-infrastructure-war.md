@@ -40,6 +40,8 @@ Meanwhile:
 - Someone ran Qwen 3.5 on an iPhone yesterday.
 - The M5 Max just shipped with 128GB of unified memory and runs Llama 70B from anywhere.
 
+![Apple on Capex: 'Nah, we're good' — Standardised quarterly capital expenditure showing Amazon, Microsoft, Alphabet, and Meta surging while Apple stays flat. Source: FactSet/A16Z](/assets/images/apple-silicon-capex-chart.png)
+
 As [@JoshKale put it](https://x.com/joshkale/status/2028889347794047071): *"The company spending the least on AI infrastructure accidentally became the AI infrastructure."*
 
 That's the tension this post unpacks. Not Apple vs NVIDIA as a fanboy debate — but what happens when the economics of AI inference start rewarding architecture over brute-force capex.
