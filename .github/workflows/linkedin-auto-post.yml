@@ -14,12 +14,13 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Check for new blog posts
+      - name: Check for NEW blog posts (not edits)
         id: check
         run: |
-          NEW_POSTS=$(git diff --name-only HEAD~1 HEAD -- '_posts/*.md' | head -1)
+          # Only detect newly ADDED files, not modified ones
+          NEW_POSTS=$(git diff --diff-filter=A --name-only HEAD~1 HEAD -- '_posts/*.md' | head -1)
           if [ -z "$NEW_POSTS" ]; then
-            echo "No new posts found"
+            echo "No new posts (edits don't trigger LinkedIn)"
             echo "has_new=false" >> $GITHUB_OUTPUT
           else
             echo "New post: $NEW_POSTS"
@@ -48,6 +49,8 @@ jobs:
           TEXT="${TITLE}
 
           ${DESC}
+
+          Read more: ${URL}
 
           ${TAGS}"
           
