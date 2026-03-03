@@ -160,10 +160,17 @@
             gap: 0.5rem;
         }
 
-        .site-logo::before {
-            content: '>_';
-            color: var(--accent-neon);
+        .site-logo::after {
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--accent-neon);
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: blink-caret 0.75s step-end infinite;
         }
+        @keyframes blink-caret { from, to { border-color: transparent; opacity: 1; } 50% { opacity: 0; } }
 
         .site-logo:hover {
             text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
@@ -591,7 +598,7 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <a href="/" class="site-logo">Richard Dobson</a>
+            <a href="/" class="site-logo">dobson_dev_</a>
             <nav class="site-nav">
                 <a href="/">Home</a>
                 <a href="/e8cr/">E8CR Squad</a>
