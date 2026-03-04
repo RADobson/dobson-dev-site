@@ -1,0 +1,489 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DoppelDown — Domain Lookalike & Typosquat Scanner | Dobson Development</title>
+<meta name="description" content="Free domain lookalike and typosquat scanner. Enter your domain, discover potentially dangerous look-alike domains attackers could use for phishing. No login required.">
+<meta property="og:title" content="DoppelDown — Domain Lookalike Scanner">
+<meta property="og:description" content="Discover dangerous look-alike domains before attackers register them. Free, no login.">
+<meta property="og:type" content="website">
+<style>
+:root {
+    --bg: #0a0a0f; --surface: #12121a; --surface2: #1a1a25; --border: #2a2a3a;
+    --text: #e0e0e8; --muted: #888; --accent: #6366f1; --accent2: #818cf8;
+    --red: #ef4444; --orange: #f97316; --yellow: #eab308; --green: #22c55e;
+    --font: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-sans); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+/* Header */
+.header { padding: 1rem 2rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.header a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+.header a:hover { color: var(--text); }
+.logo { font-family: var(--font); font-weight: 700; font-size: 1.1rem; color: var(--accent2); }
+
+/* Main */
+.container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--accent2), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.subtitle { color: var(--muted); font-size: 1.05rem; margin-bottom: 2.5rem; max-width: 600px; }
+
+/* Input area */
+.input-area { display: flex; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.input-area input {
+    flex: 1; min-width: 250px; padding: 0.85rem 1.2rem; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 1rem; font-family: var(--font); outline: none; transition: border-color 0.2s;
+}
+.input-area input:focus { border-color: var(--accent); }
+.input-area input::placeholder { color: #555; }
+.btn-scan {
+    padding: 0.85rem 2rem; background: var(--accent); color: #fff; border: none; border-radius: 10px;
+    font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.btn-scan:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-scan:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.help-text { color: #555; font-size: 0.8rem; margin-bottom: 2rem; }
+
+/* Stats bar */
+.stats { display: none; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.stats.visible { display: flex; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; flex: 1; min-width: 140px; }
+.stat-card .num { font-size: 1.8rem; font-weight: 800; font-family: var(--font); }
+.stat-card .label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.stat-card.critical .num { color: var(--red); }
+.stat-card.high .num { color: var(--orange); }
+.stat-card.medium .num { color: var(--yellow); }
+.stat-card.low .num { color: var(--green); }
+
+/* Results */
+.results { display: none; }
+.results.visible { display: block; }
+.category { margin-bottom: 2rem; }
+.category-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; cursor: pointer; }
+.category-header h3 { font-size: 1rem; font-weight: 600; }
+.category-header .count { background: var(--surface2); color: var(--muted); font-size: 0.75rem; padding: 0.15rem 0.6rem; border-radius: 10px; }
+.category-header .chevron { color: var(--muted); transition: transform 0.2s; }
+.category-header.collapsed .chevron { transform: rotate(-90deg); }
+
+.domain-list { list-style: none; }
+.domain-item {
+    display: flex; align-items: center; gap: 1rem; padding: 0.65rem 1rem; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 0.4rem; font-family: var(--font); font-size: 0.88rem;
+    transition: border-color 0.2s;
+}
+.domain-item:hover { border-color: var(--accent); }
+.domain-item .risk {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 0.2rem 0.5rem; border-radius: 4px; white-space: nowrap;
+}
+.risk-critical { background: rgba(239,68,68,0.15); color: var(--red); }
+.risk-high { background: rgba(249,115,22,0.15); color: var(--orange); }
+.risk-medium { background: rgba(234,179,8,0.15); color: var(--yellow); }
+.risk-low { background: rgba(34,197,94,0.15); color: var(--green); }
+.domain-item .name { flex: 1; color: var(--text); }
+.domain-item .name .diff { color: var(--red); font-weight: 700; }
+.domain-item .type { color: var(--muted); font-size: 0.75rem; }
+
+/* Loading */
+.loading { display: none; text-align: center; padding: 3rem; }
+.loading.visible { display: block; }
+.loading .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading p { color: var(--muted); margin-top: 1rem; font-size: 0.9rem; }
+
+/* Info section */
+.info { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.info h2 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--text); }
+.info p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+.info-card h4 { font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--accent2); }
+.info-card p { font-size: 0.85rem; margin: 0; }
+
+/* CTA */
+.cta-box { background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(167,139,250,0.1)); border: 1px solid rgba(99,102,241,0.3); border-radius: 12px; padding: 2rem; margin-top: 2.5rem; text-align: center; }
+.cta-box h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.cta-box p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.cta-box a { display: inline-block; background: var(--accent); color: #fff; padding: 0.7rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+.cta-box a:hover { background: var(--accent2); }
+
+/* Footer */
+.footer { text-align: center; padding: 2rem; margin-top: 2rem; border-top: 1px solid var(--border); }
+.footer a { color: var(--muted); text-decoration: none; font-size: 0.8rem; }
+.footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+    h1 { font-size: 1.6rem; }
+    .input-area { flex-direction: column; }
+    .btn-scan { width: 100%; }
+    .stats { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <span class="logo">DoppelDown</span>
+    <a href="/">← dobsondevelopment.com.au</a>
+</div>
+
+<div class="container">
+    <h1>Domain Lookalike Scanner</h1>
+    <p class="subtitle">Enter your domain to discover potentially dangerous look-alike domains that attackers could register for phishing, brand impersonation, or credential harvesting.</p>
+
+    <div class="input-area">
+        <input type="text" id="domain-input" placeholder="yourdomain.com.au" autocomplete="off" spellcheck="false">
+        <button class="btn-scan" id="scan-btn" onclick="runScan()">Scan Domain</button>
+    </div>
+    <p class="help-text">Enter a domain without http:// or www. Example: hazaccountants.com.au</p>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p id="loading-text">Generating lookalike permutations...</p>
+    </div>
+
+    <div class="stats" id="stats">
+        <div class="stat-card critical"><div class="num" id="stat-critical">0</div><div class="label">Critical Risk</div></div>
+        <div class="stat-card high"><div class="num" id="stat-high">0</div><div class="label">High Risk</div></div>
+        <div class="stat-card medium"><div class="num" id="stat-medium">0</div><div class="label">Medium Risk</div></div>
+        <div class="stat-card low"><div class="num" id="stat-total">0</div><div class="label">Total Generated</div></div>
+    </div>
+
+    <div class="results" id="results"></div>
+
+    <div class="info">
+        <h2>What is Domain Typosquatting?</h2>
+        <p>Typosquatting (also called URL hijacking or domain mimicry) is when attackers register domains that look similar to legitimate ones. They exploit typos, visual similarity between characters, and common TLD confusion to trick users into visiting malicious sites.</p>
+        <p>In 2025, the ACSC reported that <strong>62% of successful phishing attacks</strong> used lookalike domains. A single compromised credential from a typosquat domain can cost a business an average of <strong>$180,000 AUD</strong> in incident response and remediation.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h4>🔤 Homoglyph Attacks</h4>
+                <p>Characters that look identical but aren't: rn → m, l → I, 0 → O. The domain "exarnple.com" looks like "example.com" at a glance.</p>
+            </div>
+            <div class="info-card">
+                <h4>⌨️ Typo Squatting</h4>
+                <p>Registering common keyboard-adjacent typos: gogle.com, gogole.com, gooogle.com. Fat-finger errors humans make every day.</p>
+            </div>
+            <div class="info-card">
+                <h4>🌐 TLD Confusion</h4>
+                <p>Swapping .com.au for .com, .net.au, .org — or the reverse. Users rarely check the full domain before entering credentials.</p>
+            </div>
+            <div class="info-card">
+                <h4>➕ Combosquatting</h4>
+                <p>Adding plausible words: yourcompany-login.com, yourcompany-secure.com, mail-yourcompany.com. Especially effective in email phishing.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-box">
+        <h3>Want to protect your domain proactively?</h3>
+        <p>We help businesses monitor for lookalike domains, implement DMARC/SPF/DKIM, and train staff to spot phishing attempts.</p>
+        <a href="/#contact">Get in Touch</a>
+    </div>
+</div>
+
+<div class="footer">
+    <a href="/">Dobson Development</a> · <a href="/tools/">All Tools</a> · <a href="/e8cr/">E8CR Squad</a>
+</div>
+
+<script>
+// ── Permutation Engine ──────────────────────────────────────────────
+
+const HOMOGLYPHS = {
+    'a': ['à','á','â','ã','ä','å','ɑ','а','ạ','ą'],
+    'b': ['d','ƀ','ь','Ь'],
+    'c': ['ç','ć','ĉ','с','ƈ'],
+    'd': ['b','ɗ','đ','ԁ'],
+    'e': ['è','é','ê','ë','ē','ĕ','ė','е','ẹ'],
+    'f': ['ƒ'],
+    'g': ['ɡ','ğ','ġ','ǵ'],
+    'h': ['һ','ĥ'],
+    'i': ['1','l','í','ì','î','ï','ı','і'],
+    'j': ['ĵ','ј'],
+    'k': ['κ','ĸ','к'],
+    'l': ['1','i','ĺ','ļ','ŀ','ł','І'],
+    'm': ['rn','ṁ','ɱ'],
+    'n': ['ñ','ń','ņ','ŋ','ո','п'],
+    'o': ['0','ò','ó','ô','õ','ö','ø','ο','о','ọ'],
+    'p': ['ρ','р','þ'],
+    'q': ['ɋ','q̃'],
+    'r': ['ŕ','ŗ','ř','г'],
+    's': ['ś','ŝ','ş','š','ѕ','ꜱ'],
+    't': ['ţ','ť','ŧ','т'],
+    'u': ['ù','ú','û','ü','ű','ų','µ'],
+    'v': ['ν','ѵ'],
+    'w': ['ω','ẃ','ẁ','ŵ'],
+    'x': ['х','ẋ'],
+    'y': ['ý','ÿ','ŷ','у'],
+    'z': ['ź','ż','ž','ẑ']
+};
+
+const KEYBOARD_ADJACENT = {
+    'a': ['q','w','s','z'], 'b': ['v','g','h','n'], 'c': ['x','d','f','v'],
+    'd': ['s','e','r','f','c','x'], 'e': ['w','s','d','r'], 'f': ['d','r','t','g','v','c'],
+    'g': ['f','t','y','h','b','v'], 'h': ['g','y','u','j','n','b'], 'i': ['u','j','k','o'],
+    'j': ['h','u','i','k','n','m'], 'k': ['j','i','o','l','m'], 'l': ['k','o','p'],
+    'm': ['n','j','k'], 'n': ['b','h','j','m'], 'o': ['i','k','l','p'],
+    'p': ['o','l'], 'q': ['w','a'], 'r': ['e','d','f','t'],
+    's': ['a','w','e','d','x','z'], 't': ['r','f','g','y'], 'u': ['y','h','j','i'],
+    'v': ['c','f','g','b'], 'w': ['q','a','s','e'], 'x': ['z','s','d','c'],
+    'y': ['t','g','h','u'], 'z': ['a','s','x']
+};
+
+const AU_TLDS = ['.com.au','.net.au','.org.au','.com','.net','.org','.co','.io','.au','.xyz','.info','.biz','.app'];
+const COMBO_WORDS = ['-login','-secure','-portal','-mail','-app','-online','-support','-billing','-account','-auth','my','the','get','go'];
+
+function parseDomain(input) {
+    let d = input.toLowerCase().trim().replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/.*$/, '');
+    const parts = d.split('.');
+    let name, tld;
+    if (d.endsWith('.com.au') || d.endsWith('.net.au') || d.endsWith('.org.au')) {
+        tld = '.' + parts.slice(-2).join('.');
+        name = parts.slice(0, -2).join('.');
+    } else {
+        tld = '.' + parts.slice(-1)[0];
+        name = parts.slice(0, -1).join('.');
+    }
+    return { name, tld, full: d };
+}
+
+function generatePermutations(domain) {
+    const { name, tld, full } = parseDomain(domain);
+    const results = [];
+    const seen = new Set([full]);
+
+    function add(d, type, risk, technique) {
+        const key = d.toLowerCase();
+        if (seen.has(key) || key === full) return;
+        seen.add(key);
+        results.push({ domain: d, type, risk, technique });
+    }
+
+    // 1. Character omission
+    for (let i = 0; i < name.length; i++) {
+        const d = name.slice(0, i) + name.slice(i + 1);
+        if (d.length > 1) add(d + tld, 'omission', 'high', `Removed "${name[i]}" at position ${i + 1}`);
+    }
+
+    // 2. Adjacent character swap
+    for (let i = 0; i < name.length - 1; i++) {
+        const arr = name.split('');
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        add(arr.join('') + tld, 'swap', 'high', `Swapped "${name[i]}" and "${name[i + 1]}"`);
+    }
+
+    // 3. Character repetition
+    for (let i = 0; i < name.length; i++) {
+        if (name[i].match(/[a-z]/)) {
+            add(name.slice(0, i + 1) + name[i] + name.slice(i + 1) + tld, 'repetition', 'medium', `Doubled "${name[i]}"`);
+        }
+    }
+
+    // 4. Keyboard typos (replacement)
+    for (let i = 0; i < name.length; i++) {
+        const ch = name[i];
+        if (KEYBOARD_ADJACENT[ch]) {
+            for (const adj of KEYBOARD_ADJACENT[ch].slice(0, 3)) {
+                add(name.slice(0, i) + adj + name.slice(i + 1) + tld, 'typo', 'high', `"${ch}" → "${adj}" (keyboard adjacent)`);
+            }
+        }
+    }
+
+    // 5. Homoglyph substitution
+    for (let i = 0; i < name.length; i++) {
+        const ch = name[i];
+        if (HOMOGLYPHS[ch]) {
+            for (const hg of HOMOGLYPHS[ch].slice(0, 2)) {
+                add(name.slice(0, i) + hg + name.slice(i + 1) + tld, 'homoglyph', 'critical', `"${ch}" → "${hg}" (visual lookalike)`);
+            }
+        }
+    }
+
+    // 6. Character insertion
+    for (let i = 0; i <= name.length; i++) {
+        for (const ch of 'aeiouns'.split('')) {
+            if (i > 0 && name[i - 1] === ch) continue;
+            if (i < name.length && name[i] === ch) continue;
+            add(name.slice(0, i) + ch + name.slice(i) + tld, 'insertion', 'medium', `Inserted "${ch}" at position ${i + 1}`);
+        }
+    }
+
+    // 7. TLD variations
+    for (const alt of AU_TLDS) {
+        if (alt !== tld) {
+            add(name + alt, 'tld', tld.endsWith('.au') && !alt.endsWith('.au') ? 'high' : 'medium', `TLD swap: ${tld} → ${alt}`);
+        }
+    }
+
+    // 8. Combosquatting
+    for (const word of COMBO_WORDS) {
+        if (word.startsWith('-')) {
+            add(name + word + tld, 'combo', 'medium', `Appended "${word}"`);
+        } else {
+            add(word + name + tld, 'combo', 'medium', `Prepended "${word}"`);
+            add(word + '-' + name + tld, 'combo', 'medium', `Prepended "${word}-"`);
+        }
+    }
+
+    // 9. Dot insertion (subdomain trick)
+    for (let i = 1; i < name.length; i++) {
+        if (name[i] !== '-' && name[i - 1] !== '-') {
+            add(name.slice(0, i) + '.' + name.slice(i) + tld, 'subdomain', 'high', `Dot insertion: ${name.slice(0,i)}.${name.slice(i)}`);
+        }
+    }
+
+    // 10. Hyphen tricks
+    for (let i = 1; i < name.length; i++) {
+        if (name[i] !== '-' && name[i - 1] !== '-') {
+            add(name.slice(0, i) + '-' + name.slice(i) + tld, 'hyphen', 'low', `Hyphen insertion at position ${i + 1}`);
+        }
+    }
+
+    // 11. Common word confusion (singular/plural)
+    if (name.endsWith('s')) {
+        add(name.slice(0, -1) + tld, 'plural', 'medium', 'Removed trailing "s"');
+    } else {
+        add(name + 's' + tld, 'plural', 'medium', 'Added trailing "s"');
+    }
+
+    return results;
+}
+
+// ── UI ──────────────────────────────────────────────────────────────
+
+function runScan() {
+    const input = document.getElementById('domain-input').value.trim();
+    if (!input || !input.includes('.')) {
+        document.getElementById('domain-input').style.borderColor = '#ef4444';
+        return;
+    }
+    document.getElementById('domain-input').style.borderColor = '';
+
+    const btn = document.getElementById('scan-btn');
+    btn.disabled = true;
+    btn.textContent = 'Scanning...';
+
+    document.getElementById('loading').classList.add('visible');
+    document.getElementById('stats').classList.remove('visible');
+    document.getElementById('results').classList.remove('visible');
+    document.getElementById('results').innerHTML = '';
+
+    const steps = [
+        'Generating typo permutations...',
+        'Computing homoglyph variants...',
+        'Checking TLD alternatives...',
+        'Building combosquat candidates...',
+        'Analysing risk levels...',
+        'Preparing results...'
+    ];
+    let step = 0;
+    const stepInterval = setInterval(() => {
+        step++;
+        if (step < steps.length) {
+            document.getElementById('loading-text').textContent = steps[step];
+        }
+    }, 400);
+
+    setTimeout(() => {
+        clearInterval(stepInterval);
+        const results = generatePermutations(input);
+        displayResults(results, input);
+        btn.disabled = false;
+        btn.textContent = 'Scan Domain';
+        document.getElementById('loading').classList.remove('visible');
+    }, 2400);
+}
+
+function displayResults(results, originalDomain) {
+    const critical = results.filter(r => r.risk === 'critical').length;
+    const high = results.filter(r => r.risk === 'high').length;
+    const medium = results.filter(r => r.risk === 'medium').length;
+
+    document.getElementById('stat-critical').textContent = critical;
+    document.getElementById('stat-high').textContent = high;
+    document.getElementById('stat-medium').textContent = medium;
+    document.getElementById('stat-total').textContent = results.length;
+    document.getElementById('stats').classList.add('visible');
+
+    const categories = {
+        'homoglyph': { label: '🔤 Homoglyph Attacks', desc: 'Visually identical characters' },
+        'typo': { label: '⌨️ Keyboard Typos', desc: 'Adjacent key substitutions' },
+        'omission': { label: '✂️ Character Omission', desc: 'Missing characters' },
+        'swap': { label: '🔀 Character Swap', desc: 'Adjacent letters transposed' },
+        'tld': { label: '🌐 TLD Variations', desc: 'Alternative domain extensions' },
+        'combo': { label: '➕ Combosquatting', desc: 'Added words/prefixes' },
+        'subdomain': { label: '📍 Subdomain Tricks', desc: 'Dot insertion to mimic subdomains' },
+        'repetition': { label: '🔁 Character Repetition', desc: 'Doubled characters' },
+        'insertion': { label: '📝 Character Insertion', desc: 'Extra characters inserted' },
+        'hyphen': { label: '➖ Hyphen Insertion', desc: 'Hyphens added between characters' },
+        'plural': { label: '📊 Singular/Plural', desc: 'Added or removed trailing s' }
+    };
+
+    const grouped = {};
+    for (const r of results) {
+        if (!grouped[r.type]) grouped[r.type] = [];
+        grouped[r.type].push(r);
+    }
+
+    // Sort categories by risk priority
+    const riskOrder = { critical: 0, high: 1, medium: 2, low: 3 };
+    const sortedTypes = Object.keys(grouped).sort((a, b) => {
+        const aMax = Math.min(...grouped[a].map(r => riskOrder[r.risk]));
+        const bMax = Math.min(...grouped[b].map(r => riskOrder[r.risk]));
+        return aMax - bMax;
+    });
+
+    const container = document.getElementById('results');
+    const { name: origName } = parseDomain(originalDomain);
+
+    for (const type of sortedTypes) {
+        const cat = categories[type] || { label: type, desc: '' };
+        const items = grouped[type].sort((a, b) => riskOrder[a.risk] - riskOrder[b.risk]);
+
+        const div = document.createElement('div');
+        div.className = 'category';
+        div.innerHTML = `
+            <div class="category-header" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.style.display = this.classList.contains('collapsed') ? 'none' : 'block';">
+                <h3>${cat.label}</h3>
+                <span class="count">${items.length}</span>
+                <span class="chevron">▼</span>
+            </div>
+            <ul class="domain-list">
+                ${items.slice(0, 30).map(r => {
+                    const highlighted = highlightDiff(r.domain, originalDomain, origName);
+                    return `<li class="domain-item">
+                        <span class="risk risk-${r.risk}">${r.risk}</span>
+                        <span class="name">${highlighted}</span>
+                        <span class="type">${r.technique}</span>
+                    </li>`;
+                }).join('')}
+                ${items.length > 30 ? `<li class="domain-item" style="justify-content:center;color:var(--muted);font-size:0.85rem;">+ ${items.length - 30} more variants</li>` : ''}
+            </ul>
+        `;
+        container.appendChild(div);
+    }
+
+    container.classList.add('visible');
+}
+
+function highlightDiff(variant, original, origName) {
+    // Simple highlighting — show full domain, differences in red
+    return variant.replace(/[^\x00-\x7F]/g, match => `<span class="diff">${match}</span>`);
+}
+
+// Enter key triggers scan
+document.getElementById('domain-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') runScan();
+});
+
+// Auto-focus
+document.getElementById('domain-input').focus();
+</script>
+</body>
+</html>
