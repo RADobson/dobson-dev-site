@@ -1,0 +1,661 @@
+---
+layout: default
+title: "Is This Email a Phish? | Free Phishing Email Analyzer"
+description: "Paste email headers and body to instantly detect phishing red flags, SPF/DKIM/DMARC failures, suspicious links, and social engineering tactics. 100% client-side."
+image: /assets/images/og-default.png
+---
+
+<style>
+.phish-trust {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(188, 19, 254, 0.08));
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--accent-neon);
+    margin-bottom: 2rem;
+}
+.phish-header { margin-bottom: 2rem; }
+.phish-header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.75rem; line-height: 1.2; }
+.phish-header p { color: var(--text-grey); font-size: 1rem; line-height: 1.6; }
+
+.tab-bar { display: flex; gap: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle); }
+.tab-btn {
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; padding: 0.75rem 1.5rem;
+    background: none; color: var(--text-grey); border: none; cursor: pointer; border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+.tab-btn.active { color: var(--accent-neon); border-bottom-color: var(--accent-neon); }
+.tab-btn:hover { color: var(--text-white); }
+
+.input-wrap { position: relative; margin-bottom: 1rem; }
+.email-input {
+    width: 100%; min-height: 280px; padding: 1.25rem; font-family: var(--font-mono); font-size: 0.82rem;
+    background: var(--bg-card); color: var(--text-white); border: 1px solid var(--border-subtle);
+    border-radius: 12px; resize: vertical; line-height: 1.6; outline: none; transition: border-color 0.3s;
+}
+.email-input:focus { border-color: var(--accent-neon); box-shadow: 0 0 0 2px rgba(0,240,255,0.1); }
+.email-input::placeholder { color: var(--text-muted); }
+
+.analyze-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.btn {
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; padding: 0.75rem 1.5rem;
+    border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary { background: var(--accent-neon); color: #000; }
+.btn-primary:hover { box-shadow: 0 4px 20px rgba(0,240,255,0.3); transform: translateY(-1px); }
+.btn-secondary { background: var(--bg-card); color: var(--text-grey); border: 1px solid var(--border-subtle); }
+.btn-secondary:hover { border-color: var(--accent-neon); color: var(--text-white); }
+
+/* Results */
+.results-container { display: none; }
+.results-container.visible { display: block; }
+
+.verdict-card {
+    border-radius: 16px; padding: 2rem; margin-bottom: 2rem; text-align: center;
+    border: 2px solid;
+}
+.verdict-card.safe { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.4); }
+.verdict-card.suspicious { background: rgba(234,179,8,0.08); border-color: rgba(234,179,8,0.4); }
+.verdict-card.dangerous { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.4); }
+.verdict-score { font-size: 3.5rem; font-weight: 800; margin-bottom: 0.5rem; font-family: var(--font-mono); }
+.verdict-card.safe .verdict-score { color: #22c55e; }
+.verdict-card.suspicious .verdict-score { color: #eab308; }
+.verdict-card.dangerous .verdict-score { color: #ef4444; }
+.verdict-label { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
+.verdict-sub { color: var(--text-grey); font-size: 0.95rem; }
+
+.finding-section { margin-bottom: 2rem; }
+.finding-section h3 { font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.finding-grid { display: grid; gap: 0.75rem; }
+.finding-card {
+    background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 1.2rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+}
+.finding-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.finding-body h4 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+.finding-body p { color: var(--text-grey); font-size: 0.88rem; line-height: 1.5; }
+.finding-sev {
+    font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;
+    font-family: var(--font-mono); margin-left: auto; flex-shrink: 0;
+}
+.sev-critical { background: rgba(239,68,68,0.2); color: #ef4444; }
+.sev-high { background: rgba(249,115,22,0.2); color: #f97316; }
+.sev-medium { background: rgba(234,179,8,0.2); color: #eab308; }
+.sev-low { background: rgba(34,197,94,0.2); color: #22c55e; }
+.sev-info { background: rgba(59,130,246,0.2); color: #3b82f6; }
+
+/* Header detail table */
+.header-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+.header-table th { text-align: left; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border-subtle); font-weight: 600; }
+.header-table td { padding: 0.6rem 0.75rem; font-size: 0.85rem; border-bottom: 1px solid var(--border-subtle); font-family: var(--font-mono); word-break: break-all; }
+.header-table td.pass { color: #22c55e; }
+.header-table td.fail { color: #ef4444; }
+.header-table td.warn { color: #eab308; }
+.header-table td.none { color: var(--text-muted); }
+
+/* CTA */
+.report-cta {
+    background: linear-gradient(135deg, rgba(0,240,255,0.06), rgba(188,19,254,0.06));
+    border: 1px solid rgba(0,240,255,0.2); border-radius: 12px;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.report-cta h3 { margin-bottom: 0.5rem; }
+.report-cta p { color: var(--text-grey); font-size: 0.92rem; margin-bottom: 1rem; }
+.report-cta .btn-primary { font-size: 0.95rem; }
+
+/* Examples bar */
+.examples-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.example-chip {
+    font-size: 0.78rem; padding: 0.35rem 0.8rem; border-radius: 20px;
+    background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-grey);
+    cursor: pointer; transition: all 0.2s; font-family: var(--font-mono);
+}
+.example-chip:hover { border-color: var(--accent-neon); color: var(--text-white); }
+
+@media (max-width: 640px) {
+    .finding-card { flex-direction: column; gap: 0.5rem; }
+    .finding-sev { margin-left: 0; }
+}
+</style>
+
+<div class="phish-trust">🔒 100% client-side analysis — your email never leaves your browser</div>
+
+<div class="phish-header">
+    <h1>🎣 Is This Email a Phish?</h1>
+    <p>Paste a suspicious email (with headers if you have them) and get an instant breakdown of authentication results, red flags, and social engineering indicators.</p>
+</div>
+
+<div class="tab-bar">
+    <button class="tab-btn active" data-tab="full" onclick="switchTab('full')">Full Email (with headers)</button>
+    <button class="tab-btn" data-tab="body" onclick="switchTab('body')">Body Only</button>
+</div>
+
+<div class="examples-bar">
+    <span style="color: var(--text-muted); font-size: 0.8rem; padding: 0.35rem 0;">Try:</span>
+    <span class="example-chip" onclick="loadExample('ceo-fraud')">CEO Fraud</span>
+    <span class="example-chip" onclick="loadExample('invoice')">Fake Invoice</span>
+    <span class="example-chip" onclick="loadExample('microsoft')">Microsoft Impersonation</span>
+    <span class="example-chip" onclick="loadExample('legit')">Legitimate Email</span>
+</div>
+
+<div class="input-wrap">
+    <textarea id="email-input" class="email-input" placeholder="Paste the full email source (View Original / Show Original in Gmail, or View Source in Outlook) here...
+
+Or paste just the email body if you don't have the headers."></textarea>
+</div>
+
+<div class="analyze-actions">
+    <button class="btn btn-primary" onclick="analyzeEmail()">🔍 Analyze Email</button>
+    <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+</div>
+
+<div id="results" class="results-container">
+    <div id="verdict-card" class="verdict-card"></div>
+    <div id="auth-section" class="finding-section"></div>
+    <div id="header-section" class="finding-section"></div>
+    <div id="body-section" class="finding-section"></div>
+    <div id="link-section" class="finding-section"></div>
+
+    <div class="report-cta">
+        <h3>Want a team-wide phishing exercise?</h3>
+        <p>We run realistic phishing simulations + training for Australian businesses. Get a custom assessment.</p>
+        <a href="/#contact" class="btn btn-primary">Talk to Us →</a>
+    </div>
+</div>
+
+<script>
+const EXAMPLES = {
+    'ceo-fraud': `From: Richard CEO <richard.ceo@company-group.com.au>
+To: accounts@yourcompany.com.au
+Subject: URGENT - Wire Transfer Required
+Date: Thu, 5 Mar 2026 09:15:22 +0000
+Reply-To: richard.ceo.urgent@gmail.com
+MIME-Version: 1.0
+Authentication-Results: mx.google.com;
+    spf=fail (google.com: domain of richard.ceo@company-group.com.au does not designate 185.234.219.71 as permitted sender);
+    dkim=none;
+    dmarc=fail (p=NONE)
+Received: from unknown (HELO mail.cheap-vps.ru) (185.234.219.71)
+    by mx.google.com with SMTP; Thu, 05 Mar 2026 09:15:25 +0000
+X-Mailer: PHPMailer 6.5.0
+
+Hi team,
+
+I need you to process an urgent wire transfer for a confidential acquisition we're closing today. This is time-sensitive and I need it done within the hour.
+
+Amount: $47,500 AUD
+Bank: Commonwealth Bank
+BSB: 062-000
+Account: 1234 5678
+Reference: ACQUISITION-2026-CONF
+
+Please do NOT discuss this with anyone else on the team — it's strictly confidential until the deal closes. I'll explain everything in tomorrow's all-hands.
+
+I'm in back-to-back meetings so email is best. Do NOT call me.
+
+Thanks,
+Richard
+CEO`,
+
+    'invoice': `From: accounts@xer0-billing.com
+To: finance@yourcompany.com.au
+Subject: Invoice #INV-2026-4891 Overdue — Action Required
+Date: Wed, 4 Mar 2026 14:30:00 +0000
+Reply-To: accounts@xer0-billing.com
+Authentication-Results: mx.google.com;
+    spf=pass (domain of accounts@xer0-billing.com designates 104.26.12.5 as permitted sender);
+    dkim=pass header.d=xer0-billing.com;
+    dmarc=pass (p=REJECT)
+Content-Type: text/html; charset=UTF-8
+
+Dear Valued Customer,
+
+Your invoice #INV-2026-4891 for $2,340.00 AUD is now 14 days overdue.
+
+To avoid service interruption, please click the link below to review and pay your invoice:
+
+https://xer0-billing.com/pay/inv-2026-4891?token=aHR0cHM6Ly9tYWx3YXJlLnNpdGUvZG93bmxvYWQ=
+
+If payment is not received within 48 hours, your account will be suspended and a $150 late fee will apply.
+
+Thank you,
+Xero Billing Team
+ABN: 12 345 678 901`,
+
+    'microsoft': `From: Microsoft 365 <security-noreply@microsoft365-verify.com>
+To: admin@yourcompany.com.au
+Subject: [Action Required] Unusual sign-in activity on your account
+Date: Thu, 5 Mar 2026 03:42:11 +0000
+Authentication-Results: mx.google.com;
+    spf=pass (domain of security-noreply@microsoft365-verify.com designates 198.51.100.23 as permitted sender);
+    dkim=pass header.d=microsoft365-verify.com;
+    dmarc=pass (p=REJECT)
+Content-Type: text/html; charset=UTF-8
+
+Microsoft account
+Unusual sign-in activity
+
+We detected something unusual about a recent sign-in to your Microsoft account.
+
+Sign-in details:
+  Country/region: Russia
+  IP address: 185.234.219.71
+  Date: 05/03/2026 03:41 UTC
+  Platform: Linux
+  Browser: Firefox
+
+If this wasn't you, please secure your account immediately:
+
+https://microsoft365-verify.com/account/security/verify?session=abc123def456
+
+If this was you, you can safely ignore this message.
+
+Thanks,
+The Microsoft account team`,
+
+    'legit': `From: noreply@google.com
+To: user@gmail.com
+Subject: Security alert for your Google Account
+Date: Thu, 5 Mar 2026 08:00:00 +0000
+Authentication-Results: mx.google.com;
+    spf=pass (google.com: domain of noreply@google.com designates 209.85.220.41 as permitted sender);
+    dkim=pass header.d=google.com header.s=20230601;
+    dmarc=pass (p=REJECT)
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com [209.85.220.41])
+    by mx.google.com with SMTPS id abc123.456.2026.03.05.08.00.00
+ARC-Authentication-Results: i=1; mx.google.com;
+    spf=pass; dkim=pass; dmarc=pass
+Content-Type: text/html; charset=UTF-8
+
+New sign-in to your Google Account
+
+Your Google Account was just signed in to from a new device.
+
+Device: MacBook Pro
+Location: Brisbane, Australia
+Time: March 5, 2026 6:00 PM AEST
+
+If this was you, you don't need to do anything.
+
+If this wasn't you, go to https://myaccount.google.com/security to secure your account.
+
+— The Google Accounts team`
+};
+
+let currentTab = 'full';
+
+function switchTab(tab) {
+    currentTab = tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+    const input = document.getElementById('email-input');
+    if (tab === 'body') {
+        input.placeholder = 'Paste the email body text here...\n\nWithout headers, authentication checks (SPF/DKIM/DMARC) won\'t be available, but we can still analyze content for red flags.';
+    } else {
+        input.placeholder = 'Paste the full email source (View Original / Show Original in Gmail, or View Source in Outlook) here...\n\nOr paste just the email body if you don\'t have the headers.';
+    }
+}
+
+function loadExample(name) {
+    document.getElementById('email-input').value = EXAMPLES[name] || '';
+    if (name !== 'legit' && currentTab === 'body') switchTab('full');
+}
+
+function clearAll() {
+    document.getElementById('email-input').value = '';
+    document.getElementById('results').classList.remove('visible');
+}
+
+function parseHeaders(raw) {
+    const headers = {};
+    const lines = raw.split('\n');
+    let current = '';
+    let bodyStart = -1;
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (line.trim() === '' && bodyStart === -1) { bodyStart = i + 1; break; }
+        if (/^\s/.test(line) && current) {
+            headers[current] += ' ' + line.trim();
+        } else {
+            const m = line.match(/^([A-Za-z0-9\-]+):\s*(.*)$/);
+            if (m) { current = m[1].toLowerCase(); headers[current] = (headers[current] ? headers[current] + '; ' : '') + m[2].trim(); }
+        }
+    }
+
+    const body = bodyStart > 0 ? lines.slice(bodyStart).join('\n') : raw;
+    return { headers, body };
+}
+
+function checkAuth(headers) {
+    const findings = [];
+    const authResults = headers['authentication-results'] || '';
+
+    // SPF
+    const spfMatch = authResults.match(/spf=(pass|fail|softfail|neutral|none|temperror|permerror)/i);
+    const spf = spfMatch ? spfMatch[1].toLowerCase() : null;
+    if (spf === 'fail') findings.push({ type: 'auth', icon: '❌', title: 'SPF FAIL', desc: 'The sending server is NOT authorised to send email for this domain. This is a strong phishing indicator.', sev: 'critical' });
+    else if (spf === 'softfail') findings.push({ type: 'auth', icon: '⚠️', title: 'SPF Softfail', desc: 'The sending server is not fully authorised. Domain owner is not confident in their SPF record. Suspicious.', sev: 'medium' });
+    else if (spf === 'pass') findings.push({ type: 'auth', icon: '✅', title: 'SPF Pass', desc: 'The sending server is authorised to send for this domain.', sev: 'info' });
+    else if (spf === 'none') findings.push({ type: 'auth', icon: '⚠️', title: 'No SPF Record', desc: 'This domain has no SPF record. It cannot prove the email came from an authorised server.', sev: 'medium' });
+
+    // DKIM
+    const dkimMatch = authResults.match(/dkim=(pass|fail|none|neutral|temperror|permerror)/i);
+    const dkim = dkimMatch ? dkimMatch[1].toLowerCase() : null;
+    if (dkim === 'fail') findings.push({ type: 'auth', icon: '❌', title: 'DKIM FAIL', desc: 'The email signature is invalid. The message was modified in transit or forged.', sev: 'critical' });
+    else if (dkim === 'none') findings.push({ type: 'auth', icon: '⚠️', title: 'No DKIM Signature', desc: 'Email is not cryptographically signed. Cannot verify it was not tampered with.', sev: 'medium' });
+    else if (dkim === 'pass') findings.push({ type: 'auth', icon: '✅', title: 'DKIM Pass', desc: 'Email is cryptographically signed and verified. The message was not altered.', sev: 'info' });
+
+    // DMARC
+    const dmarcMatch = authResults.match(/dmarc=(pass|fail|none|bestguesspass)/i);
+    const dmarc = dmarcMatch ? dmarcMatch[1].toLowerCase() : null;
+    if (dmarc === 'fail') findings.push({ type: 'auth', icon: '❌', title: 'DMARC FAIL', desc: 'This email fails the domain\'s authentication policy. High probability of spoofing.', sev: 'critical' });
+    else if (dmarc === 'none') findings.push({ type: 'auth', icon: '⚠️', title: 'No DMARC Policy', desc: 'The domain has no DMARC policy. There is no protection against email spoofing.', sev: 'medium' });
+    else if (dmarc === 'pass') findings.push({ type: 'auth', icon: '✅', title: 'DMARC Pass', desc: 'Email passes the domain\'s DMARC policy. Sender identity is verified.', sev: 'info' });
+
+    // DMARC policy
+    const policyMatch = authResults.match(/dmarc=\w+\s*\(p=(\w+)\)/i);
+    if (policyMatch && policyMatch[1].toLowerCase() === 'none' && dmarc === 'fail') {
+        findings.push({ type: 'auth', icon: '⚠️', title: 'DMARC Policy: p=NONE', desc: 'Even though DMARC fails, the domain\'s policy is set to NONE (monitor only) — so spoofed emails are still delivered.', sev: 'high' });
+    }
+
+    return { spf, dkim, dmarc, findings };
+}
+
+function checkHeaders(headers) {
+    const findings = [];
+
+    // Reply-To mismatch
+    const from = headers['from'] || '';
+    const replyTo = headers['reply-to'] || '';
+    if (replyTo) {
+        const fromDomain = (from.match(/@([\w\-\.]+)/i) || [])[1];
+        const replyDomain = (replyTo.match(/@([\w\-\.]+)/i) || [])[1];
+        if (fromDomain && replyDomain && fromDomain.toLowerCase() !== replyDomain.toLowerCase()) {
+            findings.push({ type: 'header', icon: '🚨', title: 'Reply-To Domain Mismatch', desc: `From domain: ${fromDomain} → Reply-To: ${replyDomain}. Replies go to a completely different domain. Classic phishing technique.`, sev: 'critical' });
+        }
+    }
+
+    // Received from suspicious server
+    const received = headers['received'] || '';
+    const suspiciousTLDs = ['.ru', '.cn', '.tk', '.xyz', '.top', '.buzz', '.work'];
+    for (const tld of suspiciousTLDs) {
+        if (received.toLowerCase().includes(tld)) {
+            findings.push({ type: 'header', icon: '⚠️', title: `Suspicious Relay Server (${tld})`, desc: `Email was relayed through a server with a ${tld} domain. Common in spam/phishing infrastructure.`, sev: 'high' });
+            break;
+        }
+    }
+
+    // X-Mailer / PHP
+    const xmailer = headers['x-mailer'] || '';
+    if (xmailer.toLowerCase().includes('phpmailer') || xmailer.toLowerCase().includes('php')) {
+        findings.push({ type: 'header', icon: '⚠️', title: 'Sent via PHPMailer', desc: 'Email was sent using a PHP script, not a legitimate mail server. Often indicates a compromised website or phishing kit.', sev: 'high' });
+    }
+
+    // Display name spoofing
+    const displayName = (from.match(/^([^<]+)<//) || [])[1];
+    const fromEmail = (from.match(/<([^>]+)>/) || [, from])[1];
+    if (displayName && fromEmail) {
+        const nameLower = displayName.toLowerCase().trim();
+        const knownBrands = ['microsoft', 'google', 'apple', 'amazon', 'paypal', 'netflix', 'xero', 'myob', 'ato', 'australia post', 'commonwealth bank', 'westpac', 'nab', 'anz'];
+        for (const brand of knownBrands) {
+            if (nameLower.includes(brand) && !fromEmail.toLowerCase().includes(brand.replace(/\s/g, ''))) {
+                findings.push({ type: 'header', icon: '🚨', title: `Display Name Impersonation: "${brand}"`, desc: `Display name contains "${brand}" but the email address (${fromEmail}) is not from ${brand}'s domain. Classic brand impersonation.`, sev: 'critical' });
+                break;
+            }
+        }
+    }
+
+    // Lookalike domains
+    const fromEmailLower = (fromEmail || '').toLowerCase();
+    const lookalikes = {
+        'xer0': 'xero', 'micros0ft': 'microsoft', 'g00gle': 'google', 'amaz0n': 'amazon',
+        'paypa1': 'paypal', 'app1e': 'apple', 'netf1ix': 'netflix', 'commonwea1th': 'commonwealth',
+        'microsoft365-': 'microsoft', 'office365-': 'microsoft', 'ms365-': 'microsoft',
+        'xero-billing': 'xero', 'xero-invoice': 'xero', 'myob-': 'myob',
+    };
+    for (const [fake, real] of Object.entries(lookalikes)) {
+        if (fromEmailLower.includes(fake)) {
+            findings.push({ type: 'header', icon: '🚨', title: `Lookalike Domain Detected`, desc: `The sender domain contains "${fake}" which impersonates "${real}". This is a typosquat / lookalike domain attack.`, sev: 'critical' });
+            break;
+        }
+    }
+
+    return findings;
+}
+
+function checkBody(body) {
+    const findings = [];
+    const lower = body.toLowerCase();
+
+    // Urgency language
+    const urgencyPhrases = ['urgent', 'immediately', 'right away', 'within the hour', 'act now', 'expires today', 'limited time', 'action required', 'account will be suspended', 'service interruption', 'overdue', 'final notice', 'last warning'];
+    const foundUrgency = urgencyPhrases.filter(p => lower.includes(p));
+    if (foundUrgency.length >= 2) {
+        findings.push({ type: 'body', icon: '🚩', title: 'High Urgency Pressure', desc: `Multiple urgency phrases detected: "${foundUrgency.slice(0, 3).join('", "')}". Phishing emails create artificial time pressure to prevent you from thinking critically.`, sev: 'high' });
+    } else if (foundUrgency.length === 1) {
+        findings.push({ type: 'body', icon: '⚠️', title: 'Urgency Language', desc: `Urgency phrase detected: "${foundUrgency[0]}". Not definitive, but phishing emails frequently use time pressure.`, sev: 'medium' });
+    }
+
+    // Secrecy
+    const secrecyPhrases = ['do not discuss', 'don\'t discuss', 'strictly confidential', 'do not tell', 'don\'t tell', 'keep this between', 'do not share', 'confidential until', 'do not call'];
+    const foundSecrecy = secrecyPhrases.filter(p => lower.includes(p));
+    if (foundSecrecy.length > 0) {
+        findings.push({ type: 'body', icon: '🚨', title: 'Secrecy / Isolation Tactics', desc: `Phrases discouraging verification detected: "${foundSecrecy.join('", "')}". Attackers try to prevent you from checking with colleagues.`, sev: 'critical' });
+    }
+
+    // Financial requests
+    const financialPhrases = ['wire transfer', 'bank transfer', 'bsb:', 'account:', 'iban', 'swift', 'bitcoin', 'crypto', 'gift card', 'payment link', 'click here to pay', 'pay your invoice'];
+    const foundFinancial = financialPhrases.filter(p => lower.includes(p));
+    if (foundFinancial.length > 0) {
+        findings.push({ type: 'body', icon: '💰', title: 'Financial Request Detected', desc: `Contains financial transfer language: "${foundFinancial.join('", "')}". Verify independently through known contacts before acting.`, sev: 'high' });
+    }
+
+    // Credential harvesting
+    const credPhrases = ['verify your account', 'confirm your identity', 'update your password', 'secure your account', 'sign in to verify', 'click below to verify', 'reset your password', 'unusual sign-in', 'unusual activity'];
+    const foundCred = credPhrases.filter(p => lower.includes(p));
+    if (foundCred.length > 0) {
+        findings.push({ type: 'body', icon: '🔑', title: 'Credential Harvesting Language', desc: `Account verification/security phrases detected: "${foundCred.slice(0, 3).join('", "')}". Often used to redirect victims to fake login pages.`, sev: 'high' });
+    }
+
+    // Late fee / threat
+    const threatPhrases = ['late fee', 'penalty', 'legal action', 'collections', 'report to authorities', 'your account will be', 'will be terminated', 'will be locked'];
+    const foundThreat = threatPhrases.filter(p => lower.includes(p));
+    if (foundThreat.length > 0) {
+        findings.push({ type: 'body', icon: '⚠️', title: 'Threatening Consequences', desc: `Threat language detected: "${foundThreat.join('", "')}". Attackers use fear of consequences to bypass your judgement.`, sev: 'medium' });
+    }
+
+    // Grammar / spelling (basic checks)
+    const grammarIssues = body.match(/\b(kindly|dear valued customer|dear sir\/madam|do the needful)\b/gi);
+    if (grammarIssues) {
+        findings.push({ type: 'body', icon: '📝', title: 'Generic / Unusual Phrasing', desc: `Phrases like "${grammarIssues[0]}" are common in mass phishing campaigns and Nigerian-style scams.`, sev: 'low' });
+    }
+
+    return findings;
+}
+
+function checkLinks(body) {
+    const findings = [];
+    // Extract URLs
+    const urlRegex = /https?:\/\/[^\s<>"']+/gi;
+    const urls = body.match(urlRegex) || [];
+
+    if (urls.length === 0) return findings;
+
+    const suspiciousDomains = ['.tk', '.ml', '.ga', '.cf', '.gq', '.xyz', '.top', '.buzz', '.work', '.click', '.link', '.info', '.site', '.online', '.club'];
+    const trustedDomains = ['google.com', 'microsoft.com', 'apple.com', 'amazon.com', 'github.com', 'myaccount.google.com', 'account.microsoft.com'];
+
+    for (const url of urls) {
+        try {
+            const parsed = new URL(url);
+            const domain = parsed.hostname.toLowerCase();
+
+            // Check for IP address URLs
+            if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(domain)) {
+                findings.push({ type: 'link', icon: '🚨', title: 'IP Address URL', desc: `Link points to an IP address (${domain}) instead of a domain name. Legitimate services use domain names.`, sev: 'critical' });
+                continue;
+            }
+
+            // Suspicious TLD
+            for (const tld of suspiciousDomains) {
+                if (domain.endsWith(tld)) {
+                    findings.push({ type: 'link', icon: '⚠️', title: `Suspicious TLD: ${tld}`, desc: `URL ${url.slice(0, 60)}... uses a ${tld} domain, frequently associated with phishing.`, sev: 'high' });
+                    break;
+                }
+            }
+
+            // Brand impersonation in URL
+            const brands = ['microsoft', 'google', 'apple', 'amazon', 'paypal', 'xero', 'myob'];
+            for (const brand of brands) {
+                if (domain.includes(brand) && !trustedDomains.some(t => domain.endsWith(t) || domain === t)) {
+                    findings.push({ type: 'link', icon: '🚨', title: `Brand Impersonation in URL`, desc: `Domain "${domain}" contains "${brand}" but is NOT the official ${brand} domain. Likely a phishing site.`, sev: 'critical' });
+                    break;
+                }
+            }
+
+            // Base64 in URL params (obfuscation)
+            if (parsed.search && /[A-Za-z0-9+/=]{20,}/.test(parsed.search)) {
+                findings.push({ type: 'link', icon: '⚠️', title: 'Encoded/Obfuscated URL Parameters', desc: `URL contains what appears to be Base64-encoded data in the parameters. This can hide the real destination.`, sev: 'medium' });
+            }
+
+            // HTTP (not HTTPS)
+            if (parsed.protocol === 'http:') {
+                findings.push({ type: 'link', icon: '⚠️', title: 'Insecure Link (HTTP)', desc: `URL uses HTTP instead of HTTPS. Legitimate services use encrypted connections.`, sev: 'medium' });
+            }
+
+        } catch (e) { /* invalid URL, skip */ }
+    }
+
+    if (findings.length === 0 && urls.length > 0) {
+        findings.push({ type: 'link', icon: '✅', title: 'Links Appear Normal', desc: `${urls.length} link(s) found. No obvious phishing indicators detected in URLs, but always hover before clicking.`, sev: 'info' });
+    }
+
+    return findings;
+}
+
+function analyzeEmail() {
+    const raw = document.getElementById('email-input').value.trim();
+    if (!raw) return;
+
+    let headers = {}, body = raw, hasHeaders = false;
+    if (currentTab === 'full' && raw.match(/^[A-Za-z0-9\-]+:\s/)) {
+        const parsed = parseHeaders(raw);
+        headers = parsed.headers;
+        body = parsed.body;
+        hasHeaders = Object.keys(headers).length > 2;
+    }
+
+    const allFindings = [];
+    let authData = { spf: null, dkim: null, dmarc: null, findings: [] };
+
+    if (hasHeaders) {
+        authData = checkAuth(headers);
+        allFindings.push(...authData.findings);
+        allFindings.push(...checkHeaders(headers));
+    }
+
+    allFindings.push(...checkBody(body));
+    allFindings.push(...checkLinks(body));
+
+    // Calculate threat score (0-100)
+    let score = 0;
+    for (const f of allFindings) {
+        if (f.sev === 'critical') score += 30;
+        else if (f.sev === 'high') score += 18;
+        else if (f.sev === 'medium') score += 8;
+        else if (f.sev === 'low') score += 3;
+    }
+    score = Math.min(score, 100);
+
+    renderResults(score, authData, allFindings, hasHeaders, headers);
+    document.getElementById('results').classList.add('visible');
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderResults(score, authData, findings, hasHeaders, headers) {
+    // Verdict
+    let level, label, sub;
+    if (score >= 50) { level = 'dangerous'; label = '🚨 Almost Certainly Phishing'; sub = 'Do NOT click links, reply, or take any action. Report it to your IT team.'; }
+    else if (score >= 25) { level = 'suspicious'; label = '⚠️ Suspicious — Verify Before Acting'; sub = 'This email has several red flags. Verify the sender through a separate channel before responding.'; }
+    else { level = 'safe'; label = '✅ Likely Legitimate'; sub = 'No major red flags detected. Standard caution still applies — always verify financial requests independently.'; }
+
+    document.getElementById('verdict-card').className = `verdict-card ${level}`;
+    document.getElementById('verdict-card').innerHTML = `
+        <div class="verdict-score">${score}/100</div>
+        <div class="verdict-label">${label}</div>
+        <div class="verdict-sub">${sub}</div>
+    `;
+
+    // Auth section
+    if (hasHeaders) {
+        const authFindings = findings.filter(f => f.type === 'auth');
+        document.getElementById('auth-section').innerHTML = `
+            <h3>🔐 Email Authentication</h3>
+            <table class="header-table">
+                <tr><th>Check</th><th>Result</th><th>Meaning</th></tr>
+                <tr><td>SPF</td><td class="${authData.spf === 'pass' ? 'pass' : authData.spf === 'fail' ? 'fail' : authData.spf ? 'warn' : 'none'}">${(authData.spf || 'N/A').toUpperCase()}</td><td>Is the sending server authorised?</td></tr>
+                <tr><td>DKIM</td><td class="${authData.dkim === 'pass' ? 'pass' : authData.dkim === 'fail' ? 'fail' : authData.dkim ? 'warn' : 'none'}">${(authData.dkim || 'N/A').toUpperCase()}</td><td>Was the email tampered with?</td></tr>
+                <tr><td>DMARC</td><td class="${authData.dmarc === 'pass' ? 'pass' : authData.dmarc === 'fail' ? 'fail' : authData.dmarc ? 'warn' : 'none'}">${(authData.dmarc || 'N/A').toUpperCase()}</td><td>Does the domain's policy allow this?</td></tr>
+            </table>
+            ${renderFindings(authFindings)}
+        `;
+    } else {
+        document.getElementById('auth-section').innerHTML = `
+            <h3>🔐 Email Authentication</h3>
+            <div class="finding-card">
+                <div class="finding-icon">ℹ️</div>
+                <div class="finding-body">
+                    <h4>No Headers Available</h4>
+                    <p>Paste the full email source (including headers) to check SPF, DKIM, and DMARC authentication. In Gmail: ⋮ → Show Original. In Outlook: File → Properties → Internet Headers.</p>
+                </div>
+            </div>
+        `;
+    }
+
+    // Header section
+    const headerFindings = findings.filter(f => f.type === 'header');
+    document.getElementById('header-section').innerHTML = headerFindings.length > 0 ? `
+        <h3>📨 Header Analysis</h3>
+        ${renderFindings(headerFindings)}
+    ` : '';
+
+    // Body section
+    const bodyFindings = findings.filter(f => f.type === 'body');
+    document.getElementById('body-section').innerHTML = bodyFindings.length > 0 ? `
+        <h3>📝 Content Analysis</h3>
+        ${renderFindings(bodyFindings)}
+    ` : `
+        <h3>📝 Content Analysis</h3>
+        <div class="finding-card">
+            <div class="finding-icon">✅</div>
+            <div class="finding-body">
+                <h4>No Content Red Flags</h4>
+                <p>No obvious social engineering tactics, urgency language, or suspicious requests detected in the email body.</p>
+            </div>
+        </div>
+    `;
+
+    // Link section
+    const linkFindings = findings.filter(f => f.type === 'link');
+    document.getElementById('link-section').innerHTML = linkFindings.length > 0 ? `
+        <h3>🔗 Link Analysis</h3>
+        ${renderFindings(linkFindings)}
+    ` : '';
+}
+
+function renderFindings(findings) {
+    return `<div class="finding-grid">${findings.map(f => `
+        <div class="finding-card">
+            <div class="finding-icon">${f.icon}</div>
+            <div class="finding-body">
+                <h4>${f.title}</h4>
+                <p>${f.desc}</p>
+            </div>
+            <span class="finding-sev sev-${f.sev}">${f.sev}</span>
+        </div>
+    `).join('')}</div>`;
+}
+</script>
