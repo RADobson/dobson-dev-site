@@ -50,6 +50,24 @@
 
     <!-- SEO: Sitemap link -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+    <!-- SEO: JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Dobson Development",
+      "url": "https://dobsondevelopment.com.au",
+      "logo": "https://dobsondevelopment.com.au/assets/images/icon.svg",
+      "description": "AI agents and cybersecurity consulting for Australian businesses. We build autonomous systems that work while you sleep.",
+      "areaServed": "AU",
+      "sameAs": [
+        "https://www.linkedin.com/company/dobson-development",
+        "https://github.com/RADobson"
+      ]
+    }
+    </script>
+    {% if page.json_ld %}{{ page.json_ld }}{% endif %}
     
     <!-- Fonts — with display=swap to prevent FOIT -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
