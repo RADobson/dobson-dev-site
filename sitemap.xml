@@ -182,4 +182,10 @@ layout: null
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>{{ site.url }}/tools/cyber-insurance-readiness-checker/</loc>
+    <lastmod>2026-03-08T00:00:00+10:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

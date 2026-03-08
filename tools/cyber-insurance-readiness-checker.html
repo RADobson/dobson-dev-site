@@ -1,0 +1,312 @@
+---
+layout: default
+title: "Cyber Insurance Readiness Checker | Check Your Renewal Risk"
+description: "Free cyber insurance readiness checker for SMBs and IT teams. Assess MFA, backups, EDR, patching, email security, logging, and incident response controls before renewal."
+---
+
+<style>
+.readiness-header { margin-bottom: 2rem; }
+.readiness-header h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.15; margin-bottom: 0.75rem; }
+.readiness-header p { color: var(--text-grey); line-height: 1.65; }
+.trust-badge {
+  background: linear-gradient(135deg, rgba(0,240,255,0.08), rgba(188,19,254,0.08));
+  border: 1px solid rgba(0,240,255,0.18);
+  border-radius: 12px; padding: 0.8rem 1.1rem; margin-bottom: 1.5rem;
+  color: var(--accent-neon); font-family: var(--font-mono); font-size: 0.82rem; text-align: center;
+}
+.section-card {
+  background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px;
+  padding: 1.4rem; margin-bottom: 1rem;
+}
+.section-card h3 { margin-bottom: 0.35rem; font-size: 1rem; }
+.section-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.9rem; }
+.control-item {
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 12px;
+  padding: 0.95rem;
+}
+.control-item label { display: flex; justify-content: space-between; gap: 0.75rem; align-items: center; font-weight: 600; color: var(--text-white); }
+.control-item small { display: block; color: var(--text-muted); line-height: 1.45; margin-top: 0.45rem; }
+select {
+  width: 100%; background: var(--bg-secondary); color: var(--text-white); border: 1px solid var(--border-subtle);
+  border-radius: 8px; padding: 0.65rem 0.8rem; font-family: var(--font-mono); font-size: 0.9rem;
+}
+.btn-primary {
+  width: 100%; border: none; border-radius: 10px; padding: 0.85rem 1rem; cursor: pointer;
+  background: linear-gradient(135deg, var(--accent-neon), var(--accent-purple));
+  color: var(--bg-main); font-family: var(--font-mono); font-weight: 700; font-size: 0.9rem;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(0,240,255,0.22); }
+.results { display: none; margin-top: 2rem; }
+.results.visible { display: block; }
+.score-card {
+  background: linear-gradient(135deg, rgba(0,240,255,0.06), rgba(188,19,254,0.06));
+  border: 1px solid rgba(0,240,255,0.16); border-radius: 18px; padding: 1.6rem; margin-bottom: 1rem;
+}
+.score-top { display: flex; justify-content: space-between; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.score-number { font-family: var(--font-mono); font-size: 2.4rem; font-weight: 700; color: var(--text-white); }
+.score-label { color: var(--text-grey); }
+.band {
+  display: inline-block; padding: 0.35rem 0.8rem; border-radius: 999px; font-family: var(--font-mono);
+  font-size: 0.78rem; font-weight: 700;
+}
+.band.strong { background: rgba(34,197,94,0.15); color: #22c55e; }
+.band.moderate { background: rgba(59,130,246,0.15); color: #60a5fa; }
+.band.weak { background: rgba(249,115,22,0.15); color: #fb923c; }
+.band.high-risk { background: rgba(239,68,68,0.15); color: #f87171; }
+.progress { height: 10px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; margin-top: 0.9rem; }
+.progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple)); transition: width 0.5s ease; }
+.two-col { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1rem; }
+@media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+.list-card {
+  background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 1.2rem;
+}
+.list-card h3 { font-size: 0.98rem; margin-bottom: 0.8rem; }
+.finding { border-left: 3px solid var(--accent-purple); padding-left: 0.8rem; margin-bottom: 0.9rem; }
+.finding strong { display: block; margin-bottom: 0.25rem; }
+.finding p { margin: 0; color: var(--text-grey); line-height: 1.5; font-size: 0.88rem; }
+.checklist { margin: 0; padding-left: 1.1rem; color: var(--text-grey); }
+.checklist li { margin-bottom: 0.45rem; line-height: 1.45; }
+.report-box {
+  margin-top: 1rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle);
+  border-radius: 12px; padding: 1rem;
+}
+textarea.report-output {
+  width: 100%; min-height: 220px; resize: vertical; background: var(--bg-secondary); color: var(--text-white);
+  border: 1px solid var(--border-subtle); border-radius: 8px; padding: 0.9rem; font-family: var(--font-mono); font-size: 0.82rem;
+}
+.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.75rem; }
+.btn-secondary {
+  background: transparent; color: var(--text-white); border: 1px solid var(--border-subtle); border-radius: 8px;
+  padding: 0.65rem 1rem; font-family: var(--font-mono); cursor: pointer;
+}
+.cta-box {
+  margin-top: 1.25rem; padding: 1.4rem; border-radius: 16px; text-align: center;
+  background: linear-gradient(135deg, rgba(0,240,255,0.05), rgba(188,19,254,0.05)); border: 1px solid rgba(0,240,255,0.12);
+}
+.cta-box p { color: var(--text-grey); margin-bottom: 1rem; }
+</style>
+
+<div class="container" style="padding: 2rem 1rem; max-width: 980px; margin: 0 auto;">
+  <div class="trust-badge">🔒 100% client-side • No signup required • Good for pre-renewal self-assessment</div>
+
+  <div class="readiness-header">
+    <h1>Cyber Insurance Readiness Checker</h1>
+    <p>Most cyber insurers now care less about your policy document and more about whether a short list of controls is actually working: <strong>MFA</strong>, <strong>backups</strong>, <strong>EDR</strong>, <strong>patching</strong>, <strong>email security</strong>, and an <strong>incident response plan</strong>. This checker gives you a fast, practical read on where your renewal or application is likely to get stuck.</p>
+  </div>
+
+  <div class="section-card">
+    <h3>Organisation Profile</h3>
+    <p>These inputs adjust the weighting slightly — bigger environments are punished harder for weak fundamentals.</p>
+    <div class="control-grid">
+      <div class="control-item">
+        <label for="companySize">Company size</label>
+        <select id="companySize">
+          <option value="small">1–25 staff</option>
+          <option value="mid" selected>26–250 staff</option>
+          <option value="large">250+ staff</option>
+        </select>
+      </div>
+      <div class="control-item">
+        <label for="industry">Industry sensitivity</label>
+        <select id="industry">
+          <option value="standard" selected>Standard SMB</option>
+          <option value="regulated">Regulated / financial / healthcare</option>
+          <option value="critical">Critical ops / high ransomware exposure</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>Core Controls Insurers Commonly Ask About</h3>
+    <p>Choose the option that most closely matches your current state — not your roadmap.</p>
+    <div class="control-grid">
+      <div class="control-item"><label>MFA for all staff<select id="mfaStaff"><option value="2">Fully enforced</option><option value="1">Partial / some apps</option><option value="0" selected>No / mostly no</option></select></label><small>Email, Microsoft 365, Google Workspace, VPN, core SaaS.</small></div>
+      <div class="control-item"><label>MFA for admins<select id="mfaAdmin"><option value="2" selected>Fully enforced</option><option value="1">Some admin paths</option><option value="0">No</option></select></label><small>This is usually a hard requirement.</small></div>
+      <div class="control-item"><label>Endpoint detection & response<select id="edr"><option value="2">EDR on most endpoints</option><option value="1" selected>Basic AV / partial EDR</option><option value="0">Consumer AV / none</option></select></label><small>Insurers increasingly ask whether ransomware-capable EDR is deployed.</small></div>
+      <div class="control-item"><label>Critical patching cadence<select id="patching"><option value="2">Within 14 days</option><option value="1" selected>Within 30 days</option><option value="0">Ad hoc / inconsistent</option></select></label><small>Fast patching matters for internet-facing and high-risk systems.</small></div>
+      <div class="control-item"><label>Immutable / offline backups<select id="backups"><option value="2">Yes, tested</option><option value="1">Backups exist, testing weak</option><option value="0" selected>No / unclear</option></select></label><small>Recovery confidence is one of the biggest underwriting questions.</small></div>
+      <div class="control-item"><label>Backup restore testing<select id="restore"><option value="2">Quarterly or better</option><option value="1" selected>Rare / annual</option><option value="0">Never tested</option></select></label><small>Having backups is not the same as proving recovery.</small></div>
+      <div class="control-item"><label>Email security<select id="email"><option value="2">Advanced filtering + impersonation controls</option><option value="1" selected>Basic filtering</option><option value="0">Weak / inconsistent</option></select></label><small>Phishing and BEC remain common claim drivers.</small></div>
+      <div class="control-item"><label>Privileged access control<select id="privileged"><option value="2">Separate admin accounts + approvals</option><option value="1">Some separation</option><option value="0" selected>Shared / weak admin hygiene</option></select></label><small>Shared admin accounts are a red flag.</small></div>
+      <div class="control-item"><label>Incident response plan<select id="ir"><option value="2">Documented + exercised</option><option value="1">Documented only</option><option value="0" selected>No practical plan</option></select></label><small>Insurers want evidence you'll respond fast and sanely.</small></div>
+      <div class="control-item"><label>Centralised logging / monitoring<select id="logging"><option value="2">Key logs centralised + reviewed</option><option value="1">Partial visibility</option><option value="0" selected>Little to no monitoring</option></select></label><small>Especially for Microsoft 365, endpoints, firewalls, and identity systems.</small></div>
+      <div class="control-item"><label>Security awareness training<select id="training"><option value="2">Ongoing + phishing drills</option><option value="1" selected>Annual/basic</option><option value="0">None / informal</option></select></label><small>Usually not a blocker, but it helps overall readiness.</small></div>
+      <div class="control-item"><label>Third-party / vendor access security<select id="vendors"><option value="2">Controlled + MFA + reviewed</option><option value="1" selected>Some controls</option><option value="0">Weak visibility</option></select></label><small>MSP, remote support, and vendor accounts can become your insurer's concern too.</small></div>
+    </div>
+  </div>
+
+  <button class="btn-primary" onclick="runAssessment()">Calculate readiness</button>
+
+  <div id="results" class="results">
+    <div class="score-card">
+      <div class="score-top">
+        <div>
+          <div class="score-number" id="scoreNumber">0</div>
+          <div class="score-label">Readiness score out of 100</div>
+        </div>
+        <div>
+          <div id="bandBadge" class="band weak">Moderate</div>
+          <div style="color: var(--text-grey); margin-top: 0.45rem; max-width: 320px;" id="bandText"></div>
+        </div>
+      </div>
+      <div class="progress"><div id="progressFill" class="progress-fill"></div></div>
+    </div>
+
+    <div class="two-col">
+      <div class="list-card">
+        <h3>Likely renewal blockers</h3>
+        <div id="blockers"></div>
+      </div>
+      <div class="list-card">
+        <h3>30-day priority checklist</h3>
+        <ul id="priorities" class="checklist"></ul>
+      </div>
+    </div>
+
+    <div class="report-box">
+      <h3 style="margin-bottom: 0.75rem;">Plain-text report</h3>
+      <textarea id="reportOutput" class="report-output" readonly></textarea>
+      <div class="actions">
+        <button class="btn-secondary" onclick="copyReport()">Copy report</button>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h3>Need this turned into an insurer-ready action plan?</h3>
+      <p>We can turn the gaps above into a 2-week remediation sprint with owners, priorities, and evidence collection for renewal conversations.</p>
+      <a href="/services/free-pilot/" class="btn-secondary" style="display: inline-block; text-decoration: none;">Book a free pilot call</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const controls = [
+  { id: 'mfaStaff', label: 'MFA for all staff', weight: 12, blocker: true, advice: 'Enforce MFA across email, identity, VPN, and core SaaS before renewal.' },
+  { id: 'mfaAdmin', label: 'MFA for admins', weight: 14, blocker: true, advice: 'Make admin MFA universal immediately. This is often non-negotiable.' },
+  { id: 'edr', label: 'Endpoint detection & response', weight: 11, blocker: true, advice: 'Deploy business-grade EDR with ransomware visibility across endpoints.' },
+  { id: 'patching', label: 'Critical patching cadence', weight: 10, blocker: true, advice: 'Get critical patching inside a 14-day SLA for exposed systems.' },
+  { id: 'backups', label: 'Immutable / offline backups', weight: 12, blocker: true, advice: 'Create isolated backups and document backup architecture.' },
+  { id: 'restore', label: 'Backup restore testing', weight: 8, blocker: false, advice: 'Run a real restore test and keep evidence of the result.' },
+  { id: 'email', label: 'Email security', weight: 8, blocker: false, advice: 'Tighten anti-phishing controls, impersonation protection, and domain hygiene.' },
+  { id: 'privileged', label: 'Privileged access control', weight: 8, blocker: true, advice: 'Separate admin identities, reduce standing privilege, and review shared access.' },
+  { id: 'ir', label: 'Incident response plan', weight: 6, blocker: false, advice: 'Write a lean ransomware/BEC response plan and rehearse it.' },
+  { id: 'logging', label: 'Centralised logging / monitoring', weight: 5, blocker: false, advice: 'Centralise the key logs your insurer or IR firm would ask for.' },
+  { id: 'training', label: 'Security awareness training', weight: 3, blocker: false, advice: 'Add a lightweight but recurring awareness and phishing program.' },
+  { id: 'vendors', label: 'Third-party / vendor access security', weight: 3, blocker: false, advice: 'Review vendor access, require MFA, and clean up unnecessary remote access.' }
+];
+
+function environmentPenalty() {
+  const size = document.getElementById('companySize').value;
+  const industry = document.getElementById('industry').value;
+  let penalty = 0;
+  if (size === 'large') penalty += 4;
+  else if (size === 'mid') penalty += 2;
+  if (industry === 'regulated') penalty += 3;
+  else if (industry === 'critical') penalty += 6;
+  return penalty;
+}
+
+function runAssessment() {
+  let earned = 0;
+  let total = 0;
+  const blockers = [];
+  const priorities = [];
+  const missingCritical = [];
+
+  controls.forEach(control => {
+    const value = Number(document.getElementById(control.id).value);
+    total += control.weight;
+    earned += (value / 2) * control.weight;
+
+    if (value === 0) {
+      priorities.push(control.advice);
+      if (control.blocker) {
+        blockers.push({ title: control.label, detail: 'Currently weak or absent. Many insurers will either exclude coverage, raise premiums, or ask follow-up questions here.' });
+        missingCritical.push(control.label);
+      }
+    } else if (value === 1) {
+      priorities.push('Harden ' + control.label.toLowerCase() + ' from partial to fully enforced.');
+      if (control.blocker) blockers.push({ title: control.label, detail: 'Partially implemented. Better than nothing, but still likely to attract underwriting scrutiny.' });
+    }
+  });
+
+  let score = Math.round((earned / total) * 100) - environmentPenalty();
+  score = Math.max(0, Math.min(100, score));
+
+  let band = 'high-risk';
+  let bandLabel = 'High Risk';
+  let bandText = 'Your current posture is likely to create underwriting friction or expensive exclusions.';
+  if (score >= 80) {
+    band = 'strong'; bandLabel = 'Strong';
+    bandText = 'You look materially more insurable than the average SMB, though evidence collection still matters.';
+  } else if (score >= 65) {
+    band = 'moderate'; bandLabel = 'Moderate';
+    bandText = 'You have a workable base, but a few weak controls could still slow renewal or raise pricing.';
+  } else if (score >= 45) {
+    band = 'weak'; bandLabel = 'Weak';
+    bandText = 'You are insurable in some cases, but you are exposed to premium pain, exclusions, or remediation demands.';
+  }
+
+  renderResults({ score, band, bandLabel, bandText, blockers, priorities, missingCritical });
+}
+
+function renderResults(data) {
+  const results = document.getElementById('results');
+  results.classList.add('visible');
+  document.getElementById('scoreNumber').textContent = data.score;
+  document.getElementById('bandBadge').className = 'band ' + data.band;
+  document.getElementById('bandBadge').textContent = data.bandLabel;
+  document.getElementById('bandText').textContent = data.bandText;
+  document.getElementById('progressFill').style.width = data.score + '%';
+
+  const blockersEl = document.getElementById('blockers');
+  blockersEl.innerHTML = data.blockers.length
+    ? data.blockers.slice(0, 6).map(item => `<div class="finding"><strong>${item.title}</strong><p>${item.detail}</p></div>`).join('')
+    : '<div class="finding"><strong>No major blockers surfaced</strong><p>Your answers suggest a comparatively insurer-friendly baseline. Focus on evidence, documentation, and consistency.</p></div>';
+
+  const prioritiesEl = document.getElementById('priorities');
+  const priorityItems = [...new Set(data.priorities)].slice(0, 6);
+  prioritiesEl.innerHTML = priorityItems.map(item => `<li>${item}</li>`).join('');
+
+  const report = buildReport(data, priorityItems);
+  document.getElementById('reportOutput').value = report;
+  results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function buildReport(data, priorityItems) {
+  const size = document.getElementById('companySize').selectedOptions[0].textContent;
+  const industry = document.getElementById('industry').selectedOptions[0].textContent;
+  const lines = [];
+  lines.push('CYBER INSURANCE READINESS REPORT');
+  lines.push('================================');
+  lines.push('Organisation profile: ' + size + ' | ' + industry);
+  lines.push('Readiness score: ' + data.score + '/100');
+  lines.push('Readiness band: ' + data.bandLabel);
+  lines.push('');
+  lines.push('SUMMARY');
+  lines.push(data.bandText);
+  lines.push('');
+  lines.push('LIKELY BLOCKERS');
+  if (data.blockers.length) {
+    data.blockers.forEach(item => lines.push('- ' + item.title + ': ' + item.detail));
+  } else {
+    lines.push('- No obvious hard blockers surfaced from this self-assessment.');
+  }
+  lines.push('');
+  lines.push('30-DAY PRIORITIES');
+  priorityItems.forEach(item => lines.push('- ' + item));
+  lines.push('');
+  lines.push('NOTE');
+  lines.push('This is a fast underwriting-style screening tool, not legal, insurance, or compliance advice.');
+  return lines.join('\n');
+}
+
+function copyReport() {
+  const output = document.getElementById('reportOutput');
+  output.select();
+  output.setSelectionRange(0, 99999);
+  document.execCommand('copy');
+}
+</script>
