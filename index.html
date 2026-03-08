@@ -445,7 +445,12 @@
             color: var(--accent-neon);
             display: flex;
             align-items: center;
+            gap: 0;
             position: relative;
+        }
+        .logo-prompt {
+            display: inline-block;
+            margin-right: 0;
         }
         .logo-terminal::before {
             content: '';
@@ -1514,8 +1519,7 @@
     <header role="banner">
         <div class="container nav-flex">
             <a href="/" class="logo-terminal" aria-label="Dobson Development Home">
-                <span>> </span>
-                <div class="typing-text">dobson_dev_</div>
+                <span class="logo-prompt">&gt;</span><div class="typing-text">dobson_dev_</div>
             </a>
             
             <nav class="nav-links" role="navigation" aria-label="Main navigation">
