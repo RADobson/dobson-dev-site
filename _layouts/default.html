@@ -185,6 +185,13 @@
             margin-right: 0;
         }
 
+        .site-logo-text {
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            animation: typing 2s steps(11, end);
+        }
+
         .site-logo::after {
             content: '';
             display: inline-block;
@@ -196,6 +203,7 @@
             animation: blink-caret 0.75s step-end infinite;
         }
         @keyframes blink-caret { from, to { border-color: transparent; opacity: 1; } 50% { opacity: 0; } }
+        @keyframes typing { from { width: 0 } to { width: 11ch } }
 
         .site-logo:hover {
             text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
@@ -623,8 +631,9 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <a href="/" class="site-logo">dobson_dev_</a>
+            <a href="/" class="site-logo"><span class="site-logo-text">dobson_dev_</span></a>
             <nav class="site-nav">
+                <a href="/services/cybersecurity/">Cybersecurity</a>
                 <a href="/">Home</a>
                 <a href="/e8cr/">E8CR Squad</a>
                 <a href="/blog/">Writing</a>
