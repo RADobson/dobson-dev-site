@@ -8,8 +8,6 @@
     <title>SOC Ops Squad — AI Cyber Squad for Security Operations</title>
     <meta name="description" content="The SOC Ops Squad: four specialised AI cybersecurity bots for XDR, SIEM, SOAR, and UEBA. On your hardware, with 24/7 operational coverage.">
     <link rel="canonical" href="https://dobsondevelopment.com.au/soc-squad/">
-
-    <!-- SEO: JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -17,343 +15,51 @@
       "name": "SOC Ops Squad — AI Cyber Squad for Security Operations",
       "applicationCategory": "SecurityApplication",
       "operatingSystem": "Linux, Windows",
-      "description": "4 autonomous AI agents delivering full SOC capability: XDR alert triage, SIEM rule management, SOAR playbook automation, and UEBA behavioural analytics. 24/7 coverage on your hardware.",
-      "offers": {
-        "@type": "Offer",
-        "price": "2500",
-        "priceCurrency": "AUD",
-        "priceValidUntil": "2026-12-31"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Dobson Development",
-        "url": "https://dobsondevelopment.com.au"
-      }
+      "description": "Four specialised AI cybersecurity bots delivering XDR triage, SIEM management, SOAR playbooks, and UEBA analytics with 24/7 operational coverage.",
+      "offers": {"@type": "Offer", "price": "2500", "priceCurrency": "AUD", "priceValidUntil": "2026-12-31"},
+      "provider": {"@type": "Organization", "name": "Dobson Development", "url": "https://dobsondevelopment.com.au"}
     }
     </script>
     <link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
-
     <meta property="og:title" content="SOC Ops Squad — AI Cyber Squad for Security Operations">
     <meta property="og:description" content="Four specialised AI cybersecurity bots for XDR, SIEM, SOAR, and UEBA. On-prem, 24/7, and built for modern security operations.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dobsondevelopment.com.au/soc-squad/">
-
     <style>
-        :root {
-            --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26;
-            --border: #2a2a3a; --border-hover: #3a3a5a;
-            --text: #e4e4ef; --muted: #8888a0; --dim: #55556a;
-            --accent: #3b82f6; --accent-glow: rgba(59, 130, 246, 0.15);
-            --green: #22c55e; --yellow: #eab308; --orange: #f97316; --red: #ef4444;
-            --purple: #8b5cf6; --purple-glow: rgba(139, 92, 246, 0.15);
-            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-        section { padding: 5rem 0; }
-        a { color: var(--accent); text-decoration: none; }
-
-        /* Nav */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(10,10,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; padding: 1rem 0; }
-        nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--accent); text-decoration: none; letter-spacing: -0.02em; }
-        .nav-links { display: flex; gap: 1.2rem; align-items: center; }
-        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--text); }
-        .nav-cta { background: linear-gradient(135deg, var(--accent), var(--purple)); color: #fff !important; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
-        .nav-cta:hover { opacity: 0.9; box-shadow: 0 4px 15px var(--purple-glow); }
-
-        /* Hero */
-        .hero { padding: 10rem 0 6rem; text-align: center; }
-        .hero-badge { display: inline-block; background: var(--accent-glow); border: 1px solid rgba(59,130,246,0.3); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; margin-bottom: 1.5rem; }
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1.5rem; }
-        .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero p { font-size: 1.2rem; color: var(--muted); max-width: 680px; margin: 0 auto 2.5rem; }
-        .hero-cta { display: inline-block; background: linear-gradient(135deg, var(--accent), var(--purple)); color: #fff; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: all 0.2s; }
-        .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--purple-glow); }
-        .hero-sub { display: block; margin-top: 1rem; color: var(--dim); font-size: 0.9rem; }
-
-        /* Problem */
-        .problem { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .problem h2 { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
-        .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .problem-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem; }
-        .problem-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-        .problem-card h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
-        .problem-card p { color: var(--muted); font-size: 0.95rem; }
-
-        /* Squad */
-        .squad h2 { font-size: 1.8rem; margin-bottom: 0.8rem; text-align: center; }
-        .squad .subtitle { text-align: center; color: var(--muted); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .bot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .bot-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: border-color 0.2s, transform 0.2s; }
-        .bot-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 30px var(--accent-glow); }
-        .bot-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
-        .bot-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-        .bot-icon.xdr { background: rgba(59,130,246,0.15); }
-        .bot-icon.siem { background: rgba(34,197,94,0.15); }
-        .bot-icon.soar { background: rgba(234,179,8,0.15); }
-        .bot-icon.ueba { background: rgba(168,85,247,0.15); }
-        .bot-card h3 { font-size: 1.1rem; }
-        .bot-tag { font-size: 0.75rem; color: var(--dim); font-family: var(--mono); }
-        .bot-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; }
-        .bot-features { list-style: none; }
-        .bot-features li { padding: 0.3rem 0; font-size: 0.88rem; color: var(--muted); }
-        .bot-features li::before { content: '→ '; color: var(--accent); font-weight: 600; }
-
-        /* Comparison */
-        .comparison { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .comparison h2 { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
-        .compare-table { width: 100%; border-collapse: collapse; margin: 0 auto; max-width: 800px; }
-        .compare-table th, .compare-table td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
-        .compare-table th { color: var(--dim); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .compare-table td:first-child { color: var(--text); font-weight: 500; }
-        .compare-table td:nth-child(2) { color: var(--muted); }
-        .compare-table td:nth-child(3) { color: var(--accent); font-weight: 600; }
-        .compare-table tr:last-child td { border-bottom: none; }
-
-        /* How */
-        .how h2 { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
-        .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; counter-reset: step; }
-        .how-step { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem; position: relative; }
-        .how-step::before { counter-increment: step; content: counter(step); position: absolute; top: -12px; left: 20px; background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
-        .how-step h3 { font-size: 1rem; margin-bottom: 0.5rem; margin-top: 0.3rem; }
-        .how-step p { color: var(--muted); font-size: 0.9rem; }
-
-        /* E8CR cross-sell */
-        .crosssell { text-align: center; }
-        .crosssell h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .crosssell p { color: var(--muted); max-width: 650px; margin: 0 auto 2rem; font-size: 1.05rem; }
-        .crosssell-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; max-width: 800px; margin: 0 auto 2rem; }
-        .crosssell-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
-        .crosssell-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .crosssell-card p { color: var(--muted); font-size: 0.9rem; margin: 0; }
-        .crosssell-plus { font-size: 2.5rem; color: var(--accent); font-weight: 700; }
-
-        /* CTA */
-        .cta-section { text-align: center; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08)); border-top: 1px solid var(--border); }
-        .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
-        .cta-section p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; max-width: 550px; margin-left: auto; margin-right: auto; }
-        .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent), var(--purple)); color: #fff; padding: 1rem 2.5rem; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; transition: all 0.2s; }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--purple-glow); }
-
-        /* Footer */
-        footer { padding: 3rem 0; border-top: 1px solid var(--border); text-align: center; }
-        footer p { color: var(--dim); font-size: 0.85rem; }
-        footer a { color: var(--accent); }
-
-        @media (max-width: 768px) {
-            .nav-links a:not(.nav-cta) { display: none; }
-            .crosssell-grid { grid-template-columns: 1fr; }
-            .crosssell-plus { transform: rotate(90deg); }
-        }
+        :root { --bg:#0a0a0f; --surface:#12121a; --card:#1a1a26; --border:#2a2a3a; --border-hover:#3a3a5a; --text:#e4e4ef; --muted:#8888a0; --dim:#55556a; --accent:#3b82f6; --accent-glow:rgba(59,130,246,.15); --purple:#8b5cf6; --purple-glow:rgba(139,92,246,.15); --font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; --mono:'SF Mono','Fira Code','Consolas',monospace; }
+        *{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth} body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+        body::before{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 15% 18%, rgba(59,130,246,.10), transparent 28%),radial-gradient(circle at 85% 14%, rgba(139,92,246,.10), transparent 30%),radial-gradient(circle at 50% 82%, rgba(59,130,246,.05), transparent 28%)}
+        .container{max-width:1120px;margin:0 auto;padding:0 1.5rem} section{padding:5rem 0;position:relative} a{color:var(--accent);text-decoration:none}
+        nav{position:fixed;top:0;width:100%;background:rgba(10,10,15,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:100;padding:1rem 0}
+        nav .container{display:flex;justify-content:space-between;align-items:center}.nav-brand{font-weight:700;font-size:1.1rem;color:var(--accent);text-decoration:none;letter-spacing:-.02em}.nav-links{display:flex;gap:1.2rem;align-items:center}.nav-links a{color:var(--muted);font-size:.9rem;transition:color .2s}.nav-links a:hover{color:var(--text)}.nav-cta{background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff!important;padding:.5rem 1.2rem;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .2s}.nav-cta:hover{opacity:.95;box-shadow:0 4px 15px var(--purple-glow)}
+        .hero{padding:9rem 0 5rem;overflow:hidden}.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(59,130,246,.03) 1px, transparent 1px);background-size:52px 52px;mask-image:radial-gradient(circle at center, black 18%, transparent 74%);-webkit-mask-image:radial-gradient(circle at center, black 18%, transparent 74%);pointer-events:none}.hero-badge{display:inline-block;background:var(--accent-glow);border:1px solid rgba(59,130,246,.3);color:var(--accent);padding:.45rem 1rem;border-radius:20px;font-size:.85rem;font-weight:500;margin-bottom:1.4rem;box-shadow:0 0 30px rgba(59,130,246,.08)}
+        .hero h1{font-size:clamp(2.7rem,6vw,4.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.02;margin-bottom:1.2rem;max-width:920px}.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero p{font-size:1.16rem;color:var(--muted);max-width:780px;margin:0 0 2rem;line-height:1.85}.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}.hero-cta,.hero-ghost{display:inline-flex;align-items:center;padding:1rem 1.35rem;border-radius:10px;font-weight:700;font-size:.95rem;transition:all .25s}.hero-cta{background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;box-shadow:0 12px 30px -18px rgba(59,130,246,.45)}.hero-ghost{border:1px solid rgba(59,130,246,.25);color:var(--accent);background:rgba(59,130,246,.04)}.hero-cta:hover,.hero-ghost:hover{transform:translateY(-3px)}
+        .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem;align-items:start}.panel,.card,.quote-box,.cta-panel{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));border:1px solid var(--border);border-radius:18px;position:relative;overflow:hidden}.panel::before,.card::before,.quote-box::before,.cta-panel::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg, rgba(59,130,246,.08), transparent 40%, rgba(139,92,246,.08));opacity:.8;pointer-events:none}.panel-inner,.card-content,.quote-inner,.cta-inner{position:relative;z-index:1;padding:1.5rem}.mini-label{display:inline-block;font-family:var(--mono);font-size:.72rem;color:var(--purple);margin-bottom:.7rem}.feature-list{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem 1rem;margin-top:1rem}.feature-list li{color:var(--muted);position:relative;padding-left:1.1rem}.feature-list li::before{content:'›';position:absolute;left:0;color:var(--accent)}
+        .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.metric{padding:1rem;border:1px solid rgba(255,255,255,.06);border-radius:14px;background:rgba(11,12,16,.45)}.metric .num{font-family:var(--mono);font-size:1.6rem;color:var(--accent);margin-bottom:.35rem}.metric .label{color:var(--muted);font-size:.85rem}
+        .section-title{font-size:clamp(1.45rem,3vw,2.2rem);margin-bottom:1rem;text-align:center}.section-sub{color:var(--muted);max-width:760px;margin:0 auto 2rem;text-align:center}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.card{transition:transform .3s,border-color .3s,box-shadow .3s}.card:hover{transform:translateY(-6px);border-color:var(--border-hover);box-shadow:0 24px 45px -30px rgba(59,130,246,.28)}.card h3{margin-bottom:.65rem;font-size:1.05rem}.card p{color:var(--muted);font-size:.95rem;line-height:1.7}.bot-features{list-style:none;margin-top:1rem}.bot-features li{padding:.3rem 0;font-size:.88rem;color:var(--muted)}.bot-features li::before{content:'→ ';color:var(--accent);font-weight:600}
+        .quote-box{margin-top:1.5rem}.quote-inner p{color:var(--text);font-size:1.1rem;line-height:1.8}.quote-inner small{display:block;margin-top:1rem;color:var(--purple);font-family:var(--mono)}
+        .compare-table{width:100%;border-collapse:collapse;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));border:1px solid var(--border);border-radius:18px;overflow:hidden}.compare-wrap{overflow:auto;border-radius:18px}.compare-table th,.compare-table td{padding:1rem 1.2rem;text-align:left;border-bottom:1px solid var(--border);font-size:.92rem}.compare-table th{color:var(--dim);font-weight:500;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}.compare-table td:first-child{color:var(--text);font-weight:500}.compare-table td:nth-child(2){color:var(--muted)}.compare-table td:nth-child(3){color:var(--accent);font-weight:600}.compare-table tr:last-child td{border-bottom:none}
+        .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.step-card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative}.step-num{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;background:var(--accent-glow);border:1px solid rgba(59,130,246,.3);border-radius:50%;font-weight:700;color:var(--accent);margin-bottom:.8rem}.step-card h3{margin-bottom:.5rem}.step-card p{color:var(--muted);font-size:.92rem}
+        .cta-panel{margin-top:1.5rem;text-align:center}.cta-inner h2{font-size:2rem;margin-bottom:.8rem}.cta-inner p{color:var(--muted);max-width:620px;margin:0 auto 1.5rem}
+        footer{padding:2rem 0;border-top:1px solid var(--border);text-align:center;color:var(--dim);font-size:.85rem} footer a{color:var(--dim)} footer a:hover{color:var(--accent)}
+        @media (max-width: 900px){.hero-grid,.grid-2,.grid-3,.grid-4,.feature-list,.steps{grid-template-columns:1fr}.hero h1{letter-spacing:-1px}} @media (max-width:768px){.nav-links a:not(.nav-cta){display:none}}
     </style>
 </head>
 <body>
+<nav><div class="container"><a href="/" class="nav-brand" style="display:inline-flex;align-items:center;gap:0;">&gt;dobson_dev_<span style="display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:2px;animation:blink .75s step-end infinite;vertical-align:text-bottom;"></span></a><style>@keyframes blink{from,to{opacity:1}50%{opacity:0}}</style><div class="nav-links"><a href="#squad">The Squad</a><a href="#compare">Compare</a><a href="#how">How It Works</a><a href="/e8cr/">E8CR Squad</a><a href="/#contact" class="nav-cta">Get a Demo</a></div></div></nav>
 
-<nav>
-    <div class="container">
-        <a href="/" class="nav-brand" style="display:inline-flex;align-items:center;gap:0;">&gt;dobson_dev_<span style="display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:2px;animation:blink .75s step-end infinite;vertical-align:text-bottom;"></span></a>
-        <div class="nav-links">
-            <a href="#squad">The Squad</a>
-            <a href="#compare">Compare</a>
-            <a href="#how">How It Works</a>
-            <a href="/e8cr/">E8CR Squad</a>
-            <a href="/#contact" class="nav-cta">Get a Demo</a>
-        </div>
-    </div>
-</nav>
+<section class="hero"><div class="container"><div class="hero-badge">AI Cyber Squad · 4 specialised bots · Zero analyst fatigue</div><h1>The SOC Ops Squad.<br><span>Your security operations, rethought.</span></h1><p>An AI cyber squad for security operations: four specialised bots that triage alerts, hunt threats, run playbooks, and score user risk — 24/7, on your hardware, at a fraction of the cost of a managed SOC.</p><div class="hero-actions"><a href="/#contact" class="hero-cta">Book a SOC assessment →</a><a href="/services/cybersecurity/" class="hero-ghost">See the broader offer</a></div><div class="hero-grid"><div class="panel"><div class="panel-inner"><div class="mini-label">THE PROBLEM</div><h3 style="margin-bottom:.8rem;">Most teams drown in alerts long before they run out of tooling.</h3><p style="color:var(--muted);line-height:1.8">The average Defender XDR deployment throws more signal than small teams can realistically process. The SOC Ops Squad is built to absorb that load — triage, correlation, playbooks, and behavioural analytics without constant analyst fatigue.</p><ul class="feature-list"><li>XDR triage and correlation</li><li>SIEM health and threat hunting</li><li>SOAR playbooks and containment</li><li>UEBA anomaly and insider-risk analysis</li></ul></div></div><div class="metrics"><div class="metric"><div class="num">4</div><div class="label">specialised bots</div></div><div class="metric"><div class="num">24/7</div><div class="label">operational coverage</div></div><div class="metric"><div class="num">11k</div><div class="label">alerts/day is not unusual</div></div><div class="metric"><div class="num">0</div><div class="label">interest in analyst burnout</div></div></div></div></div></section>
 
-<section class="hero">
-    <div class="container">
-        <span class="hero-badge">AI Cyber Squad · 4 specialised bots · Zero analyst fatigue</span>
-        <h1>The SOC Ops Squad.<br><span>Your security operations, rethought.</span></h1>
-        <p>An AI cyber squad for security operations: four specialised bots that triage alerts, hunt threats, run playbooks, and score user risk — 24/7, on your hardware, at a fraction of the cost of a managed SOC.</p>
-        <a href="/#contact" class="hero-cta">Book a SOC Assessment →</a>
-        <span class="hero-sub">Built on Microsoft Defender XDR + Sentinel • Runs on-prem on Apple Silicon</span>
-    </div>
-</section>
+<section><div class="container"><h2 class="section-title">The SOC Staffing Problem</h2><p class="section-sub">Building real SOC capability with people alone is expensive, hard to sustain, and rarely available to smaller teams that still face serious risk.</p><div class="grid-3"><div class="card"><div class="card-content"><div class="mini-label">01</div><h3>$500K–$2M per year</h3><p>That is what 24/7 SOC staffing can cost before you add tool sprawl, turnover, and management overhead.</p></div></div><div class="card"><div class="card-content"><div class="mini-label">02</div><h3>11,000 alerts per day</h3><p>Human analysts can only triage a sliver of that reliably. The rest becomes ignored signal or shallow investigation.</p></div></div><div class="card"><div class="card-content"><div class="mini-label">03</div><h3>287 days dwell time</h3><p>Attackers persist because no one can watch everything all the time, even when the tools are already screaming.</p></div></div></div><div class="quote-box"><div class="quote-inner"><p>“Your SIEM is often screaming into the void. The SOC Ops Squad is built to listen.”</p><small>That’s the operational gap</small></div></div></div></section>
 
-<section class="problem" id="problem">
-    <div class="container">
-        <h2>The SOC Staffing Problem</h2>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <div class="icon">💸</div>
-                <h3>$500K–$2M per year</h3>
-                <p>That's what a 24/7 SOC costs in staffing alone. Three shifts, minimum two analysts per shift, plus a manager. Most SMBs can't afford one analyst, let alone six.</p>
-            </div>
-            <div class="problem-card">
-                <div class="icon">🔔</div>
-                <h3>11,000 alerts per day</h3>
-                <p>The average Defender XDR deployment generates thousands of alerts. Human analysts can triage maybe 20 per hour. The rest? Ignored, missed, or auto-closed without investigation.</p>
-            </div>
-            <div class="problem-card">
-                <div class="icon">⏱️</div>
-                <h3>287 days average dwell time</h3>
-                <p>That's how long attackers sit in networks before detection. Not because the tools don't alert — because nobody's watching. Your SIEM is screaming into the void.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<section id="squad"><div class="container"><h2 class="section-title">Meet the SOC Ops Squad</h2><p class="section-sub">Four specialised bots. Each handles a core security operations function autonomously.</p><div class="grid-4"><div class="card"><div class="card-content"><div class="mini-label">XDR BOT</div><h3>🛡️ Cross-product triage</h3><p>Defender XDR triage with cross-product incident correlation and known-false-positive suppression.</p><ul class="bot-features"><li>Endpoint, email, identity, and cloud apps</li><li>Attack-chain detection across products</li><li>Auto-containment actions</li><li>Threat-intel enrichment</li></ul></div></div><div class="card"><div class="card-content"><div class="mini-label">SIEM BOT</div><h3>📊 Sentinel management</h3><p>Audits analytics rules, inventories log sources, identifies coverage gaps, and runs proactive threat hunts.</p><ul class="bot-features"><li>Rule health monitoring</li><li>MITRE ATT&CK coverage review</li><li>Log-source inventory and cost tracking</li><li>Scheduled hunts with finding reports</li></ul></div></div><div class="card"><div class="card-content"><div class="mini-label">SOAR BOT</div><h3>⚡ Automated playbooks</h3><p>Executes incident response playbooks for phishing, malware, brute force, compromise, and exfiltration scenarios.</p><ul class="bot-features"><li>Multi-step automated containment</li><li>Incident lifecycle management</li><li>SLA tracking</li><li>Full audit trail</li></ul></div></div><div class="card"><div class="card-content"><div class="mini-label">UEBA BOT</div><h3>🔍 Behavioural analytics</h3><p>Builds user baselines, detects anomalies, and scores insider-risk behaviour that signature-based detection often misses.</p><ul class="bot-features"><li>90-day rolling baselines</li><li>Multi-category anomaly detection</li><li>Composite risk scoring</li><li>High-risk user profiles</li></ul></div></div></div></div></section>
 
-<section class="squad" id="squad">
-    <div class="container">
-        <h2>Meet the SOC Ops Squad</h2>
-        <p class="subtitle">Four specialised bots. Each handles a core security operations function autonomously. Together, they deliver focused SOC capability without the usual analyst-heavy drag.</p>
-        <div class="bot-grid">
-            <div class="bot-card">
-                <div class="bot-header">
-                    <div class="bot-icon xdr">🛡️</div>
-                    <div>
-                        <h3>XDR Bot</h3>
-                        <span class="bot-tag">Defender XDR (MDE + MDO + MDI + MDA)</span>
-                    </div>
-                </div>
-                <p>Multi-source alert triage with cross-product incident correlation. Automatically resolves known false positives and escalates real threats with full context.</p>
-                <ul class="bot-features">
-                    <li>Triages alerts from Endpoint, Email, Identity, and Cloud Apps</li>
-                    <li>Cross-product attack chain detection (phishing → credential theft → lateral movement)</li>
-                    <li>Auto-containment: device isolation, IOC blocking, account disable</li>
-                    <li>Threat intel enrichment with MITRE ATT&CK mapping</li>
-                </ul>
-            </div>
-            <div class="bot-card">
-                <div class="bot-header">
-                    <div class="bot-icon siem">📊</div>
-                    <div>
-                        <h3>SIEM Bot</h3>
-                        <span class="bot-tag">Microsoft Sentinel</span>
-                    </div>
-                </div>
-                <p>Manages your Sentinel deployment: audits analytics rules, inventories log sources, identifies coverage gaps, and runs proactive threat hunts.</p>
-                <ul class="bot-features">
-                    <li>Analytics rule health monitoring (noisy, disabled, broken rules)</li>
-                    <li>MITRE ATT&CK coverage analysis with gap identification</li>
-                    <li>Log source inventory with cost tracking per source</li>
-                    <li>Scheduled threat hunts with KQL queries and finding reports</li>
-                </ul>
-            </div>
-            <div class="bot-card">
-                <div class="bot-header">
-                    <div class="bot-icon soar">⚡</div>
-                    <div>
-                        <h3>SOAR Bot</h3>
-                        <span class="bot-tag">Automated Playbooks</span>
-                    </div>
-                </div>
-                <p>Executes incident response playbooks automatically. Handles phishing, malware, brute force, account compromise, and data exfiltration — with SLA tracking.</p>
-                <ul class="bot-features">
-                    <li>5 playbook types with multi-step automated containment</li>
-                    <li>Incident lifecycle management (detect → triage → contain → resolve)</li>
-                    <li>SLA tracking per severity (acknowledge, contain, resolve targets)</li>
-                    <li>Full audit trail for compliance evidence</li>
-                </ul>
-            </div>
-            <div class="bot-card">
-                <div class="bot-header">
-                    <div class="bot-icon ueba">🔍</div>
-                    <div>
-                        <h3>UEBA Bot</h3>
-                        <span class="bot-tag">User Entity Behavior Analytics</span>
-                    </div>
-                </div>
-                <p>Builds behavioral baselines for every user, detects anomalies, and scores insider threat risk. Catches what signature-based detection misses.</p>
-                <ul class="bot-features">
-                    <li>90-day rolling behavioral baselines per user</li>
-                    <li>20 anomaly types across 5 categories (auth, data, privilege, comms, insider)</li>
-                    <li>Composite risk scoring with peer group comparison</li>
-                    <li>Investigation profiles for high-risk users</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+<section id="compare"><div class="container"><h2 class="section-title">SOC Ops Squad vs. Managed SOC / MDR</h2><div class="compare-wrap"><table class="compare-table"><thead><tr><th>Capability</th><th>Typical MDR Provider</th><th>SOC Ops Squad</th></tr></thead><tbody><tr><td>Monthly cost</td><td>$5,000–$15,000/mo</td><td>From $1,500/mo</td></tr><tr><td>Data residency</td><td>Their cloud</td><td>Your hardware</td></tr><tr><td>Alert triage</td><td>Shared analysts</td><td>Dedicated bots, every alert assessed</td></tr><tr><td>Cross-product correlation</td><td>Usually partial</td><td>MDE + MDO + MDI + MDA unified</td></tr><tr><td>Threat hunting</td><td>Periodic</td><td>Continuous, automated</td></tr><tr><td>Insider-risk detection</td><td>Often excluded</td><td>Full UEBA capability</td></tr><tr><td>Evidence</td><td>Request-based</td><td>Always-on output</td></tr><tr><td>Response actions</td><td>Notify you</td><td>Auto-contain then notify</td></tr></tbody></table></div></div></section>
 
-<section class="comparison" id="compare">
-    <div class="container">
-        <h2>SOC Ops Squad vs. Managed SOC / MDR</h2>
-        <table class="compare-table">
-            <thead>
-                <tr><th>Capability</th><th>Typical MDR Provider</th><th>SOC Squad</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Monthly cost</td><td>$5,000–$15,000/mo</td><td>From $1,500/mo</td></tr>
-                <tr><td>Data residency</td><td>Their cloud (US/EU)</td><td>Your hardware, your building</td></tr>
-                <tr><td>Alert triage</td><td>Best-effort, shared analysts</td><td>Dedicated agents, every alert assessed</td></tr>
-                <tr><td>Cross-product correlation</td><td>Usually endpoint only</td><td>MDE + MDO + MDI + MDA unified</td></tr>
-                <tr><td>Threat hunting</td><td>Quarterly reports</td><td>Continuous, automated, KQL-based</td></tr>
-                <tr><td>Insider threat detection</td><td>Usually not included</td><td>Full UEBA with behavioral baselines</td></tr>
-                <tr><td>Playbook customization</td><td>Their playbooks, not yours</td><td>Fully customisable, industry-specific</td></tr>
-                <tr><td>Evidence for auditors</td><td>Request-based, slow</td><td>Always-on, instant HTML/JSON export</td></tr>
-                <tr><td>Response actions</td><td>Notify you, you act</td><td>Auto-contain, then notify</td></tr>
-                <tr><td>Vendor lock-in</td><td>Their proprietary stack</td><td>Your M365/Sentinel, our agents</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+<section id="how"><div class="container"><h2 class="section-title">How It Works</h2><div class="steps"><div class="step-card"><div class="step-num">1</div><h3>Discovery</h3><p>Assess your M365 / Sentinel setup, coverage gaps, and where the SOC Ops Squad fits.</p></div><div class="step-card"><div class="step-num">2</div><h3>Deploy</h3><p>Register apps, connect systems, and install the bots on your hardware.</p></div><div class="step-card"><div class="step-num">3</div><h3>Baseline</h3><p>UEBA baselines, SIEM review, and first-wave triage capability come online fast.</p></div><div class="step-card"><div class="step-num">4</div><h3>Operate</h3><p>Your SOC runs continuously, with reports, escalations, and response support built in.</p></div></div></div></section>
 
-<section class="how" id="how">
-    <div class="container">
-        <h2>How It Works</h2>
-        <div class="how-grid">
-            <div class="how-step">
-                <h3>Discovery Call</h3>
-                <p>We assess your current M365/Sentinel setup, coverage gaps, and compliance requirements. 30 minutes, no obligation.</p>
-            </div>
-            <div class="how-step">
-                <h3>Deployment</h3>
-                <p>Azure AD app registration + agent installation on your Apple Silicon hardware. Typical deployment: 2–4 hours.</p>
-            </div>
-            <div class="how-step">
-                <h3>Baseline</h3>
-                <p>UEBA Bot establishes 90-day behavioral baselines. SIEM Bot audits rules and log sources. XDR Bot begins triage. Usually operational within 48 hours.</p>
-            </div>
-            <div class="how-step">
-                <h3>Autonomous Ops</h3>
-                <p>Your SOC runs 24/7. Weekly reports delivered automatically. Critical escalations reach you in real-time. You sleep better.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<section><div class="container"><h2 class="section-title">Complete Autonomous Cybersecurity</h2><p class="section-sub">SOC Ops Squad handles detection and response. Pair it with the Essential 8 Squad for prevention and compliance.</p><div class="grid-2"><div class="card"><div class="card-content"><div class="mini-label">E8CR SQUAD</div><h3>🛡️ Prevention & compliance</h3><p>Essential Eight controls, hardening, identity, app control, patching, and backup verification.</p></div></div><div class="card"><div class="card-content"><div class="mini-label">SOC OPS SQUAD</div><h3>🚨 Detection & response</h3><p>XDR, SIEM, SOAR, and UEBA working together as a focused AI cyber squad for operations.</p></div></div></div><div class="cta-panel"><div class="cta-inner"><h2>Ready to stop drowning in alerts?</h2><p>Book a free SOC assessment and we’ll show you exactly where the sharper operational opportunity sits.</p><div class="hero-actions" style="justify-content:center"><a href="/#contact" class="hero-cta">Book your SOC assessment →</a><a href="/e8cr/" class="hero-ghost">Learn about E8CR Squad</a></div></div></div></div></section>
 
-<section class="crosssell" id="complete">
-    <div class="container">
-        <h2>Complete Autonomous Cybersecurity</h2>
-        <p>SOC Squad handles <strong>detection and response</strong>. Pair it with E8CR Squad for <strong>prevention and compliance</strong>. Together: full coverage, zero gaps.</p>
-        <div class="crosssell-grid">
-            <div class="crosssell-card">
-                <h3>🛡️ E8CR Squad</h3>
-                <p>Prevention & Compliance<br>Essential Eight ML2 controls<br>Patching • App Control • MFA • Backups</p>
-            </div>
-            <div class="crosssell-plus">+</div>
-            <div class="crosssell-card">
-                <h3>🔮 SOC Squad</h3>
-                <p>Detection & Response<br>Security Operations Centre<br>XDR • SIEM • SOAR • UEBA</p>
-            </div>
-        </div>
-        <a href="/e8cr/" style="color: var(--accent); font-weight: 600;">Learn about E8CR Squad →</a>
-    </div>
-</section>
-
-<section class="cta-section" id="cta">
-    <div class="container">
-        <h2>Ready to Stop Drowning in Alerts?</h2>
-        <p>Book a free 30-minute SOC assessment. We'll show you exactly what your Defender XDR is seeing — and what you're missing.</p>
-        <a href="/#contact" class="cta-btn">Book Your SOC Assessment →</a>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2026 <a href="/">Dobson Development</a> — Brisbane, Australia</p>
-        <p style="margin-top: 0.5rem;"><a href="/e8cr/">E8CR Squad</a> · <a href="/tools/">Free Tools</a> · <a href="/#contact">Contact</a></p>
-    </div>
-</footer>
-
+<footer><div class="container"><p>© 2026 <a href="/">Dobson Development</a> — Brisbane, Australia</p><p style="margin-top:.5rem;"><a href="/e8cr/">E8CR Squad</a> · <a href="/tools/">Free Tools</a> · <a href="/#contact">Contact</a></p></div></footer>
 </body>
 </html>
