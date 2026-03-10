@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Blog
-description: Insights on SIEM, SOAR, XDR, security automation, and building with AI. Technical articles from an Australian cybersecurity developer.
+description: Sharp takes on security automation, AI tools, and building things that actually work. From an Australian cybersecurity builder.
 ---
 
 <!-- Structured Data: Blog -->
@@ -10,7 +10,7 @@ description: Insights on SIEM, SOAR, XDR, security automation, and building with
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": "Dobson Development Blog",
-    "description": "Insights on security automation, AI tools, and building things that work",
+    "description": "Sharp takes on security automation, AI tools, and building things that actually work",
     "url": "{{ site.url }}/blog/",
     "inLanguage": "en-AU",
     "publisher": {
@@ -75,7 +75,7 @@ description: Insights on SIEM, SOAR, XDR, security automation, and building with
 
 <div class="blog-header reveal">
     <h1><span class="mono-accent">//</span> Blog</h1>
-    <p>Insights on security automation, AI tools, and building things that work.</p>
+    <p>Security, AI, and things that actually ship.</p>
 </div>
 
 <div class="post-list">
@@ -96,7 +96,7 @@ description: Insights on SIEM, SOAR, XDR, security automation, and building with
         <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
         {% endif %}
         <a href="{{ post.url }}" class="read-more">
-            <span>Read Article</span>
+            <span>Read more</span>
             <span class="arrow">→</span>
         </a>
     </article>
@@ -105,6 +105,6 @@ description: Insights on SIEM, SOAR, XDR, security automation, and building with
 
 {% if site.posts.size == 0 %}
 <div class="empty-state reveal">
-    <p>No posts yet. Check back soon.</p>
+    <p>Nothing here yet. First post incoming.</p>
 </div>
 {% endif %}

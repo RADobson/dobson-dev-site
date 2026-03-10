@@ -8,201 +8,164 @@ categories: [cybersecurity, strategy]
 tags: [security-gap-analysis, security-posture, security-assessment, security-controls, risk-management, security-stack]
 ---
 
-# Is Your Security Stack Actually Protecting You? How to Find the Gaps
+# Is Your Security Stack Actually Protecting You?
 
-You have an EDR. You have a firewall. You have MFA enabled. You might even have a SIEM. So you're protected, right?
+You have an EDR. A firewall. MFA enabled. Maybe a SIEM. So you're protected, right?
 
-Maybe. Maybe not.
+Maybe. Probably not entirely.
 
-Most organisations we assess have between three and seven significant security control gaps — areas where their tools and policies don't actually protect against common attack techniques. These aren't exotic, theoretical vulnerabilities. They're practical gaps that real attackers exploit routinely.
+Most organisations we assess have three to seven significant control gaps — areas where their tools don't actually protect against common attack techniques. Not exotic, theoretical vulnerabilities. Practical gaps that real attackers exploit routinely.
 
-This guide walks you through how to find those gaps, how to assess their severity, and how to prioritise fixing them without unlimited budget.
+Here's how to find them, assess them, and fix the ones that matter most.
 
-## Why Your Security Stack Probably Has Gaps
+## Why Your Stack Has Gaps
 
-### The tool sprawl problem
+### Tool sprawl ≠ coverage
 
-The average mid-sized organisation runs 40–60 security tools. Despite that investment, coverage gaps persist because:
+The average mid-sized org runs 40–60 security tools. Gaps persist because:
 
-- **Tools overlap in some areas and miss others entirely.** You might have three products that detect malware on endpoints but nothing watching for data exfiltration through cloud applications.
-- **Configuration gaps.** A tool can be deployed but misconfigured — EDR in audit-only mode, firewall rules that are too permissive, MFA that allows SMS as a factor.
-- **Integration gaps.** Tools that don't share data can't correlate events. An identity alert and a network alert that together indicate compromise might be investigated separately — or not at all.
+- **Overlap without coverage.** Three products detecting endpoint malware, nothing watching for data exfiltration through cloud apps.
+- **Configuration gaps.** EDR in audit-only mode. Overly permissive firewall rules. MFA that allows SMS.
+- **Integration gaps.** Tools that don't share data can't correlate events. An identity alert and a network alert that together scream "compromise" get investigated separately — or not at all.
 
-### The assumption problem
+### The assumption trap
 
-Security teams often assume their tools cover certain threats without verifying. "We have a firewall, so network-based attacks are covered" is a common assumption that breaks down when you test it against specific attack techniques.
+Security teams assume their tools cover certain threats without verifying. "We have a firewall, so network-based attacks are covered" breaks down fast against specific techniques.
 
 ### The evolution problem
 
-Your threat landscape changes faster than your security stack. New attack techniques, new cloud services, remote work patterns, AI-powered attacks — your tools were configured for last year's threats. Are they still relevant?
+Your threat landscape shifts faster than your stack. New techniques, new cloud services, remote work patterns, AI-powered attacks — your tools were configured for last year's threats.
 
-## A Framework-Based Approach to Gap Analysis
+## Framework-Based Gap Analysis
 
-The most effective way to find gaps is to measure your controls against a structured framework. This removes guesswork and gives you a common language for discussing gaps with stakeholders.
+The most effective way to find gaps is measuring controls against a structured framework. Removes guesswork. Gives you a common language for discussing gaps with stakeholders.
 
-### MITRE ATT&CK: The gold standard for detection gaps
+### MITRE ATT&CK: The gold standard
 
-The MITRE ATT&CK framework catalogues 200+ techniques that attackers use across the kill chain — from initial access through execution, persistence, lateral movement, to exfiltration and impact.
+200+ catalogued attacker techniques across the kill chain. Use it:
 
-**How to use it for gap analysis:**
+1. **Map current detections** to ATT&CK techniques. For each: do you have prevention, detection, or neither?
+2. **Focus on what matters.** Not all 200+ techniques are equally likely. Prioritise by industry, recent breaches, and your existing tool capabilities.
+3. **Spot systemic gaps.** Zero coverage across an entire tactic (lateral movement, exfiltration) means you need a new control, not just tuning.
 
-1. **Map your current detections** to ATT&CK techniques. For each technique, document whether you have:
-   - Prevention (a control that blocks the technique)
-   - Detection (an alert that fires when the technique is used)
-   - Neither (a gap)
+### Essential Eight
 
-2. **Focus on the techniques that matter.** Not all 200+ techniques are equally likely. Prioritise based on:
-   - Techniques commonly used against organisations like yours (industry, size, geography)
-   - Techniques used in recent major breaches
-   - Techniques your existing tools are designed to detect but may not be configured for
+For Australian orgs, the [Essential Eight maturity model](/2026/02/20/essential-eight-compliance-guide/) provides a practical baseline. Gaps here aren't just security risks — they're increasingly compliance and insurance risks too.
 
-3. **Identify clusters of gaps.** If you have no coverage across an entire tactic (e.g., lateral movement or data exfiltration), that's a systemic gap that requires a new control, not just tuning an existing one.
+### CIS Controls v8
 
-### The Essential Eight: Baseline control gaps
+18 prioritised control groups covering asset management, data protection, and awareness alongside detection. Useful for broader assessments beyond just detection.
 
-For Australian organisations, the [Essential Eight maturity model](/2026/02/20/essential-eight-compliance-guide/) provides a practical baseline. Gaps against the Essential Eight aren't just security risks — they're increasingly compliance and insurance risks.
+## The Five Gaps We Find Everywhere
 
-### CIS Controls: Prioritised security actions
+### 1. No lateral movement visibility
 
-The CIS Critical Security Controls (v8) provide 18 control groups prioritised by implementation effort and defensive value. They're particularly useful for organisations that want a broader assessment beyond detection — covering asset management, data protection, and security awareness as well.
+An attacker compromises one endpoint. Then moves laterally — file shares, Active Directory queries, other systems — until they reach something valuable. Most SMBs have zero detection for this.
 
-## The Five Most Common Security Gaps We Find
+**Why:** EDR watches individual endpoints. Firewalls watch north-south traffic. Neither reliably catches east-west movement.
 
-Based on hundreds of assessments across Australian organisations, these are the gaps that appear most frequently.
+**Fix:** Enable AD authentication log ingestion. Turn on EDR lateral movement detections (often available but not enabled). Consider NDR for larger environments. Implement network segmentation.
 
-### Gap 1: No visibility into lateral movement
+### 2. Cloud application blind spots
 
-**The problem:** An attacker compromises one endpoint. From there, they move laterally — accessing file shares, querying Active Directory, connecting to other systems — until they reach something valuable. Most SMBs have no detection for this.
+Employees use dozens of SaaS apps, many unknown to IT. An attacker with a compromised cloud identity accesses email, SharePoint, OneDrive, and connected third-party apps — no on-prem security control fires.
 
-**Why it persists:** EDR monitors individual endpoints. Firewalls monitor north-south traffic. Neither reliably detects east-west (internal) movement. Identity monitoring catches some techniques (pass-the-hash, Kerberoasting) but requires specific log sources and detections.
+**Why:** Traditional stacks are built for on-prem. Cloud monitoring needs different tools (CASB, cloud-native audit logging) most orgs haven't deployed.
 
-**How to fix it:**
-- Enable and ingest Active Directory authentication logs
-- Deploy EDR-based lateral movement detections (most major EDRs have them, but they're often not enabled by default)
-- Consider network detection and response (NDR) for larger environments
-- Implement network segmentation to limit lateral movement paths
+**Fix:** Enable M365 Unified Audit Logs (or Google Workspace equivalent). Deploy CASB or cloud-native shadow IT discovery. Review OAuth app permissions quarterly. Implement Conditional Access.
 
-### Gap 2: Cloud application blind spots
+### 3. BEC slips past basic email filtering
 
-**The problem:** Your employees use dozens of SaaS applications — many of which you don't know about. Data flows through these applications without any security monitoring. An attacker who compromises a user's cloud identity can access email, SharePoint, OneDrive, and connected third-party apps without triggering any on-premises security controls.
+Business email compromise doesn't use malware or malicious links. An attacker impersonates a trusted contact and asks for a wire transfer. Basic filtering catches nothing because there's nothing malicious to detect.
 
-**Why it persists:** Traditional security stacks are designed for on-premises infrastructure. Cloud application monitoring requires different tools (CASB, cloud-native audit logging) that many organisations haven't implemented.
+**Why:** Traditional email security looks for known-bad indicators. BEC uses none.
 
-**How to fix it:**
-- Enable and ingest Microsoft 365 Unified Audit Logs (or Google Workspace audit logs)
-- Deploy a CASB or use your cloud provider's native shadow IT discovery
-- Review OAuth application permissions quarterly
-- Implement Conditional Access policies to restrict access by device compliance and location
+**Fix:** AI-powered email security (Abnormal Security, Proofpoint with AI) that analyses communication patterns. DMARC, DKIM, SPF. Mailbox forwarding rules alerting. Staff training on BEC patterns with real examples.
 
-### Gap 3: Email-based attacks beyond basic filtering
+### 4. No data exfiltration detection
 
-**The problem:** Business email compromise (BEC) doesn't use malware or malicious links — an attacker impersonates a trusted contact and asks for a wire transfer, credential, or sensitive document. Basic email filtering doesn't catch it because there's nothing malicious to detect.
+Most organisations can't detect large-scale data leaving their environment. Personal cloud storage, external email, web uploads — nobody notices.
 
-**Why it persists:** Traditional email security looks for known-bad indicators (malicious URLs, malware attachments, known phishing signatures). BEC attacks use none of these — they rely on social engineering and compromised or spoofed identities.
+**Why:** DLP tools are complex. Many orgs bought DLP but never finished the classification work to make it effective.
 
-**How to fix it:**
-- Deploy AI-powered email security (Abnormal Security, Proofpoint with AI features) that analyses communication patterns, not just content
-- Implement DMARC, DKIM, and SPF to prevent email spoofing of your domain
-- Enable mailbox forwarding rules alerting — attackers frequently set up rules to hide their activity
-- Train staff on BEC patterns with practical examples, not generic phishing awareness
+**Fix:** Start simple — monitor bulk downloads from file shares and cloud storage. Email DLP for sensitive patterns (TFNs, credit cards, health IDs). Cloud-native DLP in M365 or Google Workspace (included in higher tiers). Monitor USB usage.
 
-### Gap 4: No data exfiltration detection
+### 5. Backup and recovery gaps
 
-**The problem:** Most organisations can't detect when large amounts of data leave their environment. An attacker (or malicious insider) can copy sensitive data to a personal cloud storage account, email it externally, or upload it through a web application — and nobody notices.
+Backups exist but aren't tested. Or aren't isolated from production — ransomware encrypts them too. Or cover servers but not cloud data.
 
-**Why it persists:** DLP (data loss prevention) tools are complex to implement and manage. Many organisations have bought DLP but never completed the classification and policy work needed to make it effective.
+**Why:** Backups are boring until you need them. Testing restores rarely surfaces in prevention-focused assessments.
 
-**How to fix it:**
-- Start simple: monitor for bulk downloads from file shares and cloud storage
-- Implement email DLP for sensitive data patterns (tax file numbers, credit card numbers, health identifiers)
-- Use cloud-native DLP in Microsoft 365 or Google Workspace — it's included in higher licence tiers
-- Monitor for USB device usage if your endpoints support it
+**Fix:** Test restores quarterly — actually restore data. Immutable backups (write-once). Separate backup credentials from production. Include cloud data — M365 retention is not a backup.
 
-### Gap 5: Backup and recovery gaps
+## Prioritising Remediation
 
-**The problem:** Backups exist but haven't been tested. Or backups exist but aren't isolated from the production environment — meaning ransomware can encrypt the backups too. Or backups cover servers but not cloud data (SharePoint, email, SaaS application data).
+You've found the gaps. You can't fix them all at once.
 
-**Why it persists:** Backups are boring until you need them. Testing restores takes time and rarely surfaces in security assessments that focus on prevention and detection.
-
-**How to fix it:**
-- Test restores quarterly — actually restore data, don't just verify backup jobs completed
-- Implement immutable backups (write-once storage that can't be modified or deleted)
-- Ensure backup accounts use separate credentials from your production environment
-- Include cloud data in your backup strategy — Microsoft 365 data retention is not a backup
-
-## How to Prioritise Remediation
-
-You've identified your gaps. You can't fix them all at once. Here's how to prioritise.
-
-### Risk-based prioritisation
+### Risk-based priority
 
 For each gap, assess:
+1. **Likelihood** — Is this technique commonly used against orgs like yours?
+2. **Impact** — Worst case? Breach? Ransomware? Business interruption?
+3. **Effort** — How much to close it?
 
-1. **Likelihood of exploitation** — Is this technique commonly used in attacks against organisations like yours?
-2. **Impact if exploited** — What's the worst-case outcome? Data breach? Ransomware? Business interruption?
-3. **Ease of remediation** — How much effort and cost to close the gap?
+High-likelihood, high-impact, low-effort = fix first.
 
-Prioritise gaps that are high-likelihood, high-impact, and low-effort to fix.
+### The blast radius test
 
-### The "blast radius" approach
-
-For each gap, ask: "If an attacker exploits this, how far can they get?" A gap in lateral movement detection combined with flat network segmentation means a single compromised endpoint can lead to total domain compromise. That's a large blast radius — fix it first.
+"If an attacker exploits this, how far do they get?" Lateral movement gaps plus flat network segmentation means one endpoint leads to total domain compromise. Large blast radius = fix first.
 
 > ### 🔍 Find Your Security Gaps — Free Tools
 >
-> We've built three free tools to help you assess your security posture:
+> **[Security Control Coverage Calculator](/tools/security-control-coverage)** — Map your tools against common attack techniques.
 >
-> **[Security Control Coverage Calculator](/tools/security-control-coverage)** — Map your security tools against common attack techniques to find coverage gaps.
+> **[Security Stack Maturity Score](/tools/security-maturity-score)** — Holistic score with improvement recommendations.
 >
-> **[Security Stack Maturity Score](/tools/security-maturity-score)** — Get a holistic score across your entire security programme with specific improvement recommendations.
->
-> **[Breach Blast Radius Simulator](/tools/breach-blast-radius)** — Model what happens when specific controls fail. Understand the blast radius of your gaps.
+> **[Breach Blast Radius Simulator](/tools/breach-blast-radius)** — Model what happens when controls fail.
 >
 > **[Start your assessment →](/tools/security-control-coverage)**
 
-### Quick wins vs strategic investments
+### Quick wins vs strategic bets
 
-Some gaps can be closed quickly with configuration changes:
-- Enabling MFA on remaining accounts
-- Turning on audit logging for cloud services
-- Configuring EDR detections that are available but not enabled
-- Implementing email forwarding rules alerting
+Quick wins (config changes, enabling dormant capabilities):
+- MFA on remaining accounts
+- Cloud audit logging
+- EDR detections available but not enabled
+- Email forwarding rules alerting
 
-Others require new tools or significant effort:
-- Deploying network detection and response
-- Implementing comprehensive DLP
-- Achieving full application control (Essential Eight)
+Strategic investments (new tools, significant effort):
+- Network detection and response
+- Comprehensive DLP
+- Full application control
 
-Do the quick wins first. They're often disproportionately effective — enabling existing but dormant capabilities is essentially free security improvement.
+Do the quick wins first. Enabling existing but dormant capabilities is essentially free security improvement.
 
-## Building a Continuous Assessment Practice
+## Build a Continuous Practice
 
-Gap analysis isn't a one-time exercise. Build it into your regular security operations:
+Gap analysis isn't a one-time exercise.
 
-**Monthly:** Review new detections and alerts. Are they catching real threats or generating noise? Tune and adjust.
+**Monthly:** Review detections. Real threats or noise? Tune and adjust.
 
-**Quarterly:** Re-assess your coverage against MITRE ATT&CK. Have new techniques been added? Has your environment changed (new cloud services, new applications)?
+**Quarterly:** Re-assess against MITRE ATT&CK. New techniques? Environment changes?
 
-**Annually:** Full security posture assessment. Review your Essential Eight maturity (use our [Essential Eight Gap Assessment](/tools/essential-eight-assessment)), assess your vendor stack (use our [Vendor Pricing Reality Checker](/tools/vendor-pricing-checker) to ensure you're getting value), and update your security roadmap.
+**Annually:** Full posture assessment. [Essential Eight Gap Assessment](/tools/essential-eight-assessment), [Vendor Pricing Reality Checker](/tools/vendor-pricing-checker), updated roadmap.
 
-**After every incident:** Every security incident is a gap analysis data point. What failed? What wasn't detected? What could have reduced the impact? Document and feed this into your next assessment.
+**After every incident:** What failed? What wasn't detected? What reduces impact next time? Document and feed into the next assessment.
 
-## Measuring Improvement Over Time
+## Track What Matters
 
-Track these metrics to demonstrate progress:
+- **ATT&CK coverage %** — techniques with prevention or detection
+- **MTTD** — how quickly you spot threats
+- **MTTR** — how quickly you contain and remediate
+- **E8 maturity levels** — across all eight strategies
+- **Open gap count** — unresolved identified gaps
 
-- **ATT&CK technique coverage percentage** — What percentage of relevant techniques do you have prevention or detection for?
-- **Mean time to detect (MTTD)** — How quickly do you identify threats?
-- **Mean time to respond (MTTR)** — How quickly do you contain and remediate?
-- **Essential Eight maturity levels** — Track your score across all eight strategies.
-- **Open gap count** — How many identified gaps remain unresolved?
+These also make excellent board reporting. Executives may not understand individual controls, but they understand coverage percentages and trend lines.
 
-These metrics also make excellent board-level reporting. Executives may not understand individual controls, but they understand coverage percentages and trend lines.
+## The Bottom Line
 
-## Final Thoughts
+More tools doesn't mean more protection. A focused set of well-configured, well-monitored tools outperforms a bloated stack of shelfware every time.
 
-The uncomfortable truth about security stacks: more tools doesn't mean more protection. A focused set of well-configured, well-monitored tools will outperform a bloated stack of shelfware every time.
+Find your gaps. Prioritise by real risk. Fix the quick wins. Plan the strategic investments. Measure progress.
 
-Start by finding your gaps. Prioritise based on real risk. Fix the quick wins. Plan for the strategic investments. And measure your progress over time.
-
-Your security stack should work as hard as you do. **[Find out if it does →](/tools/security-control-coverage)**
+**[Find out if your stack is actually working →](/tools/security-control-coverage)**

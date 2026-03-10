@@ -9,21 +9,21 @@ categories: [cybersecurity, AI]
 tags: [agentic-AI, SOC, security-operations, MDR, SIEM, CrowdStrike, Palo-Alto, Torq, Tuskira, Dropzone-AI, Radiant-Security, Prophet-Security, Exabeam]
 ---
 
-# Agentic AI in the SOC — What the Major Platforms Are Actually Building
+# Agentic AI in the SOC — What's Actually Shipping vs. What's a Slide Deck
 
-There's a lot of marketing around "agentic AI" in security operations right now, and not much clarity about what's actually shipping versus what's still on a roadmap. I've spent the last few months looking at the technical architectures behind the platforms making serious claims in this space. Here's what I found.
+There's a lot of marketing around "agentic AI" in security right now and not much clarity about what's real. I've spent months digging into the technical architectures behind the platforms making serious claims. Here's what I found.
 
 ---
 
-## Quick Definitions
+## Definitions Worth Getting Right
 
-Worth being precise about these, since the terms get used interchangeably:
+These terms get used interchangeably. They shouldn't be.
 
-- **Copilot** — AI that helps a human do a task faster (answers questions, drafts reports, suggests next steps)
-- **Automation** — Deterministic if/then logic executed at machine speed (traditional SOAR)
-- **Agentic AI** — Systems that reason about a goal, plan a sequence of actions, use tools autonomously, and adapt when things don't go as expected
+- **Copilot** — AI that helps a human work faster (answers questions, drafts reports, suggests next steps)
+- **Automation** — Deterministic if/then logic at machine speed (traditional SOAR)
+- **Agentic AI** — Systems that reason about goals, plan action sequences, use tools autonomously, and adapt when things break
 
-The third category is genuinely new. The first two have existed for years. The distinction matters when evaluating products.
+The third category is genuinely new. The first two have existed for years. The distinction matters.
 
 ---
 
@@ -31,81 +31,77 @@ The third category is genuinely new. The first two have existed for years. The d
 
 ### CrowdStrike — Charlotte AI & AgentWorks
 
-Charlotte AI is CrowdStrike's primary AI investment, and it's more technically interesting than it gets credit for.
+Charlotte AI is more technically interesting than it gets credit for.
 
-The core claim is that Charlotte was trained on the decisions of elite threat analysts — not just threat data, but analyst *judgment*. When an alert arrives, it's running a model that learned what a skilled analyst with deep context would do with that signal, which means it can handle novel alert patterns no playbook was written for.
+Core claim: Charlotte was trained on elite analyst *judgment*, not just threat data. When an alert arrives, it runs a model that learned what a skilled analyst with deep context would do — handling novel patterns no playbook covers.
 
-Three layers to the architecture:
+Three layers:
 
-**1. Detection Triage** — Charlotte ingests Falcon telemetry, autonomously triages detections, filters false positives, and surfaces what matters. The model retrains continuously as real analysts validate or override its decisions.
+**1. Detection Triage** — Ingests Falcon telemetry, autonomously triages, filters false positives, surfaces what matters. Continuously retrains as real analysts validate or override.
 
-**2. Charlotte Agentic SOAR** — Combines structured SOAR logic with agentic reasoning. Agents can think, decide, and act when situations don't match playbooks. Human analysts can inject context mid-investigation and redirect in real time.
+**2. Charlotte Agentic SOAR** — Structured SOAR logic plus agentic reasoning. Agents think and decide when situations don't match playbooks. Analysts can inject context mid-investigation.
 
-**3. AgentWorks** — A no-code platform for building custom security agents using natural language. Define the goal, data sources, and guardrails — no engineering required.
+**3. AgentWorks** — No-code platform for building custom security agents in natural language. Define goal, data sources, guardrails — no engineering required.
 
-**Strength:** Falcon telemetry. No one else has that volume of endpoint data to train on.
+**Strength:** Falcon telemetry. Nobody else has that volume of endpoint data to train on.
 
-**Limitation:** Deep Falcon ecosystem dependency. Less valuable if you're not CrowdStrike-heavy.
+**Limitation:** Deep Falcon ecosystem lock-in. Less valuable if you're not CrowdStrike-heavy.
 
 ---
 
 ### Palo Alto Networks — Cortex XSIAM + AgentiX
 
-XSIAM is the most ambitious platform consolidation bet in the enterprise SOC space. AgentiX is the agentic AI layer on top.
+XSIAM is the most ambitious platform consolidation bet in enterprise SOC. AgentiX is the agentic layer on top.
 
-The architecture:
+- **XDL (Extended Data Layer)** — Unified data fabric normalising endpoint, network, identity, cloud, and third-party telemetry into a single semantic layer.
+- **2,600+ ML detection models** running continuously, with 100% MITRE ATT&CK coverage in their latest evaluation.
+- **AgentiX** — AI agent workforce that plans, reasons, and acts autonomously. Specialised agents with defined roles and guardrails.
 
-- **XDL (Extended Data Layer)** — A unified data fabric normalising telemetry from endpoint, network, identity, cloud, and third-party sources into a single semantic layer.
-- **2,600+ ML detection models** running continuously, with 100% MITRE ATT&CK coverage in their most recent evaluation.
-- **AgentiX** — An AI agent workforce that plans, reasons, and acts autonomously. Specialised agents with defined roles operate within guardrails and report back.
+Published numbers: 98% MTTR reduction, 99% alert noise reduction, 300% ROI. Oneida Nation claims 43-second incident resolution. Vendor metrics deserve scepticism, but independent MITRE ATT&CK results are harder to wave away.
 
-Their published numbers: 98% MTTR reduction, 99% alert noise reduction, 300% ROI. Oneida Nation reported resolving incidents in 43 seconds. Vendor metrics always deserve scrutiny, but the independent MITRE ATT&CK results are harder to dismiss.
+**Strength:** Platform consolidation. Once on Cortex, switching costs are enormous.
 
-**Strength:** Platform consolidation. Once you're on Cortex, switching costs are enormous. Unit 42 MDR wraps managed services around the whole thing.
-
-**Limitation:** Enterprise pricing. Not targeting SMB or mid-market.
+**Limitation:** Enterprise pricing. Not targeting SMB.
 
 ---
 
 ## The Challengers
 
-### Torq — HyperSOC & the Multi-Agent System
+### Torq — HyperSOC & Multi-Agent Architecture
 
-Torq makes the most interesting architectural argument among the challengers: that autonomous SOC should be built as a **Multi-Agent System (MAS)**, not a single AI model.
+Torq makes the most interesting architectural argument among challengers: autonomous SOC should be a **Multi-Agent System (MAS)**, not a single AI model.
 
-HyperSOC-2o orchestrates multiple specialised agents across the case management lifecycle — triage, investigation, response, and post-incident summary — each optimised for its function. A deterministic hyperautomation engine handles known workflows reliably, while the agentic layer handles ambiguous edges.
+HyperSOC-2o orchestrates specialised agents across triage, investigation, response, and post-incident summary — each optimised for its function. Deterministic automation handles known workflows reliably; the agentic layer handles ambiguity.
 
-Carvana's result is worth noting: Torq AI handles 100% of Tier-1 alerts and automated 41 runbooks within one month of deployment. The one-month timeframe matters — traditional SOAR deployments took quarters.
+Carvana's result: Torq handles 100% of Tier-1 alerts and automated 41 runbooks within one month. The one-month timeframe matters — traditional SOAR deployments took quarters.
 
-The separation of concerns is the key technical idea: structured automation for repeatability, agentic reasoning for novelty.
-
-**Strength:** MSSP/MDR focus — built specifically for providers running SOC at scale.
+**Strength:** MSSP/MDR focus. Built for providers running SOC at scale.
 
 **Limitation:** Middleware play. Depends on your existing tools working well underneath.
 
 ---
 
-### Tuskira — The AI Defense Mesh
+### Tuskira — The AI Defence Mesh
 
-Tuskira is the most technically differentiated startup in this space and probably the least understood.
+Tuskira is the most technically differentiated startup here and probably the least understood.
 
-They're building what they call an **AI Defense Mesh** — architecturally different from everyone else here. The model has five steps:
+They're building an **AI Defence Mesh** — architecturally distinct from everything else. Five steps:
 
-**1. Ingest and Normalize:** 150+ integrations across SIEM, EDR, CSPM, IAM, WAF, GRC, and cloud configs, normalised into a unified semantic layer.
+**1. Ingest and Normalise:** 150+ integrations across SIEM, EDR, CSPM, IAM, WAF, GRC, and cloud configs.
 
-**2. Build the Digital Twin:** A continuously updated model of your environment — cloud topology, network reachability, identity relationships, control coverage. Not a static diagram; a live model of how attackers could move through your environment today.
+**2. Build the Digital Twin:** Continuously updated model of your environment — cloud topology, network reachability, identity relationships, control coverage. Not a static diagram; a live model of how attackers could move today.
 
-**3. AI Simulation & Validation:** Attack paths are continuously tested against your defences in the background. The system simulates real attacks against the digital twin to identify what's truly exploitable, filtering false positives before they reach a human.
+**3. AI Simulation & Validation:** Attack paths continuously tested against your defences. Simulates real attacks against the digital twin to identify what's truly exploitable — filtering false positives before humans ever see them.
 
-**4. AI Analysts Act:** Role-based AI analysts (Vulnerability, Zero-Day, Threat Advisory, Remediation) triage with full context from the digital twin, correlate across tools, and tune defences automatically.
+**4. AI Analysts Act:** Role-based AI analysts (Vulnerability, Zero-Day, Threat Advisory, Remediation) triage with full digital twin context, correlate across tools, tune defences automatically.
 
 **5. Closed-Loop Feedback:** Every action, simulation result, and posture drift feeds back into the mesh.
 
-Published outcomes: 98% alert noise reduction, 60% fewer attack paths, 5-minute triage time.
+Published outcomes: 98% alert noise reduction, 60% fewer attack paths, 5-minute triage.
 
-This is preemptive defence rather than reactive triage. The core innovation is the digital twin combined with continuous simulation — identifying what's exploitable before attackers find it.
+This is preemptive defence, not reactive triage. The core innovation: digital twin plus continuous simulation — finding what's exploitable before attackers do.
 
-**Strength:** The only platform doing live attack simulation at this scale as a continuous background process.
+**Strength:** Only platform doing live attack simulation at this scale as a continuous background process.
 
 **Limitation:** Early stage. Enterprise-complexity deployment.
 
@@ -115,70 +111,68 @@ This is preemptive defence rather than reactive triage. The core innovation is t
 
 ### Radiant Security — Transparent Agentic Triage
 
-Radiant positions itself as the intelligent layer between your tools and your team, solving a specific problem most platforms handle poorly: **explainability**.
+Radiant solves a problem most platforms handle poorly: **explainability**.
 
-Every escalation or dismissal includes full traceability — which data sources were queried, what patterns were detected, why the AI reached its conclusion. Analysts can validate or override the reasoning, not just accept it.
+Every escalation or dismissal includes full traceability — which sources were queried, what patterns detected, why that conclusion. Analysts validate reasoning, not just accept it.
 
-They've also made an interesting economic bet: a built-in security data lake with up to 85% cost reduction vs traditional SIEM pricing, with flat-rate pricing. This addresses one of the biggest hidden costs in SOC modernisation.
+Smart economic bet too: built-in security data lake at up to 85% cost reduction vs traditional SIEM, flat-rate pricing.
 
-**Strength:** Transparent reasoning for regulated industries where "the AI said so" isn't sufficient.
+**Strength:** Transparent reasoning for regulated industries where "the AI said so" doesn't fly.
 
 ---
 
 ### Prophet Security — Speed at Scale
 
-Prophet's numbers are the sharpest in the category: alerts investigated in under 3 minutes versus the 30-minute human baseline — a 90%+ reduction in mean time to investigate.
+Prophet's numbers are the sharpest in category: alerts investigated in under 3 minutes versus the 30-minute human baseline — 90%+ MTTI reduction.
 
-They're also making a strong data privacy argument: single-tenant architecture, no customer data used to train models. In an industry still deeply skeptical of AI handling sensitive data, that's a meaningful trust signal.
+Strong data privacy argument: single-tenant architecture, no customer data used to train models. In an industry deeply sceptical of AI handling sensitive data, that's a meaningful trust signal.
 
-The CISO testimonials are unusually specific — Instacart, Clari, Spotnana, Zip — describing concrete outcomes rather than generic endorsements.
+Unusually specific CISO testimonials — Instacart, Clari, Spotnana, Zip — describing concrete outcomes, not generic endorsements.
 
 ---
 
-### Dropzone AI — Autonomous Tier-1 Investigation
+### Dropzone AI — Autonomous Tier-1
 
-Dropzone is the most narrowly focused of the pure-plays and arguably the most practically deployable. They do one thing: autonomous Tier-1 alert investigation.
+The most narrowly focused pure-play and arguably the most practically deployable. One job: autonomous Tier-1 alert investigation.
 
-The architecture replicates investigative sequences a senior analyst would follow — pulling data from existing tools, forming a hypothesis, testing it, and writing up findings. It deploys in minutes via API keys rather than months-long professional services engagements, and learns your environment continuously.
+Replicates the investigative sequences a senior analyst would follow — pulling data, forming hypotheses, testing them, writing findings. Deploys in minutes via API keys, not months of professional services. Learns your environment continuously.
 
-Before/after metrics: MTTR from hours to minutes, manual analysis per alert from 25 minutes to 2 minutes, percentage of alerts investigated from 30% to 100%.
+Before/after: MTTR from hours to minutes, manual analysis from 25 to 2 minutes per alert, investigation coverage from 30% to 100%.
 
-**Strength:** Easiest deployment path in the category. Day-1 value. Ideal for teams that can't afford a six-month platform implementation.
+**Strength:** Easiest deployment in the category. Day-1 value. Ideal when you can't afford a six-month platform rollout.
 
 ---
 
 ### Exabeam Nova — UEBA-Native Agent
 
-Exabeam Nova sits inside the New-Scale SIEM/Fusion platform and leverages something unique: a decade of UEBA (User and Entity Behaviour Analytics) data and models.
+Nova leverages something unique: a decade of UEBA data and models.
 
-Where other platforms start from scratch with agent reasoning, Nova has deep behavioural baseline data. When a user does something anomalous, Nova's context isn't just "this IP hit a suspicious URL" — it's "this user's behaviour is 6.2 standard deviations from their 90-day baseline, they've never accessed this system before, and three other users in their peer group showed the same pattern last week."
+Where other platforms start from scratch with agent reasoning, Nova has deep behavioural baselines. Context isn't just "this IP hit a suspicious URL" — it's "this user's behaviour is 6.2 standard deviations from their 90-day baseline, they've never accessed this system, and three peer-group users showed the same pattern last week."
 
-Their recently announced AI Agent Behaviour Analytics capability extends this to monitoring AI agents themselves — detecting when deployed AI agents behave anomalously. First in market on that specific capability.
-
----
-
-## What This Adds Up To
-
-A few observations after working through all of this:
-
-**The architectural divergence is real.** Tuskira is solving a fundamentally different problem than Dropzone AI. Charlotte AI is doing something different than Radiant Security. These platforms have genuinely different theories of what "autonomous SOC" means.
-
-**Deployment complexity still matters.** The most technically sophisticated platforms (Tuskira, XSIAM) are also the most complex to deploy. For organisations that need value this quarter, Dropzone AI and Prophet Security offer a faster path.
-
-**Data moats will likely determine the long-term winners.** CrowdStrike has Falcon endpoint telemetry. Palo Alto has firewall + XDR + cloud data. Exabeam has 10 years of UEBA behavioural data. The pure-plays are betting that reasoning quality beats data volume. The incumbents will catch up on reasoning while keeping their data advantage.
-
-**The human-in-the-loop question varies more than you'd expect.** Every platform says they keep humans in control. What that means ranges from "human approves every action" to "human reviews the weekly summary." Worth understanding exactly what you're buying.
-
-**Tier-1 triage is effectively a solved problem.** If your SOC is still manually triaging every alert, that's table-stakes automation now. The more interesting question is what happens at Tier 2 and Tier 3 — real investigation and response, not just sorting.
+Their new AI Agent Behaviour Analytics extends this to monitoring deployed AI agents themselves — detecting anomalous agent behaviour. First to market on that.
 
 ---
 
-## The Question Worth Asking Every Vendor
+## What It All Adds Up To
 
-*"Show me a real investigation, end to end, on a real alert, with no staging. What did the agent actually do, in what sequence, and how did it know to do that?"*
+**The architectural divergence is real.** Tuskira solves a fundamentally different problem than Dropzone. Charlotte AI does something different from Radiant. These platforms have genuinely different theories of what "autonomous SOC" means.
 
-The ones who can answer that clearly are building real products. The ones who pivot to a slide deck are not there yet.
+**Deployment complexity still matters.** The most sophisticated platforms (Tuskira, XSIAM) are the hardest to deploy. Need value this quarter? Dropzone and Prophet offer a faster path.
+
+**Data moats will decide long-term winners.** CrowdStrike has Falcon telemetry. Palo Alto has firewall + XDR + cloud data. Exabeam has 10 years of UEBA baselines. Pure-plays bet that reasoning quality beats data volume. The incumbents will catch up on reasoning while keeping their data advantage.
+
+**"Human-in-the-loop" means wildly different things.** Ranges from "human approves every action" to "human reads the weekly summary." Worth understanding exactly what you're buying.
+
+**Tier-1 triage is a solved problem.** If your SOC still manually triages every alert, that's table-stakes automation now. The interesting question is Tier 2 and 3 — real investigation and response, not just sorting.
 
 ---
 
-*If you're evaluating how agentic AI fits your SOC roadmap, [get in touch](/services/ai-consulting) — we help businesses navigate this space.*
+## The One Question Worth Asking Every Vendor
+
+*"Show me a real investigation, end to end, on a real alert, with no staging. What did the agent do, in what sequence, and how did it know to do that?"*
+
+The ones who answer clearly are building real products. The ones who pivot to a slide deck aren't there yet.
+
+---
+
+*Evaluating how agentic AI fits your SOC roadmap? [Get in touch](/services/ai-consulting) — we help businesses navigate this space.*
