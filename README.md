@@ -25,6 +25,10 @@ Live at https://dobsondevelopment.com.au
 | Styles | `assets/css/chrome.css` (header, footer, fonts), `assets/css/site.css` (everything else) |
 | Free security tools | `tools/` (these keep their original dark layout, `_layouts/tool.html`) |
 
+## Brand
+
+The logo is the `dobson_dev_` wordmark with a cyan-to-violet cursor. Vector files are in `assets/brand/`. One typeface (Geist), black, white and silver, with the cursor as the only brand colour. Red appears only next to Microsoft.
+
 ## Logging a new outage
 
 Copy the top block in `_data/outages.yml`, change the details, and put it first. The count on the homepage resets itself.

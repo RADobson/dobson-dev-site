@@ -15,7 +15,9 @@
     --dd-silver: #F5F5F7;
     --dd-line: #D2D2D7;
     --dd-grey: #6E6E73;
-    --dd-red: #E4002B; /* the only colour on the site, and it only appears next to Microsoft */
+    --dd-red: #E4002B; /* only ever appears next to Microsoft */
+    --dd-cyan: #00E5FF; /* the cursor: the one piece of brand colour */
+    --dd-violet: #9B5CFF;
     --dd-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -35,6 +37,20 @@
     z-index: 100;
 }
 .dd-skip:focus { left: 0; }
+
+/* The cursor is the logo */
+.dd-cursor {
+    display: inline-block;
+    width: 0.58em;
+    height: 0.13em;
+    margin-left: 0.05em;
+    border-radius: 0.02em;
+    background: linear-gradient(90deg, var(--dd-cyan), var(--dd-violet));
+}
+@media (prefers-reduced-motion: no-preference) {
+    .dd-wordmark:hover .dd-cursor { animation: dd-blink 1s steps(1) infinite; }
+}
+@keyframes dd-blink { 50% { opacity: 0; } }
 
 /* Header */
 .dd-header {
