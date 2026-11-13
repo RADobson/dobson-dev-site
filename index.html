@@ -1,7 +1,7 @@
 ---
 layout: default
 days: true
-description: "Linux is so much more powerful. macOS is so much easier to use. Dobson Development is the Australian AI automation and business strategy agency. Change your Outlook on IT."
+description: "Linux is so much more powerful. macOS is so much easier to use. Dobson Development puts Claude to work and Macs on the desks of Australian businesses. Change your Outlook on IT."
 ---
 {% assign latest = site.data.outages | sort: "date" | reverse %}
 {% assign last = latest.first %}
@@ -18,10 +18,10 @@ description: "Linux is so much more powerful. macOS is so much easier to use. Do
     </h1>
     <div class="hero-sub">
         <div>
-            <p class="lede">Change your Outlook on IT. Dobson Development is the AI automation and business strategy agency for businesses that want better.</p>
+            <p class="lede">Change your Outlook on IT. Dobson Development does two things for Australian businesses: we put Claude to work, and we put Macs on the desks.</p>
             <div class="actions">
                 <a class="button" href="{{ '/work-with-us/' | relative_url }}">Work with us</a>
-                <a class="button button-ghost" href="{{ '/setup/' | relative_url }}">See the setup</a>
+                <a class="button button-ghost" href="#two">See what we do</a>
             </div>
         </div>
     </div>
@@ -37,19 +37,20 @@ description: "Linux is so much more powerful. macOS is so much easier to use. Do
     </div>
 </section>
 
-<section class="band dd-wrap" aria-labelledby="setup-title">
-    <h2 id="setup-title">The setup</h2>
-    <p class="lede measure quiet">What a business looks like once we've finished with it.</p>
-    <ul class="spec">
-        {% for s in site.data.setup %}
-        <li>
-            <span class="spec-where">{{ s.where }}</span>
-            <span class="spec-what">{{ s.what }}</span>
-            <p class="spec-why">{{ s.why }}</p>
-        </li>
-        {% endfor %}
-    </ul>
-    <div class="actions"><a class="button button-ghost" href="{{ '/setup/' | relative_url }}">See what it replaces</a></div>
+<section class="band dd-wrap" id="two" aria-labelledby="two-title">
+    <h2 id="two-title">Two things, done properly</h2>
+    <div class="duo">
+        <article>
+            <h3><a href="{{ '/claude/' | relative_url }}">Claude for your business</a></h3>
+            <p class="lede quiet">Set up properly, connected to the tools you already run, your people trained, and the repetitive work handed over.</p>
+            <div class="actions"><a class="button button-ghost" href="{{ '/claude/' | relative_url }}">How we do Claude</a></div>
+        </article>
+        <article>
+            <h3><a href="{{ '/mac/' | relative_url }}">Macs for your business</a></h3>
+            <p class="lede quiet">Beautiful machines that are ready to work the moment the box opens, with the Windows fleet retired behind them.</p>
+            <div class="actions"><a class="button button-ghost" href="{{ '/mac/' | relative_url }}">How we do Mac</a></div>
+        </article>
+    </div>
 </section>
 
 {% assign lead = site.posts.first %}
@@ -96,7 +97,7 @@ description: "Linux is so much more powerful. macOS is so much easier to use. Do
 <section class="band band-silver" aria-labelledby="out-title">
     <div class="dd-wrap">
         <h2 id="out-title">Run your business on tools you'd choose.</h2>
-        <p class="lede measure quiet">Tell us what you're running today. We'll show you what better looks like.</p>
+        <p class="lede measure quiet">Tell us what you're running today. We'll show you what it looks like with Claude and a Mac.</p>
         <div class="actions"><a class="button" href="{{ '/work-with-us/' | relative_url }}">Work with us</a></div>
     </div>
 </section>
