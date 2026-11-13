@@ -1,7 +1,7 @@
 # Jekyll Configuration for Dobson Development
 title: Dobson Development
-tagline: We specialise in NOT Microsoft
-description: "Apple makes beautiful products. Linux is powerful. The Australian AI automation and business strategy agency that specialises in NOT Microsoft."
+tagline: Change your Outlook on IT
+description: "Change your Outlook on IT. The Australian AI automation and business strategy agency for businesses that want better: Macs, Linux, Claude and tools you would choose."
 lang: en_AU
 timezone: Australia/Brisbane
 url: "https://dobsondevelopment.com.au"
@@ -11,7 +11,7 @@ baseurl: ""
 author:
   name: Richard Dobson
   email: richard@dobsondevelopment.com.au
-  bio: "Founder of Dobson Development, the agency that specialises in NOT Microsoft. SOC and SIEM engineer turned builder."
+  bio: "Founder of Dobson Development, the agency that changes your Outlook on IT. SOC and SIEM engineer turned builder."
   avatar: /assets/images/richard.jpg
   twitter: RADobson
   github: RADobson

@@ -1,6 +1,6 @@
 # Dobson Development
 
-The website for Dobson Development Pty Ltd, the Australian AI automation and business strategy agency that specialises in NOT Microsoft.
+The website for Dobson Development Pty Ltd, the Australian AI automation and business strategy agency. Tagline: Change your Outlook on IT.
 
 Live at https://dobsondevelopment.com.au
 
