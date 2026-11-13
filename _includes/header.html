@@ -1,0 +1,16 @@
+<a class="dd-skip" href="#main">Skip to content</a>
+<header class="dd-header">
+    <div class="dd-wrap dd-header-row">
+        <a class="dd-wordmark" href="{{ '/' | relative_url }}">
+            <span class="dd-wordmark-name">Dobson Development</span>
+            <span class="dd-wordmark-line">We specialise in NOT Microsoft</span>
+        </a>
+        <nav class="dd-nav" aria-label="Main">
+            <a href="{{ '/blog/' | relative_url }}"{% if page.url contains '/blog/' %} aria-current="page"{% endif %}>Writing</a>
+            <a href="{{ '/outage-ledger/' | relative_url }}"{% if page.url contains '/outage-ledger/' %} aria-current="page"{% endif %}>Outage ledger</a>
+            <a href="{{ '/swap/' | relative_url }}"{% if page.url contains '/swap/' %} aria-current="page"{% endif %}>The swap</a>
+            <a href="{{ '/tools/' | relative_url }}"{% if page.url contains '/tools/' %} aria-current="page"{% endif %}>Tools</a>
+            <a class="dd-exit" href="{{ '/way-out/' | relative_url }}"{% if page.url contains '/way-out/' %} aria-current="page"{% endif %}>The way out</a>
+        </nav>
+    </div>
+</header>

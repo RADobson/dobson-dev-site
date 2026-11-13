@@ -1,110 +1,33 @@
 ---
 layout: default
-title: Blog
-description: Sharp takes on security automation, AI tools, and building things that actually work. From an Australian cybersecurity builder.
+title: Writing
+description: "Strong opinions about Microsoft, AI and running a business on technology you control. From Richard Dobson at Dobson Development."
+permalink: /blog/
 ---
+<section class="page-head dd-wrap">
+    <h1>Writing</h1>
+    <p class="lede measure">Strong opinions about Microsoft, AI and running a business on technology you control. The older security pieces are still here too. They've aged fine.</p>
+</section>
 
-<!-- Structured Data: Blog -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Dobson Development Blog",
-    "description": "Sharp takes on security automation, AI tools, and building things that actually work",
-    "url": "{{ site.url }}/blog/",
-    "inLanguage": "en-AU",
-    "publisher": {
-        "@type": "Organization",
-        "name": "Dobson Development Pty Ltd",
-        "url": "{{ site.url }}",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "{{ site.url }}/assets/images/icon.svg"
-        }
-    },
-    "author": {
-        "@type": "Person",
-        "name": "Ernie Dobson",
-        "url": "{{ site.url }}",
-        "sameAs": [
-            "https://github.com/RADobson",
-            "https://twitter.com/RADobson",
-            "https://www.linkedin.com/in/ernie-dobson"
-        ]
-    },
-    "blogPost": [
-        {% for post in site.posts %}
-        {
-            "@type": "BlogPosting",
-            "headline": "{{ post.title | escape }}",
-            "url": "{{ post.url | absolute_url }}",
-            "datePublished": "{{ post.date | date_to_xmlschema }}",
-            "dateModified": "{{ post.last_modified_at | default: post.date | date_to_xmlschema }}",
-            "description": "{{ post.excerpt | strip_html | truncatewords: 30 | escape }}",
-            "author": {
-                "@type": "Person",
-                "name": "Ernie Dobson"
-            }
-        }{% unless forloop.last %},{% endunless %}
+{% assign lead = site.posts.first %}
+<section class="band lead-story dd-wrap" aria-labelledby="lead-title">
+    <p class="lead-date">Latest, <time datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: "%-d %B %Y" }}</time></p>
+    <h2 id="lead-title"><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h2>
+    <div class="measure">
+        <p>{{ lead.description }}</p>
+        <p><a class="button" href="{{ lead.url | relative_url }}">Read the full piece</a></p>
+    </div>
+</section>
+
+<section class="band dd-wrap" aria-labelledby="all-title" style="padding-top:0">
+    <h2 id="all-title">Everything else</h2>
+    <ul class="story-list">
+        {% for post in site.posts offset: 1 %}
+        <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+            {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+        </li>
         {% endfor %}
-    ]
-}
-</script>
-
-<!-- Structured Data: BreadcrumbList -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "{{ site.url }}"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Blog",
-            "item": "{{ site.url }}/blog/"
-        }
-    ]
-}
-</script>
-
-<div class="blog-header reveal">
-    <h1><span class="mono-accent">//</span> Blog</h1>
-    <p>Security, AI, and things that actually ship.</p>
-</div>
-
-<div class="post-list">
-    {% for post in site.posts %}
-    <article class="post-card reveal" data-delay="{{ forloop.index }}">
-        <h2>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-        </h2>
-        <div class="post-meta">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-            {% if post.tags %}
-            {% for tag in post.tags limit:3 %}
-            <span class="post-tag">#{{ tag }}</span>
-            {% endfor %}
-            {% endif %}
-        </div>
-        {% if post.excerpt %}
-        <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
-        {% endif %}
-        <a href="{{ post.url }}" class="read-more">
-            <span>Read more</span>
-            <span class="arrow">→</span>
-        </a>
-    </article>
-    {% endfor %}
-</div>
-
-{% if site.posts.size == 0 %}
-<div class="empty-state reveal">
-    <p>Nothing here yet. First post incoming.</p>
-</div>
-{% endif %}
+    </ul>
+</section>

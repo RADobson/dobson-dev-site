@@ -50,7 +50,7 @@ The most effective way to find gaps is measuring controls against a structured f
 
 ### Essential Eight
 
-For Australian orgs, the [Essential Eight maturity model](/2026/02/20/essential-eight-compliance-guide/) provides a practical baseline. Gaps here aren't just security risks — they're increasingly compliance and insurance risks too.
+For Australian orgs, the [Essential Eight maturity model](/blog/essential-eight-compliance-guide/) provides a practical baseline. Gaps here aren't just security risks — they're increasingly compliance and insurance risks too.
 
 ### CIS Controls v8
 

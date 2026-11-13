@@ -1,0 +1,63 @@
+# The outage ledger. Newest first.
+# To log a new one, copy a block, change the details, and put it at the top.
+# The sign on the homepage counts days from the newest date in this file.
+
+- date: 2026-11-13
+  label: "Friday 13 November 2026"
+  title: "Friday the 13th"
+  down: "Exchange Online, Teams, SharePoint, Copilot and Defender XDR, for users in any region."
+  duration: "Still counting when this was posted"
+  said: "Microsoft said a number of its servers had become \"unexpectedly unavailable\"."
+  note: "Defender is the security product. The guard dog passed out with the rest of the house. Third Friday on this board."
+  source_name: "BleepingComputer"
+  source_url: "https://www.bleepingcomputer.com/news/microsoft/massive-microsoft-365-outage-disrupts-outlook-teams-copilot-worldwide/"
+
+- date: 2026-01-23
+  label: "Friday 23 January 2026"
+  title: "The ten-hour sick day"
+  down: "Outlook, Defender and Purview."
+  duration: "Close to 10 hours"
+  said: "Microsoft blamed a slice of its North American infrastructure that had stopped processing traffic properly."
+  note: "The Register suggested renaming the product Microsoft 364.5."
+  source_name: "The Register"
+  source_url: "https://www.theregister.com/2026/01/23/microsoft_365_outage/"
+
+- date: 2025-10-30
+  label: "Thursday 30 October 2025"
+  title: "The earnings-day special"
+  down: "Azure Front Door, and with it Microsoft 365, Xbox, Minecraft and a long list of airlines, banks and retailers."
+  duration: "A bit over 8 hours"
+  said: "Microsoft put it down to an \"inadvertent configuration change\"."
+  note: "It landed a few hours before Microsoft's quarterly earnings call. Still 29 October in Redmond."
+  source_name: "The Stack"
+  source_url: "https://www.thestack.technology/azure-network-outage/"
+
+- date: 2025-07-10
+  label: "Thursday 10 July 2025"
+  title: "Outlook takes the day off"
+  down: "Outlook on the web, mobile and desktop, worldwide."
+  duration: "Somewhere between 11 and 21 hours, depending on who you ask"
+  said: "Microsoft pointed at its mailbox infrastructure, shipped a fix, found a problem with the fix, and shipped another one."
+  note: ""
+  source_name: "The Register"
+  source_url: "https://www.theregister.com/2025/07/10/outlook_microsoft_email_outage/"
+
+- date: 2024-11-25
+  label: "Monday 25 November 2024"
+  title: "The two-day Monday"
+  down: "Exchange Online, Teams calendars, Outlook and friends."
+  duration: "About 33 hours"
+  said: "Microsoft traced it to a recent change it had made, then spent the next day and a half taking it back."
+  note: ""
+  source_name: "Pingdom"
+  source_url: "https://www.pingdom.com/?p=35390"
+
+- date: 2024-07-19
+  label: "Friday 19 July 2024"
+  title: "The big one"
+  down: "About 8.5 million Windows machines. Supermarket checkouts, banks, airlines and newsrooms across Australia."
+  duration: "Days, for the people rebooting machines by hand"
+  said: "A bad CrowdStrike update pulled the trigger. Windows was the gun."
+  note: "Macs and Linux machines running CrowdStrike kept working."
+  source_name: "Wikipedia"
+  source_url: "https://en.wikipedia.org/wiki/2024_CrowdStrike-related_IT_outages"

@@ -1,0 +1,40 @@
+---
+layout: default
+title: The outage ledger
+description: "Every major Microsoft outage we've logged, newest first: what fell over, how long for, and what Microsoft said about it."
+permalink: /outage-ledger/
+---
+{% assign latest = site.data.outages | sort: "date" | reverse %}
+<section class="page-head dd-wrap">
+    <h1>The outage ledger</h1>
+    <p class="lede measure">Every major Microsoft outage we've logged, newest first. What fell over, how long for, and what Microsoft said about it. Dates are Australian east coast time.</p>
+</section>
+
+<section class="dd-wrap">
+    <ol class="ledger" reversed>
+        {% for o in latest %}
+        <li>
+            <div>
+                <time class="ledger-when" datetime="{{ o.date | date: '%Y-%m-%d' }}">{{ o.label }}</time><br>
+                <span class="ledger-how-long">{{ o.duration }}</span>
+            </div>
+            <div>
+                <h2>{{ o.title }}</h2>
+                <p>{{ o.down }}</p>
+                <p>{{ o.said }}</p>
+                {% if o.note != "" %}<p>{{ o.note }}</p>{% endif %}
+                <p class="ledger-source">Source: <a href="{{ o.source_url }}" rel="noopener">{{ o.source_name }}</a></p>
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+    <p class="measure" style="margin-top:2rem">Know one we've missed? <a href="{{ '/way-out/' | relative_url }}#contact">Tell us</a> and it goes on the board.</p>
+</section>
+
+<section class="band band-concrete" aria-labelledby="kit-title" style="margin-top:4rem">
+    <div class="dd-wrap">
+        <h2 id="kit-title">Six things to do before the next one</h2>
+        <p class="measure">There will be a next one. Ten minutes this arvo saves you a morning of watching a circle spin.</p>
+        {% include kit.html %}
+    </div>
+</section>
