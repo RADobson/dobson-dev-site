@@ -1,8 +1,8 @@
-# The swap list shown on the homepage and on /swap/.
+# What the setup replaces. Shown on /setup/.
 
 - out: "Windows laptops"
   in: "Macs, or Linux where it suits"
-  why: "On 19 July 2024 the Macs and the Linux boxes kept working. That's the whole argument."
+  why: "Machines your people are proud to open. They also kept working on 19 July 2024."
 
 - out: "Intune"
   in: "Jamf"
@@ -10,7 +10,7 @@
 
 - out: "Defender"
   in: "CrowdStrike"
-  why: "Your security product should still be standing when the rest of the vendor falls over."
+  why: "Security from a company that does security for a living."
 
 - out: "Copilot"
   in: "Claude, ChatGPT, Gemini, Grok, or an open model you run yourself"

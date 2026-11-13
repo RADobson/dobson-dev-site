@@ -9,7 +9,7 @@
 {{ content }}
 </main>
 {% include footer.html %}
-{% if page.sign %}<script src="{{ '/assets/js/sign.js' | relative_url }}" defer></script>{% endif %}
+{% if page.days %}<script src="{{ '/assets/js/days.js' | relative_url }}" defer></script>{% endif %}
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });

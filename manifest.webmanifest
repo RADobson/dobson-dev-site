@@ -6,7 +6,7 @@
     "scope": "/",
     "display": "standalone",
     "background_color": "#FFFFFF",
-    "theme_color": "#FFD60A",
+    "theme_color": "#FFFFFF",
     "orientation": "portrait-primary",
     "lang": "en-AU",
     "categories": ["business", "developer-tools", "security"],

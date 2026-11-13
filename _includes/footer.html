@@ -1,30 +1,29 @@
 <footer class="dd-footer">
-    <div class="dd-hazard" aria-hidden="true"></div>
     <div class="dd-wrap dd-footer-grid">
         <div>
-            <p class="dd-footer-name">Dobson Development Pty Ltd</p>
-            <p>ABN 43 688 593 606. Queensland, Australia.</p>
-            <p>An AI automation and business strategy agency. We specialise in NOT Microsoft.</p>
+            <p class="dd-footer-name">dobson_dev_</p>
+            <p>Dobson Development Pty Ltd. ABN 43 688 593 606.<br>Queensland, Australia.</p>
+            <p>AI automation and business strategy. We specialise in NOT Microsoft.</p>
         </div>
         <nav aria-label="Footer">
+            <a href="{{ '/setup/' | relative_url }}">The setup</a>
             <a href="{{ '/blog/' | relative_url }}">Writing</a>
             <a href="{{ '/outage-ledger/' | relative_url }}">Outage ledger</a>
-            <a href="{{ '/swap/' | relative_url }}">The swap</a>
             <a href="{{ '/tools/' | relative_url }}">Tools</a>
             <a href="{{ '/games/cyberpuzzle/' | relative_url }}">CyberPuzzle</a>
-            <a href="{{ '/way-out/' | relative_url }}">The way out</a>
+            <a href="{{ '/work-with-us/' | relative_url }}">Work with us</a>
             <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
         </nav>
         <form class="dd-signup" action="{{ site.newsletter_form_url }}" method="POST">
-            <label for="dd-signup-email">New pieces by email, when there's one worth sending</label>
+            <label for="dd-signup-email">New writing by email, when there's a piece worth sending</label>
             <div class="dd-signup-row">
                 <input id="dd-signup-email" type="email" name="email" placeholder="you@yourbusiness.com.au" autocomplete="email" required>
                 <input type="hidden" name="_subject" value="Newsletter signup">
-                <button type="submit">Send me the pieces</button>
+                <button type="submit">Subscribe</button>
             </div>
         </form>
     </div>
     <div class="dd-wrap dd-footer-base">
-        <p>&copy; {{ site.time | date: '%Y' }} Dobson Development Pty Ltd. Microsoft, Windows, Teams, Outlook and Copilot are trademarks of Microsoft, which has nothing to do with this site and would probably like a word.</p>
+        <p>&copy; {{ site.time | date: '%Y' }} Dobson Development Pty Ltd. Apple, Mac, Linux, Microsoft and the rest are trademarks of their owners. We are independent of all of them, and of one of them enthusiastically so.</p>
     </div>
 </footer>
