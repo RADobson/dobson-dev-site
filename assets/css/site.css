@@ -103,6 +103,10 @@ body.dd-page {
 .duo article { border-top: 1px solid var(--dd-black); padding-top: 1.75rem; }
 .dd-page .duo h3 { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.045em; line-height: 1; margin-bottom: 0.5em; }
 .dd-page main .duo h3 a { text-decoration: none; }
+.duo.trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.75rem, 3.5vw, 3.5rem); }
+.duo.trio article { display: flex; flex-direction: column; }
+.duo.trio .actions { margin-top: auto; padding-top: 2rem; }
+.dd-page .duo.trio h3 { font-size: clamp(1.75rem, 2.7vw, 2.5rem); }
 .dd-page main .duo h3 a:hover { text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.1em; }
 
 /* Spec sheet */
@@ -209,7 +213,7 @@ body.dd-page {
     .hero-sub { grid-template-columns: 1fr; }
     .hero-sub > div { grid-column: 1; }
     .split { grid-template-columns: 1fr; }
-    .duo { grid-template-columns: 1fr; }
+    .duo, .duo.trio { grid-template-columns: 1fr; }
     .spec li { grid-template-columns: 1fr; padding: 1.4rem 0; }
     .kit { grid-template-columns: 1fr; }
     .ledger > li { grid-template-columns: 1fr; }
