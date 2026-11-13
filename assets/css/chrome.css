@@ -55,7 +55,6 @@
 /* Header */
 .dd-header {
     background: var(--dd-white);
-    border-bottom: 1px solid var(--dd-line);
     font-family: var(--dd-sans);
     position: relative;
     z-index: 10;
@@ -99,15 +98,6 @@
     outline-offset: 4px;
     border-radius: 2px;
 }
-.dd-nav a.dd-cta {
-    background: var(--dd-black);
-    color: var(--dd-white);
-    padding: 0.55rem 1.05rem;
-    border-radius: 999px;
-    text-decoration: none;
-}
-.dd-nav a.dd-cta:hover { background: #2B2B2E; }
-
 /* Footer */
 .dd-footer {
     background: var(--dd-silver);
@@ -117,23 +107,26 @@
     line-height: 1.5;
     letter-spacing: -0.005em;
 }
-.dd-footer-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 0.6fr 1.2fr;
-    gap: 3rem;
-    padding-block: 4rem 2.5rem;
+.dd-footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding-block: 3rem 2rem;
 }
-.dd-footer p { margin: 0 0 0.5rem; color: var(--dd-grey); }
+.dd-footer p { margin: 0 0 0.35rem; color: var(--dd-grey); }
 .dd-footer p.dd-footer-name {
     font-weight: 600;
     font-size: 1.3rem;
     letter-spacing: -0.035em;
     color: var(--dd-black);
-    margin-bottom: 1rem;
+    margin: 0;
 }
-.dd-footer nav { display: flex; flex-direction: column; gap: 0.45rem; }
+.dd-footer nav { display: flex; flex-wrap: wrap; gap: 0.45rem 1.75rem; }
 .dd-footer a { color: var(--dd-black); text-decoration: none; }
 .dd-footer a:hover { text-decoration: underline; text-underline-offset: 0.3em; text-decoration-thickness: 1px; }
+.dd-signup { font-family: var(--dd-sans); max-width: 30rem; }
 .dd-signup label { display: block; font-weight: 500; font-size: 1rem; margin-bottom: 0.75rem; color: var(--dd-black); }
 .dd-signup-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .dd-signup input[type="email"] {
@@ -162,11 +155,6 @@
 .dd-footer-base { padding-block: 1.25rem 2.5rem; border-top: 1px solid var(--dd-line); }
 .dd-footer-base p { font-size: 0.85rem; max-width: 60rem; }
 
-@media (max-width: 52rem) {
-    .dd-footer-grid { grid-template-columns: 1fr; gap: 2.25rem; padding-block: 3rem 2rem; }
-    .dd-nav { gap: 0.3rem 1.25rem; }
-}
 @media (max-width: 30rem) {
-    .dd-nav { gap: 0.3rem 0.8rem; font-size: 0.9rem; }
-    .dd-nav a.dd-cta { padding: 0.45rem 0.85rem; }
+    .dd-nav { gap: 0.3rem 1.1rem; font-size: 0.925rem; }
 }

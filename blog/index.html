@@ -6,28 +6,17 @@ permalink: /blog/
 ---
 <section class="page-head dd-wrap">
     <h1>Writing</h1>
-    <p class="lede measure quiet">Strong opinions about Microsoft, AI and running a business on technology you'd choose. The older security pieces are here too. They've aged fine.</p>
+    <p class="lede measure quiet">Strong opinions about Microsoft, AI and running a business on technology you'd choose.</p>
 </section>
 
-{% assign lead = site.posts.first %}
-<section class="band feature dd-wrap" aria-labelledby="lead-title">
-    <p class="feature-date quiet">Latest, <time datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: "%-d %B %Y" }}</time></p>
-    <h2 id="lead-title"><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h2>
-    <div class="measure">
-        <p class="lede quiet">{{ lead.description }}</p>
-        <div class="actions"><a class="button" href="{{ lead.url | relative_url }}">Read the piece</a></div>
-    </div>
-</section>
-
-<section class="band dd-wrap" aria-labelledby="all-title" style="padding-top:0">
-    <h2 id="all-title">Everything else</h2>
+<section class="dd-wrap page-body">
     <ul class="story-list">
-        {% for post in site.posts offset: 1 %}
+        {% for post in site.posts %}
         <li>
             <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
-            {% if post.description %}<p>{{ post.description }}</p>{% endif %}
         </li>
         {% endfor %}
     </ul>
+    <div class="signup-block">{% include signup.html %}</div>
 </section>

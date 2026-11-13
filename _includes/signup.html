@@ -1,0 +1,8 @@
+<form class="dd-signup" action="{{ site.newsletter_form_url }}" method="POST">
+    <label for="dd-signup-email">New writing by email, when there's a piece worth sending</label>
+    <div class="dd-signup-row">
+        <input id="dd-signup-email" type="email" name="email" placeholder="you@yourbusiness.com.au" autocomplete="email" required>
+        <input type="hidden" name="_subject" value="Newsletter signup">
+        <button type="submit">Subscribe</button>
+    </div>
+</form>

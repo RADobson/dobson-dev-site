@@ -15,13 +15,11 @@ Live at https://dobsondevelopment.com.au
 
 | What | Where |
 | --- | --- |
-| Homepage | `index.html` |
+| Homepage (the three offers and the contact form live here) | `index.html` |
 | Articles | `_posts/` (newest post becomes the lead story) |
 | Outage ledger entries | `_data/outages.yml` (the days-since count uses the newest date) |
-| The three offers | `claude/index.html`, `mac/index.html` and `proton/index.html` |
 | Outage kit | `_includes/kit.html` |
-| Services and contact | `work-with-us/index.html` |
-| Header, footer | `_includes/header.html`, `_includes/footer.html` |
+| Header, footer, email signup | `_includes/header.html`, `_includes/footer.html`, `_includes/signup.html` |
 | Styles | `assets/css/chrome.css` (header, footer, fonts), `assets/css/site.css` (everything else) |
 | Free security tools | `tools/` (still published, no longer linked from the navigation) |
 
@@ -48,4 +46,4 @@ jekyll serve
 
 ## Retired pages
 
-The old service pages (`/services/...`, `/e8cr/`, `/soc-squad/`) now redirect to `/work-with-us/`. The originals are in the git history.
+The site is one page plus the writing. `/claude/`, `/mac/`, `/proton/` and `/work-with-us/` redirect to their sections on the homepage, and the old service pages (`/services/...`, `/e8cr/`, `/soc-squad/`) redirect to the contact form. The originals are in the git history.

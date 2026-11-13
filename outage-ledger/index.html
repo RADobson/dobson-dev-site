@@ -18,7 +18,7 @@ permalink: /outage-ledger/
     <script type="application/json" id="outage-dates">[{% for o in latest %}"{{ o.date | date: '%Y-%m-%d' }}"{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
 </section>
 
-<section class="dd-wrap">
+<section class="dd-wrap page-body">
     <ol class="ledger" reversed>
         {% for o in latest %}
         <li>
@@ -36,10 +36,10 @@ permalink: /outage-ledger/
         </li>
         {% endfor %}
     </ol>
-    <p class="measure quiet" style="margin-top:2rem">Know one we've missed? <a href="{{ '/work-with-us/' | relative_url }}#contact">Tell us</a> and it goes on the ledger.</p>
+    <p class="measure quiet" style="margin-top:2rem">Know one we've missed? <a href="{{ '/#contact' | relative_url }}">Tell us</a> and it goes on the ledger.</p>
 </section>
 
-<section class="band band-silver" aria-labelledby="kit-title" style="margin-top:clamp(4rem,9vw,8rem)">
+<section class="band band-silver" aria-labelledby="kit-title">
     <div class="dd-wrap">
         <h2 id="kit-title">Six things to do before the next one</h2>
         <p class="lede measure quiet">There will be a next one. Ten minutes this arvo saves you a morning of watching a circle spin.</p>

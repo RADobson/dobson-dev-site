@@ -9,100 +9,66 @@ description: "Linux is so much more powerful. macOS is so much easier to use. Do
 {% assign now_s = site.time | date: "%s" | plus: 0 %}
 {% assign since = now_s | minus: last_s | divided_by: 86400 %}
 {% if since < 0 %}{% assign since = 0 %}{% endif %}
+{% assign lead = site.posts.first %}
 
 <section class="hero dd-wrap">
     <h1 class="hero-statement">
         <span>Linux is so much more powerful.</span>
         <span>macOS is so much easier to use.</span>
-        <span>Microsoft sucks.</span>
+        <span>Microsoft sucks.<i class="dd-cursor" aria-hidden="true"></i></span>
     </h1>
-    <div class="hero-sub">
+    <p class="hero-sub">Change your Outlook on IT. We put Claude to work, Macs on the desks and the office on Proton, for Australian businesses.</p>
+</section>
+
+<section class="offers dd-wrap" aria-label="What we do">
+    <article id="claude">
+        <h2>Claude</h2>
         <div>
-            <p class="lede">Change your Outlook on IT. Dobson Development does three things for Australian businesses: we put Claude to work, Macs on the desks, and the office on Proton.</p>
-            <div class="actions">
-                <a class="button" href="{{ '/work-with-us/' | relative_url }}">Work with us</a>
-                <a class="button button-ghost" href="#three">See what we do</a>
-            </div>
+            <p class="lede">Set up properly, connected to the tools you already run, your people trained, and the repetitive work handed over.</p>
+            <p class="quiet">Training built around each person's actual job. Agents for the quotes, reports and inbox triage that eat your week.</p>
         </div>
-    </div>
-</section>
-
-<section class="band band-silver" aria-labelledby="why-title">
-    <div class="dd-wrap split">
-        <h2 id="why-title">Your technology is the thing your team touches eight hours a day.</h2>
+    </article>
+    <article id="mac">
+        <h2>Mac</h2>
         <div>
-            <p class="lede">The best people want to work on good machines. Clients notice what you open in a meeting. A business that runs on beautiful hardware, fast software and AI that earns its keep carries itself differently.</p>
-            <p class="lede quiet">You choose your office, your car and your coffee with care. We bring the same care to everything with a power button.</p>
+            <p class="lede">Beautiful machines that are ready to work the moment the box opens, with the Windows fleet retired behind them.</p>
+            <p class="quiet">Every Mac enrolled through Apple Business Manager and Jamf before it ships. iPhone and iPad included. Linux on the servers, where it earns its place.</p>
         </div>
-    </div>
-</section>
-
-<section class="band dd-wrap" id="three" aria-labelledby="three-title">
-    <h2 id="three-title">Three things, done properly</h2>
-    <div class="duo trio">
-        <article>
-            <h3><a href="{{ '/claude/' | relative_url }}">Claude for your business</a></h3>
-            <p class="lede quiet">Set up properly, connected to the tools you already run, your people trained, and the repetitive work handed over.</p>
-            <div class="actions"><a class="button button-ghost" href="{{ '/claude/' | relative_url }}">How we do Claude</a></div>
-        </article>
-        <article>
-            <h3><a href="{{ '/mac/' | relative_url }}">Macs for your business</a></h3>
-            <p class="lede quiet">Beautiful machines that are ready to work the moment the box opens, with the Windows fleet retired behind them.</p>
-            <div class="actions"><a class="button button-ghost" href="{{ '/mac/' | relative_url }}">How we do Mac</a></div>
-        </article>
-        <article>
-            <h3><a href="{{ '/proton/' | relative_url }}">Proton for your business</a></h3>
-            <p class="lede quiet">Private email, documents, passwords and a VPN in one Swiss subscription, with Microsoft 365 moved across for you.</p>
-            <div class="actions"><a class="button button-ghost" href="{{ '/proton/' | relative_url }}">How we do Proton</a></div>
-        </article>
-    </div>
-</section>
-
-{% assign lead = site.posts.first %}
-<section class="band band-black feature" aria-labelledby="lead-title">
-    <div class="dd-wrap">
-        <p class="feature-date quiet">Latest writing, <time datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: "%-d %B %Y" }}</time></p>
-        <h2 id="lead-title"><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h2>
-        <div class="split">
-            <div>
-                {% if lead.pull %}<p class="pull">{{ lead.pull }}</p>{% endif %}
-            </div>
-            <div>
-                <p class="quiet">{{ lead.description }}</p>
-                <div class="actions"><a class="button" href="{{ lead.url | relative_url }}">Read the piece</a></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="band dd-wrap" aria-labelledby="reason-title">
-    <div class="split">
-        <p class="one-reason" id="reason-title">It has been <span class="days"><span data-days-since>{{ since }}</span> <span data-days-unit>{% if since == 1 %}day{% else %}days{% endif %}</span></span> since Microsoft's last major outage.</p>
+    </article>
+    <article id="proton">
+        <h2>Proton</h2>
         <div>
-            <p class="lede quiet">If you needed one more reason. Last incident: {{ last.label }}.</p>
-            <div class="actions"><a class="button button-ghost" href="{{ '/outage-ledger/' | relative_url }}">Read the outage ledger</a></div>
+            <p class="lede">Private email, documents, passwords and a VPN in one Swiss subscription, with Microsoft 365 moved across for you.</p>
+            <p class="quiet">Your mail is encrypted with keys only you hold. We build the link on your own Mac, so Claude reads, sorts and drafts it on your terms.</p>
         </div>
-    </div>
+    </article>
+</section>
+
+<section class="outage dd-wrap">
+    <p><a href="{{ '/outage-ledger/' | relative_url }}"><span class="days"><span data-days-since>{{ since }}</span> <span data-days-unit>{% if since == 1 %}day{% else %}days{% endif %}</span></span> since Microsoft's last major outage.</a></p>
     <script type="application/json" id="outage-dates">[{% for o in latest %}"{{ o.date | date: '%Y-%m-%d' }}"{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
 </section>
 
-<section class="band dd-wrap" aria-labelledby="more-title" style="padding-top:0">
-    <h2 id="more-title">More writing</h2>
-    <ul class="story-list">
-        {% for post in site.posts offset: 1 limit: 5 %}
-        <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
-        </li>
-        {% endfor %}
-    </ul>
-    <div class="actions"><a class="button button-ghost" href="{{ '/blog/' | relative_url }}">All writing</a></div>
+<section class="feature" aria-labelledby="lead-title">
+    <div class="dd-wrap">
+        <p class="feature-date">Latest writing, <time datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: "%-d %B %Y" }}</time></p>
+        <h2 id="lead-title"><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h2>
+        {% if lead.pull %}<p class="pull">{{ lead.pull }}</p>{% endif %}
+        <p class="feature-more"><a href="{{ lead.url | relative_url }}">Read the piece</a><a href="{{ '/blog/' | relative_url }}">All writing</a></p>
+    </div>
 </section>
 
-<section class="band band-silver" aria-labelledby="out-title">
-    <div class="dd-wrap">
-        <h2 id="out-title">Run your business on tools you'd choose.</h2>
-        <p class="lede measure quiet">Tell us what you're running today. We'll show you what it looks like with Claude, a Mac and Proton.</p>
-        <div class="actions"><a class="button" href="{{ '/work-with-us/' | relative_url }}">Work with us</a></div>
+<section class="contact-band dd-wrap" id="contact" aria-labelledby="contact-title">
+    <div>
+        <h2 id="contact-title">Tell me what you're running.</h2>
+        <p class="lede quiet">How many people, what they use all day, and what you wish it felt like. I'll show you what better looks like.</p>
+        <p class="quiet">Richard Dobson, Queensland.<br><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
     </div>
+    <form class="contact" action="{{ site.newsletter_form_url }}" method="POST">
+        <label>Your name <input type="text" name="name" autocomplete="name" required></label>
+        <label>Your email <input type="email" name="email" autocomplete="email" required></label>
+        <label>What are you running today? <textarea name="message" required></textarea></label>
+        <input type="hidden" name="_subject" value="Enquiry from dobsondevelopment.com.au">
+        <button class="button" type="submit">Send it to Richard</button>
+    </form>
 </section>

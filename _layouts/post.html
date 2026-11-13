@@ -18,21 +18,7 @@ layout: default
     </div>
 
     <footer class="post-foot">
-        <section class="post-more" aria-labelledby="more-title">
-            <h2 id="more-title">Keep reading</h2>
-            <ul class="story-list">
-                {% assign shown = 0 %}
-                {% for post in site.posts %}
-                    {% if post.url != page.url and shown < 4 %}
-                    <li>
-                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
-                    </li>
-                    {% assign shown = shown | plus: 1 %}
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </section>
+        <section class="post-more">{% include signup.html %}</section>
 
         {% if site.giscus.repo %}
         <section class="post-comments" aria-labelledby="comments-title">
