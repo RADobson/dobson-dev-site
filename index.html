@@ -78,6 +78,7 @@ a:focus-visible { outline: 2px solid var(--white); outline-offset: 6px; border-r
 .light::after { width: 46vmax; height: 46vmax; right: 6vmax; top: -30vmax; background: var(--cyan); opacity: 0.3; }
 .top { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 1.5rem; }
 .wordmark { font-weight: 600; font-size: 1.3rem; letter-spacing: -0.035em; line-height: 1; text-decoration: none; }
+.tm { display: inline-flex; align-items: center; justify-content: center; width: 1.75em; height: 1.75em; margin-left: 0.5em; border: 1px solid currentColor; border-radius: 50%; font-size: 0.34em; font-weight: 600; letter-spacing: 0; line-height: 1; vertical-align: 1.1em; }
 .top a.talk { font-size: 0.975rem; font-weight: 500; text-decoration: none; padding: 0.3rem 0; }
 .top a.talk:hover { text-decoration: underline; text-underline-offset: 0.4em; text-decoration-thickness: 1px; }
 .statement { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding-block: 4rem clamp(3.5rem, 9vh, 7rem); }
@@ -118,7 +119,8 @@ h1 {
 /* Closing shot */
 .close { position: relative; border-top: 1px solid var(--line); padding-block: clamp(5rem, 14vw, 12rem) clamp(4rem, 9vw, 7rem); isolation: isolate; overflow: hidden; }
 .close::before { content: ""; position: absolute; z-index: -1; width: 70vmax; height: 40vmax; left: 50%; bottom: -30vmax; transform: translateX(-50%); border-radius: 50%; filter: blur(120px); background: linear-gradient(90deg, var(--cyan), var(--violet)); opacity: 0.4; }
-.close h2 { margin: 0; font-weight: 600; font-size: clamp(2.5rem, 7vw, 6.5rem); line-height: 0.95; letter-spacing: -0.055em; max-width: 12ch; text-wrap: balance; }
+.close h2 { margin: 0; font-weight: 600; font-size: clamp(2.4rem, 6.4vw, 5.6rem); line-height: 0.98; letter-spacing: -0.055em; }
+.close h2 > span { display: block; text-wrap: balance; }
 .close p { margin: clamp(1.5rem, 3vw, 2.5rem) 0 0; max-width: 30rem; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -0.02em; color: var(--grey); }
 .close a.mail { display: inline-block; margin-top: clamp(2.5rem, 5vw, 4rem); font-weight: 600; font-size: clamp(1.25rem, 3.4vw, 2.75rem); letter-spacing: -0.04em; line-height: 1.1; text-decoration: none; overflow-wrap: anywhere; }
 .close a.mail:hover { text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.14em; }
@@ -147,7 +149,7 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
 <header class="open">
     <div class="light" aria-hidden="true"></div>
     <div class="wrap top">
-        <a class="wordmark" href="/" aria-label="Dobson Development, home">dobson_dev<span class="cursor" aria-hidden="true"></span></a>
+        <a class="wordmark" href="/" aria-label="Dobson Development, home">dobson_dev<span class="cursor" aria-hidden="true"></span><span class="tm" aria-label="trade mark">TM</span></a>
         <a class="talk" href="#contact">Get in touch</a>
     </div>
     <div class="wrap statement">
@@ -179,7 +181,7 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
 
     <section class="close" id="contact">
         <div class="wrap">
-            <h2>Change yours<span class="cursor" aria-hidden="true"></span></h2>
+            <h2><span>Microsoft sucks.</span> <span>Switch to something better<i class="cursor" aria-hidden="true"></i></span></h2>
             <p>Coffee's on me. Thirty minutes on how your business runs today, and you leave with a plan for Claude, Apple and Proton.</p>
             <a class="mail" href="mailto:richard@dobsondevelopment.com.au?subject=Coffee">richard@dobsondevelopment.com.au</a>
         </div>
