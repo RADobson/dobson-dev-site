@@ -1,8 +1,0 @@
-{
-  "puzzleText": "In the high-stakes realm of cyber espionage, every operative earns a callsign that reflects their unique approach.\n\nOne agent is known for working independently and taking risks on his own, a true maverick in the digital dark.\n\nAnother has built a reputation for outsmarting adversaries with clever misdirection.\n\nA third is famed for an almost superhuman ability to spot even the tiniest irregularity hidden among terabytes of data.\n\nTheir nicknames say it all.\n\nCan you guess the correct callsign for each agent?\n",
-  "puzzleType": "multi-input",
-  "correctAnswers": ["wolf", "fox", "eye"], 
-  "inputPrompts": ["LONE", "SLY", "EAGLE"],
-  "hint": "Focus on codenames:<br>'LONE' plus a 4-letter animal<br>'SLY' plus a 3-letter animal<br>'EAGLE' plus a 3-letter trait",
-  "title": "Cyber Operator Callsign Condundrum"
-}

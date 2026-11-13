@@ -1,6 +1,0 @@
-{
-  "puzzleText": "The informant tells you that the illuminaughty are planning a heist.\n\nHe gives you a list of number plates:\n\nRKT94J\nZPQ20M\nMTL75K\nBVC68L\nXNW03S\nPYL81D\n\nOne of these might be the number plate of their getaway car.\n\nYou send an email with the list to an undercover spy inside the illuminaughty.\n\n\"Which one of these is the real number plate?\" you ask.\n\nBut he doesn't give you the answer.\n\nInstead, he replies:\n\n-------------------------------\n\"I can't tell you the real number plate.\n\nBecause they are watching our emails.\n\nHere - take your list back:\n\nBKT94J\nZRQ20M\nMTT75K\nBVC38L\nXNW07S\nPYL81V\n\nSorry I can't help you.\"\n-------------------------------\n\nAt first you feel frustrated.\n\nBut then you take a second look.\n\nYippee!\n\nYou realise that he <em>did</em> tell you the real number plate.\n\nWhat is the real number plate?\n",
-  "correctAnswer": "BRT37V",
-  "hint": "Compare the 2 lists. Look at the changes the undercover agent made. The changes are correct.",
-  "title": "Naughty Number Plate Shuffle"
-}

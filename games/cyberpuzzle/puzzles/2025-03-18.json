@@ -1,8 +1,0 @@
-{
-  "puzzleText": "As an active cyber espionage field operative, tasked with conducting covert communications and high-risk investigations, you seem to have accumulated a lot of burner phones in your time.\n\nBurner phones are critical for staying undetected and maintaining speed and elusiveness in your craft.\n\nBut there's just one problem - you've run out of storage in your safe for all of them.\n\nIn fact, you're so far over capacity that you have 20 extra phones scattered around the office cluttering up your desk...\n\nThey just won’t fit in the overcrowded safe!\n\nYou get approval from Chief to buy a new safe, and he tells you to order one that can hold 75% more capacity than your old one.\n\nYou do some quick sums and realise that your new safe will be able to hold all your current burner phones PLUS 16 extra that you might end up acquiring in the future.\n\nPuzzle: How many burner phones do you currently own in total?\n",
-  "puzzleType": "normal",
-  "correctAnswer": "68",
-  "xp_bounty": 20,
-  "hint": "Let x = capacity of the old safe.\nLet y = total number of burner phones you own.\nYou know y = x + 20 (since 20 are left out of the old safe).\nThe new safe’s capacity is 1.75x, and it holds y + 16.\nSolve for y.",
-  "title": "Burner Phone Bevy"
-}

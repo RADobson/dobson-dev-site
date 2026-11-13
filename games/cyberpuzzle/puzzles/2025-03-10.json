@@ -1,7 +1,0 @@
-{
-  "puzzleText": "Kenny, a notorious cyber crook, gets caught hacking into the wrong system and is sentenced to jail on New Year's Day, 2025. But Kenny has a bigger problem than prison time—his three girlfriends must never find out about each other.\n\nEach of his girlfriends makes a promise:\n\n    Girlfriend A visits every 7 days (starting January 1, 2025).\n    Girlfriend B visits every 5 days.\n    Girlfriend C visits every 4 days.\n\nKenny is confident that he can keep them from meeting—unless all three of them visit on the same day. If that happens, the jig is up, and he’ll be dumped by all of them at once!\n\nThe Question:\nOn what date in 2025 will all three girlfriends visit him on the same day and expose his sneaky love triangle?",
-  "correctAnswer": "20 May|May 20|20/05|05/20|2025/05/20|2025-05-20|20/05/2025|20-05-2025|20 May 2025|20 MAY 25|20th of May|20th May|May 20th|20th of May 2025",
-  "hint": "To solve it, you need to find the least common multiple (LCM) of 7, 5, and 4.",
-  "puzzleType": "normal",
-  "title": "Crooked Kenny's Love Dilemma"
-}
