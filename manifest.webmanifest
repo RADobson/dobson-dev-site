@@ -1,7 +1,7 @@
 {
     "name": "Dobson Development",
     "short_name": "Dobson Dev",
-    "description": "Australian AI automation and business strategy agency. Change your Outlook on IT.",
+    "description": "Claude and Macs for Australian business. Change your Outlook on IT.",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",

@@ -98,6 +98,13 @@ body.dd-page {
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
 .split > h2 { margin: 0; }
 
+/* The two offers */
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 5vw, 5rem); margin-top: clamp(2.5rem, 5vw, 4rem); }
+.duo article { border-top: 1px solid var(--dd-black); padding-top: 1.75rem; }
+.dd-page .duo h3 { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.045em; line-height: 1; margin-bottom: 0.5em; }
+.dd-page main .duo h3 a { text-decoration: none; }
+.dd-page main .duo h3 a:hover { text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.1em; }
+
 /* Spec sheet */
 .spec { list-style: none; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding: 0; }
 .spec li { display: grid; grid-template-columns: 12rem minmax(0, 1.15fr) minmax(0, 1.25fr); gap: 0.5rem 2.5rem; align-items: baseline; padding: 1.75rem 0; border-top: 1px solid var(--dd-line); }
@@ -202,6 +209,7 @@ body.dd-page {
     .hero-sub { grid-template-columns: 1fr; }
     .hero-sub > div { grid-column: 1; }
     .split { grid-template-columns: 1fr; }
+    .duo { grid-template-columns: 1fr; }
     .spec li { grid-template-columns: 1fr; padding: 1.4rem 0; }
     .kit { grid-template-columns: 1fr; }
     .ledger > li { grid-template-columns: 1fr; }

@@ -18,12 +18,12 @@ Live at https://dobsondevelopment.com.au
 | Homepage | `index.html` |
 | Articles | `_posts/` (newest post becomes the lead story) |
 | Outage ledger entries | `_data/outages.yml` (the days-since count uses the newest date) |
-| The setup | `_data/setup.yml`, and what it replaces in `_data/swaps.yml` |
+| The two offers | `claude/index.html` and `mac/index.html` |
 | Outage kit | `_includes/kit.html` |
 | Services and contact | `work-with-us/index.html` |
 | Header, footer | `_includes/header.html`, `_includes/footer.html` |
 | Styles | `assets/css/chrome.css` (header, footer, fonts), `assets/css/site.css` (everything else) |
-| Free security tools | `tools/` (these keep their original dark layout, `_layouts/tool.html`) |
+| Free security tools | `tools/` (still published, no longer linked from the navigation) |
 
 ## Brand
 
