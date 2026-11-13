@@ -166,3 +166,7 @@
     .dd-footer-grid { grid-template-columns: 1fr; gap: 2.25rem; padding-block: 3rem 2rem; }
     .dd-nav { gap: 0.3rem 1.25rem; }
 }
+@media (max-width: 30rem) {
+    .dd-nav { gap: 0.3rem 0.8rem; font-size: 0.9rem; }
+    .dd-nav a.dd-cta { padding: 0.45rem 0.85rem; }
+}
