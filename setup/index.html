@@ -1,0 +1,48 @@
+---
+layout: default
+title: The setup
+description: "What a Dobson Development business runs on: Macs, Linux, Claude, n8n, Jamf, CrowdStrike and a server of your own. And what it replaces."
+permalink: /setup/
+---
+<section class="page-head dd-wrap">
+    <h1>The setup</h1>
+    <p class="lede measure quiet">What a business runs on once we've finished with it. Chosen the way you'd choose anything you use every day: because it's the best one.</p>
+</section>
+
+<section class="band dd-wrap" style="padding-top:0">
+    <ul class="spec">
+        {% for s in site.data.setup %}
+        <li>
+            <span class="spec-where">{{ s.where }}</span>
+            <span class="spec-what">{{ s.what }}</span>
+            <p class="spec-why">{{ s.why }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="band band-silver" aria-labelledby="replaces-title">
+    <div class="dd-wrap">
+        <h2 id="replaces-title">What it replaces</h2>
+        <table class="swap">
+            <thead><tr><th scope="col">Out</th><th scope="col">In</th><th scope="col">Why</th></tr></thead>
+            <tbody>
+            {% for s in site.data.swaps %}
+                <tr><td class="swap-out">{{ s.out }}</td><td class="swap-in">{{ s.in }}</td><td>{{ s.why }}</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="band dd-wrap" aria-labelledby="rules-title">
+    <div class="split">
+        <h2 id="rules-title">Three house rules</h2>
+        <ul class="offer">
+            <li><h3>You own it</h3><p>Every tool that goes in lets you take your data and your automations with you. Anything that locks the door behind you stays out.</p></li>
+            <li><h3>It works on Fridays</h3><p>Your email, your chat, your files and your security come from different places, so one bad morning at one vendor leaves the rest of the business standing.</p></li>
+            <li><h3>It answers to you</h3><p>Anything sensitive can run on hardware in your own building, under Australian law, with your name on the asset register.</p></li>
+        </ul>
+    </div>
+    <div class="actions"><a class="button" href="{{ '/work-with-us/' | relative_url }}">Work with us</a></div>
+</section>

@@ -7,8 +7,8 @@ Live at https://dobsondevelopment.com.au
 ## How it's built
 
 - Jekyll on GitHub Pages. Pushing to `main` publishes the site.
-- Static HTML and CSS, one small script for the homepage sign.
-- Self-hosted fonts (Barlow Condensed, Source Serif 4, both SIL OFL).
+- Static HTML and CSS, one small script for the days-since-outage count.
+- Self-hosted font (Geist, SIL OFL).
 - Formspree for the contact form and email signup.
 
 ## Where things live
@@ -17,17 +17,17 @@ Live at https://dobsondevelopment.com.au
 | --- | --- |
 | Homepage | `index.html` |
 | Articles | `_posts/` (newest post becomes the lead story) |
-| Outage ledger entries | `_data/outages.yml` (the homepage sign counts from the newest date) |
-| The swap list | `_data/swaps.yml` |
+| Outage ledger entries | `_data/outages.yml` (the days-since count uses the newest date) |
+| The setup | `_data/setup.yml`, and what it replaces in `_data/swaps.yml` |
 | Outage kit | `_includes/kit.html` |
-| Services and contact | `way-out/index.html` |
+| Services and contact | `work-with-us/index.html` |
 | Header, footer | `_includes/header.html`, `_includes/footer.html` |
 | Styles | `assets/css/chrome.css` (header, footer, fonts), `assets/css/site.css` (everything else) |
 | Free security tools | `tools/` (these keep their original dark layout, `_layouts/tool.html`) |
 
 ## Logging a new outage
 
-Copy the top block in `_data/outages.yml`, change the details, and put it first. The sign on the homepage resets itself.
+Copy the top block in `_data/outages.yml`, change the details, and put it first. The count on the homepage resets itself.
 
 ## Publishing a new article
 
@@ -44,4 +44,4 @@ jekyll serve
 
 ## Retired pages
 
-The old service pages (`/services/...`, `/e8cr/`, `/soc-squad/`) now redirect to `/way-out/`. The originals are in the git history.
+The old service pages (`/services/...`, `/e8cr/`, `/soc-squad/`) now redirect to `/work-with-us/`. The originals are in the git history.

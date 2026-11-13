@@ -1,6 +1,6 @@
 # The outage ledger. Newest first.
 # To log a new one, copy a block, change the details, and put it at the top.
-# The sign on the homepage counts days from the newest date in this file.
+# The homepage counts days from the newest date in this file.
 
 - date: 2026-11-13
   label: "Friday 13 November 2026"

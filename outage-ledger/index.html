@@ -1,13 +1,21 @@
 ---
 layout: default
+days: true
 title: The outage ledger
 description: "Every major Microsoft outage we've logged, newest first: what fell over, how long for, and what Microsoft said about it."
 permalink: /outage-ledger/
 ---
 {% assign latest = site.data.outages | sort: "date" | reverse %}
+{% assign last = latest.first %}
+{% assign last_s = last.date | date: "%s" | plus: 0 %}
+{% assign now_s = site.time | date: "%s" | plus: 0 %}
+{% assign since = now_s | minus: last_s | divided_by: 86400 %}
+{% if since < 0 %}{% assign since = 0 %}{% endif %}
 <section class="page-head dd-wrap">
     <h1>The outage ledger</h1>
-    <p class="lede measure">Every major Microsoft outage we've logged, newest first. What fell over, how long for, and what Microsoft said about it. Dates are Australian east coast time.</p>
+    <p class="lede measure quiet">Every major Microsoft outage we've logged, newest first. What fell over, how long for, and what Microsoft said about it. Dates are Australian east coast time.</p>
+    <p class="ledger-count"><span class="days"><span data-days-since>{{ since }}</span> <span data-days-unit>{% if since == 1 %}day{% else %}days{% endif %}</span></span> since the last one. Best run on this ledger: <span data-days-best>294</span> days.</p>
+    <script type="application/json" id="outage-dates">[{% for o in latest %}"{{ o.date | date: '%Y-%m-%d' }}"{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
 </section>
 
 <section class="dd-wrap">
@@ -15,7 +23,7 @@ permalink: /outage-ledger/
         {% for o in latest %}
         <li>
             <div>
-                <time class="ledger-when" datetime="{{ o.date | date: '%Y-%m-%d' }}">{{ o.label }}</time><br>
+                <time class="ledger-when" datetime="{{ o.date | date: '%Y-%m-%d' }}">{{ o.label }}</time>
                 <span class="ledger-how-long">{{ o.duration }}</span>
             </div>
             <div>
@@ -28,13 +36,13 @@ permalink: /outage-ledger/
         </li>
         {% endfor %}
     </ol>
-    <p class="measure" style="margin-top:2rem">Know one we've missed? <a href="{{ '/way-out/' | relative_url }}#contact">Tell us</a> and it goes on the board.</p>
+    <p class="measure quiet" style="margin-top:2rem">Know one we've missed? <a href="{{ '/work-with-us/' | relative_url }}#contact">Tell us</a> and it goes on the ledger.</p>
 </section>
 
-<section class="band band-concrete" aria-labelledby="kit-title" style="margin-top:4rem">
+<section class="band band-silver" aria-labelledby="kit-title" style="margin-top:clamp(4rem,9vw,8rem)">
     <div class="dd-wrap">
         <h2 id="kit-title">Six things to do before the next one</h2>
-        <p class="measure">There will be a next one. Ten minutes this arvo saves you a morning of watching a circle spin.</p>
+        <p class="lede measure quiet">There will be a next one. Ten minutes this arvo saves you a morning of watching a circle spin.</p>
         {% include kit.html %}
     </div>
 </section>

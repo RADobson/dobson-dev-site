@@ -1,21 +1,21 @@
 ---
 layout: default
 title: Writing
-description: "Strong opinions about Microsoft, AI and running a business on technology you control. From Richard Dobson at Dobson Development."
+description: "Strong opinions about Microsoft, AI and running a business on technology you'd choose. From Richard Dobson at Dobson Development."
 permalink: /blog/
 ---
 <section class="page-head dd-wrap">
     <h1>Writing</h1>
-    <p class="lede measure">Strong opinions about Microsoft, AI and running a business on technology you control. The older security pieces are still here too. They've aged fine.</p>
+    <p class="lede measure quiet">Strong opinions about Microsoft, AI and running a business on technology you'd choose. The older security pieces are here too. They've aged fine.</p>
 </section>
 
 {% assign lead = site.posts.first %}
-<section class="band lead-story dd-wrap" aria-labelledby="lead-title">
-    <p class="lead-date">Latest, <time datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: "%-d %B %Y" }}</time></p>
+<section class="band feature dd-wrap" aria-labelledby="lead-title">
+    <p class="feature-date quiet">Latest, <time datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: "%-d %B %Y" }}</time></p>
     <h2 id="lead-title"><a href="{{ lead.url | relative_url }}">{{ lead.title }}</a></h2>
     <div class="measure">
-        <p>{{ lead.description }}</p>
-        <p><a class="button" href="{{ lead.url | relative_url }}">Read the full piece</a></p>
+        <p class="lede quiet">{{ lead.description }}</p>
+        <div class="actions"><a class="button" href="{{ lead.url | relative_url }}">Read the piece</a></div>
     </div>
 </section>
 
