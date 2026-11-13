@@ -1,0 +1,29 @@
+# The swap list shown on the homepage and on /swap/.
+
+- out: "Windows laptops"
+  in: "Macs, or Linux where it suits"
+  why: "On 19 July 2024 the Macs and the Linux boxes kept working. That's the whole argument."
+
+- out: "Intune"
+  in: "Jamf"
+  why: "Every Mac in the business set up, patched and locked down from one place."
+
+- out: "Defender"
+  in: "CrowdStrike"
+  why: "Your security product should still be standing when the rest of the vendor falls over."
+
+- out: "Copilot"
+  in: "Claude, ChatGPT, Gemini, Grok, or an open model you run yourself"
+  why: "Roughly 450 million people use Microsoft 365 at work. About 15 million pay for Copilot. The customers have already voted."
+
+- out: "Power Automate"
+  in: "n8n or Zapier"
+  why: "Your automations should be yours. Rebuilt in tools you can pick up and move."
+
+- out: "AI rented from someone else's cloud"
+  in: "A server in your own office"
+  why: "Open models like DeepSeek, Qwen, Kimi and Hermes, running on hardware I assemble by hand. It answers to nobody in Washington. Either one."
+
+- out: "Teams, Outlook, Word, Excel and SharePoint"
+  in: "Several good options each"
+  why: "Each one gets its own write-up as it's finished. They'll land on the Writing page."

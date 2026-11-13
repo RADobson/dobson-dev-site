@@ -1,12 +1,12 @@
 {
     "name": "Dobson Development",
     "short_name": "Dobson Dev",
-    "description": "Australian software studio building practical tools for cybersecurity and business",
+    "description": "Australian AI automation and business strategy agency. We specialise in NOT Microsoft.",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
-    "background_color": "#0B0C10",
-    "theme_color": "#0B0C10",
+    "background_color": "#FFFFFF",
+    "theme_color": "#FFD60A",
     "orientation": "portrait-primary",
     "lang": "en-AU",
     "categories": ["business", "developer-tools", "security"],
@@ -26,10 +26,10 @@
     ],
     "shortcuts": [
         {
-            "name": "View Portfolio",
-            "short_name": "Portfolio",
-            "description": "See live projects",
-            "url": "/#portfolio",
+            "name": "Outage ledger",
+            "short_name": "Ledger",
+            "description": "Every major Microsoft outage we have logged",
+            "url": "/outage-ledger/",
             "icons": [{ "src": "/assets/images/icon.svg", "sizes": "any" }]
         },
         {

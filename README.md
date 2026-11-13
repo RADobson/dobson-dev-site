@@ -1,69 +1,47 @@
-# Dobson Development Portfolio
+# Dobson Development
 
-Australian software studio portfolio site showcasing our live products and services.
+The website for Dobson Development Pty Ltd, the Australian AI automation and business strategy agency that specialises in NOT Microsoft.
 
-## Live at
-https://dobsondevelopment.com.au
+Live at https://dobsondevelopment.com.au
 
-## Portfolio Products
+## How it's built
 
-- **[DoppelDown](https://doppeldown.com)** - AI-powered brand protection for SMBs
-- **[CyberPuzzle.fun](https://cyberpuzzle.fun)** - Interactive cybersecurity skill challenges
+- Jekyll on GitHub Pages. Pushing to `main` publishes the site.
+- Static HTML and CSS, one small script for the homepage sign.
+- Self-hosted fonts (Barlow Condensed, Source Serif 4, both SIL OFL).
+- Formspree for the contact form and email signup.
 
-## Tech Stack
+## Where things live
 
-- Jekyll (GitHub Pages)
-- Static HTML/CSS/JavaScript
-- Formspree (contact form)
+| What | Where |
+| --- | --- |
+| Homepage | `index.html` |
+| Articles | `_posts/` (newest post becomes the lead story) |
+| Outage ledger entries | `_data/outages.yml` (the homepage sign counts from the newest date) |
+| The swap list | `_data/swaps.yml` |
+| Outage kit | `_includes/kit.html` |
+| Services and contact | `way-out/index.html` |
+| Header, footer | `_includes/header.html`, `_includes/footer.html` |
+| Styles | `assets/css/chrome.css` (header, footer, fonts), `assets/css/site.css` (everything else) |
+| Free security tools | `tools/` (these keep their original dark layout, `_layouts/tool.html`) |
 
-## SEO & Features
+## Logging a new outage
 
-- ✅ XML Sitemap for search engines
-- ✅ Robots.txt configuration
-- ✅ Structured data (JSON-LD) for Organization and Software Applications
-- ✅ Open Graph and Twitter Card meta tags
-- ✅ Semantic HTML5 with accessibility features
-- ✅ Scroll animations and smooth transitions
-- ✅ Mobile-responsive design
-- ✅ Skip-to-content link for keyboard navigation
+Copy the top block in `_data/outages.yml`, change the details, and put it first. The sign on the homepage resets itself.
 
-## Local Development
+## Publishing a new article
+
+Add a Markdown file to `_posts/` named `YYYY-MM-DD-title.md`. An optional `pull:` line in the front matter becomes the pull quote on the homepage.
+
+Heads up: `.github/workflows/linkedin-auto-post.yml` posts to LinkedIn whenever a push to `main` adds a new file in `_posts/` in its final commit.
+
+## Local preview
 
 ```bash
-bundle install
-bundle exec jekyll serve
+gem install jekyll jekyll-feed jekyll-sitemap jekyll-seo-tag minima
+jekyll serve
 ```
 
-## Recent Improvements (2026)
+## Retired pages
 
-### SEO Enhancements
-- Added comprehensive meta tags including keywords, author, and robots
-- Implemented Open Graph and Twitter Card tags for better social sharing
-- Added JSON-LD structured data for Organization schema
-- Created sitemap.xml for search engine indexing
-- Added robots.txt for crawler guidance
-- Implemented canonical URLs
-
-### UI/UX Improvements
-- Added scroll-triggered animations using Intersection Observer
-- Implemented a "Back to Top" button with smooth scrolling
-- Enhanced card hover effects with shine animations
-- Added a Services section showcasing development capabilities
-- Integrated Blog section with latest post preview
-- Improved mobile menu with smooth animations
-- Added focus indicators for keyboard navigation
-- Added skip-to-content link for accessibility
-
-### Content Updates
-- Added Services section (Cybersecurity Tools, AI-Powered SaaS, Rapid Prototyping)
-- Added Blog section with latest article preview
-- Updated copyright year to 2026
-- Enhanced About section with tech stack details
-- Added footer links (GitHub, Blog, Email)
-- Improved form accessibility with proper labels
-
-## Contact
-
-- Website: https://dobsondevelopment.com.au
-- Email: ernie@dobsondevelopment.com.au
-- GitHub: https://github.com/RADobson
+The old service pages (`/services/...`, `/e8cr/`, `/soc-squad/`) now redirect to `/way-out/`. The originals are in the git history.

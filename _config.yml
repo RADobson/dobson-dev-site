@@ -1,6 +1,9 @@
 # Jekyll Configuration for Dobson Development
 title: Dobson Development
-description: Australian software studio building practical tools for cybersecurity and business
+tagline: We specialise in NOT Microsoft
+description: "Australian AI automation and business strategy agency. We specialise in NOT Microsoft: Macs, Linux, Claude, open models and tools you control."
+lang: en_AU
+timezone: Australia/Brisbane
 url: "https://dobsondevelopment.com.au"
 baseurl: ""
 
@@ -8,7 +11,7 @@ baseurl: ""
 author:
   name: Richard Dobson
   email: richard@dobsondevelopment.com.au
-  bio: "Founder at Dobson Development. Building AI-powered tools for cybersecurity and business. Former SOC engineer turned indie hacker."
+  bio: "Founder of Dobson Development, the agency that specialises in NOT Microsoft. SOC and SIEM engineer turned builder."
   avatar: /assets/images/richard.jpg
   twitter: RADobson
   github: RADobson
@@ -24,11 +27,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-paginate
-
-# Pagination
-paginate: 5
-paginate_path: "/blog/page/:num/"
 
 # Permalinks
 permalink: /blog/:title/
@@ -59,6 +57,8 @@ exclude:
   - Gemfile.lock
   - IMPROVEMENTS_PLAN.md
   - SEO_PERFORMANCE_STRATEGY.md
+  - PERFORMANCE_BENCHMARK_REPORT.md
+  - ANALYTICS-SETUP.md
   - ".git"
   - ".gitignore"
 
@@ -92,7 +92,7 @@ giscus:
   mapping: pathname
   reactions_enabled: 1
   emit_metadata: 0
-  theme: dark_dimmed
+  theme: light
   lang: en
   crossorigin: anonymous
 

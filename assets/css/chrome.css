@@ -1,0 +1,170 @@
+/* Shared header and footer. Loaded on every page, including the dark tools pages,
+   so everything here is prefixed dd- and sets its own colours. */
+
+/* Self-hosted type. Barlow Condensed for anything that reads like a sign,
+   Source Serif 4 for anything you read for more than a line. Both SIL OFL. */
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/barlow-condensed-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 700; font-display: swap; src: url('/assets/fonts/barlow-condensed-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 800; font-display: swap; src: url('/assets/fonts/barlow-condensed-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; font-display: swap; src: url('/assets/fonts/source-serif-4-latin-opsz-normal.woff2') format('woff2-variations'); }
+@font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 200 900; font-display: swap; src: url('/assets/fonts/source-serif-4-latin-opsz-italic.woff2') format('woff2-variations'); }
+
+:root {
+    --dd-hivis: #FFD60A;
+    --dd-black: #000000;
+    --dd-white: #FFFFFF;
+    --dd-concrete: #E7E8E4;
+    --dd-danger: #C8102E;
+    --dd-exit: #00704A;
+    --dd-sign: 'Barlow Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+    --dd-text: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+}
+
+.dd-wrap {
+    width: min(100% - 2.5rem, 70rem);
+    margin-inline: auto;
+}
+
+.dd-skip {
+    position: absolute;
+    left: -999rem;
+    top: 0;
+    background: var(--dd-black);
+    color: var(--dd-white);
+    padding: 0.75rem 1rem;
+    font-family: var(--dd-sign);
+    font-size: 1.1rem;
+    z-index: 100;
+}
+.dd-skip:focus { left: 0; }
+
+/* Header */
+.dd-header {
+    background: var(--dd-white);
+    border-bottom: 4px solid var(--dd-black);
+    font-family: var(--dd-sign);
+    position: relative;
+    z-index: 10;
+}
+.dd-header-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    padding-block: 0.9rem;
+}
+.dd-wordmark {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--dd-black);
+    line-height: 1;
+}
+.dd-wordmark-name {
+    font-weight: 800;
+    font-size: 1.75rem;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+.dd-wordmark-line {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 0.2rem;
+    color: var(--dd-black);
+}
+.dd-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 1.4rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.dd-nav a {
+    color: var(--dd-black);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-bottom: 3px solid transparent;
+}
+.dd-nav a:hover,
+.dd-nav a[aria-current="page"] { border-bottom-color: var(--dd-hivis); }
+.dd-nav a:focus-visible,
+.dd-wordmark:focus-visible,
+.dd-footer a:focus-visible {
+    outline: 3px solid var(--dd-black);
+    outline-offset: 3px;
+}
+.dd-nav a.dd-exit {
+    background: var(--dd-exit);
+    color: var(--dd-white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    border-bottom: 0;
+}
+.dd-nav a.dd-exit:hover,
+.dd-nav a.dd-exit[aria-current="page"] { background: var(--dd-black); }
+
+/* Footer */
+.dd-footer {
+    background: var(--dd-black);
+    color: var(--dd-white);
+    font-family: var(--dd-text);
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-top: 5rem;
+}
+.dd-hazard {
+    height: 1.25rem;
+    background: repeating-linear-gradient(-45deg, var(--dd-hivis) 0 1.25rem, var(--dd-black) 1.25rem 2.5rem);
+}
+.dd-footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr 1.2fr;
+    gap: 2.5rem;
+    padding-block: 3rem 2rem;
+}
+.dd-footer p { margin: 0 0 0.5rem; color: var(--dd-white); }
+.dd-footer-name {
+    font-family: var(--dd-sign);
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+.dd-footer nav { display: flex; flex-direction: column; gap: 0.35rem; }
+.dd-footer a { color: var(--dd-white); text-decoration: underline; text-decoration-color: var(--dd-hivis); text-underline-offset: 0.2em; }
+.dd-footer a:hover { color: var(--dd-hivis); }
+.dd-signup label { display: block; font-family: var(--dd-sign); font-weight: 700; font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--dd-white); }
+.dd-signup-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.dd-signup input[type="email"] {
+    flex: 1 1 14rem;
+    min-width: 0;
+    font: inherit;
+    padding: 0.65rem 0.8rem;
+    border: 2px solid var(--dd-white);
+    border-radius: 4px;
+    background: var(--dd-white);
+    color: var(--dd-black);
+}
+.dd-signup button {
+    font-family: var(--dd-sign);
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 0.6rem 1rem;
+    border: 2px solid var(--dd-hivis);
+    border-radius: 4px;
+    background: var(--dd-hivis);
+    color: var(--dd-black);
+    cursor: pointer;
+}
+.dd-signup button:hover { background: var(--dd-white); border-color: var(--dd-white); }
+.dd-signup input:focus-visible,
+.dd-signup button:focus-visible { outline: 3px solid var(--dd-hivis); outline-offset: 3px; }
+.dd-footer-base { padding-block: 1.25rem 2rem; border-top: 1px solid #3a3a3a; }
+.dd-footer-base p { font-size: 0.9rem; color: #cfcfcf; max-width: 60rem; }
+
+@media (max-width: 52rem) {
+    .dd-footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .dd-wordmark-name { font-size: 1.5rem; }
+    .dd-nav { font-size: 1.1rem; gap: 0.35rem 1.1rem; }
+}

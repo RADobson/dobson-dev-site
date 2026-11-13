@@ -1,18 +1,18 @@
 /**
  * Service Worker for Dobson Development
  * Aggressive caching for fonts, images, and static assets
- * Version: 2.0.0
+ * Version: 3.0.0
  */
 
-const CACHE_VERSION = 'dobson-v2';
+const CACHE_VERSION = 'dobson-v3';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
 // Critical assets to cache immediately on install
 const PRECACHE_ASSETS = [
   '/',
-  '/assets/fonts/inter-latin.woff2',
-  '/assets/fonts/firacode-latin.woff2',
+  '/assets/css/chrome.css',
+  '/assets/css/site.css',
   '/assets/images/icon.svg',
   '/manifest.webmanifest'
 ];
