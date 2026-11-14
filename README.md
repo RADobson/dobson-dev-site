@@ -1,6 +1,6 @@
 # Dobson Development
 
-The website for Dobson Development Pty Ltd: Claude, Apple and Proton for Australian business.
+The website for Dobson Development Pty Ltd: Apple, Proton and Claude for Australian business.
 
 Live at https://dobsondevelopment.com.au
 
