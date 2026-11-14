@@ -78,6 +78,8 @@ a:focus-visible { outline: 2px solid var(--white); outline-offset: 6px; border-r
 .light::after { width: 46vmax; height: 46vmax; right: 6vmax; top: -30vmax; background: var(--cyan); opacity: 0.3; }
 .top { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 1.5rem; }
 .wordmark { font-weight: 600; font-size: 1.3rem; letter-spacing: -0.035em; line-height: 1; text-decoration: none; }
+.top .links { display: flex; gap: clamp(1.1rem, 3vw, 2rem); }
+.top .wordmark, .top a.talk { white-space: nowrap; }
 .top a.talk { font-size: 0.975rem; font-weight: 500; text-decoration: none; padding: 0.3rem 0; }
 .top a.talk:hover { text-decoration: underline; text-underline-offset: 0.4em; text-decoration-thickness: 1px; }
 .statement { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding-block: 4rem clamp(3.5rem, 9vh, 7rem); }
@@ -115,6 +117,17 @@ h1 {
 .card p { margin: clamp(1.5rem, 3vw, 2.5rem) 0 0 auto; max-width: 31rem; font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.35; letter-spacing: -0.025em; }
 .card p span { display: block; margin-top: 0.7em; color: var(--grey); font-size: 0.78em; line-height: 1.5; letter-spacing: -0.012em; }
 
+/* White paper */
+.paper { border-top: 1px solid var(--line); padding-block: clamp(3.5rem, 9vw, 8rem); }
+.paper .kicker { margin: 0 0 1.4rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); }
+.paper h2 { margin: 0; max-width: 16ch; font-weight: 600; font-size: clamp(2.4rem, 6.4vw, 5.6rem); line-height: 0.98; letter-spacing: -0.055em; text-wrap: balance; }
+.paper h2 a { text-decoration: none; }
+.paper p { margin: clamp(1.5rem, 3vw, 2.5rem) 0 0; max-width: 34rem; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -0.02em; color: var(--grey); }
+.paper .go { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; max-width: none; }
+.paper .btn { display: inline-block; padding: 0.8em 1.35em; border-radius: 99px; background: linear-gradient(90deg, var(--cyan), var(--violet)); color: #05060A; font-size: 1rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1; text-decoration: none; }
+.paper .btn:hover { filter: brightness(1.12); }
+.paper .pdf { color: var(--white); font-size: 1rem; text-underline-offset: 0.35em; text-decoration-thickness: 1px; }
+
 /* Closing shot */
 .close { position: relative; border-top: 1px solid var(--line); padding-block: clamp(5rem, 14vw, 12rem) clamp(4rem, 9vw, 7rem); isolation: isolate; overflow: hidden; }
 .close::before { content: ""; position: absolute; z-index: -1; width: 70vmax; height: 40vmax; left: 50%; bottom: -30vmax; transform: translateX(-50%); border-radius: 50%; filter: blur(120px); background: linear-gradient(90deg, var(--cyan), var(--violet)); opacity: 0.4; }
@@ -142,6 +155,12 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
 
 @media (max-width: 40rem) {
     .card p { margin-left: 0; }
+    .top { gap: 1rem; }
+    .top .links { gap: 1rem; }
+    .top a.talk { font-size: 0.9rem; }
+}
+@media (max-width: 22rem) {
+    .top a.talk[href="#contact"] { display: none; }
 }
 </style>
 </head>
@@ -150,7 +169,7 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
     <div class="light" aria-hidden="true"></div>
     <div class="wrap top">
         <a class="wordmark" href="/" aria-label="Dobson Development, home">dobson_dev<span class="cursor" aria-hidden="true"></span></a>
-        <a class="talk" href="#contact">Get in touch</a>
+        <nav class="links" aria-label="Site"><a class="talk" href="/white-paper/">White paper</a><a class="talk" href="#contact">Get in touch</a></nav>
     </div>
     <div class="wrap statement">
         <h1>Change your <span class="outlook"><svg viewBox="0 -1491 7311 1922" aria-hidden="true" focusable="false"><path d="M1447 -712C1450 -1136 1198 -1457 770 -1457C348 -1457 92 -1136 92 -712C92 -290 348 25 770 25C1198 25 1447 -290 1447 -712ZM276 -712C276 -1063 449 -1296 770 -1296C1089 -1296 1260 -1063 1260 -712C1261 -364 1089 -135 770 -135C449 -135 276 -364 276 -712Z M2404 -189 2374 -362C2374 -181 2244 -130 2113 -130C1890 -130 1852 -274 1852 -419V-973H1688V-368C1688 -175 1779 22 2077 22C2289 22 2404 -118 2404 -189ZM2625 -28C2573 -122 2539 -223 2538 -330L2374 -328C2374 -198 2416 -75 2480 39ZM2538 -974H2374V-328L2538 -211Z M3343 18V-129C3314 -125 3275 -122 3252 -122C3131 -122 3076 -218 3076 -302V-1323H2922V-273C2922 -114 3018 24 3211 24C3234 24 3300 22 3343 18ZM3344 -828V-973C3344 -973 2746 -973 2746 -973V-828C2746 -828 3344 -828 3344 -828Z M3727 0V-1516H3563V0Z M4994 -483C4997 -793 4800 -998 4498 -998C4191 -998 3988 -793 3988 -483C3988 -177 4191 25 4498 25C4797 25 4994 -177 4994 -483ZM4162 -483C4163 -698 4297 -840 4498 -840C4687 -840 4815 -698 4820 -483C4816 -272 4688 -133 4498 -133C4294 -133 4161 -272 4162 -483Z M6194 -483C6197 -793 6000 -998 5698 -998C5391 -998 5188 -793 5188 -483C5188 -177 5391 25 5698 25C5997 25 6194 -177 6194 -483ZM5362 -483C5363 -698 5497 -840 5698 -840C5887 -840 6015 -698 6020 -483C6016 -272 5888 -133 5698 -133C5494 -133 5361 -272 5362 -483Z M7242 -974 7077 -1000 6693 -594C6641 -540 6600 -461 6578 -427V-336L6597 -262ZM6623 0V-1516H6459V0ZM7285 2 6910 -624 6799 -507 7103 2Z"/></svg><span class="sr">Outlook</span></span> on IT.</h1>
@@ -169,13 +188,22 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
     <section class="card">
         <div class="wrap">
             <h2>Apple</h2>
-            <p>Beautiful machines, ready the moment the box opens.<span>Mac, iPhone and iPad chosen for each role, enrolled before they ship, and managed for you with Jamf.</span></p>
+            <p>Beautiful machines, ready the moment the box opens.<span>Mac, iPhone and iPad chosen for each role, enrolled before they ship, and managed for you with Addigy.</span></p>
         </div>
     </section>
     <section class="card">
         <div class="wrap">
             <h2>Proton</h2>
             <p>A private office, with keys only you hold.<span>Email, calendar, documents, passwords and a VPN in one Swiss subscription, with every mailbox moved across for you.</span></p>
+        </div>
+    </section>
+
+    <section class="paper">
+        <div class="wrap">
+            <p class="kicker">Free white paper</p>
+            <h2><a href="/white-paper/">The case for a Microsoft-free Australian business</a></h2>
+            <p>Outages, price rises and the 2026 privacy changes, then the Apple, Proton and Claude workplace that answers all three. Read it here or take the PDF with you.</p>
+            <p class="go"><a class="btn" href="/white-paper/">Read the white paper</a><a class="pdf" href="/white-paper/change-your-outlook-on-it.pdf" download>Download the PDF</a></p>
         </div>
     </section>
 
@@ -191,7 +219,7 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
 <footer>
     <div class="wrap">
         <p>&copy; 2026 Dobson Development Pty Ltd. ABN 43 688 593 606. Queensland, Australia.</p>
-        <p>Claude, Apple, Mac, iPhone, iPad, Jamf and Proton are trademarks of their owners. Dobson Development is an independent business.</p>
+        <p>Claude, Apple, Mac, iPhone, iPad, Addigy and Proton are trademarks of their owners. Dobson Development is an independent business.</p>
     </div>
 </footer>
 <script>

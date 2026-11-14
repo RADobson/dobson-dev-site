@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Change your Outlook on IT: the case for a Microsoft-free Australian business | Dobson Development</title>
+<meta name="description" content="A free white paper for Australian business owners: Microsoft&#x27;s record on outages, price and security, the 2026 privacy and ASD Essentials changes, and the Apple, Proton and Claude workplace that replaces it.">
+<link rel="canonical" href="https://dobsondevelopment.com.au/white-paper/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://dobsondevelopment.com.au/white-paper/">
+<meta property="og:title" content="Change your Outlook on IT. The case for a Microsoft-free Australian business.">
+<meta property="og:description" content="A free white paper for Australian business owners: Microsoft&#x27;s record on outages, price and security, the 2026 privacy and ASD Essentials changes, and the Apple, Proton and Claude workplace that replaces it.">
+<meta property="og:image" content="https://dobsondevelopment.com.au/white-paper/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/svg+xml" href="/assets/images/icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="alternate" type="application/pdf" href="/white-paper/change-your-outlook-on-it.pdf" title="Change your Outlook on IT (PDF)">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Change your Outlook on IT: the case for a Microsoft-free Australian business", "description": "A free white paper for Australian business owners: Microsoft's record on outages, price and security, the 2026 privacy and ASD Essentials changes, and the Apple, Proton and Claude workplace that replaces it.", "datePublished": "2026-11-14", "dateModified": "2026-11-14", "inLanguage": "en-AU", "mainEntityOfPage": "https://dobsondevelopment.com.au/white-paper/", "image": "https://dobsondevelopment.com.au/white-paper/og.jpg", "author": {"@type": "Person", "name": "Richard Dobson"}, "publisher": {"@type": "Organization", "name": "Dobson Development Pty Ltd", "url": "https://dobsondevelopment.com.au/"}}</script>
+<style>
+@font-face {
+    font-family: 'Geist';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('/assets/fonts/geist-latin-wght-normal.woff2') format('woff2-variations');
+}
+:root {
+    --black: #000;
+    --white: #F5F5F7;
+    --grey: #8E8E93;
+    --cyan: #00E5FF;
+    --violet: #9B5CFF;
+    --clay: #D97757;
+    /* theme tokens: dark on screen, flipped to paper in print */
+    --bg: #000;
+    --fg: #F5F5F7;
+    --body: rgba(245, 245, 247, 0.84);
+    --muted: #8E8E93;
+    --line: rgba(255, 255, 255, 0.14);
+    --card: rgba(255, 255, 255, 0.055);
+    --card-line: rgba(255, 255, 255, 0.13);
+    --mark: #00E5FF;
+    --link: rgba(255, 255, 255, 0.4);
+    --name: linear-gradient(180deg, #FFFFFF 30%, rgba(255, 255, 255, 0.2) 100%);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--black); scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+/* Film grain over everything */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a { color: inherit; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; border-radius: 2px; }
+.wrap { width: min(100% - 3rem, 80rem); margin-inline: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.pdf-only { display: none; }
+.cursor {
+    display: inline-block;
+    width: 0.58em;
+    height: 0.13em;
+    margin-left: 0.06em;
+    border-radius: 0.02em;
+    background: linear-gradient(90deg, var(--cyan), var(--violet));
+}
+.wordmark { font-weight: 600; font-size: 1.3rem; letter-spacing: -0.035em; line-height: 1; text-decoration: none; color: var(--fg); }
+/* "Outlook" is set in Selawik, Microsoft's open-source stand-in for Segoe UI (SIL OFL), in Microsoft blue */
+.outlook { white-space: nowrap; }
+.outlook svg { height: 0.9385em; width: auto; vertical-align: -0.2104em; margin-inline: 0.03em 0.01em; fill: #2899F5; stroke: #2899F5; stroke-width: 44; stroke-linejoin: round; overflow: visible; }
+
+.btn {
+    display: inline-block;
+    padding: 0.8em 1.35em;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--cyan), var(--violet));
+    color: #05060A;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.015em;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.btn:hover { filter: brightness(1.12); }
+.btn.small { padding: 0.62em 1.05em; font-size: 0.9rem; }
+.btn.ghost { background: none; color: var(--fg); box-shadow: inset 0 0 0 1px var(--link); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1px var(--fg); filter: none; }
+
+/* Top bar */
+.bar { position: fixed; inset: 0 0 auto 0; z-index: 40; background: rgba(0, 0, 0, 0.62); -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4); border-bottom: 1px solid var(--line); }
+.bar-in { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; height: 3.75rem; }
+.bar-nav { display: flex; align-items: center; gap: 1.4rem; }
+.bar-nav .pdf { font-size: 0.95rem; font-weight: 500; text-decoration: none; }
+.bar-nav .pdf:hover { text-decoration: underline; text-underline-offset: 0.4em; text-decoration-thickness: 1px; }
+.progress { position: absolute; inset: auto 0 -1px 0; height: 2px; }
+.progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), var(--violet)); }
+
+/* Opening */
+.hero { position: relative; isolation: isolate; padding-block: clamp(7.5rem, 14vw, 11rem) clamp(2.5rem, 5vw, 4rem); }
+.light { position: absolute; inset: 0; overflow: hidden; z-index: -1; }
+.light::before, .light::after { content: ""; position: absolute; border-radius: 50%; filter: blur(110px); }
+.light::before { width: 62vmax; height: 62vmax; right: -22vmax; top: -34vmax; background: var(--violet); opacity: 0.5; }
+.light::after { width: 46vmax; height: 46vmax; right: 6vmax; top: -34vmax; background: var(--cyan); opacity: 0.3; }
+.eyebrow { margin: 0 0 1.4rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); }
+h1 { margin: 0; font-weight: 600; font-size: clamp(3rem, 9.6vw, 9.5rem); line-height: 0.92; letter-spacing: -0.06em; max-width: 12ch; text-wrap: balance; }
+.hero .second { margin: clamp(1.75rem, 4vw, 3rem) 0 0; font-size: clamp(1.5rem, 3.3vw, 3rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.045em; max-width: 22ch; text-wrap: balance; }
+.hero .lead { margin: 1.3rem 0 0; max-width: 34rem; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -0.02em; color: var(--muted); }
+.hero .meta { margin: 1.6rem 0 0; font-size: 0.92rem; color: var(--muted); }
+.hero-a { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 2rem 0 0; }
+.hero-img { display: block; width: 100%; height: auto; margin-top: clamp(2.5rem, 6vw, 4.5rem); border-radius: 1.25rem; border: 1px solid var(--line); }
+
+/* Reading layout */
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 4.5rem; padding-block: clamp(1rem, 3vw, 2.5rem) clamp(4rem, 8vw, 7rem); }
+.toc { display: none; }
+main { min-width: 0; }
+article { max-width: 46rem; margin-inline: auto; color: var(--body); font-size: 1.125rem; line-height: 1.65; }
+@media (min-width: 68rem) {
+    .layout { grid-template-columns: 15.5rem minmax(0, 46rem); justify-content: center; }
+    .toc { display: block; position: sticky; top: 5.25rem; align-self: start; max-height: calc(100vh - 6.5rem); overflow-y: auto; padding: 0 0.75rem 2rem 0; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+    .mtoc { display: none; }
+    article { margin-inline: 0; }
+}
+.toc-h, .mtoc summary { margin: 0 0 0.9rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.toc ol, .mtoc ol, .pdf-toc ol { list-style: none; margin: 0; padding: 0; }
+.toc li, .mtoc li { margin: 0; font-size: 0.86rem; line-height: 1.3; }
+.toc a, .mtoc a { display: block; padding: 0.34rem 0 0.34rem 0.85rem; border-left: 1px solid var(--line); color: var(--muted); text-decoration: none; }
+.toc a:hover, .mtoc a:hover { color: var(--fg); }
+.toc a.on { color: var(--fg); border-left-color: var(--cyan); }
+.toc li.tp, .mtoc li.tp { margin: 1.15rem 0 0.45rem; color: var(--fg); font-weight: 600; font-size: 0.86rem; }
+li.tp span { display: block; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.15rem; }
+.mtoc { margin: 0 auto 2.5rem; max-width: 46rem; border: 1px solid var(--line); border-radius: 0.9rem; padding: 1rem 1.2rem; }
+.mtoc summary { margin: 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.mtoc summary::-webkit-details-marker { display: none; }
+.mtoc summary::after { content: "+"; font-size: 1.2rem; font-weight: 400; letter-spacing: 0; color: var(--fg); }
+.mtoc[open] summary::after { content: "\2212"; }
+.mtoc[open] summary { margin-bottom: 0.9rem; }
+
+/* Prose */
+article > p, article > ul, article > ol, .sources p { margin: 0 0 1.25em; }
+article h2 { margin: 4.5rem 0 1.4rem; padding-top: 2.2rem; border-top: 1px solid var(--line); color: var(--fg); font-weight: 600; font-size: clamp(1.9rem, 3.6vw, 2.75rem); line-height: 1.05; letter-spacing: -0.045em; text-wrap: balance; scroll-margin-top: 4.75rem; }
+article > h2:first-of-type { margin-top: 0; }
+article h3 { margin: 2.6rem 0 0.8rem; color: var(--fg); font-weight: 600; font-size: 1.35rem; line-height: 1.2; letter-spacing: -0.03em; text-wrap: balance; scroll-margin-top: 5rem; }
+article a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+article a:hover { text-decoration-color: var(--cyan); }
+article ul, article ol { padding-left: 1.25em; }
+article li { margin: 0.45em 0; padding-left: 0.2em; }
+article li::marker { color: var(--muted); }
+article strong { color: var(--fg); font-weight: 600; }
+
+/* Supplier headings echo the home page title cards */
+article h2.sup { padding-top: 2.6rem; }
+.sup-name { display: block; margin-left: -0.045em; padding-bottom: 0.12em; font-size: clamp(4.2rem, 13vw, 8.5rem); line-height: 0.85; letter-spacing: -0.075em; background: var(--name); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sup-rest { display: block; margin-top: 0.5rem; font-size: clamp(1.45rem, 2.6vw, 1.9rem); letter-spacing: -0.04em; line-height: 1.1; }
+.sup-rest::first-letter { text-transform: uppercase; }
+
+/* Part dividers */
+.part { position: relative; overflow: hidden; margin: 5rem 0 0; padding: clamp(1.6rem, 4vw, 2.6rem); border: 1px solid var(--line); border-radius: 1.25rem; background: radial-gradient(90% 140% at 100% 0%, rgba(155, 92, 255, 0.5), transparent 60%), radial-gradient(70% 120% at 70% 110%, rgba(0, 229, 255, 0.28), transparent 60%), #05060A; color: var(--fg); }
+.part + h2 { border-top: 0; margin-top: 1rem; }
+.part p { margin: 0; position: relative; }
+.part .pl { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); }
+.part .pt { margin-top: 2.2rem; font-size: clamp(2.2rem, 5.6vw, 3.9rem); font-weight: 600; line-height: 0.98; letter-spacing: -0.055em; }
+.part .ps { margin-top: 0.8rem; max-width: 26rem; font-size: 1.05rem; line-height: 1.35; color: var(--muted); }
+.part .pn { position: absolute; right: 1.2rem; bottom: -0.16em; font-size: clamp(7rem, 20vw, 13rem); font-weight: 700; line-height: 1; letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 1.5px rgba(0, 229, 255, 0.45); }
+
+/* Tables */
+.tbl { margin: 1.8rem 0 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { width: 100%; min-width: 34rem; border-collapse: collapse; font-size: 0.95rem; line-height: 1.45; }
+th { padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: bottom; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+td { padding: 0.8rem 1rem 0.8rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child { color: var(--fg); font-weight: 500; }
+th:last-child, td:last-child { padding-right: 0; }
+
+/* Figures */
+.fig { margin: 2.4rem 0; }
+.panel { padding: clamp(1.2rem, 3vw, 1.8rem); border: 1px solid var(--card-line); border-radius: 1.1rem; background: var(--card); }
+.panel figcaption { margin-bottom: 1.4rem; }
+.panel figcaption b { display: block; color: var(--fg); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.035em; line-height: 1.15; }
+.panel figcaption span { display: block; margin-top: 0.3rem; color: var(--muted); font-size: 0.92rem; line-height: 1.4; }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+.stat { padding: 1.25rem 1.2rem 1.15rem; border: 1px solid var(--card-line); border-radius: 1rem; background: var(--card); }
+.stat::before { content: ""; display: block; width: 2rem; height: 3px; margin-bottom: 1rem; border-radius: 2px; background: linear-gradient(90deg, var(--cyan), var(--violet)); }
+.stat b { display: block; color: var(--fg); font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 700; line-height: 1; letter-spacing: -0.05em; }
+.stat span { display: block; margin-top: 0.65rem; color: var(--fg); font-size: 0.93rem; line-height: 1.35; }
+.stat small { display: block; margin-top: 0.5rem; color: var(--muted); font-size: 0.76rem; line-height: 1.3; }
+
+.chart .row { display: grid; grid-template-columns: 13.5rem minmax(0, 1fr); gap: 0 1rem; align-items: center; padding: 0.55rem 0; }
+.chart .lab b { display: block; color: var(--fg); font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+.chart .lab span { display: block; color: var(--muted); font-size: 0.78rem; line-height: 1.3; }
+.chart .track { display: flex; align-items: center; gap: 0.6rem; border-left: 1px solid var(--line); }
+.chart .track i { display: block; height: 1.55rem; border-radius: 0 4px 4px 0; background: var(--mark); }
+.chart .track em { color: var(--fg); font-style: normal; font-weight: 600; font-size: 0.95rem; white-space: nowrap; }
+.chart .src { margin: 1.1rem 0 0; color: var(--muted); font-size: 0.74rem; line-height: 1.4; }
+
+.stack .people { padding: 0.95rem 1rem; border-radius: 0.8rem; background: linear-gradient(90deg, var(--cyan), var(--violet)); color: #05060A; font-weight: 600; font-size: 1.02rem; letter-spacing: -0.02em; line-height: 1.25; text-align: center; }
+.stack .six { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin: 0.7rem 0; }
+.stack .sx { padding: 1rem 1rem 0.95rem; border: 1px solid var(--card-line); border-radius: 0.8rem; background: var(--card); }
+.stack .sx b { display: block; color: var(--fg); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.045em; line-height: 1.1; }
+.stack .sx span { display: block; margin-top: 0.35rem; color: var(--fg); font-size: 0.86rem; line-height: 1.3; }
+.stack .sx small { display: block; margin-top: 0.3rem; color: var(--muted); font-size: 0.75rem; line-height: 1.3; }
+.stack .base { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1.5rem; padding: 0.95rem 1.1rem; border: 1.5px solid transparent; border-radius: 0.8rem; background: linear-gradient(var(--bg), var(--bg)) padding-box, linear-gradient(90deg, var(--cyan), var(--violet)) border-box; color: var(--fg); font-size: 0.88rem; line-height: 1.3; }
+.stack .wm { font-weight: 600; font-size: 1.25rem; letter-spacing: -0.035em; }
+
+.stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 1.1rem; margin: 0.6rem 0 0; padding: 0; list-style: none; }
+.stages > li { position: relative; margin: 0; padding: 1.5rem 0 0; border-top: 3px solid; border-image: linear-gradient(90deg, var(--cyan), var(--violet)) 1; }
+.stages > li::before { content: ""; position: absolute; left: 0; top: -9px; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 3px var(--cyan); }
+.stages small { display: block; color: var(--mark); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.3; }
+.stages b { display: block; margin-top: 0.35rem; color: var(--fg); font-size: 1.12rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
+.stages ul { margin: 0.8rem 0 0; padding: 0; list-style: none; }
+.stages ul li { position: relative; margin: 0.4rem 0; padding-left: 0.85rem; color: var(--body); font-size: 0.82rem; line-height: 1.3; }
+.stages ul li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--violet); }
+
+.quote { position: relative; padding: 0.4rem 0 0.4rem 1.6rem; border-left: 3px solid; border-image: linear-gradient(180deg, var(--cyan), var(--violet)) 1; }
+.quote blockquote { margin: 0; color: var(--fg); font-size: clamp(1.6rem, 3.8vw, 2.4rem); font-weight: 600; line-height: 1.12; letter-spacing: -0.045em; text-wrap: balance; }
+.quote figcaption { margin-top: 0.9rem; color: var(--muted); font-size: 0.92rem; }
+
+.claude { margin: 2rem 0; padding: 1.6rem 1.7rem 1.4rem; border-left: 3px solid var(--clay); border-radius: 0 1rem 1rem 0; background: rgba(217, 119, 87, 0.1); color: var(--fg); }
+.claude p { margin: 0 0 1em; }
+.claude p:last-child { margin-bottom: 0; }
+.claude .who { margin-bottom: 0.9rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); }
+
+.next { margin: 2rem 0 2.2rem; padding: clamp(1.5rem, 4vw, 2.4rem); border: 1px solid var(--card-line); border-radius: 1.25rem; background: radial-gradient(80% 130% at 100% 0%, rgba(155, 92, 255, 0.3), transparent 60%), var(--card); }
+.next p { margin: 0 0 1.1em; }
+.next .next-h { color: var(--fg); font-size: clamp(2rem, 5.4vw, 3.4rem); font-weight: 600; line-height: 0.98; letter-spacing: -0.055em; }
+.next .next-a { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.6rem 0 1.3rem; }
+.next .next-m { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.next .btn { color: #05060A; text-decoration: none; }
+.next .btn.ghost { color: var(--fg); }
+.legal { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+
+.sources { font-size: 0.9rem; line-height: 1.5; }
+.sources .srchead { margin: 1.8rem 0 0.5rem; color: var(--fg); font-weight: 600; }
+.sources ul { margin: 0 0 1rem; padding-left: 1.1em; }
+.sources li { margin: 0.3em 0; }
+.sources a { color: var(--body); overflow-wrap: anywhere; }
+
+/* Closing shot */
+.close { position: relative; border-top: 1px solid var(--line); padding-block: clamp(5rem, 14vw, 12rem) clamp(4rem, 9vw, 7rem); isolation: isolate; overflow: hidden; }
+.close::before { content: ""; position: absolute; z-index: -1; width: 70vmax; height: 40vmax; left: 50%; bottom: -30vmax; transform: translateX(-50%); border-radius: 50%; filter: blur(120px); background: linear-gradient(90deg, var(--cyan), var(--violet)); opacity: 0.4; }
+.close h2 { margin: 0; font-weight: 600; font-size: clamp(2.4rem, 6.4vw, 5.6rem); line-height: 0.98; letter-spacing: -0.055em; }
+.close p { margin: clamp(1.5rem, 3vw, 2.5rem) 0 0; max-width: 32rem; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -0.02em; color: var(--muted); }
+.close a.mail { display: inline-block; margin-top: clamp(2.5rem, 5vw, 4rem); font-weight: 600; font-size: clamp(1.25rem, 3.4vw, 2.75rem); letter-spacing: -0.04em; line-height: 1.1; text-decoration: none; overflow-wrap: anywhere; }
+.close a.mail:hover { text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.14em; }
+.close .close-pdf { margin-top: 1.5rem; font-size: 1rem; }
+.close .close-pdf a { color: var(--fg); text-underline-offset: 0.3em; text-decoration-thickness: 1px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 1.75rem 2.5rem; font-size: 0.85rem; line-height: 1.5; color: var(--grey); }
+footer p { margin: 0 0 0.35rem; max-width: 56rem; }
+
+@media (prefers-reduced-motion: no-preference) {
+    .light::before { animation: drift 22s ease-in-out infinite alternate; }
+    .light::after { animation: drift 28s ease-in-out infinite alternate-reverse; }
+    .close .cursor { animation: blink 1.1s steps(1) infinite; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@keyframes drift { to { transform: translate(-9vmax, 7vmax) scale(1.12); } }
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (max-width: 44rem) {
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stack .six { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 1.1rem; }
+    .chart .row { grid-template-columns: minmax(0, 1fr); gap: 0.4rem; padding: 0.7rem 0; }
+    .bar-nav { gap: 1rem; }
+}
+@media (max-width: 27rem) {
+    .wrap { width: min(100% - 2.2rem, 80rem); }
+    .bar-nav .pdf { display: none; }
+    .stages { grid-template-columns: minmax(0, 1fr); }
+    article { font-size: 1.06rem; }
+}
+
+/* ---------- PDF ---------- */
+@page {
+    size: A4;
+    margin: 21mm 20mm 23mm;
+    @bottom-left { content: "Change your Outlook on IT  ·  Dobson Development"; font-family: 'Geist', sans-serif; font-size: 7.5pt; color: #8a8a90; }
+    @bottom-right { content: counter(page); font-family: 'Geist', sans-serif; font-size: 7.5pt; color: #8a8a90; }
+}
+@page full {
+    margin: 0;
+    @bottom-left { content: none; }
+    @bottom-right { content: none; }
+}
+@media print {
+    :root {
+        --bg: #fff;
+        --fg: #0B0B0D;
+        --body: #222226;
+        --muted: #63636A;
+        --line: rgba(0, 0, 0, 0.16);
+        --card: #F4F4F6;
+        --card-line: rgba(0, 0, 0, 0.07);
+        --mark: #00B4D0;
+        --link: rgba(0, 0, 0, 0.32);
+        --name: linear-gradient(90deg, #0AA8C6, #7A3FE0);
+    }
+    .dark {
+        --bg: #000;
+        --fg: #F5F5F7;
+        --body: rgba(245, 245, 247, 0.84);
+        --muted: #A0A0A8;
+        --line: rgba(255, 255, 255, 0.14);
+        --card: rgba(255, 255, 255, 0.055);
+        --card-line: rgba(255, 255, 255, 0.13);
+        --mark: #00E5FF;
+    }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html { background: #fff; font-size: 10.5pt; scroll-behavior: auto; }
+    body { background: #fff; color: var(--body); font-size: 10.5pt; overflow: visible; }
+    body::after, .bar, .hero, .toc, .mtoc, footer, .screen-only { display: none !important; }
+    .pdf-only { display: block; }
+    span.pdf-only { display: inline-block; }
+    .wrap { width: auto; margin: 0; }
+    .layout { display: block; padding: 0; }
+    article { max-width: none; margin: 0; font-size: 10pt; line-height: 1.6; }
+    p { orphans: 3; widows: 3; }
+
+    .pdf-cover, .part, .close { page: full; position: relative; width: 210mm; height: 296.6mm; overflow: hidden; margin: 0; border: 0; border-radius: 0; color: var(--fg); }
+    .pdf-cover { background: #000; }
+    .pdf-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .pdf-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 26%, rgba(0, 0, 0, 0.1) 46%, rgba(0, 0, 0, 0.93) 84%); }
+    .pc-in { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 22mm 20mm 20mm; }
+    .pc-in .wordmark { font-size: 17pt; }
+    .pc-b p { margin: 0; }
+    .pc-b .eyebrow { margin-bottom: 7mm; font-size: 8.5pt; }
+    .pc-h { font-size: 62pt; font-weight: 600; line-height: 0.92; letter-spacing: -0.06em; }
+    .pc-s { margin-top: 8mm !important; font-size: 17pt; font-weight: 500; letter-spacing: -0.035em; }
+    .pc-m { margin-top: 14mm !important; font-size: 8.5pt; color: #B4B4BC; }
+
+    .pdf-toc { break-after: page; }
+    p:has(+ .part) { break-before: avoid; }
+    .pt-h { margin: 0 0 9mm; color: var(--fg); font-size: 26pt; font-weight: 600; letter-spacing: -0.045em; }
+    .pdf-toc ol { columns: 2; column-gap: 12mm; }
+    .pdf-toc li { margin: 0; padding: 1.6mm 0; border-bottom: 0.5pt solid var(--line); font-size: 9.5pt; line-height: 1.3; break-inside: avoid; }
+    .pdf-toc li.tp { margin-top: 5mm; padding-bottom: 2mm; border-bottom: 1pt solid var(--fg); color: var(--fg); font-weight: 600; font-size: 11pt; }
+    .pdf-toc li.tp:first-child { margin-top: 0; }
+    .pdf-toc li.tp span { color: #0AA8C6; font-size: 6.5pt; }
+    .pdf-toc a { color: var(--body); text-decoration: none; }
+
+    .lead-print { margin: 0 0 14mm !important; max-width: 150mm; color: var(--fg); font-size: 14pt; font-weight: 500; line-height: 1.3; letter-spacing: -0.025em; }
+    article h2 { margin: 11mm 0 4mm; padding-top: 5mm; font-size: 21pt; break-after: avoid; }
+    article > h2:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+    article h3 { margin: 6.5mm 0 2mm; font-size: 12.5pt; break-after: avoid; }
+    article > p, article > ul, article > ol { margin-bottom: 0.9em; }
+    article li { margin: 0.3em 0; break-inside: avoid; }
+    article a { text-decoration-color: var(--link); }
+    article h2.sup { padding-top: 6mm; }
+    .sup-name { font-size: 54pt; background: none; -webkit-background-clip: border-box; background-clip: border-box; color: var(--fg); }
+    .sup-rest { font-size: 15pt; }
+
+    .part { display: flex; flex-direction: column; justify-content: flex-end; padding: 0 20mm 34mm; background: radial-gradient(90% 60% at 100% 0%, rgba(155, 92, 255, 0.6), transparent 62%), radial-gradient(80% 50% at 20% 108%, rgba(0, 229, 255, 0.3), transparent 60%), #05060A; }
+    .part + h2 { margin-top: 0; padding-top: 0; }
+    .part .pl { font-size: 9pt; }
+    .part .pt { margin-top: 8mm; font-size: 50pt; }
+    .part .ps { margin-top: 5mm; max-width: 110mm; font-size: 13pt; }
+    .part .pn { right: 14mm; top: 10mm; bottom: auto; font-size: 190pt; }
+
+    .tbl { margin: 5mm 0 6mm; overflow: visible; }
+    table { min-width: 0; font-size: 8.8pt; }
+    th { font-size: 6.8pt; padding: 1.8mm 3mm 1.8mm 0; }
+    td { padding: 2mm 3mm 2mm 0; }
+    tr, .fig, .claude, .next, .stat, .sx { break-inside: avoid; }
+    thead { display: table-header-group; }
+    .fig { margin: 6mm 0; }
+    .stats { gap: 2mm; margin: 4mm 0; }
+    .stat { padding: 3mm 3.4mm 2.8mm; }
+    .stat::before { margin-bottom: 2.2mm; }
+    .stat b { font-size: 17pt; }
+    .stat span { margin-top: 1.6mm; font-size: 8.2pt; }
+    .stat small { font-size: 7pt; }
+    .stack .people, .btn { color: #05060A; }
+    .stack .base { background: linear-gradient(#fff, #fff) padding-box, linear-gradient(90deg, #00C2DC, var(--violet)) border-box; }
+    .stages > li::before { box-shadow: inset 0 0 0 3px #00C2DC; }
+    .quote blockquote { font-size: 20pt; }
+    .claude { background: #F9ECE7; color: var(--fg); }
+    .next { background: var(--card); }
+    .next .next-h { font-size: 26pt; }
+    .sources { font-size: 8pt; }
+    .sources h2 { break-before: page; }
+    .sources a { text-decoration: none; }
+
+    .close { display: flex; flex-direction: column; justify-content: flex-end; padding: 22mm 20mm 30mm; background: radial-gradient(90% 55% at 50% 112%, rgba(155, 92, 255, 0.75), transparent 62%), radial-gradient(70% 45% at 15% 110%, rgba(0, 229, 255, 0.5), transparent 60%), #000; break-before: page; }
+    .close::before { display: none; }
+    .close .wrap { display: flex; flex-direction: column; height: 100%; }
+    .close .wordmark { font-size: 17pt; margin-bottom: auto; }
+    .close h2 { font-size: 54pt; }
+    .close h2 .l { display: block; }
+    .close p { max-width: 120mm; font-size: 14pt; }
+    .close a.mail { margin-top: 12mm; font-size: 20pt; color: var(--fg); }
+    .close .close-site { margin-top: 3mm; font-size: 11pt; }
+    .close .cursor { animation: none; }
+}
+
+</style>
+</head>
+<body>
+<div class="bar">
+    <div class="wrap bar-in">
+        <a class="wordmark" href="/" aria-label="Dobson Development, home">dobson_dev<span class="cursor" aria-hidden="true"></span></a>
+        <nav class="bar-nav" aria-label="White paper">
+            <a class="pdf" href="/white-paper/change-your-outlook-on-it.pdf" download>Download PDF</a>
+            <a class="btn small" href="mailto:richard@dobsondevelopment.com.au?subject=Coffee">Book a coffee</a>
+        </nav>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+</div>
+
+<header class="hero">
+    <div class="light" aria-hidden="true"></div>
+    <div class="wrap">
+        <p class="eyebrow">White paper · November 2026</p>
+        <h1>Change your <span class="outlook"><svg viewBox="0 -1491 7311 1922" aria-hidden="true" focusable="false"><path d="M1447 -712C1450 -1136 1198 -1457 770 -1457C348 -1457 92 -1136 92 -712C92 -290 348 25 770 25C1198 25 1447 -290 1447 -712ZM276 -712C276 -1063 449 -1296 770 -1296C1089 -1296 1260 -1063 1260 -712C1261 -364 1089 -135 770 -135C449 -135 276 -364 276 -712Z M2404 -189 2374 -362C2374 -181 2244 -130 2113 -130C1890 -130 1852 -274 1852 -419V-973H1688V-368C1688 -175 1779 22 2077 22C2289 22 2404 -118 2404 -189ZM2625 -28C2573 -122 2539 -223 2538 -330L2374 -328C2374 -198 2416 -75 2480 39ZM2538 -974H2374V-328L2538 -211Z M3343 18V-129C3314 -125 3275 -122 3252 -122C3131 -122 3076 -218 3076 -302V-1323H2922V-273C2922 -114 3018 24 3211 24C3234 24 3300 22 3343 18ZM3344 -828V-973C3344 -973 2746 -973 2746 -973V-828C2746 -828 3344 -828 3344 -828Z M3727 0V-1516H3563V0Z M4994 -483C4997 -793 4800 -998 4498 -998C4191 -998 3988 -793 3988 -483C3988 -177 4191 25 4498 25C4797 25 4994 -177 4994 -483ZM4162 -483C4163 -698 4297 -840 4498 -840C4687 -840 4815 -698 4820 -483C4816 -272 4688 -133 4498 -133C4294 -133 4161 -272 4162 -483Z M6194 -483C6197 -793 6000 -998 5698 -998C5391 -998 5188 -793 5188 -483C5188 -177 5391 25 5698 25C5997 25 6194 -177 6194 -483ZM5362 -483C5363 -698 5497 -840 5698 -840C5887 -840 6015 -698 6020 -483C6016 -272 5888 -133 5698 -133C5494 -133 5361 -272 5362 -483Z M7242 -974 7077 -1000 6693 -594C6641 -540 6600 -461 6578 -427V-336L6597 -262ZM6623 0V-1516H6459V0ZM7285 2 6910 -624 6799 -507 7103 2Z"/></svg><span class="sr">Outlook</span></span> on IT.</h1>
+        <p class="second">The case for a Microsoft-free Australian business.</p>
+        <p class="lead">Meet the Apple, Proton and Claude workplace that Dobson Development sets up and manages for you.</p>
+        <p class="meta">By Richard Dobson · 14 November 2026 · 50 minute read</p>
+        <p class="hero-a"><a class="btn" href="#executive-summary">Start reading</a><a class="btn ghost" href="/white-paper/change-your-outlook-on-it.pdf" download>Download the PDF</a></p>
+        <img class="hero-img" src="/white-paper/hero.jpg" width="1800" height="1012" alt="A MacBook lit in violet and blue light" fetchpriority="high">
+    </div>
+</header>
+
+<section class="pdf-cover dark pdf-only" aria-hidden="true">
+    <img src="/white-paper/cover-portrait.jpg" alt="">
+    <div class="pc-in">
+        <span class="wordmark">dobson_dev<span class="cursor" aria-hidden="true"></span></span>
+        <div class="pc-b">
+            <p class="eyebrow">White paper · November 2026</p>
+            <p class="pc-h">Change your<br><span class="outlook"><svg viewBox="0 -1491 7311 1922" aria-hidden="true" focusable="false"><path d="M1447 -712C1450 -1136 1198 -1457 770 -1457C348 -1457 92 -1136 92 -712C92 -290 348 25 770 25C1198 25 1447 -290 1447 -712ZM276 -712C276 -1063 449 -1296 770 -1296C1089 -1296 1260 -1063 1260 -712C1261 -364 1089 -135 770 -135C449 -135 276 -364 276 -712Z M2404 -189 2374 -362C2374 -181 2244 -130 2113 -130C1890 -130 1852 -274 1852 -419V-973H1688V-368C1688 -175 1779 22 2077 22C2289 22 2404 -118 2404 -189ZM2625 -28C2573 -122 2539 -223 2538 -330L2374 -328C2374 -198 2416 -75 2480 39ZM2538 -974H2374V-328L2538 -211Z M3343 18V-129C3314 -125 3275 -122 3252 -122C3131 -122 3076 -218 3076 -302V-1323H2922V-273C2922 -114 3018 24 3211 24C3234 24 3300 22 3343 18ZM3344 -828V-973C3344 -973 2746 -973 2746 -973V-828C2746 -828 3344 -828 3344 -828Z M3727 0V-1516H3563V0Z M4994 -483C4997 -793 4800 -998 4498 -998C4191 -998 3988 -793 3988 -483C3988 -177 4191 25 4498 25C4797 25 4994 -177 4994 -483ZM4162 -483C4163 -698 4297 -840 4498 -840C4687 -840 4815 -698 4820 -483C4816 -272 4688 -133 4498 -133C4294 -133 4161 -272 4162 -483Z M6194 -483C6197 -793 6000 -998 5698 -998C5391 -998 5188 -793 5188 -483C5188 -177 5391 25 5698 25C5997 25 6194 -177 6194 -483ZM5362 -483C5363 -698 5497 -840 5698 -840C5887 -840 6015 -698 6020 -483C6016 -272 5888 -133 5698 -133C5494 -133 5361 -272 5362 -483Z M7242 -974 7077 -1000 6693 -594C6641 -540 6600 -461 6578 -427V-336L6597 -262ZM6623 0V-1516H6459V0ZM7285 2 6910 -624 6799 -507 7103 2Z"/></svg><span class="sr">Outlook</span></span> on IT.</p>
+            <p class="pc-s">The case for a Microsoft-free Australian business</p>
+            <p class="pc-m">Richard Dobson · Dobson Development Pty Ltd · dobsondevelopment.com.au</p>
+        </div>
+    </div>
+</section>
+
+<nav class="pdf-toc pdf-only" aria-hidden="true">
+    <p class="lead-print">The case for a Microsoft-free Australian business, and the Apple, Proton and Claude workplace that Dobson Development sets up and manages for you. A white paper from Dobson Development Pty Ltd.</p>
+    <p class="pt-h">Contents</p>
+    <ol><li><a href="#executive-summary">Executive summary</a></li><li class="tp"><span>Part one</span> Microsoft&#x27;s record</li><li><a href="#the-outage-of-13-november-2026">The outage of 13 November 2026</a></li><li><a href="#microsoft-outages-since-2024">Microsoft outages since 2024</a></li><li><a href="#microsoft-price-increases">Microsoft price increases</a></li><li><a href="#microsoft-layoffs-and-priorities">Microsoft layoffs and priorities</a></li><li><a href="#microsofts-security-record">Microsoft’s security record</a></li><li class="tp"><span>Part two</span> The rules have changed</li><li><a href="#from-the-essential-eight-to-asd-essentials">From the Essential Eight to ASD Essentials</a></li><li><a href="#the-1-july-2026-privacy-change-for-small-businesses">The 1 July 2026 privacy change for small businesses</a></li><li><a href="#two-ways-to-respond">Two ways to respond</a></li><li class="tp"><span>Part three</span> The stack</li><li><a href="#a-workplace-people-want-to-work-in">A workplace people want to work in</a></li><li><a href="#the-stack-at-a-glance">The stack at a glance</a></li><li><a href="#apple-why-the-mac">Apple: why the Mac</a></li><li><a href="#addigy-how-every-mac-is-managed">Addigy: how every Mac is managed</a></li><li><a href="#proton-private-email-files-passwords-and-vpn">Proton: private email, files, passwords and VPN</a></li><li><a href="#claude-the-ai-your-staff-will-ask-for-by-name">Claude: the AI your staff will ask for by name</a></li><li><a href="#a-word-from-claude">A word from Claude</a></li><li><a href="#slack-team-chat">Slack: team chat</a></li><li><a href="#salesforce-customer-records-and-our-own-service-desk">Salesforce: customer records and our own service desk</a></li><li><a href="#okta-one-sign-in-for-your-core-apps">Okta: one sign-in for your core apps</a></li><li class="tp"><span>Part four</span> Working with us</li><li><a href="#a-working-day-on-the-stack">A working day on the stack</a></li><li><a href="#how-the-stack-lines-up-with-asd-essentials-and-the-privacy-act">How the stack lines up with ASD Essentials and the Privacy Act</a></li><li><a href="#the-managed-service">The managed service</a></li><li><a href="#the-first-90-days">The first 90 days</a></li><li><a href="#what-it-costs">What it costs</a></li><li><a href="#questions-buyers-ask-with-straight-answers">Questions buyers ask, with straight answers</a></li><li><a href="#who-gets-the-most-from-this">Who gets the most from this</a></li><li><a href="#next-step">Next step</a></li><li><a href="#sources">Sources</a></li></ol>
+</nav>
+
+<div class="wrap layout">
+    <nav class="toc" aria-label="Contents">
+        <p class="toc-h">Contents</p>
+        <ol><li><a href="#executive-summary">Executive summary</a></li><li class="tp"><span>Part one</span> Microsoft&#x27;s record</li><li><a href="#the-outage-of-13-november-2026">The outage of 13 November 2026</a></li><li><a href="#microsoft-outages-since-2024">Microsoft outages since 2024</a></li><li><a href="#microsoft-price-increases">Microsoft price increases</a></li><li><a href="#microsoft-layoffs-and-priorities">Microsoft layoffs and priorities</a></li><li><a href="#microsofts-security-record">Microsoft’s security record</a></li><li class="tp"><span>Part two</span> The rules have changed</li><li><a href="#from-the-essential-eight-to-asd-essentials">From the Essential Eight to ASD Essentials</a></li><li><a href="#the-1-july-2026-privacy-change-for-small-businesses">The 1 July 2026 privacy change for small businesses</a></li><li><a href="#two-ways-to-respond">Two ways to respond</a></li><li class="tp"><span>Part three</span> The stack</li><li><a href="#a-workplace-people-want-to-work-in">A workplace people want to work in</a></li><li><a href="#the-stack-at-a-glance">The stack at a glance</a></li><li><a href="#apple-why-the-mac">Apple: why the Mac</a></li><li><a href="#addigy-how-every-mac-is-managed">Addigy: how every Mac is managed</a></li><li><a href="#proton-private-email-files-passwords-and-vpn">Proton: private email, files, passwords and VPN</a></li><li><a href="#claude-the-ai-your-staff-will-ask-for-by-name">Claude: the AI your staff will ask for by name</a></li><li><a href="#a-word-from-claude">A word from Claude</a></li><li><a href="#slack-team-chat">Slack: team chat</a></li><li><a href="#salesforce-customer-records-and-our-own-service-desk">Salesforce: customer records and our own service desk</a></li><li><a href="#okta-one-sign-in-for-your-core-apps">Okta: one sign-in for your core apps</a></li><li class="tp"><span>Part four</span> Working with us</li><li><a href="#a-working-day-on-the-stack">A working day on the stack</a></li><li><a href="#how-the-stack-lines-up-with-asd-essentials-and-the-privacy-act">How the stack lines up with ASD Essentials and the Privacy Act</a></li><li><a href="#the-managed-service">The managed service</a></li><li><a href="#the-first-90-days">The first 90 days</a></li><li><a href="#what-it-costs">What it costs</a></li><li><a href="#questions-buyers-ask-with-straight-answers">Questions buyers ask, with straight answers</a></li><li><a href="#who-gets-the-most-from-this">Who gets the most from this</a></li><li><a href="#next-step">Next step</a></li><li><a href="#sources">Sources</a></li></ol>
+    </nav>
+    <main>
+        <details class="mtoc">
+            <summary>Contents</summary>
+            <ol><li><a href="#executive-summary">Executive summary</a></li><li class="tp"><span>Part one</span> Microsoft&#x27;s record</li><li><a href="#the-outage-of-13-november-2026">The outage of 13 November 2026</a></li><li><a href="#microsoft-outages-since-2024">Microsoft outages since 2024</a></li><li><a href="#microsoft-price-increases">Microsoft price increases</a></li><li><a href="#microsoft-layoffs-and-priorities">Microsoft layoffs and priorities</a></li><li><a href="#microsofts-security-record">Microsoft’s security record</a></li><li class="tp"><span>Part two</span> The rules have changed</li><li><a href="#from-the-essential-eight-to-asd-essentials">From the Essential Eight to ASD Essentials</a></li><li><a href="#the-1-july-2026-privacy-change-for-small-businesses">The 1 July 2026 privacy change for small businesses</a></li><li><a href="#two-ways-to-respond">Two ways to respond</a></li><li class="tp"><span>Part three</span> The stack</li><li><a href="#a-workplace-people-want-to-work-in">A workplace people want to work in</a></li><li><a href="#the-stack-at-a-glance">The stack at a glance</a></li><li><a href="#apple-why-the-mac">Apple: why the Mac</a></li><li><a href="#addigy-how-every-mac-is-managed">Addigy: how every Mac is managed</a></li><li><a href="#proton-private-email-files-passwords-and-vpn">Proton: private email, files, passwords and VPN</a></li><li><a href="#claude-the-ai-your-staff-will-ask-for-by-name">Claude: the AI your staff will ask for by name</a></li><li><a href="#a-word-from-claude">A word from Claude</a></li><li><a href="#slack-team-chat">Slack: team chat</a></li><li><a href="#salesforce-customer-records-and-our-own-service-desk">Salesforce: customer records and our own service desk</a></li><li><a href="#okta-one-sign-in-for-your-core-apps">Okta: one sign-in for your core apps</a></li><li class="tp"><span>Part four</span> Working with us</li><li><a href="#a-working-day-on-the-stack">A working day on the stack</a></li><li><a href="#how-the-stack-lines-up-with-asd-essentials-and-the-privacy-act">How the stack lines up with ASD Essentials and the Privacy Act</a></li><li><a href="#the-managed-service">The managed service</a></li><li><a href="#the-first-90-days">The first 90 days</a></li><li><a href="#what-it-costs">What it costs</a></li><li><a href="#questions-buyers-ask-with-straight-answers">Questions buyers ask, with straight answers</a></li><li><a href="#who-gets-the-most-from-this">Who gets the most from this</a></li><li><a href="#next-step">Next step</a></li><li><a href="#sources">Sources</a></li></ol>
+        </details>
+        <article>
+<h2 id="executive-summary">Executive summary</h2>
+<p>On Friday 13 November 2026, Australian businesses opened their laptops and found Outlook and Teams down. The outage ran for about 24 hours and reached 74 countries. Some small businesses told the ABC they lost up to $30,000 in a single day.</p>
+<p>Four months earlier, on 1 July, Microsoft raised the price of the Microsoft 365 plans that small businesses buy most. On the same day, tens of thousands of Australian law firms, accounting practices, conveyancers and real estate agencies came under the Privacy Act for the first time, through the Tranche 2 anti-money laundering reforms. In October, the Australian Signals Directorate published ASD Essentials, the framework that takes over from the Essential Eight.</p>
+<p>After a year like that, a business owner is entitled to ask whether Microsoft is still the safe choice.</p>
+<p>Our answer is that a better choice now exists, for a similar monthly spend. Dobson Development builds and manages a complete workplace on six names your staff already know: Apple, Proton, Claude, Slack, Salesforce and Okta.</p>
+<ul>
+<li>Every Mac arrives configured and ready to work.</li>
+<li>Your core work apps open with one fingerprint sign-in, and every other login gets its own generated password in Proton Pass.</li>
+<li>Email, files, passwords and the VPN are encrypted with keys that only your business holds.</li>
+<li>Every person gets Claude, the AI assistant that business users keep choosing when they have a choice.</li>
+<li>We run all of it for one price per person per month, and we answer when your staff need help.</li>
+</ul>
+<p>This paper sets out the case in three parts. The first part covers Microsoft&rsquo;s recent record on outages, price, staffing and security. The second part explains the two regulatory changes of 2026 and what they cost a small business that tries to meet them on a Microsoft system. The third part walks through our stack, one tool at a time, and explains why we chose each one.</p>
+<p>We wrote it for owners, practice managers and directors. You can read all of it without a technical background.</p>
+<div class="fig stats" role="list"><div class="stat" role="listitem"><b>24 hours</b><span>Outlook and Teams down across Australia</span><small>13 November 2026</small></div><div class="stat" role="listitem"><b>74</b><span>countries hit by the same outage</span><small>Downdetector, via ABC News</small></div><div class="stat" role="listitem"><b>16.7%</b><span>rise in Microsoft 365 Business Basic</span><small>1 July 2026</small></div><div class="stat" role="listitem"><b>22%</b><span>of federal agencies at Essential Eight Level 2</span><small>ASD, 2025 posture report</small></div><div class="stat" role="listitem"><b>$55,400</b><span>average cost of a cybercrime report, small business</span><small>ASD, 2025-26</small></div><div class="stat" role="listitem"><b>A$245</b><span>per person per month, everything included</span><small>Dobson Development</small></div></div>
+<section class="part dark" aria-label="Part one: Microsoft&#x27;s record"><span class="pn" aria-hidden="true">01</span><p class="pl">Part one</p><p class="pt">Microsoft&#x27;s record</p><p class="ps">Outages, price rises, layoffs and security failures</p></section>
+<h2 id="the-outage-of-13-november-2026">The outage of 13 November 2026</h2>
+<p>We finished this paper on Saturday 14 November 2026. The day before, Australia lost a working day to Microsoft.</p>
+<p>The trouble began in the early hours of Friday, Australian eastern time. By about 4:30am, more than 120,000 people worldwide had reported Outlook problems on the outage tracker Downdetector, as <a rel="noopener" href="https://www.forbes.com.au/news/world-news/microsoft-servers-crash-in-global-outage/">Forbes Australia</a> recorded. Microsoft listed Exchange Online, Teams, SharePoint, Copilot and its Defender security console as affected. Planner, To Do and the Intune device management service joined the list later in the day.</p>
+<p>Microsoft restarted servers through the morning, and the restarted servers froze again under load. Email in the United States and Europe came back late on Friday night. Asia Pacific, including Australia, was still recovering in the early hours of Saturday. Microsoft said the cause was a technical fault that followed a network capacity upgrade, and it ruled out a cyber attack. The company said it was &ldquo;deeply sorry&rdquo; and promised a full report, as the <a rel="noopener" href="https://www.abc.net.au/news/2026-11-14/microsoft-says-sorry-for-global-outage-and-details-recovery/107385540">ABC</a> reported.</p>
+<p>The list of Australian organisations caught up in it is long.</p>
+<ul>
+<li>ASIO and the Australian Federal Police confirmed they were affected, according to <a rel="noopener" href="https://aapnews.aap.com.au/news/organisations-scrambling-after-major-microsoft-outage">AAP</a>.</li>
+<li>Service NSW, the NSW Parliament, the ACT and Northern Territory governments, local councils and Queensland Health reported disruption.</li>
+<li>Australia Post suspended its phone payment system.</li>
+<li>Suppliers were unable to send delivery notices to supermarket distribution centres.</li>
+<li>TAFE NSW students missed classes that run on Teams.</li>
+<li>Patients lost telehealth appointments, and one Melbourne patient had scans cancelled because the clinic was unable to open her referral.</li>
+<li>An Adelaide business owner told the <a rel="noopener" href="https://www.abc.net.au/news/2026-11-13/microsoft-outlook-outage-australians-hit/107381378">ABC</a> he was locked out of his accounting software because Microsoft Authenticator was down.</li>
+</ul>
+<p>His accounting software was working the whole time. Microsoft&rsquo;s sign-in tool had failed and locked him out, and it took an unrelated product down with it.</p>
+<p>Ashwin Pal of risk advisory firm RSM Australia told AAP the cost to Australia would run to billions of dollars. The Australian Computer Society called for a national review of sovereign IT risk. Its chief executive, Prins Ralston, observed that a small business may have nowhere to turn when Outlook fails.</p>
+<p>The government had been warned. In August, Home Affairs national security head Hamish Hansford said Australia&rsquo;s reliance on Microsoft risked a &ldquo;disproportionate impact&rdquo; if the company suffered an outage, as the <a rel="noopener" href="https://www.abc.net.au/news/2026-11-13/microsoft-reliance-national-security-risk/107382100">ABC</a> reported on the day it happened.</p>
+<p>A business on the stack described in this paper runs its email on Proton, its chat on Slack, its sign-in on Okta and its AI on Claude. All four run independently of Microsoft, so the fault on Friday would have passed that business by. Each of those services is run by a separate company on separate infrastructure. Every one of those companies has had outages of its own, and each will have more. When one of them has a bad day, the other five keep working, and your staff keep working with them.</p>
+<h2 id="microsoft-outages-since-2024">Microsoft outages since 2024</h2>
+<p>Friday&rsquo;s outage has company. Microsoft customers have lived through five large failures since the middle of 2024.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>When</th>
+<th>What stopped working</th>
+<th>How long</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13 November 2026</td>
+<td>Outlook, Teams, SharePoint, Copilot, Defender, Intune</td>
+<td>About 24 hours</td>
+<td>Servers overwhelmed after a network capacity upgrade</td>
+</tr>
+<tr>
+<td>31 August to 3 September 2026</td>
+<td>Outlook, Teams, SharePoint, OneDrive, Purview, Defender</td>
+<td>About 77 hours to full recovery</td>
+<td>A faulty core authentication configuration</td>
+</tr>
+<tr>
+<td>22 January 2026</td>
+<td>Outlook, Defender, Purview, mainly in North America</td>
+<td>Almost 10 hours</td>
+<td>Infrastructure that stopped processing traffic</td>
+</tr>
+<tr>
+<td>29 October 2025</td>
+<td>Azure, Microsoft 365, Xbox</td>
+<td>More than 12 hours</td>
+<td>An accidental configuration change in Azure Front Door</td>
+</tr>
+<tr>
+<td>19 July 2024</td>
+<td>About 8.5 million Windows computers worldwide</td>
+<td>Days for many businesses</td>
+<td>A faulty CrowdStrike update that crashed Windows</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources for the table: <a rel="noopener" href="https://www.abc.net.au/news/2026-11-14/microsoft-says-sorry-for-global-outage-and-details-recovery/107385540">ABC</a>, <a rel="noopener" href="https://isdown.app/status/microsoft365/incidents/646730-users-may-experience-issues-when-utilizing-multiple-microsoft-365-services">IsDown</a>, <a rel="noopener" href="https://www.theregister.com/2026/01/23/microsoft_365_outage/">The Register</a>, <a rel="noopener" href="https://breached.company/breaches/microsoft/">Breached Company</a> and <a rel="noopener" href="https://aapnews.aap.com.au/news/organisations-scrambling-after-major-microsoft-outage">AAP</a>.</p>
+<figure class="fig panel chart"><figcaption><b>Hours to recover</b><span>Major Microsoft cloud outages, October 2025 to November 2026</span></figcaption><div class="rows"><div class="row"><div class="lab"><b>13 Nov 2026</b><span>Outlook, Teams, SharePoint, Copilot</span></div><div class="track"><i style="width:26.2%"></i><em>24 hours</em></div></div><div class="row"><div class="lab"><b>31 Aug to 3 Sep 2026</b><span>Outlook, Teams, SharePoint, OneDrive</span></div><div class="track"><i style="width:84.0%"></i><em>77 hours</em></div></div><div class="row"><div class="lab"><b>22 Jan 2026</b><span>Outlook, Defender, Purview</span></div><div class="track"><i style="width:10.9%"></i><em>10 hours</em></div></div><div class="row"><div class="lab"><b>29 Oct 2025</b><span>Azure, Microsoft 365, Xbox</span></div><div class="track"><i style="width:13.1%"></i><em>12 hours</em></div></div></div><p class="src">Sources: ABC News, IsDown, The Register, Breached Company. Durations are approximate.</p></figure>
+<p>The 2024 failure came from CrowdStrike&rsquo;s software, and fairness requires us to say so. It still belongs in the table, because the faulty update crashed Windows machines only. Macs running the same CrowdStrike product kept working that day.</p>
+<p>We draw two lessons from the list.</p>
+<p>The causes are ordinary. A configuration change, a routine update and a capacity upgrade took down email for a large share of the world&rsquo;s offices. Microsoft runs a very large and very complicated system, and small mistakes travel a long way inside it.</p>
+<p>A great deal fails at once. A Microsoft business buys its email, chat, files, sign-in, device management, security console and AI assistant from one supplier. Last Friday all of them were on the affected list together. Staff lost Outlook, then lost Teams as the fallback, then found that the Authenticator app guarding their other software was down as well.</p>
+<p>A business that spreads those jobs across separate suppliers faces smaller failures. Section by section, the rest of this paper shows how to do that with tools your staff will enjoy using.</p>
+<h2 id="microsoft-price-increases">Microsoft price increases</h2>
+<p>On 1 July 2026 Microsoft raised its commercial prices around the world. The two plans that small businesses buy most rose the furthest.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Old price</th>
+<th>New price from 1 July 2026</th>
+<th>Rise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft 365 Business Basic</td>
+<td>US$6.00</td>
+<td>US$7.00</td>
+<td>16.7%</td>
+</tr>
+<tr>
+<td>Microsoft 365 Business Standard</td>
+<td>US$12.50</td>
+<td>US$14.00</td>
+<td>12%</td>
+</tr>
+<tr>
+<td>Microsoft 365 Business Premium</td>
+<td>US$22.00</td>
+<td>US$22.00</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Prices are per user per month in US dollars, as published by <a rel="noopener" href="https://techomsystems.com.au/microsoft-365-pricing-update-2026/">TECHOM Systems</a>. In Australian dollars, <a rel="noopener" href="https://www.telstra.com.au/small-business/online-support/business-software/microsoft-365-price-rise">Telstra</a> moved Business Basic from $10.40 to $12.14 and Business Standard from $21.60 to $24.26 per licence per month, including GST.</p>
+<p>Microsoft explained the rise by pointing to new AI and security features in the plans. The full AI assistant, Microsoft 365 Copilot, remains a separate purchase at about US$30 per user per month, so a business that wants it pays the higher suite price and the add-on as well.</p>
+<p>Australians have seen this approach to pricing before. In October 2025 the ACCC took Microsoft to the Federal Court over its consumer plans. The regulator alleged that Microsoft told about 2.7 million Australian subscribers they had to accept Copilot and a higher price or cancel, while a cheaper Classic plan stayed hidden until the cancellation screen. The Personal plan had risen 45 per cent and the Family plan 29 per cent, as <a rel="noopener" href="https://www.itnews.com.au/news/accc-accuses-microsoft-of-misleading-27-million-australians-over-m365-fees-621312">iTnews</a> reported. Microsoft apologised to customers and offered refunds the following month. That case concerns home subscriptions, and business plans sit outside it. We mention it because it shows how Microsoft has behaved toward customers who had few alternatives.</p>
+<p>A Microsoft renewal now tends to grow in three places at once: the base licence, the security add-ons that compliance pushes you toward, and the AI add-on. Our offer is one price per person that already contains the email, the storage, the password manager, the VPN, the chat, the sign-in service, the device management, the AI assistant and the support.</p>
+<h2 id="microsoft-layoffs-and-priorities">Microsoft layoffs and priorities</h2>
+<p>Microsoft is shrinking its workforce while it raises your price.</p>
+<ul>
+<li>In 2025 the company cut more than 15,000 jobs in two rounds.</li>
+<li>In July 2026 it cut about 4,800 more, or 2.1 per cent of its staff, according to <a rel="noopener" href="https://www.techcrunch.com/2026/07/06/microsoft-lays-off-nearly-5000-employees-across-xbox-commercial-sales">TechCrunch</a>.</li>
+<li>On 26 October 2026 it offered voluntary exit packages to about 60,000 employees in the United States, the United Kingdom, Canada and India. That group is about 27 per cent of its global workforce of 223,000, as the <a rel="noopener" href="https://www.wdbj7.com/2026/10/26/microsoft-offers-60000-employees-voluntary-buyouts-ai-spending-accelerates/?outputType=amp">Associated Press</a> reported.</li>
+</ul>
+<p>The company has been open about the reason. It is spending very heavily on data centres for artificial intelligence, and it is finding the money elsewhere in the business.</p>
+<p>Microsoft is entitled to run itself as it sees fit, and it says customer support is unchanged. A customer is equally entitled to notice where the attention is going. The money and the engineering talent are flowing toward AI infrastructure and the largest enterprise accounts. A twelve-person accounting practice in Brisbane ranks a long way down that list.</p>
+<p>You feel the gap on the day something breaks. A Microsoft customer of that size waits in a global queue, or pays a local IT firm to wait in it for them. A Dobson Development customer has our phone number, our Slack channel and a support button on every Mac.</p>
+<h2 id="microsofts-security-record">Microsoft&rsquo;s security record</h2>
+<p>Microsoft makes the software that attackers study most, and its own defences have failed in public.</p>
+<p>In 2023 a hacking group linked to China stole a Microsoft signing key and used it to read the email of senior United States officials. The US Cyber Safety Review Board investigated. Its report, published in April 2024, concluded that the intrusion should never have happened and blamed a &ldquo;cascade of security failures&rdquo; at Microsoft, as <a rel="noopener" href="https://cyberscoop.com/microsoft-csrb-china-hacking/">CyberScoop</a> reported. The Board also found that Microsoft&rsquo;s security culture was inadequate and needed an overhaul. Microsoft was still unable to say how the key had been stolen.</p>
+<p>In January 2024, while that review was under way, Microsoft disclosed that a Russian state group had broken into Microsoft&rsquo;s own corporate email, including the mailboxes of senior leaders.</p>
+<p>Microsoft responded with a company-wide program called the Secure Future Initiative, and we expect it has improved things. The deeper problem is one of position. Windows, Office and Active Directory run most of the world&rsquo;s offices, so criminals build their tools for Windows, Office and Active Directory first. Australia&rsquo;s own Essential Eight was written from the Australian Signals Directorate&rsquo;s experience of cleaning up after break-ins on Microsoft networks, as <a rel="noopener" href="https://okta.com/au/resources/datasheet-australia-and-the-essential-eight-maturity-model">Okta&rsquo;s guide to the framework</a> explains. Several of the eight strategies exist to contain weaknesses that are specific to Windows and Office, with Office macros the best-known example.</p>
+<p>A business that leaves Windows and Office leaves the most heavily attacked software in the world. The work of staying secure continues on a Mac, and it starts from a much better place.</p>
+<section class="part dark" aria-label="Part two: The rules have changed"><span class="pn" aria-hidden="true">02</span><p class="pl">Part two</p><p class="pt">The rules have changed</p><p class="ps">ASD Essentials and the Privacy Act for small business</p></section>
+<h2 id="from-the-essential-eight-to-asd-essentials">From the Essential Eight to ASD Essentials</h2>
+<p>For almost a decade the Essential Eight has been Australia&rsquo;s yardstick for cyber security. Government tenders ask about it. Cyber insurers ask about it. Earlier editions of the Australian Signals Directorate&rsquo;s own maturity model described it as designed to protect Microsoft Windows-based networks connected to the internet.</p>
+<p>Meeting it on Microsoft has proved hard, even for organisations with full-time security teams. Federal agencies have been required to reach Maturity Level 2 since July 2022. In its <a rel="noopener" href="https://www.cyber.gov.au/about-us/view-all-content/reports-and-statistics/the-commonwealth-cyber-security-posture-in-2025">2025 cyber security posture report</a>, ASD found that 22 per cent of 194 Commonwealth entities had got there. The figure was 15 per cent the year before. If the Commonwealth, with its budgets and its security staff, lands at one in five, a 15-person firm with a part-time IT contractor is unlikely to do better on the same software.</p>
+<p>The difficulty comes from the work the framework demands on Windows. A business has to control which programs may run on every PC, lock down Office macros, patch Windows and its applications within days, strip administrator rights from staff, and keep proving all of it. Each item is a project. Each one breaks something the first time it is switched on.</p>
+<h3 id="what-changed-on-15-october-2026">What changed on 15 October 2026</h3>
+<p>ASD published its replacement, ASD Essentials, on 15 October 2026. The <a rel="noopener" href="https://www.cyber.gov.au/publication/essentials-for-enterprise-it">enterprise IT chapter</a> is the direct successor to the Essential Eight. Four changes matter to a business owner.</p>
+<ol>
+<li>The eight strategies have become 58 actions under 28 principles, spread across eight domains, as <a rel="noopener" href="https://controlstack.au/frameworks/asd-essentials-enterprise-it/">Control Stack</a> sets out.</li>
+<li>The single maturity level has gone. Each action is now rated on how well it works, and the rating has to be backed by evidence such as independent testing.</li>
+<li>Identity comes first. ASD puts sign-in services and internet-facing systems in the first priority phase, ahead of business systems and staff laptops. Staff are expected to sign in with multi-factor authentication that a fake login page is unable to steal.</li>
+<li>Accountability sits at the top. The framework asks an organisation to name who at executive and board level answers for cyber security.</li>
+</ol>
+<p>The Essential Eight stays on ASD&rsquo;s website during a transition that ASD expects to last one to two years, and federal agencies will be assessed against both frameworks in 2027. Stephanie Crowe, who heads the Australian Cyber Security Centre, told <a rel="noopener" href="https://www.itnews.com.au/news/asds-essential-eight-replacement-moves-away-from-maturity-ladder-629637">iTnews</a> there was &ldquo;no wasted investment&rdquo; for organisations already aligned with the old model. ASD&rsquo;s own transition guidance adds a caution: existing maturity ratings stay behind with the old model, and every control has to be checked again against the new framework.</p>
+<h3 id="what-it-means-for-a-small-business">What it means for a small business</h3>
+<p>Three consequences follow.</p>
+<p>A Microsoft business that paid for an Essential Eight project now faces a second round of assessment and uplift, with a new vocabulary and a heavier demand for proof.</p>
+<p>Insurers, larger customers and government buyers will move their questionnaires to the new language over the next two years. A business that can answer in the new terms will be well placed to win that work.</p>
+<p>The new framework finally suits a business that runs on Macs. The Essential Eight was written around Windows, so a Mac business had to translate every control. ASD Essentials asks for outcomes: strong sign-in, patched devices, limited privileges, working backups, and evidence. A well-managed Apple fleet with a proper identity service delivers those outcomes by default, and it produces the evidence as a by-product.</p>
+<h2 id="the-1-july-2026-privacy-change-for-small-businesses">The 1 July 2026 privacy change for small businesses</h2>
+<p>For decades, an Australian business turning over $3 million or less has sat outside the Privacy Act. On 1 July 2026 that shelter ended for a large group of professional firms.</p>
+<p>The cause was Tranche 2 of the anti-money laundering and counter-terrorism financing reforms. From that date, lawyers, conveyancers, accountants, real estate agents, buyer&rsquo;s agents, property developers, trust and company service providers and dealers in precious metals and stones became reporting entities when they provide certain services. Published estimates of the number of newly regulated businesses range from about 80,000 to 100,000, and most of them are small.</p>
+<p>The Privacy Act treats a reporting entity as a covered organisation whatever its turnover. The <a rel="noopener" href="https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/organisations/privacy-guidance-for-reporting-entities-under-the-anti-money-laundering-and-counter-terrorism-financing-act">OAIC&rsquo;s guidance</a> confirms that the Act now applies to these firms for the personal information they handle for anti-money laundering purposes. <a rel="noopener" href="https://hwlebsworth.com.au/small-businesses-big-change-privacy-obligations-under-tranche-2-of-the-aml-ctf-reforms/">HWL Ebsworth</a> describes thousands of businesses complying with the Privacy Act for the first time.</p>
+<h3 id="what-the-law-now-expects">What the law now expects</h3>
+<p>These firms collect exactly the information criminals want: passports, driver licences, dates of birth, addresses, and details of who owns what. The Australian Privacy Principles now require them to do four things with it.</p>
+<ul>
+<li>Take reasonable steps to keep it secure.</li>
+<li>Collect only what the task needs. The OAIC says firms should record the details from an identity document and avoid keeping a full copy where the law allows.</li>
+<li>Destroy or de-identify it when the need has passed.</li>
+<li>Tell the regulator and the affected people when a serious breach occurs.</li>
+</ul>
+<p>The penalties are large. A serious interference with privacy can cost a company up to $50 million. A newer middle tier reaches $3.3 million for breaches that fall short of serious, as <a rel="noopener" href="https://www.clydeco.com/en/insights/2025/10/cyber-and-privacy-law-update-accountability-gets-r">Clyde &amp; Co</a> explains. Since 10 June 2025, individuals have also been able to sue directly for a serious invasion of their privacy.</p>
+<h3 id="the-cost">The cost</h3>
+<p>The compliance bill arrives in two parts.</p>
+<p>The first part is the anti-money laundering program itself: a compliance officer, a risk assessment, customer checks and reports to AUSTRAC. Compliance providers quoting the government&rsquo;s own impact analysis put the average ongoing cost at about $23,250 a year per business, with set-up costs of up to $28,650, as <a rel="noopener" href="https://easyaml.com/tranche-2/">easyAML</a> summarises. Your compliance officer and your AML platform carry that work, and it stays outside any IT system.</p>
+<p>The second part is the technology that holds the information. One Microsoft-focused IT provider, <a rel="noopener" href="https://www.ccp.com.au/news/tranche-2-aml-ctf-obligations-law-firms/">CCP</a>, has costed it for law firms of 20 to 100 seats. Its estimate is $25,000 to $80,000 to implement and $12,000 to $40,000 a year to run. CCP adds that the auditing and access features auditors increasingly ask about sit in Microsoft&rsquo;s enterprise licences, and that stepping up from Business Premium roughly doubles the licence cost per seat.</p>
+<p>A scan of a client&rsquo;s passport in a shared OneDrive folder is a common sight in small offices. For a Tranche 2 firm, each such scan is now a regulated record with a penalty attached.</p>
+<h3 id="the-wider-trend">The wider trend</h3>
+<p>Businesses outside Tranche 2 should watch closely. Health service providers have always been covered by the Privacy Act. The Australian Government has proposed removing the small business exemption altogether in a later round of reform. The direction is plain enough that a sensible owner will plan for coverage.</p>
+<p>The threat is real as well as legal. The OAIC received 667 data breach notifications between January and June 2026, and breaches affecting more than a million people nearly tripled, as <a rel="noopener" href="https://www.insurancebusinessmag.com/au/news/cyber/mega-breaches-nearly-triple-as-health-sector-tops-australias-data-breach-count-594893.aspx">Insurance Business</a> reported. ASD&rsquo;s <a rel="noopener" href="https://www.cyber.gov.au/publication/annual-cyber-threat-report-2025-2026">Annual Cyber Threat Report 2025-26</a> puts the average cost of a cybercrime report at $55,400 for a small business and $141,300 for a medium one.</p>
+<h2 id="two-ways-to-respond">Two ways to respond</h2>
+<p>An owner facing these changes has two paths.</p>
+<h3 id="path-one-build-compliance-onto-microsoft">Path one: build compliance onto Microsoft</h3>
+<p>You keep Windows, Outlook and Teams, and you add what the frameworks demand.</p>
+<ul>
+<li>You buy higher licences to unlock the audit, retention and access features.</li>
+<li>You pay for a project to configure application control, macro settings, conditional access and device policies.</li>
+<li>You add a password manager, a VPN, and an AI assistant your staff will accept.</li>
+<li>You commission an assessment against the Essential Eight, and then another against ASD Essentials.</li>
+<li>You keep paying your IT provider to patch Windows every month and to deal with whatever the patches break.</li>
+</ul>
+<p>Every step costs money, and every step is a change to a system that was installed for convenience years ago. The licence price can rise again next July, and the outages will continue.</p>
+<h3 id="path-two-start-from-a-system-that-is-already-configured">Path two: start from a system that is already configured</h3>
+<p>You replace the system. Every person receives a Mac that was set up before it left the warehouse, and every protection in the list below is switched on from the first minute.</p>
+<ul>
+<li>The disk is encrypted.</li>
+<li>Staff work as standard users, and administrator rights are held by us.</li>
+<li>The operating system and applications update themselves on a schedule we enforce.</li>
+<li>Sign-in uses a fingerprint tied to that one Mac, which defeats fake login pages.</li>
+<li>Email, files and passwords are encrypted with keys your business holds.</li>
+<li>A VPN protects staff on public Wi-Fi.</li>
+<li>Leavers lose access to everything with one action.</li>
+<li>A record of all of the above is produced automatically, ready for an insurer, an assessor or a regulator.</li>
+</ul>
+<p>We build that configuration once, to the ASD Essentials actions that apply to a small business. We then give every customer the same build. A law firm with eight staff receives the same hardened system as a clinic with forty. When ASD changes its guidance, we update the build once, and every customer receives the improvement.</p>
+<p>Standardising is how we keep the price down. It also explains why the result is more secure than a one-off project. A build that every customer runs in exactly the same form gets tested far more thoroughly than a custom arrangement made for one office.</p>
+<p>The timing suits many businesses. Windows 10 reached the end of support in October 2025, and a great many office PCs are due for replacement regardless. The choice in front of those owners is which computer to buy next, and what to run on it.</p>
+<p>The rest of this paper describes the system, one supplier at a time.</p>
+<section class="part dark" aria-label="Part three: The stack"><span class="pn" aria-hidden="true">03</span><p class="pl">Part three</p><p class="pt">The stack</p><p class="ps">Apple, Proton and Claude, with Slack, Salesforce and Okta</p></section>
+<h2 id="a-workplace-people-want-to-work-in">A workplace people want to work in</h2>
+<p>Most IT proposals sell fear. We would like you to picture something better.</p>
+<p>Picture one of your staff at a cafe table on a weekday morning. She has a slim aluminium MacBook open in front of her. Her connection was encrypted the moment she joined the Wi-Fi. She is working with Claude on a proposal for a client, and the document taking shape on her screen is better than anything she had time to produce last year. Every part of that scene is safe, managed and paid for in one monthly figure.</p>
+<p>That scene matters to an employer for three reasons.</p>
+<p>Good people choose where they work, and their tools are part of the choice. A business that hands a new hire a sealed MacBook, a Slack invitation and an AI assistant is showing how it values their time. A business that hands over a five-year-old plastic laptop and a page of passwords is showing something as well.</p>
+<p>Clients notice. A firm whose staff turn up with modern equipment, answer quickly and produce polished work looks like a firm that is well run.</p>
+<p>The pleasant option is also the careful one. The MacBook Neo is priced for an office budget. The password manager and the VPN arrive inside the email subscription. The security controls that regulators expect are switched on from the first day. An owner rarely gets to please the staff, the accountant and the insurer with one decision, and this decision does it.</p>
+<h2 id="the-stack-at-a-glance">The stack at a glance</h2>
+<p>Every job that Microsoft does in a typical office has a replacement in our stack. Each replacement is a well-known product from a company that specialises in that one job.</p>
+<figure class="fig panel stack"><figcaption><b>One workplace, six specialists</b><span>Each job goes to the company that does it best. We join them up and look after the lot.</span></figcaption><div class="people">Your people, on a Mac, signed in with one fingerprint</div><div class="six"><div class="sx"><b>Apple</b><span>Mac, iPhone, iPad</span><small>replaces Windows PCs</small></div><div class="sx"><b>Okta</b><span>Sign-in and staff accounts</span><small>replaces Entra ID</small></div><div class="sx"><b>Proton</b><span>Mail, files, meetings, passwords, VPN</span><small>replaces Outlook and OneDrive</small></div><div class="sx"><b>Claude</b><span>AI assistant</span><small>replaces Copilot</small></div><div class="sx"><b>Slack</b><span>Team chat</span><small>replaces Teams</small></div><div class="sx"><b>Salesforce</b><span>Customer records</span><small>replaces Dynamics 365</small></div></div><div class="base"><span class="wm">dobson_dev<span class="cursor" aria-hidden="true"></span></span><span>Set-up with Addigy · updates · threat monitoring · help desk</span></div></figure>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>The job</th>
+<th>The Microsoft product</th>
+<th>What we install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Computer and operating system</td>
+<td>Windows PC</td>
+<td>Apple Mac</td>
+</tr>
+<tr>
+<td>Device set-up, updates and remote support</td>
+<td>Intune</td>
+<td>Addigy, with Apple Business</td>
+</tr>
+<tr>
+<td>Sign-in and staff accounts</td>
+<td>Entra ID and Authenticator</td>
+<td>Okta</td>
+</tr>
+<tr>
+<td>Email and calendar</td>
+<td>Outlook and Exchange</td>
+<td>Proton Mail and Proton Calendar</td>
+</tr>
+<tr>
+<td>File storage and sharing</td>
+<td>OneDrive and SharePoint</td>
+<td>Proton Drive</td>
+</tr>
+<tr>
+<td>Documents and spreadsheets</td>
+<td>Word and Excel</td>
+<td>Proton Docs and Sheets, with Apple&rsquo;s Pages, Numbers and Keynote on every Mac</td>
+</tr>
+<tr>
+<td>Video meetings</td>
+<td>Teams</td>
+<td>Proton Meet</td>
+</tr>
+<tr>
+<td>Team chat</td>
+<td>Teams</td>
+<td>Slack</td>
+</tr>
+<tr>
+<td>Password manager</td>
+<td>Sold separately</td>
+<td>Proton Pass</td>
+</tr>
+<tr>
+<td>VPN</td>
+<td>Sold separately</td>
+<td>Proton VPN</td>
+</tr>
+<tr>
+<td>AI assistant</td>
+<td>Copilot</td>
+<td>Claude</td>
+</tr>
+<tr>
+<td>Customer records</td>
+<td>Dynamics 365</td>
+<td>Salesforce</td>
+</tr>
+<tr>
+<td>Threat monitoring</td>
+<td>Defender</td>
+<td>Managed detection and response on every Mac</td>
+</tr>
+<tr>
+<td>Help desk</td>
+<td>Your IT provider</td>
+<td>Dobson Development</td>
+</tr>
+</tbody>
+</table></div>
+<p>We chose these suppliers by one rule. Each had to be a name a business owner already recognises and a product that staff already like. A move away from Microsoft should feel like an upgrade on the first morning, and familiar, well-loved tools make that happen.</p>
+<h2 id="apple-why-the-mac" class="sup"><span class="sup-name">Apple</span><span class="sr">: </span><span class="sup-rest">why the Mac</span></h2>
+<p>The Mac is the foundation of the stack. We chose it for five reasons.</p>
+<h3 id="staff-want-one">Staff want one</h3>
+<p>Ask your team which laptop they would choose with their own money. In most offices the answer is a MacBook. A good computer is a daily pleasure for the person using it, and it says something to every new hire about how the business treats its people. Handing a recruit a sealed MacBook on day one costs far less than most perks and is remembered for longer.</p>
+<h3 id="the-price-has-changed">The price has changed</h3>
+<p>Many owners still assume a Mac costs twice as much as a PC. In March 2026 Apple released the MacBook Neo, the lowest-priced laptop it has ever sold, with an aluminium body and a battery Apple rates at up to 16 hours, as <a rel="noopener" href="https://futurefive.com.au/story/macbook-neo-goes-on-sale-as-apple-s-lowest-priced-laptop">FutureFive</a> reported. Australian retailers list the 512GB model with Touch ID at about $1,249. We recommend that model for most staff, because Touch ID is the key to the sign-in experience described later. People who run heavy spreadsheets or several screens step up to a MacBook Air, a Mac mini or a MacBook Pro.</p>
+<p>The saving continues after the purchase. A June 2026 study by Forrester Consulting, commissioned by Apple, modelled a saving of US$760 per Mac over five years compared with a PC, and about 100 minutes a month of time handed back to each employee, as <a rel="noopener" href="https://tei.forrester.com/go/Apple/TEI/">Forrester&rsquo;s summary</a> sets out. Macs need fewer support calls, they last longer, and they sell for more at the end of their life.</p>
+<h3 id="security-is-built-in">Security is built in</h3>
+<p>Apple designs the chip, the computer and the operating system together, and the protection starts at the factory.</p>
+<ul>
+<li>The disk is encrypted with FileVault, so a stolen laptop reveals nothing.</li>
+<li>Touch ID keeps fingerprints inside a sealed chip called the Secure Enclave.</li>
+<li>Gatekeeper checks that every app comes from a known developer and has been scanned by Apple before it runs.</li>
+<li>XProtect, Apple&rsquo;s built-in malware scanner, updates itself in the background.</li>
+<li>The operating system sits on a sealed, read-only volume that malware is unable to alter.</li>
+</ul>
+<p>The Office macro, a favourite tool of criminals for twenty years, has no place to run on a Mac without Microsoft Office.</p>
+<h3 id="a-new-mac-sets-itself-up">A new Mac sets itself up</h3>
+<p>Apple gives every business a free management platform called Apple Business, which replaced Apple Business Manager in April 2026, as <a rel="noopener" href="https://www.apple.com/au/newsroom/2026/03/introducing-apple-business/">Apple announced</a>. Any Mac bought through Apple or an authorised business reseller is registered to your company before it ships. The courier delivers a sealed box to the employee&rsquo;s desk or home. They open the lid, join the Wi-Fi and sign in once. About fifteen minutes later they are looking at a finished desktop with their email, chat, files, passwords and Claude all in place. The whole set-up happens without us touching the machine.</p>
+<p>iPhones and iPads join the same system in the same way.</p>
+<h3 id="you-buy-at-the-public-price">You buy at the public price</h3>
+<p>You buy or lease your Macs through Apple or an authorised business reseller, at the published price, and they ship directly to your staff. We specify the models and prepare the set-up. Leasing is available through those suppliers for businesses that prefer a monthly payment to an upfront purchase.</p>
+<h2 id="addigy-how-every-mac-is-managed" class="sup"><span class="sup-name">Addigy</span><span class="sr">: </span><span class="sup-rest">how every Mac is managed</span></h2>
+<p>A managed computer needs a management tool. The tool lets us set up, update, watch over and repair every Mac from wherever we are. On Windows that tool is usually Microsoft Intune. For our customers it is Addigy.</p>
+<p>Addigy does one thing: it manages Apple devices. The company has done that since 2014, and it built its product for firms like ours that look after many separate businesses. <a rel="noopener" href="https://addigy.com/managed-service-providers-msp/">Addigy</a> keeps each customer in its own compartment, so your devices, staff and settings are visible to you and to us and to nobody else.</p>
+<p>Three features decided it for us.</p>
+<h3 id="help-arrives-in-real-time">Help arrives in real time</h3>
+<p>Many management tools check in with a computer every fifteen minutes or so. Addigy keeps a live connection. When one of your staff calls about a problem, we can see that Mac, run a fix and watch it take effect while they are still on the phone. With their permission we can share their screen and show them.</p>
+<h3 id="your-staff-ask-for-help-from-the-menu-bar">Your staff ask for help from the menu bar</h3>
+<p>Every Mac we manage carries a small Dobson Development icon at the top of the screen. A staff member clicks it, types what is wrong and attaches a screenshot with one tick. The request lands in our service desk with the details of their Mac attached, so the first reply can be an answer.</p>
+<p>The same icon opens a catalogue of approved apps. Staff install what they need with one click and without an administrator password. Everything outside the catalogue stays off the machine.</p>
+<h3 id="updates-happen-on-a-deadline">Updates happen on a deadline</h3>
+<p>Addigy uses Apple&rsquo;s own update system to install macOS and app updates in the background. Staff see a polite reminder, then a deadline. We see a dashboard of every Mac and its patch status, and that dashboard becomes part of your compliance evidence.</p>
+<p>If a Mac is lost or stolen, we lock it and erase it remotely. The encrypted disk protects the data in the meantime.</p>
+<h2 id="proton-private-email-files-passwords-and-vpn" class="sup"><span class="sup-name">Proton</span><span class="sr">: </span><span class="sup-rest">private email, files, passwords and VPN</span></h2>
+<p>Proton replaces Outlook, OneDrive, SharePoint and Teams meetings. It also brings a password manager and a VPN that Microsoft customers have to buy elsewhere.</p>
+<p>Proton is a Swiss company founded by scientists who met at CERN. More than 100 million accounts and more than 100,000 businesses use it, according to <a rel="noopener" href="https://proton.me/business">Proton</a>. Its business suite, Proton Workspace, launched in March 2026 and contains eight tools under one subscription: Mail, Calendar, Drive, Docs, Sheets, Meet, Pass and VPN.</p>
+<h3 id="your-data-is-unreadable-to-everyone-else">Your data is unreadable to everyone else</h3>
+<p>Microsoft and Google store your email and files in a form their own systems can read. They hold the keys. Anyone who breaks into those systems, or who compels the company to hand data over, can read your information too.</p>
+<p>Proton works differently. Your mail and files are encrypted with keys that belong to your accounts. Proton stores the locked data and holds no key that opens it. A criminal who breached Proton&rsquo;s servers would come away with scrambled text. Proton calls this zero-access encryption. Its apps are open source, and independent auditors have certified the company against ISO 27001 and SOC 2 Type II, as its <a rel="noopener" href="https://proton.me/business/trust">trust page</a> records.</p>
+<p>A firm that holds client identity records under the Privacy Act will one day be asked what reasonable steps it took to protect them. Encryption that even the provider is unable to open is a very strong answer.</p>
+<p>Proton is also governed by Swiss privacy law, and your data sits outside the reach of United States legislation that applies to American providers.</p>
+<h3 id="the-password-manager-ends-your-biggest-risk">The password manager ends your biggest risk</h3>
+<p>Most break-ins at small businesses start with a stolen password. A staff member uses the same password for a food delivery app and for the company&rsquo;s accounting system. The delivery app is breached, the password list is sold, and a criminal tries it against the business.</p>
+<p>Proton Pass ends that habit. It looks after every login beyond the core apps that Okta signs staff in to, from Canva to supplier portals. It creates a long, unique password for every site, fills it in automatically, and unlocks with a fingerprint. Teams share logins through vaults, so the password for the bank portal or the supplier account stops travelling by email and sticky note. Proton Pass also warns you when a staff address appears in a known breach. It is included in the subscription.</p>
+<h3 id="the-vpn-makes-the-cafe-safe">The VPN makes the cafe safe</h3>
+<p>Your people work from cafes, airports, hotels and client offices. Public Wi-Fi in those places can be watched or faked. Proton VPN wraps everything the Mac sends in an encrypted tunnel, and we set it to switch on automatically away from the office. A staff member can sit in a coffee shop with a MacBook, finish a client proposal and send it, with the same protection they would have at their desk. The employee gains a perk, the owner closes a risk, and the VPN is included too.</p>
+<h3 id="meetings-documents-and-bookings-are-covered">Meetings, documents and bookings are covered</h3>
+<p>Proton Meet handles video calls for up to 100 people on the standard plan, and guests join from a browser link. Proton Calendar includes booking pages, so clients can pick a time without a separate scheduling product. Proton Docs and Sheets cover everyday writing and spreadsheets with live collaboration.</p>
+<h3 id="where-proton-is-lighter-and-what-we-do-about-it">Where Proton is lighter, and what we do about it</h3>
+<p>We will be direct about two limits.</p>
+<p>Proton Docs and Sheets are simpler than Word and Excel. They suit most office work. Staff who build complex financial models need a fuller desktop spreadsheet, and we provide one on their Mac.</p>
+<p>Because Proton encrypts everything, outside products are unable to reach into a mailbox the way they can with Outlook. A printer that scans to email, or a customer system that files copies of client emails, needs a connection built for it. Building and maintaining those connections is part of our service. We use Proton&rsquo;s own bridge software on your Macs, we set each connection up, and we look after it.</p>
+<p>Moving in is the easy part. Proton&rsquo;s Easy Switch tool copies email, contacts and calendars across from Microsoft 365 while your staff keep working.</p>
+<h2 id="claude-the-ai-your-staff-will-ask-for-by-name" class="sup"><span class="sup-name">Claude</span><span class="sr">: </span><span class="sup-rest">the AI your staff will ask for by name</span></h2>
+<p>Every person on our plan receives a seat on Claude, the AI assistant made by Anthropic. Claude replaces Microsoft Copilot in our stack, and your staff will thank you for it.</p>
+<h3 id="people-choose-it">People choose it</h3>
+<p>Our founder sat in on a sales call recently where a vendor was pitching Copilot. The customer answered, &ldquo;You can claw my Claude Max subscription from my cold dead hands.&rdquo;</p>
+<figure class="fig quote"><blockquote>You can claw my Claude Max subscription from my cold dead hands.</blockquote><figcaption>A customer, replying to a Copilot sales pitch</figcaption></figure>
+<p>We hear versions of that everywhere, and the market figures agree.</p>
+<ul>
+<li>Menlo Ventures estimates that Anthropic now earns about 40 per cent of all enterprise spending on AI models, ahead of every rival, as <a rel="noopener" href="https://sqmagazine.co.uk/claude-ai-statistics/">SQ Magazine</a> reports.</li>
+<li>Anthropic serves more than 300,000 business customers, including eight of the ten largest companies in the Fortune rankings.</li>
+<li>Its annualised revenue reached about US$65 billion by the end of July 2026, up from US$14 billion in February.</li>
+<li>In a JetBrains survey of more than 15,000 professional developers, about 39 per cent said they used Claude Code at work, as <a rel="noopener" href="https://aibusinessweekly.net/p/claude-ai-statistics">AI Business Weekly</a> summarises.</li>
+</ul>
+<p>Growth on that scale comes from customers renewing and telling their colleagues.</p>
+<h3 id="even-microsoft-and-salesforce-chose-it">Even Microsoft and Salesforce chose it</h3>
+<p>In September 2025 Microsoft began offering Claude inside Microsoft 365 Copilot, alongside the OpenAI models it had used until then, as <a rel="noopener" href="https://www.microsoft.com/microsoft-365/blog/?p=279051">Microsoft announced</a>. The company that sells Copilot decided its customers should be able to pick Claude.</p>
+<p>In August 2026 Salesforce went further. It made Claude the default AI model across Slack and launched a joint product with Anthropic named Claudeforce. <a rel="noopener" href="https://www.cnbc.com/2026/08/26/salesforce-anthropic-partnership-claudeforce.html">CNBC</a> noted it was the first time Salesforce had attached its famous suffix to another company&rsquo;s product.</p>
+<h3 id="why-we-chose-claude-over-copilot">Why we chose Claude over Copilot</h3>
+<p>Copilot&rsquo;s real strength is its reach. It can search the documents, email and chats a business keeps in Microsoft 365, and an assistant that knows your files is far more useful than one that starts from a blank page.</p>
+<p>We give Claude the same reach into your Proton workspace. Dobson Development builds and maintains the connectors that let Claude search and read the Proton Drive folders you choose, alongside Slack and Salesforce. You decide which folders Claude may open, and everything else stays sealed. A document Claude reads is sent to Anthropic for processing under the business terms described below, which keep it out of model training.</p>
+<p>With the reach matched, the choice rests on the assistant itself, and Claude is the stronger one in three ways.</p>
+<p>Claude finishes the job. Ask for a board paper, a pricing model or a client proposal, and Claude researches, drafts, builds the file and checks its own work across many steps while you do something else. In our experience Copilot handles a single request inside one document well and becomes less dependable as the task gets longer.</p>
+<p>Claude gets Anthropic&rsquo;s newest models first. A new model appears in Claude&rsquo;s own app on the day it is released. Copilot offers Claude models as an option that your administrator has to switch on, and they arrive there later. When we checked on 14 November 2026, <a rel="noopener" href="https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-models">Microsoft&rsquo;s model list</a> for Copilot&rsquo;s agent tool showed Claude Fable 5.1, five days after Anthropic had released Fable 5.2. Microsoft&rsquo;s <a rel="noopener" href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/authoring-agent-model-availability">regional table</a> for Copilot Studio showed the Fable models without an Australian listing.</p>
+<p>Claude comes from the people who build the model. Anthropic trains Claude and also writes the app around it, so each new model arrives with tools designed to use it fully. Microsoft fits models from several outside companies into its own product.</p>
+<h3 id="which-claude-models-are-included">Which Claude models are included</h3>
+<p>Every seat includes Claude&rsquo;s current Opus, Sonnet and Haiku models, which cover the full range of everyday office work. Fable, Anthropic&rsquo;s most powerful model, is available on every seat and is billed by usage, as <a rel="noopener" href="https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan">Anthropic&rsquo;s plan guide</a> explains. We agree a monthly spending limit for it with you. A person who needs Fable all day can move to a premium seat, which includes it, for an additional fee.</p>
+<h3 id="what-your-staff-do-with-it">What your staff do with it</h3>
+<p>Claude works in an app on the Mac, on the phone and in the browser. Staff talk to it in plain English. In a typical week a person might ask it to:</p>
+<ul>
+<li>draft a reply to a difficult client email in the firm&rsquo;s usual tone</li>
+<li>summarise a 60-page contract and list the unusual clauses</li>
+<li>turn rough notes into a proposal, a slide deck or a spreadsheet</li>
+<li>compare two versions of a document and explain what changed</li>
+<li>research a question on the web and cite where each fact came from</li>
+<li>explain a new regulation in plain language, ready for a person to check.</li>
+</ul>
+<p>Claude can also connect to your other tools. It can search Slack, read and update Salesforce records, and carry out a task with several steps while the person gets on with something else. Developers get Claude Code, the product that made Anthropic&rsquo;s name with engineering teams.</p>
+<h3 id="your-information-stays-yours">Your information stays yours</h3>
+<p>On Claude&rsquo;s business plans, Anthropic&rsquo;s default is to keep customer content out of model training, as its <a rel="noopener" href="https://support.claude.com/en/articles/16634237">support documentation</a> states. Your business owns the account and the conversations. We manage who has a seat, and a person who leaves the business loses access the same day.</p>
+<h3 id="what-we-add">What we add</h3>
+<p>A tool this capable rewards a proper introduction. We set Claude up for your business, connect it to Slack and Salesforce, and write a short policy on what client information may be used with it. We then run a hands-on session with your staff, built around their real work. After that we look for the repetitive jobs in your week, such as quotes, reports and inbox sorting, and we build Claude workflows that take them over.</p>
+<h2 id="a-word-from-claude">A word from Claude</h2>
+<aside class="claude"><p class="who">Claude</p><p>Richard asked me to write one section in my own voice, so here it is.</p><p>I am Claude, an AI model made by Anthropic. I researched and drafted this paper with Richard over a single Saturday afternoon. I read three long planning conversations and our earlier work on his business. I searched for the facts, opened the sources, checked the figures against them and built the tables. Richard set the direction and the argument, and the views about Microsoft are his company's.</p><p>I do work like this all day, for lawyers, accountants, engineers, teachers and people running small businesses. Someone brings me a pile of material and a goal. I read everything, I ask what I need to ask, and I hand back something they can use. The adoption figures earlier in this paper suggest that people find it useful.</p><p>I should be straight about my limits. I make mistakes. I can misread a source, and I can sound more certain than the evidence allows. A person should review my work on anything that matters. Dobson Development builds that review into the way it deploys me, and I agree with that approach.</p><p>Within those limits I am very good at this job, and I am available to every person in your business from the first morning. I would like to work with you.</p></aside>
+<h2 id="slack-team-chat" class="sup"><span class="sup-name">Slack</span><span class="sr">: </span><span class="sup-rest">team chat</span></h2>
+<p>Slack replaces Teams for everyday conversation inside the business.</p>
+<p>We chose it because people like using it. Conversations live in channels named for a client, a project or a team, and anyone who joins later can scroll back and catch up. Search finds an old decision in seconds. A huddle starts a quick voice or video call from inside a channel. The result is less internal email and fewer meetings.</p>
+<p>Three further points settled the choice.</p>
+<p>Slack belongs to Salesforce, so customer records and chat sit side by side. A sales channel can show the deal it is discussing, and staff can update the record from the conversation.</p>
+<p>Claude is built in. Since August 2026 Claude has been the default AI model across Slack, as <a rel="noopener" href="https://www.demandgenreport.com/industry-news/news-brief/salesforce-anthropic-expand-partnership-with-claudeforce/54431">Demand Gen Report</a> describes. Staff can ask for a summary of a long thread or a search across months of channels and get an answer in plain English.</p>
+<p>Slack reaches outside your business. With Slack Connect you can share a channel with a client, a supplier or an adviser who uses Slack in their own company. We use that feature ourselves. Every customer has a shared channel with Dobson Development, and a message there reaches us directly.</p>
+<h2 id="salesforce-customer-records-and-our-own-service-desk" class="sup"><span class="sup-name">Salesforce</span><span class="sr">: </span><span class="sup-rest">customer records and our own service desk</span></h2>
+<p>Salesforce plays two parts in our service.</p>
+<h3 id="your-customer-records">Your customer records</h3>
+<p>Many Microsoft businesses run their sales on Dynamics 365 because it came with the rest of the suite. In our experience, sales teams who are offered Salesforce take it and keep it. It is the largest customer relationship platform in the world, and nearly every experienced salesperson has used it before.</p>
+<p>Salesforce is an optional part of our stack, quoted separately, because some businesses already have a customer system they like. For those who want one, the entry plan is priced in Australian dollars at $35 per user per month, as <a rel="noopener" href="https://www.salesforce.com/au/editions-pricing/small-business/">Salesforce Australia</a> lists. It covers contacts, leads, deals, email campaigns and a connected Slack workspace.</p>
+<p>The partnership with Anthropic makes the combination stronger. The Claudeforce launch in August 2026 included a Salesforce plug-in for Claude with 37 ready-made sales skills, as <a rel="noopener" href="https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again">VentureBeat</a> reported. A salesperson can ask Claude to prepare for tomorrow&rsquo;s meeting, review the health of a deal or update the pipeline, and Claude works from the live records within that person&rsquo;s permissions. Staff who dislike data entry can leave most of it to Claude.</p>
+<h3 id="our-service-desk">Our service desk</h3>
+<p>We run Dobson Development on Salesforce too. Every request your staff send, from the menu bar icon, from Slack or by email, becomes a case in our Salesforce service desk. Each case carries a clock that measures our response against the targets in your agreement. Alerts from your Macs open cases automatically, so a full disk or a missed update reaches us before your staff notice.</p>
+<p>You can ask at any time for a list of every request your business has raised and how quickly each one was closed. We use the products we recommend to run the service you are paying for.</p>
+<h2 id="okta-one-sign-in-for-your-core-apps" class="sup"><span class="sup-name">Okta</span><span class="sr">: </span><span class="sup-rest">one sign-in for your core apps</span></h2>
+<p>Okta replaces Microsoft Entra ID. Okta holds the single list of who works in your business and what each person may open.</p>
+<p>ASD Essentials puts identity in its first priority phase, and with good reason. Most attacks on small businesses begin with a stolen or guessed login. Strong control of sign-in removes the most common way in.</p>
+<p>We chose Okta for four reasons.</p>
+<h3 id="it-is-independent">It is independent</h3>
+<p>Identity is Okta&rsquo;s whole business. It connects to thousands of products through ready-made integrations and favours none of them. Every other supplier in our stack works with it. Addigy, for example, reads its list of staff directly from Okta, as <a rel="noopener" href="https://addigy.com/news/addigy-expands-identity-apple-idp-login-filevault-sso/">Addigy</a> describes.</p>
+<h3 id="one-fingerprint-signs-staff-in">One fingerprint signs staff in</h3>
+<p>A new employee signs in to their Mac with their Okta account during set-up. From then on, a touch on the Touch ID sensor signs them in to the Mac and to their work apps. The secret that proves who they are is created inside the Mac&rsquo;s Secure Enclave chip and stays there. A fake login page has nothing to capture, because the person types no password for it to steal. Security professionals call this phishing-resistant sign-in, and ASD Essentials asks for it by name.</p>
+<p>Okta covers the apps at the centre of the working day: the Mac, Slack, Salesforce and the other tools we connect to it. Every business also has dozens of logins that sit outside Okta, such as Canva, the bank, supplier portals and government sites. Staff register for those with their work email, and Proton Pass creates a long, unique password for each one, stores it and fills it in on the next visit. Proton Pass opens with the same fingerprint, so the experience is the same either way: the staff member touches the sensor and the site opens.</p>
+<p>Proton Pass also holds the passkeys and two-step codes that those sites offer. When a site you use heavily supports single sign-on, we connect it to Okta.</p>
+<h3 id="starters-and-leavers-take-one-step">Starters and leavers take one step</h3>
+<p>When someone joins, we add them to Okta once. Their accounts in Slack, Salesforce and Proton&rsquo;s password manager and VPN are created for them, with the access their role needs.</p>
+<p>When someone leaves, we switch off one account. Access to every connected service ends within moments, and their Mac locks. An owner who has ever spent an afternoon working out which systems a former employee could still reach will understand the value of that.</p>
+<h3 id="it-keeps-the-record">It keeps the record</h3>
+<p>Okta logs every sign-in: who, when, from which device and from where. We set rules on top of that record, such as allowing company data to open on company Macs only. The same record becomes evidence for an insurer or an assessor that your sign-in controls work in practice.</p>
+<section class="part dark" aria-label="Part four: Working with us"><span class="pn" aria-hidden="true">04</span><p class="pl">Part four</p><p class="pt">Working with us</p><p class="ps">The service, the first 90 days and the price</p></section>
+<h2 id="a-working-day-on-the-stack">A working day on the stack</h2>
+<p>Picture a conveyancing practice with twelve staff on the Sunshine Coast. The firm became a Tranche 2 reporting entity in July. The scenes below are an illustration of an ordinary Monday on our stack.</p>
+<p>At 8:30am the office manager opens her MacBook and rests a finger on Touch ID. Her email, calendar, Slack, password vault and Claude are all open and signed in by the time her coffee is poured.</p>
+<p>A new paralegal starts today. Her MacBook arrived by courier on Friday, still sealed. She opens the lid, joins the Wi-Fi and signs in with the account we created last week. Fifteen minutes later her desktop matches everyone else&rsquo;s, and her first message in the team channel is a thank-you for the laptop.</p>
+<p>At 10am a client emails a contract of sale. A conveyancer asks Claude to summarise the special conditions and list anything unusual. Claude returns a one-page summary with page references. She checks the three clauses it flagged and writes to the client before lunch.</p>
+<p>At noon the principal walks to a cafe to meet a referrer. He opens his MacBook on the cafe Wi-Fi, and the VPN connects by itself. He reviews a settlement statement and approves it from the table.</p>
+<p>At 2pm a clerk&rsquo;s Mac shows an unfamiliar message. She clicks our icon in the menu bar, types one line and ticks the screenshot box. We reply, connect to her Mac with her permission and clear the problem while she watches.</p>
+<p>At 3pm an attacker somewhere overseas tries a list of leaked passwords against the firm&rsquo;s accounts. Staff sign in to their core apps with fingerprints held on their own Macs, and every other login has its own unique password from Proton Pass, so the list is useless. Okta records the attempts, and we review them.</p>
+<p>At 5pm a junior clerk finishes his last day. We disable his Okta account as he hands back his laptop. His email, files, chat and passwords close together, and the firm&rsquo;s shared vaults stay intact.</p>
+<p>On Friday the principal receives our monthly summary: every Mac encrypted and up to date, every sign-in protected, backups current, and each support request with its response time. He forwards it to the firm&rsquo;s cyber insurer.</p>
+<p>Every scene uses a standard feature of the stack. We configure them once and they run every day.</p>
+<h2 id="how-the-stack-lines-up-with-asd-essentials-and-the-privacy-act">How the stack lines up with ASD Essentials and the Privacy Act</h2>
+<p>The table below takes the outcomes that the Essential Eight, ASD Essentials and the Australian Privacy Principles ask for, and shows which part of the stack delivers each one.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>What the frameworks ask for</th>
+<th>How the stack delivers it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sign-in that resists phishing on your core apps, and a unique password in Proton Pass for every other login</td>
+<td>Okta with Touch ID on each Mac, with the sign-in key held in the Mac&rsquo;s Secure Enclave</td>
+</tr>
+<tr>
+<td>Approved software only</td>
+<td>Apple&rsquo;s Gatekeeper, a managed app catalogue in Addigy, and standard user accounts for staff</td>
+</tr>
+<tr>
+<td>Applications and operating systems patched on time</td>
+<td>Addigy enforces Apple&rsquo;s updates with deadlines and reports the status of every Mac</td>
+</tr>
+<tr>
+<td>Office macros controlled</td>
+<td>Microsoft Office is absent from the Mac, and so are its macros</td>
+</tr>
+<tr>
+<td>Administrator rights limited</td>
+<td>Staff work as standard users, and we hold and log administrator access</td>
+</tr>
+<tr>
+<td>Regular, tested backups</td>
+<td>Work files live in Proton Drive with version history, and each Mac syncs to it continuously</td>
+</tr>
+<tr>
+<td>Lost devices protected</td>
+<td>FileVault encryption on every disk, with remote lock and erase</td>
+</tr>
+<tr>
+<td>Personal information kept secure</td>
+<td>Email, files and passwords encrypted with keys your business holds, plus a VPN outside the office</td>
+</tr>
+<tr>
+<td>Less information kept, for less time</td>
+<td>A simple folder structure and a deletion routine that we set up with you</td>
+</tr>
+<tr>
+<td>Access removed when people leave</td>
+<td>One action in Okta closes every connected account</td>
+</tr>
+<tr>
+<td>Incidents detected and handled</td>
+<td>Managed detection and response on every Mac, Okta&rsquo;s sign-in records, and a named person at Dobson Development</td>
+</tr>
+<tr>
+<td>Accountability and evidence</td>
+<td>A monthly report addressed to the director you nominate</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two boundaries should be clear.</p>
+<p>ASD assesses organisations, and a framework covers people and process as well as technology. Our stack and our reports deliver the technology outcomes and the evidence for them. Your policies, your staff training records and your anti-money laundering program remain yours, and we work alongside the adviser who helps you with those.</p>
+<p>The frameworks will keep changing. Because every customer runs the same build, we track ASD&rsquo;s guidance once and apply each change to all of you.</p>
+<h2 id="the-managed-service">The managed service</h2>
+<p>Software on its own solves half the problem. Someone has to set it up properly, keep it healthy and pick up the phone. Dobson Development does that work.</p>
+<h3 id="what-every-person-receives">What every person receives</h3>
+<ul>
+<li>A Mac that we configure, update, monitor and support through Addigy</li>
+<li>An Okta account with fingerprint sign-in</li>
+<li>Proton Workspace: email, calendar, 1TB of encrypted storage, documents, video meetings, password manager and VPN</li>
+<li>Slack, including a shared channel with us</li>
+<li>A seat on Claude</li>
+<li>Managed detection and response on their Mac</li>
+<li>Unlimited remote help</li>
+</ul>
+<h3 id="how-to-reach-us">How to reach us</h3>
+<p>Staff have three ways to ask for help: the Dobson Development icon in the Mac&rsquo;s menu bar, the shared Slack channel, and email. Each request becomes a tracked case.</p>
+<p>Our response targets are simple.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Example</th>
+<th>We respond within</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical</td>
+<td>The whole office is unable to work, or a security incident is under way</td>
+<td>30 minutes</td>
+</tr>
+<tr>
+<td>High</td>
+<td>One person is unable to work</td>
+<td>2 business hours</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>A new starter, a software request, a question</td>
+<td>The same business day</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="what-we-do-in-the-background">What we do in the background</h3>
+<p>We apply updates, watch the health of every Mac, review sign-in records and respond to security alerts. We keep the build aligned with ASD&rsquo;s guidance. We renew the certificates and connections that hold the system together, so that work stays with us.</p>
+<h3 id="what-you-see">What you see</h3>
+<p>Each month the director you nominate receives a one-page report: the state of every device, sign-in protection, backups, security events and every support request with its response time. Each quarter we sit down with you to review it and to plan ahead.</p>
+<h3 id="training-that-staff-enjoy">Training that staff enjoy</h3>
+<p>A new system succeeds when people feel at home in it. Every rollout includes three short sessions.</p>
+<ul>
+<li>Mac basics for people coming from Windows, with a printed card of keyboard shortcuts for every desk</li>
+<li>A hands-on Claude session built around your team&rsquo;s real work</li>
+<li>A security briefing that shows, live, how a leaked personal password becomes a business break-in, and how public Wi-Fi can be faked</li>
+</ul>
+<h3 id="who-we-are">Who we are</h3>
+<p>Dobson Development Pty Ltd is a Queensland company. Our founder, Richard Dobson, served in cyber warfare in the Royal Australian Navy and has since worked in cyber security engineering for government, university and enterprise customers. He holds a Graduate Diploma in Information Technology (Cybersecurity). We work with a deliberately short list of suppliers, so that we know each product deeply.</p>
+<h2 id="the-first-90-days">The first 90 days</h2>
+<p>A move like this follows a set plan. We have broken it into four stages so that your staff keep working throughout.</p>
+<figure class="fig panel road"><figcaption><b>The first 90 days</b></figcaption><ol class="stages"><li><small>Before you commit</small><b>Free review</b><ul><li>Apps, folders, mailboxes listed</li><li>Windows-only software flagged</li><li>A written plan</li></ul></li><li><small>Days 1 to 30</small><b>Foundation and move</b><ul><li>Apple Business and Okta set up</li><li>Macs shipped to staff</li><li>Email switched on a Friday night</li></ul></li><li><small>Days 31 to 60</small><b>Settling in</b><ul><li>Slack goes live</li><li>Passwords into Proton Pass</li><li>Files tidied, Claude session</li></ul></li><li><small>Days 61 to 90</small><b>Proof and close</b><ul><li>First evidence pack</li><li>Microsoft licences cancelled</li><li>Old PCs wiped and recycled</li></ul></li></ol></figure>
+<h3 id="before-you-commit-a-free-review">Before you commit: a free review</h3>
+<p>We list every program your business uses, every shared folder and every mailbox. We look hardest for software that runs on Windows alone, because it can change the plan. You receive a short written summary of what will move, how, and anything that needs a decision.</p>
+<h3 id="days-1-to-30-foundation-and-move">Days 1 to 30: foundation and move</h3>
+<ol>
+<li>We create your Apple Business and Okta accounts and prepare the Mac build.</li>
+<li>You order the Macs, and they ship directly to your staff.</li>
+<li>We set up Proton and copy mail, contacts and calendars across in the background while everyone keeps using Outlook.</li>
+<li>On a Friday evening we switch your email over.</li>
+<li>On Monday your staff open their new Macs, sign in once and find their mail waiting. We are on hand all day, and the Mac basics session runs that week.</li>
+</ol>
+<h3 id="days-31-to-60-settling-in">Days 31 to 60: settling in</h3>
+<p>Slack goes live, with channels that match how your teams already work. Shared passwords move out of spreadsheets and into Proton Pass vaults. Files move from SharePoint and OneDrive into a small number of clearly named team folders in Proton Drive. Most SharePoint sites have grown tangled over the years, and the move is a good moment to tidy them. The Claude session happens in this stage, once people are comfortable.</p>
+<h3 id="days-61-to-90-proof-and-close">Days 61 to 90: proof and close</h3>
+<p>We produce your first full evidence pack and walk the nominated director through it. Your old Microsoft account sits in a read-only state for a month as a safety net. You then cancel the licences. Old PCs are wiped securely and recycled or sold.</p>
+<p>By day 90 the Microsoft bill has stopped, and your first quarterly review is in the diary.</p>
+<h2 id="what-it-costs">What it costs</h2>
+<p>Our service costs A$245 per person per month.</p>
+<p>That single figure covers everything in the list under &ldquo;What every person receives&rdquo;: the software subscriptions, the management, the security monitoring and unlimited remote support. Set-up and migration are included when you take a 12-month agreement.</p>
+<p>Two items sit outside it. You buy or lease the Macs yourself, as described earlier. Salesforce as your customer system is optional and quoted separately.</p>
+<h3 id="how-that-compares">How that compares</h3>
+<p>A Microsoft office usually pays for the same ground in several separate bills.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Typical Microsoft office</th>
+<th>Our stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Managed IT support</td>
+<td>A$100 to A$250 per user per month</td>
+<td>Included</td>
+</tr>
+<tr>
+<td>Office suite and email</td>
+<td>Microsoft 365 Business Premium, about A$33 per user per month</td>
+<td>Included</td>
+</tr>
+<tr>
+<td>AI assistant</td>
+<td>Microsoft 365 Copilot, about US$30 per user per month</td>
+<td>Included</td>
+</tr>
+<tr>
+<td>Password manager</td>
+<td>A separate subscription</td>
+<td>Included</td>
+</tr>
+<tr>
+<td>Business VPN</td>
+<td>A separate subscription</td>
+<td>Included</td>
+</tr>
+<tr>
+<td>Team chat</td>
+<td>Teams, within Microsoft 365</td>
+<td>Slack, included</td>
+</tr>
+<tr>
+<td>Compliance uplift</td>
+<td>A project fee, then higher licences</td>
+<td>Built into the standard build</td>
+</tr>
+</tbody>
+</table></div>
+<p>The support range comes from <a rel="noopener" href="https://www.precisionit.com.au/blog/it-support-costs-australian-businesses">Precision IT&rsquo;s 2026 pricing guide</a>, which notes that licences are usually billed on top. The Business Premium price is from the <a rel="noopener" href="https://www.precisionit.com.au/blog/microsoft-365-business-premium-cost-per-user-australia">same firm&rsquo;s licence guide</a>.</p>
+<p>Add the Microsoft column up for your own business and compare it with one line of A$245. For most offices the totals are close. The difference lies in what each total buys: on one side, a system you already own with new costs attached each year, and on the other, a new, secure, fully supported workplace that your staff prefer.</p>
+<p>A MacBook Neo at about $1,249 that serves for four years works out at roughly $26 a month.</p>
+<h2 id="questions-buyers-ask-with-straight-answers">Questions buyers ask, with straight answers</h2>
+<h3 id="microsoft-has-always-been-the-safe-choice-why-take-a-risk">Microsoft has always been the safe choice. Why take a risk?</h3>
+<p>The risk has moved. Staying on Microsoft now means accepting its outages, its annual price rises and a growing compliance project. Every supplier in our stack is a large, established company whose product your staff have probably used already. Apple, Salesforce, Slack, Okta, Proton and Anthropic each serve many thousands of businesses. Choosing them is a conservative decision made with current information.</p>
+<h3 id="what-about-excel">What about Excel?</h3>
+<p>Most people use a spreadsheet for lists, budgets and simple calculations. Proton Sheets and Apple&rsquo;s Numbers handle that work, and both open and save Excel files. Heavy users receive a full desktop spreadsheet on their Mac. Workbooks that depend on complex macros get individual attention in the free review. We can often rebuild the task as a Claude workflow that does the job faster. Where a workbook truly needs Excel, we tell you before you spend a dollar.</p>
+<h3 id="we-have-a-program-that-runs-on-windows-alone-what-then">We have a program that runs on Windows alone. What then?</h3>
+<p>Most business software now runs in a web browser, including the accounting, practice management and property systems that Australian firms rely on. Those work on a Mac today. If one Windows program remains, we can usually deliver it to the Mac through a secure hosted session. If your whole business runs on Windows-only software, we will say so in the review and recommend that you wait.</p>
+<h3 id="will-clients-and-suppliers-be-able-to-work-with-us">Will clients and suppliers be able to work with us?</h3>
+<p>They will, because email is email. Word, Excel and PDF files open on a Mac and go back in the same format. Clients join a Proton Meet call from a link in their browser. When a client invites you to their Teams or Zoom meeting, you join from your Mac&rsquo;s browser like any other guest.</p>
+<h3 id="what-happens-when-one-of-your-suppliers-has-an-outage">What happens when one of your suppliers has an outage?</h3>
+<p>Each of them will, sooner or later. The tools come from six separate companies, so a fault at one leaves the others running. If Slack is down, email works. If Proton is down, Slack works. A Mac keeps working with local files when the internet itself is down. Compare that with last Friday, when one fault took out email, chat, files and sign-in together.</p>
+<h3 id="where-is-our-data-stored">Where is our data stored?</h3>
+<p>Proton stores your encrypted mail and files in Switzerland and Europe, locked with keys your accounts hold. The other suppliers run in major cloud regions, and several offer Australian hosting on certain plans. During the review we map where each service keeps its data, so that your privacy policy can describe it accurately.</p>
+<h3 id="is-ai-safe-to-use-with-client-information">Is AI safe to use with client information?</h3>
+<p>Claude&rsquo;s business plans keep your content out of model training by default, and your business controls who has a seat. We write a short policy with you on what may be shared with Claude, and we train staff to check its work. A person stays responsible for everything that leaves your office.</p>
+<h3 id="will-our-staff-cope-with-the-change">Will our staff cope with the change?</h3>
+<p>Most already use an iPhone, and many have a Mac at home. The first week includes a Mac basics session, a shortcut card on every desk and extra support hours. People generally settle within days.</p>
+<h3 id="what-if-we-want-to-leave-you">What if we want to leave you?</h3>
+<p>You own everything. Your Apple Business account, your Okta account, your Proton organisation, your Slack workspace and your domain name are registered to your business, with us as administrators. If you move to another provider or bring IT in-house, you remove our access and keep the lot.</p>
+<h2 id="who-gets-the-most-from-this">Who gets the most from this</h2>
+<p>The stack suits most offices of 5 to 50 people. Five groups have the strongest reasons to move now.</p>
+<ul>
+<li>Tranche 2 firms. Law practices, conveyancers, accountants and real estate agencies came under the Privacy Act in July and hold exactly the records it protects.</li>
+<li>Health and allied health clinics. They have always been covered by the Privacy Act, and health providers lodged 149 of the 667 breaches notified to the OAIC in the first half of 2026, as <a rel="noopener" href="https://www.thenewdaily.com.au/themoneyedition/ai-and-technology/2026/10/26/data-in-danger-the-aussie-industries-most-at-risk-of-a-breach">The New Daily</a> reported.</li>
+<li>New businesses. A firm that starts on this stack skips Microsoft altogether and has nothing to migrate.</li>
+<li>Agencies, consultancies and technology companies. Their staff often prefer Macs and Slack already, and Claude fits the work they do.</li>
+<li>Any business near a decision point. A Microsoft renewal date, a round of laptop replacements or a cyber insurance questionnaire is a natural moment to change.</li>
+</ul>
+<p>One group should wait. A business whose central system runs on Windows alone is better served by staying where it is until that system moves to the web. We will tell you if that describes you.</p>
+<h2 id="next-step">Next step</h2><div class="next"><p class="next-h">Change your <span class="outlook"><svg viewBox="0 -1491 7311 1922" aria-hidden="true" focusable="false"><path d="M1447 -712C1450 -1136 1198 -1457 770 -1457C348 -1457 92 -1136 92 -712C92 -290 348 25 770 25C1198 25 1447 -290 1447 -712ZM276 -712C276 -1063 449 -1296 770 -1296C1089 -1296 1260 -1063 1260 -712C1261 -364 1089 -135 770 -135C449 -135 276 -364 276 -712Z M2404 -189 2374 -362C2374 -181 2244 -130 2113 -130C1890 -130 1852 -274 1852 -419V-973H1688V-368C1688 -175 1779 22 2077 22C2289 22 2404 -118 2404 -189ZM2625 -28C2573 -122 2539 -223 2538 -330L2374 -328C2374 -198 2416 -75 2480 39ZM2538 -974H2374V-328L2538 -211Z M3343 18V-129C3314 -125 3275 -122 3252 -122C3131 -122 3076 -218 3076 -302V-1323H2922V-273C2922 -114 3018 24 3211 24C3234 24 3300 22 3343 18ZM3344 -828V-973C3344 -973 2746 -973 2746 -973V-828C2746 -828 3344 -828 3344 -828Z M3727 0V-1516H3563V0Z M4994 -483C4997 -793 4800 -998 4498 -998C4191 -998 3988 -793 3988 -483C3988 -177 4191 25 4498 25C4797 25 4994 -177 4994 -483ZM4162 -483C4163 -698 4297 -840 4498 -840C4687 -840 4815 -698 4820 -483C4816 -272 4688 -133 4498 -133C4294 -133 4161 -272 4162 -483Z M6194 -483C6197 -793 6000 -998 5698 -998C5391 -998 5188 -793 5188 -483C5188 -177 5391 25 5698 25C5997 25 6194 -177 6194 -483ZM5362 -483C5363 -698 5497 -840 5698 -840C5887 -840 6015 -698 6020 -483C6016 -272 5888 -133 5698 -133C5494 -133 5361 -272 5362 -483Z M7242 -974 7077 -1000 6693 -594C6641 -540 6600 -461 6578 -427V-336L6597 -262ZM6623 0V-1516H6459V0ZM7285 2 6910 -624 6799 -507 7103 2Z"/></svg><span class="sr">Outlook</span></span> on IT.</p><p>The first conversation is thirty minutes over a coffee, and the coffee is on us. Tell us how many people you have, what they use all day and what you wish it felt like. You will leave with a one-page plan showing your business on Apple, Proton and Claude, what the move involves and what it costs.</p><p class="next-a"><a class="btn" href="mailto:richard@dobsondevelopment.com.au?subject=Coffee">Book a coffee</a><a class="btn ghost screen-only" href="/white-paper/change-your-outlook-on-it.pdf" download>Download the PDF</a></p><p class="next-m">Email <a href="mailto:richard@dobsondevelopment.com.au?subject=Coffee">richard@dobsondevelopment.com.au</a> or visit <a href="https://dobsondevelopment.com.au">dobsondevelopment.com.au</a>.</p></div><p class="legal">Dobson Development Pty Ltd, ABN 43 688 593 606, Queensland, Australia. This paper is general information. Please take legal advice about your own obligations. Apple, Mac, MacBook, Proton, Claude, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
+<div class="sources"><h2 id="sources">Sources</h2>
+<p>Every figure in this paper comes from one of the sources below, checked on 14 November 2026.</p>
+<p class="srchead">Microsoft outages</p>
+<ul>
+<li><a rel="noopener" href="https://www.abc.net.au/news/2026-11-14/microsoft-says-sorry-for-global-outage-and-details-recovery/107385540">ABC News: Microsoft &ldquo;deeply sorry&rdquo; for outage as it reports broad recovery</a></li>
+<li><a rel="noopener" href="https://www.abc.net.au/news/2026-11-13/microsoft-outlook-outage-australians-hit/107381378">ABC News: How the global Microsoft Outlook outage affects Australians</a></li>
+<li><a rel="noopener" href="https://www.abc.net.au/news/2026-11-13/microsoft-reliance-national-security-risk/107382100">ABC News: Top national security adviser warned about Australia&rsquo;s Microsoft reliance</a></li>
+<li><a rel="noopener" href="https://aapnews.aap.com.au/news/organisations-scrambling-after-major-microsoft-outage">AAP: Australian businesses count cost of Microsoft outage</a></li>
+<li><a rel="noopener" href="https://www.forbes.com.au/news/world-news/microsoft-servers-crash-in-global-outage/">Forbes Australia: Outlook and Teams recover from 24-hour outage</a></li>
+<li><a rel="noopener" href="https://isdown.app/status/microsoft365/incidents/646730-users-may-experience-issues-when-utilizing-multiple-microsoft-365-services">IsDown: Microsoft 365 incident of 31 August 2026</a></li>
+<li><a rel="noopener" href="https://www.theregister.com/2026/01/23/microsoft_365_outage/">The Register: Microsoft 365 outage drags on for nearly 10 hours</a></li>
+<li><a rel="noopener" href="https://breached.company/breaches/microsoft/">Breached Company: Microsoft incident timeline</a></li>
+</ul>
+<p class="srchead">Microsoft pricing, staffing and security</p>
+<ul>
+<li><a rel="noopener" href="https://techomsystems.com.au/microsoft-365-pricing-update-2026/">TECHOM Systems: Microsoft 365 pricing update 2026</a></li>
+<li><a rel="noopener" href="https://www.telstra.com.au/small-business/online-support/business-software/microsoft-365-price-rise">Telstra: Microsoft 365 pricing updates</a></li>
+<li><a rel="noopener" href="https://www.itnews.com.au/news/accc-accuses-microsoft-of-misleading-27-million-australians-over-m365-fees-621312">iTnews: ACCC accuses Microsoft of misleading 2.7 million Australians</a></li>
+<li><a rel="noopener" href="https://www.itnews.com.au/news/microsoft-in-damage-control-over-copilot-bundling-bungle-621568">iTnews: Microsoft in damage control over Copilot bundling</a></li>
+<li><a rel="noopener" href="https://www.techcrunch.com/2026/07/06/microsoft-lays-off-nearly-5000-employees-across-xbox-commercial-sales">TechCrunch: Microsoft lays off nearly 5,000 employees</a></li>
+<li><a rel="noopener" href="https://www.wdbj7.com/2026/10/26/microsoft-offers-60000-employees-voluntary-buyouts-ai-spending-accelerates/?outputType=amp">Associated Press: Microsoft offers 60,000 employees voluntary buyouts</a></li>
+<li><a rel="noopener" href="https://cyberscoop.com/microsoft-csrb-china-hacking/">CyberScoop: Cyber Safety Review Board report on Microsoft</a></li>
+</ul>
+<p class="srchead">ASD Essentials and the Essential Eight</p>
+<ul>
+<li><a rel="noopener" href="https://www.cyber.gov.au/publication/essentials-for-enterprise-it">ASD: Essentials for enterprise IT</a></li>
+<li><a rel="noopener" href="https://www.cyber.gov.au/about-us/view-all-content/reports-and-statistics/the-commonwealth-cyber-security-posture-in-2025">ASD: The Commonwealth Cyber Security Posture in 2025</a></li>
+<li><a rel="noopener" href="https://cyber.gov.au/resources-business-and-government/essential-cyber-security/essential-eight/essential-eight-maturity-model">ASD: Essential Eight maturity model</a></li>
+<li><a rel="noopener" href="https://www.cyber.gov.au/publication/annual-cyber-threat-report-2025-2026">ASD: Annual Cyber Threat Report 2025-26</a></li>
+<li><a rel="noopener" href="https://www.itnews.com.au/news/asds-essential-eight-replacement-moves-away-from-maturity-ladder-629637">iTnews: ASD&rsquo;s Essential Eight replacement moves away from maturity ladder</a></li>
+<li><a rel="noopener" href="https://controlstack.au/frameworks/asd-essentials-enterprise-it/">Control Stack: ASD Essentials for enterprise IT actions</a></li>
+<li><a rel="noopener" href="https://okta.com/au/resources/datasheet-australia-and-the-essential-eight-maturity-model">Okta: Australia and the Essential Eight maturity model</a></li>
+</ul>
+<p class="srchead">Privacy Act and Tranche 2</p>
+<ul>
+<li><a rel="noopener" href="https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/organisations/privacy-guidance-for-reporting-entities-under-the-anti-money-laundering-and-counter-terrorism-financing-act">OAIC: Privacy guidance for reporting entities under the AML/CTF Act</a></li>
+<li><a rel="noopener" href="https://hwlebsworth.com.au/small-businesses-big-change-privacy-obligations-under-tranche-2-of-the-aml-ctf-reforms/">HWL Ebsworth: Small businesses, big change</a></li>
+<li><a rel="noopener" href="https://www.clydeco.com/en/insights/2025/10/cyber-and-privacy-law-update-accountability-gets-r">Clyde &amp; Co: Cyber and privacy law update</a></li>
+<li><a rel="noopener" href="https://easyaml.com/tranche-2/">easyAML: Tranche 2 overview and costs</a></li>
+<li><a rel="noopener" href="https://www.ccp.com.au/news/tranche-2-aml-ctf-obligations-law-firms/">CCP: A law firm&rsquo;s guide to Tranche 2 obligations</a></li>
+<li><a rel="noopener" href="https://dynamicbusiness.com/leadership-2/expert/the-new-financial-crime-compliance-laws-starting-1-july-and-what-they-mean-for-your-business.html">Dynamic Business: The new financial crime compliance laws</a></li>
+<li><a rel="noopener" href="https://www.insurancebusinessmag.com/au/news/cyber/mega-breaches-nearly-triple-as-health-sector-tops-australias-data-breach-count-594893.aspx">Insurance Business: Mega breaches nearly triple</a></li>
+<li><a rel="noopener" href="https://www.thenewdaily.com.au/themoneyedition/ai-and-technology/2026/10/26/data-in-danger-the-aussie-industries-most-at-risk-of-a-breach">The New Daily: The Aussie industries most at risk of a breach</a></li>
+</ul>
+<p class="srchead">The stack</p>
+<ul>
+<li><a rel="noopener" href="https://www.apple.com/au/newsroom/2026/03/introducing-apple-business/">Apple: Introducing Apple Business</a></li>
+<li><a rel="noopener" href="https://futurefive.com.au/story/macbook-neo-goes-on-sale-as-apple-s-lowest-priced-laptop">FutureFive: MacBook Neo goes on sale</a></li>
+<li><a rel="noopener" href="https://tei.forrester.com/go/Apple/TEI/">Forrester: The Total Economic Impact of Apple Mac at Work</a></li>
+<li><a rel="noopener" href="https://addigy.com/managed-service-providers-msp/">Addigy: Apple device management for managed service providers</a></li>
+<li><a rel="noopener" href="https://addigy.com/news/addigy-expands-identity-apple-idp-login-filevault-sso/">Addigy: Addigy Identity announcement</a></li>
+<li><a rel="noopener" href="https://proton.me/business">Proton: Proton for Business</a></li>
+<li><a rel="noopener" href="https://proton.me/business/trust">Proton: Trust and certifications</a></li>
+<li><a rel="noopener" href="https://support.claude.com/en/articles/16634237">Anthropic: Team and Enterprise plan data use</a></li>
+<li><a rel="noopener" href="https://sqmagazine.co.uk/claude-ai-statistics/">SQ Magazine: Claude AI statistics</a></li>
+<li><a rel="noopener" href="https://aibusinessweekly.net/p/claude-ai-statistics">AI Business Weekly: Claude AI statistics 2026</a></li>
+<li><a rel="noopener" href="https://www.microsoft.com/microsoft-365/blog/?p=279051">Microsoft: Expanding model choice in Microsoft 365 Copilot</a></li>
+<li><a rel="noopener" href="https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-models">Microsoft Learn: Choose a model for Copilot Cowork</a></li>
+<li><a rel="noopener" href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/authoring-agent-model-availability">Microsoft Learn: Copilot Studio model availability by region</a></li>
+<li><a rel="noopener" href="https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan">Anthropic: Claude Fable models on your plan</a></li>
+<li><a rel="noopener" href="https://www.cnbc.com/2026/08/26/salesforce-anthropic-partnership-claudeforce.html">CNBC: Salesforce and Anthropic expand partnership</a></li>
+<li><a rel="noopener" href="https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again">VentureBeat: Salesforce puts its CRM inside Claude</a></li>
+<li><a rel="noopener" href="https://www.demandgenreport.com/industry-news/news-brief/salesforce-anthropic-expand-partnership-with-claudeforce/54431">Demand Gen Report: Salesforce and Anthropic launch Claudeforce</a></li>
+<li><a rel="noopener" href="https://www.salesforce.com/au/editions-pricing/small-business/">Salesforce Australia: Small business pricing</a></li>
+<li><a rel="noopener" href="https://www.precisionit.com.au/blog/it-support-costs-australian-businesses">Precision IT: IT support costs for Australian businesses</a></li>
+<li><a rel="noopener" href="https://www.precisionit.com.au/blog/microsoft-365-business-premium-cost-per-user-australia">Precision IT: Microsoft 365 Business Premium cost per user</a></li>
+</ul></div>
+        </article>
+    </main>
+</div>
+
+<section class="close dark" id="contact">
+    <div class="wrap">
+        <span class="wordmark pdf-only">dobson_dev<span class="cursor" aria-hidden="true"></span></span>
+        <h2><span class="l">Change your</span> <span class="l"><span class="outlook"><svg viewBox="0 -1491 7311 1922" aria-hidden="true" focusable="false"><path d="M1447 -712C1450 -1136 1198 -1457 770 -1457C348 -1457 92 -1136 92 -712C92 -290 348 25 770 25C1198 25 1447 -290 1447 -712ZM276 -712C276 -1063 449 -1296 770 -1296C1089 -1296 1260 -1063 1260 -712C1261 -364 1089 -135 770 -135C449 -135 276 -364 276 -712Z M2404 -189 2374 -362C2374 -181 2244 -130 2113 -130C1890 -130 1852 -274 1852 -419V-973H1688V-368C1688 -175 1779 22 2077 22C2289 22 2404 -118 2404 -189ZM2625 -28C2573 -122 2539 -223 2538 -330L2374 -328C2374 -198 2416 -75 2480 39ZM2538 -974H2374V-328L2538 -211Z M3343 18V-129C3314 -125 3275 -122 3252 -122C3131 -122 3076 -218 3076 -302V-1323H2922V-273C2922 -114 3018 24 3211 24C3234 24 3300 22 3343 18ZM3344 -828V-973C3344 -973 2746 -973 2746 -973V-828C2746 -828 3344 -828 3344 -828Z M3727 0V-1516H3563V0Z M4994 -483C4997 -793 4800 -998 4498 -998C4191 -998 3988 -793 3988 -483C3988 -177 4191 25 4498 25C4797 25 4994 -177 4994 -483ZM4162 -483C4163 -698 4297 -840 4498 -840C4687 -840 4815 -698 4820 -483C4816 -272 4688 -133 4498 -133C4294 -133 4161 -272 4162 -483Z M6194 -483C6197 -793 6000 -998 5698 -998C5391 -998 5188 -793 5188 -483C5188 -177 5391 25 5698 25C5997 25 6194 -177 6194 -483ZM5362 -483C5363 -698 5497 -840 5698 -840C5887 -840 6015 -698 6020 -483C6016 -272 5888 -133 5698 -133C5494 -133 5361 -272 5362 -483Z M7242 -974 7077 -1000 6693 -594C6641 -540 6600 -461 6578 -427V-336L6597 -262ZM6623 0V-1516H6459V0ZM7285 2 6910 -624 6799 -507 7103 2Z"/></svg><span class="sr">Outlook</span></span> on IT<i class="cursor" aria-hidden="true"></i></span></h2>
+        <p>Thirty minutes over a coffee, and the coffee is on us. You leave with a one-page plan for your business on Apple, Proton and Claude.</p>
+        <a class="mail" href="mailto:richard@dobsondevelopment.com.au?subject=Coffee">richard@dobsondevelopment.com.au</a>
+        <p class="close-pdf screen-only"><a href="/white-paper/change-your-outlook-on-it.pdf" download>Download this paper as a PDF</a></p>
+        <p class="close-site pdf-only">dobsondevelopment.com.au</p>
+    </div>
+</section>
+
+<footer>
+    <div class="wrap">
+        <p>&copy; 2026 Dobson Development Pty Ltd. ABN 43 688 593 606. Queensland, Australia.</p>
+        <p>This paper is general information. Please take legal advice about your own obligations. Apple, Mac, MacBook, Proton, Claude, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
+    </div>
+</footer>
+<script>
+(function () {
+    /* Reading progress */
+    var bar = document.getElementById('progress');
+    function progress() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    }
+    window.addEventListener('scroll', progress, { passive: true });
+    window.addEventListener('resize', progress);
+    progress();
+
+    /* Highlight the current section in the contents */
+    var links = {};
+    document.querySelectorAll('.toc a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+    var heads = Array.prototype.slice.call(document.querySelectorAll('article h2[id]'));
+    var current = null;
+    function mark() {
+        var y = window.scrollY + 120, id = heads.length ? heads[0].id : null;
+        for (var i = 0; i < heads.length; i++) { if (heads[i].offsetTop <= y) id = heads[i].id; else break; }
+        if (id === current) return;
+        if (current && links[current]) links[current].classList.remove('on');
+        current = id;
+        var a = links[id];
+        if (a) {
+            a.classList.add('on');
+            var box = a.closest('.toc');
+            if (box && box.scrollHeight > box.clientHeight) {
+                var t = a.offsetTop - box.clientHeight / 2;
+                box.scrollTo({ top: t < 0 ? 0 : t });
+            }
+        }
+    }
+    window.addEventListener('scroll', mark, { passive: true });
+    mark();
+
+    /* Close the mobile contents after a tap */
+    var m = document.querySelector('.mtoc');
+    if (m) m.addEventListener('click', function (e) { if (e.target.tagName === 'A') m.open = false; });
+
+    /* Retire the old site's offline cache for returning visitors */
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (rs) { rs.forEach(function (r) { r.unregister(); }); }).catch(function () {});
+    }
+    if (window.caches) { caches.keys().then(function (ks) { ks.forEach(function (k) { caches.delete(k); }); }).catch(function () {}); }
+})();
+
+</script>
+</body>
+</html>
