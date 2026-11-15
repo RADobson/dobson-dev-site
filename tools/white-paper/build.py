@@ -25,7 +25,7 @@ PDF = '/white-paper/change-your-outlook-on-it.pdf'
 URL = 'https://dobsondevelopment.com.au/white-paper/'
 TITLE = 'Change your Outlook on IT: the case for a Microsoft-free Australian business'
 DESC = ('A free white paper for Australian business owners: Microsoft\'s record on outages, price and security, '
-        'the 2026 privacy and ASD Essentials changes, and the Apple, Proton and Claude workplace that replaces it.')
+        'the 2026 privacy and ASD Essentials changes, and the Mac, Claude and Proton workplace that replaces it.')
 
 lines = open(SRC).read().split('\n')
 
@@ -57,9 +57,9 @@ chart_html = ('<figure class="fig panel chart"><figcaption><b>Hours to recover</
                         for d, w, h in OUTAGES)
               + '</div><p class="src">Sources: ABC News, IsDown, The Register, Breached Company. Durations are approximate.</p></figure>')
 
-SIX = [('Apple', 'Mac, iPhone, iPad', 'replaces Windows PCs'), ('Okta', 'Sign-in and staff accounts', 'replaces Entra ID'),
-       ('Proton', 'Mail, files, meetings, passwords, VPN', 'replaces Outlook and OneDrive'), ('Claude', 'AI assistant', 'replaces Copilot'),
-       ('Slack', 'Team chat', 'replaces Teams'), ('Salesforce', 'Customer records', 'replaces Dynamics 365')]
+SIX = [('Mac', 'From Apple, with iPhone and iPad', 'replaces Windows PCs'), ('Claude', 'AI assistant', 'replaces Copilot'),
+       ('Proton', 'Mail, files, meetings, passwords, VPN', 'replaces Outlook and OneDrive'), ('Slack', 'Team chat', 'replaces Teams'),
+       ('Salesforce', 'Customer records', 'replaces Dynamics 365'), ('Okta', 'Sign-in and staff accounts', 'replaces Entra ID')]
 stack_html = ('<figure class="fig panel stack"><figcaption><b>One workplace, six specialists</b>'
               '<span>Each job goes to the company that does it best. We join them up and look after the lot.</span></figcaption>'
               '<div class="people">Your people, on a Mac, signed in with one fingerprint</div><div class="six">'
@@ -80,7 +80,7 @@ quote_html = ('<figure class="fig quote"><blockquote>You can claw my Claude Max 
 
 PARTS = {'Part one': ('01', "Microsoft's record", 'Outages, price rises, layoffs and security failures'),
          'Part two': ('02', 'The rules have changed', 'ASD Essentials and the Privacy Act for small business'),
-         'Part three': ('03', 'The stack', 'Apple, Proton and Claude, with Slack, Salesforce and Okta'),
+         'Part three': ('03', 'The stack', 'Mac, Claude and Proton, with Slack, Salesforce and Okta'),
          'Part four': ('04', 'Working with us', 'The service, the first 90 days and the price')}
 
 
@@ -122,7 +122,7 @@ while i < len(lines):
             out.append(tok('QUOTE', quote_html))
         elif alt.startswith('Timeline'):
             out.append(tok('ROAD', road_html))
-        elif alt in ('Apple', 'Addigy', 'Proton', 'Claude', 'Slack', 'Salesforce', 'Okta') or alt.startswith('Change your Outlook'):
+        elif alt in ('Apple', 'Mac', 'Addigy', 'Proton', 'Claude', 'Slack', 'Salesforce', 'Okta') or alt.startswith('Change your Outlook'):
             pass  # the heading carries the supplier name; the closing banner becomes the call to action
         else:
             raise SystemExit('unmapped image: ' + alt)
@@ -158,7 +158,7 @@ for k, v in tokens.items():
 body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
 body = re.sub(r'<a href="(https?://)', r'<a rel="noopener" href="\1', body)
 
-SUPPLIERS = 'Apple|Addigy|Proton|Claude|Slack|Salesforce|Okta'
+SUPPLIERS = 'Mac|Addigy|Claude|Proton|Slack|Salesforce|Okta'
 body = re.sub(rf'<h2 id="([^"]+)">({SUPPLIERS}): ([^<]+)</h2>',
               lambda m: (f'<h2 id="{m.group(1)}" class="sup"><span class="sup-name">{m.group(2)}</span>'
                          f'<span class="sr">: </span><span class="sup-rest">{m.group(3)}</span></h2>'), body)
@@ -253,7 +253,7 @@ page = f'''<!DOCTYPE html>
         <p class="eyebrow">White paper · November 2026</p>
         <h1>Change your {OUTLOOK} on IT.</h1>
         <p class="second">The case for a Microsoft-free Australian business.</p>
-        <p class="lead">Meet the Apple, Proton and Claude workplace that Dobson Development sets up and manages for you.</p>
+        <p class="lead">Meet the Mac, Claude and Proton workplace that Dobson Development sets up and manages for you.</p>
         <p class="meta">By Richard Dobson · 14 November 2026 · {mins} minute read</p>
         <p class="hero-a"><a class="btn" href="#executive-summary">Start reading</a><a class="btn ghost" href="{PDF}" download>Download the PDF</a></p>
         <img class="hero-img" src="/white-paper/hero.jpg" width="1800" height="1012" alt="A MacBook lit in violet and blue light" fetchpriority="high">
@@ -299,7 +299,7 @@ page = f'''<!DOCTYPE html>
     <div class="wrap">
         <span class="wordmark pdf-only">{WM}</span>
         <h2><span class="l">Change your</span> <span class="l">{OUTLOOK} on IT<i class="cursor" aria-hidden="true"></i></span></h2>
-        <p>Thirty minutes over a coffee, and the coffee is on us. You leave with a one-page plan for your business on Apple, Proton and Claude.</p>
+        <p>Thirty minutes over a coffee, and the coffee is on us. You leave with a one-page plan for your business on Mac, Claude and Proton.</p>
         <a class="mail" href="mailto:{EMAIL}?subject=Coffee">{EMAIL}</a>
         <p class="close-pdf screen-only"><a href="{PDF}" download>Download this paper as a PDF</a></p>
         <p class="close-site pdf-only">dobsondevelopment.com.au</p>
@@ -309,7 +309,7 @@ page = f'''<!DOCTYPE html>
 <footer>
     <div class="wrap">
         <p>&copy; 2026 Dobson Development Pty Ltd. ABN 43 688 593 606. Queensland, Australia.</p>
-        <p>This paper is general information. Please take legal advice about your own obligations. Apple, Mac, MacBook, Proton, Claude, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
+        <p>This paper is general information. Please take legal advice about your own obligations. Mac, MacBook, Apple, Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
     </div>
 </footer>
 <script>

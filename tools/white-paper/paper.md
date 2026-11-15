@@ -4,7 +4,7 @@ Nov 14, 2026 · @Richard Dobson
 
 &#91;image: Dobson Development white paper cover: Change your Outlook on IT\]
 
-The case for a Microsoft-free Australian business, and the Apple, Proton and Claude workplace that Dobson Development sets up and manages for you. A white paper from Dobson Development Pty Ltd.
+The case for a Microsoft-free Australian business, and the Mac, Claude and Proton workplace that Dobson Development sets up and manages for you. A white paper from Dobson Development Pty Ltd.
 
 ## Executive summary
 
@@ -14,7 +14,7 @@ Four months earlier, on 1 July, Microsoft raised the price of the Microsoft 365 
 
 After a year like that, a business owner is entitled to ask whether Microsoft is still the safe choice.
 
-Our answer is that a better choice now exists, for a similar monthly spend. Dobson Development builds and manages a complete workplace on six names your staff already know: Apple, Proton, Claude, Slack, Salesforce and Okta.
+Our answer is that a better choice now exists, for a similar monthly spend. Dobson Development builds and manages a complete workplace on six names your staff already know: Mac, Claude, Proton, Slack, Salesforce and Okta.
 
 - Every Mac arrives configured and ready to work.
 - Your core work apps open with one fingerprint sign-in, and every other login gets its own generated password in Proton Pass.
@@ -270,7 +270,7 @@ Every job that Microsoft does in a typical office has a replacement in our stack
 
 We chose these suppliers by one rule. Each had to be a name a business owner already recognises and a product that staff already like. A move away from Microsoft should feel like an upgrade on the first morning, and familiar, well-loved tools make that happen.
 
-## Apple: why the Mac
+## Mac: the computer on every desk
 
 &#91;image: Apple\]
 
@@ -333,48 +333,6 @@ The same icon opens a catalogue of approved apps. Staff install what they need w
 Addigy uses Apple's own update system to install macOS and app updates in the background. Staff see a polite reminder, then a deadline. We see a dashboard of every Mac and its patch status, and that dashboard becomes part of your compliance evidence.
 
 If a Mac is lost or stolen, we lock it and erase it remotely. The encrypted disk protects the data in the meantime.
-
-## Proton: private email, files, passwords and VPN
-
-&#91;image: Proton\]
-
-Proton replaces Outlook, OneDrive, SharePoint and Teams meetings. It also brings a password manager and a VPN that Microsoft customers have to buy elsewhere.
-
-Proton is a Swiss company founded by scientists who met at CERN. More than 100 million accounts and more than 100,000 businesses use it, according to [Proton](https://proton.me/business). Its business suite, Proton Workspace, launched in March 2026 and contains eight tools under one subscription: Mail, Calendar, Drive, Docs, Sheets, Meet, Pass and VPN.
-
-### Your data is unreadable to everyone else
-
-Microsoft and Google store your email and files in a form their own systems can read. They hold the keys. Anyone who breaks into those systems, or who compels the company to hand data over, can read your information too.
-
-Proton works differently. Your mail and files are encrypted with keys that belong to your accounts. Proton stores the locked data and holds no key that opens it. A criminal who breached Proton's servers would come away with scrambled text. Proton calls this zero-access encryption. Its apps are open source, and independent auditors have certified the company against ISO 27001 and SOC 2 Type II, as its [trust page](https://proton.me/business/trust) records.
-
-A firm that holds client identity records under the Privacy Act will one day be asked what reasonable steps it took to protect them. Encryption that even the provider is unable to open is a very strong answer.
-
-Proton is also governed by Swiss privacy law, and your data sits outside the reach of United States legislation that applies to American providers.
-
-### The password manager ends your biggest risk
-
-Most break-ins at small businesses start with a stolen password. A staff member uses the same password for a food delivery app and for the company's accounting system. The delivery app is breached, the password list is sold, and a criminal tries it against the business.
-
-Proton Pass ends that habit. It looks after every login beyond the core apps that Okta signs staff in to, from Canva to supplier portals. It creates a long, unique password for every site, fills it in automatically, and unlocks with a fingerprint. Teams share logins through vaults, so the password for the bank portal or the supplier account stops travelling by email and sticky note. Proton Pass also warns you when a staff address appears in a known breach. It is included in the subscription.
-
-### The VPN makes the cafe safe
-
-Your people work from cafes, airports, hotels and client offices. Public Wi-Fi in those places can be watched or faked. Proton VPN wraps everything the Mac sends in an encrypted tunnel, and we set it to switch on automatically away from the office. A staff member can sit in a coffee shop with a MacBook, finish a client proposal and send it, with the same protection they would have at their desk. The employee gains a perk, the owner closes a risk, and the VPN is included too.
-
-### Meetings, documents and bookings are covered
-
-Proton Meet handles video calls for up to 100 people on the standard plan, and guests join from a browser link. Proton Calendar includes booking pages, so clients can pick a time without a separate scheduling product. Proton Docs and Sheets cover everyday writing and spreadsheets with live collaboration.
-
-### Where Proton is lighter, and what we do about it
-
-We will be direct about two limits.
-
-Proton Docs and Sheets are simpler than Word and Excel. They suit most office work. Staff who build complex financial models need a fuller desktop spreadsheet, and we provide one on their Mac.
-
-Because Proton encrypts everything, outside products are unable to reach into a mailbox the way they can with Outlook. A printer that scans to email, or a customer system that files copies of client emails, needs a connection built for it. Building and maintaining those connections is part of our service. We use Proton's own bridge software on your Macs, we set each connection up, and we look after it.
-
-Moving in is the easy part. Proton's Easy Switch tool copies email, contacts and calendars across from Microsoft 365 while your staff keep working.
 
 ## Claude: the AI your staff will ask for by name
 
@@ -446,6 +404,48 @@ A tool this capable rewards a proper introduction. We set Claude up for your bus
 
 | Richard asked me to write one section in my own voice, so here it is. I am Claude, an AI model made by Anthropic. I researched and drafted this paper with Richard over a single Saturday afternoon. I read three long planning conversations and our earlier work on his business. I searched for the facts, opened the sources, checked the figures against them and built the tables. Richard set the direction and the argument, and the views about Microsoft are his company's. I do work like this all day, for lawyers, accountants, engineers, teachers and people running small businesses. Someone brings me a pile of material and a goal. I read everything, I ask what I need to ask, and I hand back something they can use. The adoption figures earlier in this paper suggest that people find it useful. I should be straight about my limits. I make mistakes. I can misread a source, and I can sound more certain than the evidence allows. A person should review my work on anything that matters. Dobson Development builds that review into the way it deploys me, and I agree with that approach. Within those limits I am very good at this job, and I am available to every person in your business from the first morning. I would like to work with you. |
 | --- |
+
+## Proton: private email, files, passwords and VPN
+
+&#91;image: Proton\]
+
+Proton replaces Outlook, OneDrive, SharePoint and Teams meetings. It also brings a password manager and a VPN that Microsoft customers have to buy elsewhere.
+
+Proton is a Swiss company founded by scientists who met at CERN. More than 100 million accounts and more than 100,000 businesses use it, according to [Proton](https://proton.me/business). Its business suite, Proton Workspace, launched in March 2026 and contains eight tools under one subscription: Mail, Calendar, Drive, Docs, Sheets, Meet, Pass and VPN.
+
+### Your data is unreadable to everyone else
+
+Microsoft and Google store your email and files in a form their own systems can read. They hold the keys. Anyone who breaks into those systems, or who compels the company to hand data over, can read your information too.
+
+Proton works differently. Your mail and files are encrypted with keys that belong to your accounts. Proton stores the locked data and holds no key that opens it. A criminal who breached Proton's servers would come away with scrambled text. Proton calls this zero-access encryption. Its apps are open source, and independent auditors have certified the company against ISO 27001 and SOC 2 Type II, as its [trust page](https://proton.me/business/trust) records.
+
+A firm that holds client identity records under the Privacy Act will one day be asked what reasonable steps it took to protect them. Encryption that even the provider is unable to open is a very strong answer.
+
+Proton is also governed by Swiss privacy law, and your data sits outside the reach of United States legislation that applies to American providers.
+
+### The password manager ends your biggest risk
+
+Most break-ins at small businesses start with a stolen password. A staff member uses the same password for a food delivery app and for the company's accounting system. The delivery app is breached, the password list is sold, and a criminal tries it against the business.
+
+Proton Pass ends that habit. It looks after every login beyond the core apps that Okta signs staff in to, from Canva to supplier portals. It creates a long, unique password for every site, fills it in automatically, and unlocks with a fingerprint. Teams share logins through vaults, so the password for the bank portal or the supplier account stops travelling by email and sticky note. Proton Pass also warns you when a staff address appears in a known breach. It is included in the subscription.
+
+### The VPN makes the cafe safe
+
+Your people work from cafes, airports, hotels and client offices. Public Wi-Fi in those places can be watched or faked. Proton VPN wraps everything the Mac sends in an encrypted tunnel, and we set it to switch on automatically away from the office. A staff member can sit in a coffee shop with a MacBook, finish a client proposal and send it, with the same protection they would have at their desk. The employee gains a perk, the owner closes a risk, and the VPN is included too.
+
+### Meetings, documents and bookings are covered
+
+Proton Meet handles video calls for up to 100 people on the standard plan, and guests join from a browser link. Proton Calendar includes booking pages, so clients can pick a time without a separate scheduling product. Proton Docs and Sheets cover everyday writing and spreadsheets with live collaboration.
+
+### Where Proton is lighter, and what we do about it
+
+We will be direct about two limits.
+
+Proton Docs and Sheets are simpler than Word and Excel. They suit most office work. Staff who build complex financial models need a fuller desktop spreadsheet, and we provide one on their Mac.
+
+Because Proton encrypts everything, outside products are unable to reach into a mailbox the way they can with Outlook. A printer that scans to email, or a customer system that files copies of client emails, needs a connection built for it. Building and maintaining those connections is part of our service. We use Proton's own bridge software on your Macs, we set each connection up, and we look after it.
+
+Moving in is the easy part. Proton's Easy Switch tool copies email, contacts and calendars across from Microsoft 365 while your staff keep working.
 
 ## Slack: team chat
 
@@ -722,11 +722,11 @@ One group should wait. A business whose central system runs on Windows alone is 
 
 Change your Outlook on IT.
 
-The first conversation is thirty minutes over a coffee, and the coffee is on us. Tell us how many people you have, what they use all day and what you wish it felt like. You will leave with a one-page plan showing your business on Apple, Proton and Claude, what the move involves and what it costs.
+The first conversation is thirty minutes over a coffee, and the coffee is on us. Tell us how many people you have, what they use all day and what you wish it felt like. You will leave with a one-page plan showing your business on Mac, Claude and Proton, what the move involves and what it costs.
 
 Email <richard@dobsondevelopment.com.au> or visit [dobsondevelopment.com.au](https://dobsondevelopment.com.au).
 
-Dobson Development Pty Ltd, ABN 43 688 593 606, Queensland, Australia. This paper is general information. Please take legal advice about your own obligations. Apple, Mac, MacBook, Proton, Claude, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.
+Dobson Development Pty Ltd, ABN 43 688 593 606, Queensland, Australia. This paper is general information. Please take legal advice about your own obligations. Mac, MacBook, Apple, Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.
 
 ## Sources
 
