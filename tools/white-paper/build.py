@@ -42,7 +42,7 @@ STATS = [('24 hours', 'Outlook and Teams down across Australia', '13 November 20
          ('16.7%', 'rise in Microsoft 365 Business Basic', '1 July 2026'),
          ('22%', 'of federal agencies at Essential Eight Level 2', 'ASD, 2025 posture report'),
          ('$55,400', 'average cost of a cybercrime report, small business', 'ASD, 2025-26'),
-         ('A$245', 'per person per month, everything included', 'Dobson Development')]
+         ('A$245', 'per person per month, plus GST', 'Dobson Development')]
 stats_html = '<div class="fig stats" role="list">' + ''.join(
     f'<div class="stat" role="listitem"><b>{a}</b><span>{b}</span><small>{c}</small></div>' for a, b, c in STATS) + '</div>'
 
@@ -58,14 +58,14 @@ chart_html = ('<figure class="fig panel chart"><figcaption><b>Hours to recover</
               + '</div><p class="src">Sources: ABC News, IsDown, The Register, Breached Company. Durations are approximate.</p></figure>')
 
 SIX = [('Mac', 'From Apple, with iPhone and iPad', 'replaces Windows PCs'), ('Claude', 'AI assistant', 'replaces Copilot'),
-       ('Proton', 'Mail, files, meetings, passwords, VPN', 'replaces Outlook and OneDrive'), ('Slack', 'Team chat', 'replaces Teams'),
-       ('Salesforce', 'Customer records', 'replaces Dynamics 365'), ('Okta', 'Sign-in and staff accounts', 'replaces Entra ID')]
+       ('Proton', 'Mail, files, meetings, passwords, VPN', 'replaces Outlook and OneDrive'), ('Slack', 'Team chat and wiki', 'replaces Teams'),
+       ('Okta', 'Sign-in and staff accounts', 'replaces Entra ID'), ('Addigy', 'Mac set-up, updates and remote help', 'replaces Intune')]
 stack_html = ('<figure class="fig panel stack"><figcaption><b>One workplace, six specialists</b>'
               '<span>Each job goes to the company that does it best. We join them up and look after the lot.</span></figcaption>'
               '<div class="people">Your people, on a Mac, signed in with one fingerprint</div><div class="six">'
               + ''.join(f'<div class="sx"><b>{n}</b><span>{j}</span><small>{r}</small></div>' for n, j, r in SIX)
               + f'</div><div class="base"><span class="wm">{WM}</span>'
-              '<span>Set-up with Addigy · updates · threat monitoring · help desk</span></div></figure>')
+              '<span>Set-up · updates · threat monitoring · help desk</span></div></figure>')
 
 STAGES = [('Before you commit', 'Free review', ['Apps, folders, mailboxes listed', 'Windows-only software flagged', 'A written plan']),
           ('Days 1 to 30', 'Foundation and move', ['Apple Business and Okta set up', 'Macs shipped to staff', 'Email switched on a Friday night']),
@@ -80,7 +80,7 @@ quote_html = ('<figure class="fig quote"><blockquote>You can claw my Claude Max 
 
 PARTS = {'Part one': ('01', "Microsoft's record", 'Outages, price rises, layoffs and security failures'),
          'Part two': ('02', 'The rules have changed', 'ASD Essentials and the Privacy Act for small business'),
-         'Part three': ('03', 'The stack', 'Mac, Claude and Proton, with Slack, Salesforce and Okta'),
+         'Part three': ('03', 'The stack', 'Mac, Claude and Proton, with Slack and Okta'),
          'Part four': ('04', 'Working with us', 'The service, the first 90 days and the price')}
 
 
@@ -309,7 +309,7 @@ page = f'''<!DOCTYPE html>
 <footer>
     <div class="wrap">
         <p>&copy; 2026 Dobson Development Pty Ltd. ABN 43 688 593 606. Queensland, Australia.</p>
-        <p>This paper is general information. Please take legal advice about your own obligations. Mac, MacBook, Apple, Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
+        <p>This paper is general information. Please take legal advice about your own obligations. Mac, MacBook, Apple, Claude, Proton, Slack, Salesforce, Confluence, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
     </div>
 </footer>
 <script>
