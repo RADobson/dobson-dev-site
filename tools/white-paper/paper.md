@@ -14,7 +14,7 @@ Four months earlier, on 1 July, Microsoft raised the price of the Microsoft 365 
 
 After a year like that, a business owner is entitled to ask whether Microsoft is still the safe choice.
 
-Our answer is that a better choice now exists, for a similar monthly spend. Dobson Development builds and manages a complete workplace on six names your staff already know: Mac, Claude, Proton, Slack, Salesforce and Okta.
+Our answer is that a better choice now exists, for a similar monthly spend. Dobson Development builds and manages a complete workplace on five names your staff already know: Mac, Claude, Proton, Slack and Okta.
 
 - Every Mac arrives configured and ready to work.
 - Your core work apps open with one fingerprint sign-in, and every other login gets its own generated password in Proton Pass.
@@ -261,10 +261,11 @@ Every job that Microsoft does in a typical office has a replacement in our stack
 | Documents and spreadsheets | Word and Excel | Proton Docs and Sheets, with Apple's Pages, Numbers and Keynote on every Mac |
 | Video meetings | Teams | Proton Meet |
 | Team chat | Teams | Slack |
+| Team wiki and intranet | SharePoint | Slack canvases |
 | Password manager | Sold separately | Proton Pass |
 | VPN | Sold separately | Proton VPN |
 | AI assistant | Copilot | Claude |
-| Customer records | Dynamics 365 | Salesforce |
+| Customer records | Dynamics 365 | Salesforce, as an add-on |
 | Threat monitoring | Defender | Managed detection and response on every Mac |
 | Help desk | Your IT provider | Dobson Development |
 
@@ -365,7 +366,7 @@ In August 2026 Salesforce went further. It made Claude the default AI model acro
 
 Copilot's real strength is its reach. It can search the documents, email and chats a business keeps in Microsoft 365, and an assistant that knows your files is far more useful than one that starts from a blank page.
 
-We give Claude the same reach into your Proton workspace. Dobson Development builds and maintains the connectors that let Claude search and read the Proton Drive folders you choose, alongside Slack and Salesforce. You decide which folders Claude may open, and everything else stays sealed. A document Claude reads is sent to Anthropic for processing under the business terms described below, which keep it out of model training.
+We give Claude the same reach into your Proton workspace. Dobson Development builds and maintains the connectors that let Claude search and read the Proton Drive folders you choose, alongside Slack. You decide which folders Claude may open, and everything else stays sealed. A document Claude reads is sent to Anthropic for processing under the business terms described below, which keep it out of model training.
 
 With the reach matched, the choice rests on the assistant itself, and Claude is the stronger one in three ways.
 
@@ -390,7 +391,7 @@ Claude works in an app on the Mac, on the phone and in the browser. Staff talk t
 - research a question on the web and cite where each fact came from
 - explain a new regulation in plain language, ready for a person to check.
 
-Claude can also connect to your other tools. It can search Slack, read and update Salesforce records, and carry out a task with several steps while the person gets on with something else. Developers get Claude Code, the product that made Anthropic's name with engineering teams.
+Claude can also connect to your other tools. It can search Slack and carry out a task with several steps while the person gets on with something else. Developers get Claude Code, the product that made Anthropic's name with engineering teams.
 
 ### Your information stays yours
 
@@ -398,7 +399,7 @@ On Claude's business plans, Anthropic's default is to keep customer content out 
 
 ### What we add
 
-A tool this capable rewards a proper introduction. We set Claude up for your business, connect it to Slack and Salesforce, and write a short policy on what client information may be used with it. We then run a hands-on session with your staff, built around their real work. After that we look for the repetitive jobs in your week, such as quotes, reports and inbox sorting, and we build Claude workflows that take them over.
+A tool this capable rewards a proper introduction. We set Claude up for your business, connect it to Slack and your Proton workspace, and write a short policy on what client information may be used with it. We then run a hands-on session with your staff, built around their real work. After that we look for the repetitive jobs in your week, such as quotes, reports and inbox sorting, and we build Claude workflows that take them over.
 
 ## A word from Claude
 
@@ -455,9 +456,11 @@ Slack replaces Teams for everyday conversation inside the business.
 
 We chose it because people like using it. Conversations live in channels named for a client, a project or a team, and anyone who joins later can scroll back and catch up. Search finds an old decision in seconds. A huddle starts a quick voice or video call from inside a channel. The result is less internal email and fewer meetings.
 
+Slack also holds your team wiki. A canvas is a shared page that sits in a channel, and it is where procedures, policies and onboarding checklists live. Staff find a canvas with the same search they use for messages.
+
 Three further points settled the choice.
 
-Slack belongs to Salesforce, so customer records and chat sit side by side. A sales channel can show the deal it is discussing, and staff can update the record from the conversation.
+Slack belongs to Salesforce, so a business that adds Salesforce has customer records and chat side by side. A sales channel can show the deal it is discussing, and staff can update the record from the conversation.
 
 Claude is built in. Since August 2026 Claude has been the default AI model across Slack, as [Demand Gen Report](https://www.demandgenreport.com/industry-news/news-brief/salesforce-anthropic-expand-partnership-with-claudeforce/54431) describes. Staff can ask for a summary of a long thread or a search across months of channels and get an answer in plain English.
 
@@ -473,7 +476,7 @@ Salesforce plays two parts in our service.
 
 Many Microsoft businesses run their sales on Dynamics 365 because it came with the rest of the suite. In our experience, sales teams who are offered Salesforce take it and keep it. It is the largest customer relationship platform in the world, and nearly every experienced salesperson has used it before.
 
-Salesforce is an optional part of our stack, quoted separately, because some businesses already have a customer system they like. For those who want one, the entry plan is priced in Australian dollars at $35 per user per month, as [Salesforce Australia](https://www.salesforce.com/au/editions-pricing/small-business/) lists. It covers contacts, leads, deals, email campaigns and a connected Slack workspace.
+Salesforce is an add-on to our service, because some businesses already have a customer system they like. Most clients settle into the core stack first and add Salesforce at a quarterly review, for the people who sell. We set it up, connect it to Slack and Claude, and look after it with everything else. It covers contacts, leads, deals, email campaigns and a connected Slack workspace.
 
 The partnership with Anthropic makes the combination stronger. The Claudeforce launch in August 2026 included a Salesforce plug-in for Claude with 37 ready-made sales skills, as [VentureBeat](https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again) reported. A salesperson can ask Claude to prepare for tomorrow's meeting, review the health of a deal or update the pipeline, and Claude works from the live records within that person's permissions. Staff who dislike data entry can leave most of it to Claude.
 
@@ -501,13 +504,13 @@ Identity is Okta's whole business. It connects to thousands of products through 
 
 A new employee signs in to their Mac with their Okta account during set-up. From then on, a touch on the Touch ID sensor signs them in to the Mac and to their work apps. The secret that proves who they are is created inside the Mac's Secure Enclave chip and stays there. A fake login page has nothing to capture, because the person types no password for it to steal. Security professionals call this phishing-resistant sign-in, and ASD Essentials asks for it by name.
 
-Okta covers the apps at the centre of the working day: the Mac, Slack, Salesforce and the other tools we connect to it. Every business also has dozens of logins that sit outside Okta, such as Canva, the bank, supplier portals and government sites. Staff register for those with their work email, and Proton Pass creates a long, unique password for each one, stores it and fills it in on the next visit. Proton Pass opens with the same fingerprint, so the experience is the same either way: the staff member touches the sensor and the site opens.
+Okta covers the apps at the centre of the working day: the Mac, Slack and the other tools we connect to it. Every business also has dozens of logins that sit outside Okta, such as Canva, the bank, supplier portals and government sites. Staff register for those with their work email, and Proton Pass creates a long, unique password for each one, stores it and fills it in on the next visit. Proton Pass opens with the same fingerprint, so the experience is the same either way: the staff member touches the sensor and the site opens.
 
 Proton Pass also holds the passkeys and two-step codes that those sites offer. When a site you use heavily supports single sign-on, we connect it to Okta.
 
 ### Starters and leavers take one step
 
-When someone joins, we add them to Okta once. Their accounts in Slack, Salesforce and Proton's password manager and VPN are created for them, with the access their role needs.
+When someone joins, we add them to Okta once. Their accounts in Slack and Proton's password manager and VPN are created for them, with the access their role needs.
 
 When someone leaves, we switch off one account. Access to every connected service ends within moments, and their Mac locks. An owner who has ever spent an afternoon working out which systems a former employee could still reach will understand the value of that.
 
@@ -640,11 +643,13 @@ By day 90 the Microsoft bill has stopped, and your first quarterly review is in 
 
 ## What it costs
 
-Our service costs A$245 per person per month.
+Our service costs A$245 per person per month, plus GST.
 
-That single figure covers everything in the list under "What every person receives": the software subscriptions, the management, the security monitoring and unlimited remote support. Set-up and migration are included when you take a 12-month agreement.
+That single figure covers everything in the list under "What every person receives": the software subscriptions, the management, the security monitoring and unlimited remote support.
 
-Two items sit outside it. You buy or lease the Macs yourself, as described earlier. Salesforce as your customer system is optional and quoted separately.
+Set-up and migration cost a one-off A$245 per person, plus GST, the same as one month of the service. Our first three clients are founding clients. We waive that fee for them in return for a case study that names the business.
+
+Two items sit outside it. You buy or lease the Macs yourself, as described earlier. Add-ons, such as Salesforce for customer records and Confluence for a larger knowledge base, are quoted separately once the core has settled in.
 
 ### How that compares
 
@@ -670,7 +675,7 @@ A MacBook Neo at about $1,249 that serves for four years works out at roughly $2
 
 ### Microsoft has always been the safe choice. Why take a risk?
 
-The risk has moved. Staying on Microsoft now means accepting its outages, its annual price rises and a growing compliance project. Every supplier in our stack is a large, established company whose product your staff have probably used already. Apple, Salesforce, Slack, Okta, Proton and Anthropic each serve many thousands of businesses. Choosing them is a conservative decision made with current information.
+The risk has moved. Staying on Microsoft now means accepting its outages, its annual price rises and a growing compliance project. Every supplier in our stack is a large, established company whose product your staff have probably used already. Apple, Slack, Okta, Proton and Anthropic each serve many thousands of businesses. Choosing them is a conservative decision made with current information.
 
 ### What about Excel?
 
@@ -726,7 +731,7 @@ The first conversation is thirty minutes over a coffee, and the coffee is on us.
 
 Email <richard@dobsondevelopment.com.au> or visit [dobsondevelopment.com.au](https://dobsondevelopment.com.au).
 
-Dobson Development Pty Ltd, ABN 43 688 593 606, Queensland, Australia. This paper is general information. Please take legal advice about your own obligations. Mac, MacBook, Apple, Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.
+Dobson Development Pty Ltd, ABN 43 688 593 606, Queensland, Australia. This paper is general information. Please take legal advice about your own obligations. Mac, MacBook, Apple, Claude, Proton, Slack, Salesforce, Confluence, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.
 
 ## Sources
 
@@ -793,6 +798,5 @@ The stack
 - [CNBC: Salesforce and Anthropic expand partnership](https://www.cnbc.com/2026/08/26/salesforce-anthropic-partnership-claudeforce.html)
 - [VentureBeat: Salesforce puts its CRM inside Claude](https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again)
 - [Demand Gen Report: Salesforce and Anthropic launch Claudeforce](https://www.demandgenreport.com/industry-news/news-brief/salesforce-anthropic-expand-partnership-with-claudeforce/54431)
-- [Salesforce Australia: Small business pricing](https://www.salesforce.com/au/editions-pricing/small-business/)
 - [Precision IT: IT support costs for Australian businesses](https://www.precisionit.com.au/blog/it-support-costs-australian-businesses)
 - [Precision IT: Microsoft 365 Business Premium cost per user](https://www.precisionit.com.au/blog/microsoft-365-business-premium-cost-per-user-australia)
