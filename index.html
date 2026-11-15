@@ -17,6 +17,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.className = 'js';</script>
 <style>
 @font-face {
     font-family: 'Geist';
@@ -149,6 +150,11 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
     .statement p { animation: arrive 1400ms cubic-bezier(.2, .7, .1, 1) 900ms both; }
     .statement p.second { animation-delay: 500ms; }
     .close .cursor { animation: blink 1.1s steps(1) infinite; }
+    /* Card explainers arrive as they scroll into view: the line first, the detail a beat later */
+    .js .card p { opacity: 0; transform: translateY(1.4rem); filter: blur(12px); transition: opacity 1100ms cubic-bezier(.2, .7, .1, 1), transform 1100ms cubic-bezier(.2, .7, .1, 1), filter 1100ms cubic-bezier(.2, .7, .1, 1); }
+    .js .card p span { opacity: 0; transition: opacity 1100ms cubic-bezier(.2, .7, .1, 1) 350ms; }
+    .js .card.in p { opacity: 1; transform: none; filter: none; }
+    .js .card.in p span { opacity: 1; }
 }
 @keyframes drift { to { transform: translate(-9vmax, 7vmax) scale(1.12); } }
 @keyframes arrive { from { opacity: 0; transform: translateY(0.3em); filter: blur(14px); } to { opacity: 1; transform: none; filter: none; } }
@@ -224,6 +230,25 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
     </div>
 </footer>
 <script>
+/* Reveal each card's explainer once, when it scrolls into view (or has already been passed) */
+(function () {
+    var waiting = Array.prototype.slice.call(document.querySelectorAll('.card'));
+    var queued = false;
+    function check() {
+        queued = false;
+        var line = window.innerHeight * 0.86;
+        waiting = waiting.filter(function (c) {
+            var t = c.querySelector('p');
+            if (!t || t.getBoundingClientRect().top < line) { c.classList.add('in'); return false; }
+            return true;
+        });
+        if (!waiting.length) { window.removeEventListener('scroll', ask); window.removeEventListener('resize', ask); }
+    }
+    function ask() { if (!queued) { queued = true; window.requestAnimationFrame(check); } }
+    window.addEventListener('scroll', ask, { passive: true });
+    window.addEventListener('resize', ask);
+    check();
+})();
 /* Retire the old site's offline cache for returning visitors */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(function (rs) { rs.forEach(function (r) { r.unregister(); }); }).catch(function () {});
