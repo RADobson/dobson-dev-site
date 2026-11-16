@@ -68,7 +68,7 @@ stack_html = ('<figure class="fig panel stack"><figcaption><b>One workplace, six
               '<span>Set-up with Addigy · updates · threat monitoring · help desk</span></div></figure>')
 
 STAGES = [('Before you commit', 'Free review', ['Apps, folders, mailboxes listed', 'Windows-only software flagged', 'A written plan']),
-          ('Days 1 to 30', 'Foundation and move', ['Apple Business and Okta set up', 'Macs shipped to staff', 'Email switched on a Friday night']),
+          ('Days 1 to 30', 'Foundation and move', ['Apple Business and Okta set up', 'Mac computers shipped to staff', 'Email switched on a Friday night']),
           ('Days 31 to 60', 'Settling in', ['Slack goes live', 'Passwords into Proton Pass', 'Files tidied, Claude session']),
           ('Days 61 to 90', 'Proof and close', ['First evidence pack', 'Microsoft licences cancelled', 'Old PCs wiped and recycled'])]
 road_html = ('<figure class="fig panel road"><figcaption><b>The first 90 days</b></figcaption><ol class="stages">'
@@ -309,7 +309,7 @@ page = f'''<!DOCTYPE html>
 <footer>
     <div class="wrap">
         <p>&copy; 2026 Dobson Development Pty Ltd. ABN 43 688 593 606. Queensland, Australia.</p>
-        <p>This paper is general information. Please take legal advice about your own obligations. Mac, MacBook, Apple, Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
+        <p>This paper is general information. Please take legal advice about your own obligations. Apple, Mac, MacBook, iPhone, iPad and Touch ID are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
     </div>
 </footer>
 <script>
