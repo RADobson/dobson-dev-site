@@ -72,7 +72,7 @@ Sources for the table: [ABC](https://www.abc.net.au/news/2026-11-14/microsoft-sa
 
 &#91;image: Bar chart of hours to recover from four major Microsoft cloud outages: 24, 77, 10 and 12 hours\]
 
-The 2024 failure came from CrowdStrike's software, and fairness requires us to say so. It still belongs in the table, because the faulty update crashed Windows machines only. Macs running the same CrowdStrike product kept working that day.
+The 2024 failure came from CrowdStrike's software, and fairness requires us to say so. It still belongs in the table, because the faulty update crashed Windows machines only. Mac computers running the same CrowdStrike product kept working that day.
 
 We draw two lessons from the list.
 
@@ -155,7 +155,7 @@ A Microsoft business that paid for an Essential Eight project now faces a second
 
 Insurers, larger customers and government buyers will move their questionnaires to the new language over the next two years. A business that can answer in the new terms will be well placed to win that work.
 
-The new framework finally suits a business that runs on Macs. The Essential Eight was written around Windows, so a Mac business had to translate every control. ASD Essentials asks for outcomes: strong sign-in, patched devices, limited privileges, working backups, and evidence. A well-managed Apple fleet with a proper identity service delivers those outcomes by default, and it produces the evidence as a by-product.
+The new framework finally suits a business that runs on Mac. The Essential Eight was written around Windows, so a Mac business had to translate every control. ASD Essentials asks for outcomes: strong sign-in, patched devices, limited privileges, working backups, and evidence. A well-managed Apple fleet with a proper identity service delivers those outcomes by default, and it produces the evidence as a by-product.
 
 ## The 1 July 2026 privacy change for small businesses
 
@@ -284,7 +284,7 @@ Ask your team which laptop they would choose with their own money. In most offic
 
 Many owners still assume a Mac costs twice as much as a PC. In March 2026 Apple released the MacBook Neo, the lowest-priced laptop it has ever sold, with an aluminium body and a battery Apple rates at up to 16 hours, as [FutureFive](https://futurefive.com.au/story/macbook-neo-goes-on-sale-as-apple-s-lowest-priced-laptop) reported. Australian retailers list the 512GB model with Touch ID at about $1,249. We recommend that model for most staff, because Touch ID is the key to the sign-in experience described later. People who run heavy spreadsheets or several screens step up to a MacBook Air, a Mac mini or a MacBook Pro.
 
-The saving continues after the purchase. A June 2026 study by Forrester Consulting, commissioned by Apple, modelled a saving of US$760 per Mac over five years compared with a PC, and about 100 minutes a month of time handed back to each employee, as [Forrester's summary](https://tei.forrester.com/go/Apple/TEI/) sets out. Macs need fewer support calls, they last longer, and they sell for more at the end of their life.
+The saving continues after the purchase. A June 2026 study by Forrester Consulting, commissioned by Apple, modelled a saving of US$760 per Mac over five years compared with a PC, and about 100 minutes a month of time handed back to each employee, as [Forrester's summary](https://tei.forrester.com/go/Apple/TEI/) sets out. Mac computers need fewer support calls, they last longer, and they sell for more at the end of their life.
 
 ### Security is built in
 
@@ -302,11 +302,11 @@ The Office macro, a favourite tool of criminals for twenty years, has no place t
 
 Apple gives every business a free management platform called Apple Business, which replaced Apple Business Manager in April 2026, as [Apple announced](https://www.apple.com/au/newsroom/2026/03/introducing-apple-business/). Any Mac bought through Apple or an authorised business reseller is registered to your company before it ships. The courier delivers a sealed box to the employee's desk or home. They open the lid, join the Wi-Fi and sign in once. About fifteen minutes later they are looking at a finished desktop with their email, chat, files, passwords and Claude all in place. The whole set-up happens without us touching the machine.
 
-iPhones and iPads join the same system in the same way.
+iPhone and iPad devices join the same system in the same way.
 
 ### You buy at the public price
 
-You buy or lease your Macs through Apple or an authorised business reseller, at the published price, and they ship directly to your staff. We specify the models and prepare the set-up. Leasing is available through those suppliers for businesses that prefer a monthly payment to an upfront purchase.
+You buy or lease your Mac computers through Apple or an authorised business reseller, at the published price, and they ship directly to your staff. We specify the models and prepare the set-up. Leasing is available through those suppliers for businesses that prefer a monthly payment to an upfront purchase.
 
 ## Addigy: how every Mac is managed
 
@@ -443,7 +443,7 @@ We will be direct about two limits.
 
 Proton Docs and Sheets are simpler than Word and Excel. They suit most office work. Staff who build complex financial models need a fuller desktop spreadsheet, and we provide one on their Mac.
 
-Because Proton encrypts everything, outside products are unable to reach into a mailbox the way they can with Outlook. A printer that scans to email, or a customer system that files copies of client emails, needs a connection built for it. Building and maintaining those connections is part of our service. We use Proton's own bridge software on your Macs, we set each connection up, and we look after it.
+Because Proton encrypts everything, outside products are unable to reach into a mailbox the way they can with Outlook. A printer that scans to email, or a customer system that files copies of client emails, needs a connection built for it. Building and maintaining those connections is part of our service. We use Proton's own bridge software on every Mac, we set each connection up, and we look after it.
 
 Moving in is the easy part. Proton's Easy Switch tool copies email, contacts and calendars across from Microsoft 365 while your staff keep working.
 
@@ -479,7 +479,7 @@ The partnership with Anthropic makes the combination stronger. The Claudeforce l
 
 ### Our service desk
 
-We run Dobson Development on Salesforce too. Every request your staff send, from the menu bar icon, from Slack or by email, becomes a case in our Salesforce service desk. Each case carries a clock that measures our response against the targets in your agreement. Alerts from your Macs open cases automatically, so a full disk or a missed update reaches us before your staff notice.
+We run Dobson Development on Salesforce too. Every request your staff send, from the menu bar icon, from Slack or by email, becomes a case in our Salesforce service desk. Each case carries a clock that measures our response against the targets in your agreement. Alerts from any Mac open cases automatically, so a full disk or a missed update reaches us before your staff notice.
 
 You can ask at any time for a list of every request your business has raised and how quickly each one was closed. We use the products we recommend to run the service you are paying for.
 
@@ -499,7 +499,7 @@ Identity is Okta's whole business. It connects to thousands of products through 
 
 ### One fingerprint signs staff in
 
-A new employee signs in to their Mac with their Okta account during set-up. From then on, a touch on the Touch ID sensor signs them in to the Mac and to their work apps. The secret that proves who they are is created inside the Mac's Secure Enclave chip and stays there. A fake login page has nothing to capture, because the person types no password for it to steal. Security professionals call this phishing-resistant sign-in, and ASD Essentials asks for it by name.
+A new employee signs in to their Mac with their Okta account during set-up. From then on, a touch on the Touch ID sensor signs them in to the Mac and to their work apps. The secret that proves who they are is created inside the Secure Enclave chip in the Mac and stays there. A fake login page has nothing to capture, because the person types no password for it to steal. Security professionals call this phishing-resistant sign-in, and ASD Essentials asks for it by name.
 
 Okta covers the apps at the centre of the working day: the Mac, Slack, Salesforce and the other tools we connect to it. Every business also has dozens of logins that sit outside Okta, such as Canva, the bank, supplier portals and government sites. Staff register for those with their work email, and Proton Pass creates a long, unique password for each one, stores it and fills it in on the next visit. Proton Pass opens with the same fingerprint, so the experience is the same either way: the staff member touches the sensor and the site opens.
 
@@ -513,7 +513,7 @@ When someone leaves, we switch off one account. Access to every connected servic
 
 ### It keeps the record
 
-Okta logs every sign-in: who, when, from which device and from where. We set rules on top of that record, such as allowing company data to open on company Macs only. The same record becomes evidence for an insurer or an assessor that your sign-in controls work in practice.
+Okta logs every sign-in: who, when, from which device and from where. We set rules on top of that record, such as allowing company data to open on a company Mac only. The same record becomes evidence for an insurer or an assessor that your sign-in controls work in practice.
 
 &#91;image: Part four: Working with us\]
 
@@ -531,7 +531,7 @@ At noon the principal walks to a cafe to meet a referrer. He opens his MacBook o
 
 At 2pm a clerk's Mac shows an unfamiliar message. She clicks our icon in the menu bar, types one line and ticks the screenshot box. We reply, connect to her Mac with her permission and clear the problem while she watches.
 
-At 3pm an attacker somewhere overseas tries a list of leaked passwords against the firm's accounts. Staff sign in to their core apps with fingerprints held on their own Macs, and every other login has its own unique password from Proton Pass, so the list is useless. Okta records the attempts, and we review them.
+At 3pm an attacker somewhere overseas tries a list of leaked passwords against the firm's accounts. Staff sign in to their core apps with fingerprints held on their own Mac computers, and every other login has its own unique password from Proton Pass, so the list is useless. Okta records the attempts, and we review them.
 
 At 5pm a junior clerk finishes his last day. We disable his Okta account as he hands back his laptop. His email, files, chat and passwords close together, and the firm's shared vaults stay intact.
 
@@ -545,7 +545,7 @@ The table below takes the outcomes that the Essential Eight, ASD Essentials and 
 
 | What the frameworks ask for | How the stack delivers it |
 | --- | --- |
-| Sign-in that resists phishing on your core apps, and a unique password in Proton Pass for every other login | Okta with Touch ID on each Mac, with the sign-in key held in the Mac's Secure Enclave |
+| Sign-in that resists phishing on your core apps, and a unique password in Proton Pass for every other login | Okta with Touch ID on each Mac, with the sign-in key held in its Secure Enclave |
 | Approved software only | Apple's Gatekeeper, a managed app catalogue in Addigy, and standard user accounts for staff |
 | Applications and operating systems patched on time | Addigy enforces Apple's updates with deadlines and reports the status of every Mac |
 | Office macros controlled | Microsoft Office is absent from the Mac, and so are its macros |
@@ -580,7 +580,7 @@ Software on its own solves half the problem. Someone has to set it up properly, 
 
 ### How to reach us
 
-Staff have three ways to ask for help: the Dobson Development icon in the Mac's menu bar, the shared Slack channel, and email. Each request becomes a tracked case.
+Staff have three ways to ask for help: the Dobson Development icon in the Mac menu bar, the shared Slack channel, and email. Each request becomes a tracked case.
 
 Our response targets are simple.
 
@@ -623,10 +623,10 @@ We list every program your business uses, every shared folder and every mailbox.
 ### Days 1 to 30: foundation and move
 
 1. We create your Apple Business and Okta accounts and prepare the Mac build.
-2. You order the Macs, and they ship directly to your staff.
+2. You order the Mac computers, and they ship directly to your staff.
 3. We set up Proton and copy mail, contacts and calendars across in the background while everyone keeps using Outlook.
 4. On a Friday evening we switch your email over.
-5. On Monday your staff open their new Macs, sign in once and find their mail waiting. We are on hand all day, and the Mac basics session runs that week.
+5. On Monday your staff open their new Mac computers, sign in once and find their mail waiting. We are on hand all day, and the Mac basics session runs that week.
 
 ### Days 31 to 60: settling in
 
@@ -644,7 +644,7 @@ Our service costs A$245 per person per month.
 
 That single figure covers everything in the list under "What every person receives": the software subscriptions, the management, the security monitoring and unlimited remote support. Set-up and migration are included when you take a 12-month agreement.
 
-Two items sit outside it. You buy or lease the Macs yourself, as described earlier. Salesforce as your customer system is optional and quoted separately.
+Two items sit outside it. You buy or lease the Mac computers yourself, as described earlier. Salesforce as your customer system is optional and quoted separately.
 
 ### How that compares
 
@@ -682,7 +682,7 @@ Most business software now runs in a web browser, including the accounting, prac
 
 ### Will clients and suppliers be able to work with us?
 
-They will, because email is email. Word, Excel and PDF files open on a Mac and go back in the same format. Clients join a Proton Meet call from a link in their browser. When a client invites you to their Teams or Zoom meeting, you join from your Mac's browser like any other guest.
+They will, because email is email. Word, Excel and PDF files open on a Mac and go back in the same format. Clients join a Proton Meet call from a link in their browser. When a client invites you to their Teams or Zoom meeting, you join from the browser on your Mac like any other guest.
 
 ### What happens when one of your suppliers has an outage?
 
@@ -711,7 +711,7 @@ The stack suits most offices of 5 to 50 people. Five groups have the strongest r
 - Tranche 2 firms. Law practices, conveyancers, accountants and real estate agencies came under the Privacy Act in July and hold exactly the records it protects.
 - Health and allied health clinics. They have always been covered by the Privacy Act, and health providers lodged 149 of the 667 breaches notified to the OAIC in the first half of 2026, as [The New Daily](https://www.thenewdaily.com.au/themoneyedition/ai-and-technology/2026/10/26/data-in-danger-the-aussie-industries-most-at-risk-of-a-breach) reported.
 - New businesses. A firm that starts on this stack skips Microsoft altogether and has nothing to migrate.
-- Agencies, consultancies and technology companies. Their staff often prefer Macs and Slack already, and Claude fits the work they do.
+- Agencies, consultancies and technology companies. Their staff often prefer Mac and Slack already, and Claude fits the work they do.
 - Any business near a decision point. A Microsoft renewal date, a round of laptop replacements or a cyber insurance questionnaire is a natural moment to change.
 
 One group should wait. A business whose central system runs on Windows alone is better served by staying where it is until that system moves to the web. We will tell you if that describes you.
@@ -726,7 +726,7 @@ The first conversation is thirty minutes over a coffee, and the coffee is on us.
 
 Email <richard@dobsondevelopment.com.au> or visit [dobsondevelopment.com.au](https://dobsondevelopment.com.au).
 
-Dobson Development Pty Ltd, ABN 43 688 593 606, Queensland, Australia. This paper is general information. Please take legal advice about your own obligations. Mac, MacBook, Apple, Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.
+Dobson Development Pty Ltd, ABN 43 688 593 606, Queensland, Australia. This paper is general information. Please take legal advice about your own obligations. Apple, Mac, MacBook, iPhone, iPad and Touch ID are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.
 
 ## Sources
 
