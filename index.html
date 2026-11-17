@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Dobson Development. Change your Outlook on IT.</title>
-<meta name="description" content="Dobson Development sets up and looks after Mac, Claude and Proton for Australian businesses. The only MSP solely focussed on all three. Run your business on the tech you love.">
+<meta name="description" content="Dobson Development sets up and looks after Mac, Claude, Google and 1Password for Australian businesses. Managed support for A$99 per person per month, plus GST. Run your business on the tech you love.">
 <link rel="canonical" href="https://dobsondevelopment.com.au/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dobsondevelopment.com.au/">
 <meta property="og:title" content="Dobson Development. Change your Outlook on IT.">
-<meta property="og:description" content="Mac, Claude and Proton. The only MSP solely focussed on all three.">
+<meta property="og:description" content="Mac, Claude, Google and 1Password. Managed for A$99 per person per month, plus GST.">
 <meta property="og:image" content="https://dobsondevelopment.com.au/assets/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#000000">
@@ -102,7 +102,7 @@ h1 {
 .statement p.second + p { margin-top: 1.1rem; }
 .statement p { margin: clamp(1.75rem, 4vw, 3rem) 0 0; max-width: 30rem; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -0.02em; color: var(--grey); }
 
-/* Three title cards */
+/* Four title cards */
 .card { border-top: 1px solid var(--line); padding-block: clamp(3rem, 8vw, 7rem) clamp(3.5rem, 9vw, 8rem); }
 .card h2 {
     margin: 0 0 0 -0.045em;
@@ -117,6 +117,8 @@ h1 {
     padding-bottom: 0.14em;
 }
 .card p { margin: clamp(1.5rem, 3vw, 2.5rem) 0 0 auto; max-width: 31rem; font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.35; letter-spacing: -0.025em; }
+/* A longer name runs smaller so it stays on one line */
+.card.long h2 { font-size: clamp(3.6rem, 16.6vw, 16.6rem); }
 .card p span { display: block; margin-top: 0.7em; color: var(--grey); font-size: 0.78em; line-height: 1.5; letter-spacing: -0.012em; }
 
 /* White paper */
@@ -126,8 +128,10 @@ h1 {
 .paper h2 a { text-decoration: none; }
 .paper p { margin: clamp(1.5rem, 3vw, 2.5rem) 0 0; max-width: 34rem; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -0.02em; color: var(--grey); }
 .paper .go { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; max-width: none; }
-.paper .btn { display: inline-block; padding: 0.8em 1.35em; border-radius: 99px; background: linear-gradient(90deg, var(--cyan), var(--violet)); color: #05060A; font-size: 1rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1; text-decoration: none; }
-.paper .btn:hover { filter: brightness(1.12); }
+.btn { display: inline-block; padding: 0.8em 1.35em; border-radius: 99px; background: linear-gradient(90deg, var(--cyan), var(--violet)); color: #05060A; font-size: 1rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1; text-decoration: none; }
+.btn:hover { filter: brightness(1.12); }
+.price h2 { max-width: 14ch; }
+.price p { max-width: 38rem; }
 .paper .pdf { color: var(--white); font-size: 1rem; text-underline-offset: 0.35em; text-decoration-thickness: 1px; }
 
 /* Closing shot */
@@ -137,6 +141,8 @@ h1 {
 .close h2 > span { display: block; text-wrap: balance; }
 .close h2 em { font-style: normal; background: linear-gradient(90deg, var(--cyan), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: 0.06em; }
 .close p { margin: clamp(1.5rem, 3vw, 2.5rem) 0 0; max-width: 30rem; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -0.02em; color: var(--grey); }
+.close p b { color: var(--white); font-weight: 600; }
+.close p.go { margin-top: clamp(1.5rem, 3vw, 2.25rem); }
 .close a.mail { display: inline-block; margin-top: clamp(2.5rem, 5vw, 4rem); font-weight: 600; font-size: clamp(1.25rem, 3.4vw, 2.75rem); letter-spacing: -0.04em; line-height: 1.1; text-decoration: none; overflow-wrap: anywhere; }
 .close a.mail:hover { text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.14em; }
 
@@ -181,7 +187,7 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
     <div class="wrap statement">
         <h1>Change your <span class="outlook"><svg viewBox="0 -1491 7311 1922" aria-hidden="true" focusable="false"><path d="M1447 -712C1450 -1136 1198 -1457 770 -1457C348 -1457 92 -1136 92 -712C92 -290 348 25 770 25C1198 25 1447 -290 1447 -712ZM276 -712C276 -1063 449 -1296 770 -1296C1089 -1296 1260 -1063 1260 -712C1261 -364 1089 -135 770 -135C449 -135 276 -364 276 -712Z M2404 -189 2374 -362C2374 -181 2244 -130 2113 -130C1890 -130 1852 -274 1852 -419V-973H1688V-368C1688 -175 1779 22 2077 22C2289 22 2404 -118 2404 -189ZM2625 -28C2573 -122 2539 -223 2538 -330L2374 -328C2374 -198 2416 -75 2480 39ZM2538 -974H2374V-328L2538 -211Z M3343 18V-129C3314 -125 3275 -122 3252 -122C3131 -122 3076 -218 3076 -302V-1323H2922V-273C2922 -114 3018 24 3211 24C3234 24 3300 22 3343 18ZM3344 -828V-973C3344 -973 2746 -973 2746 -973V-828C2746 -828 3344 -828 3344 -828Z M3727 0V-1516H3563V0Z M4994 -483C4997 -793 4800 -998 4498 -998C4191 -998 3988 -793 3988 -483C3988 -177 4191 25 4498 25C4797 25 4994 -177 4994 -483ZM4162 -483C4163 -698 4297 -840 4498 -840C4687 -840 4815 -698 4820 -483C4816 -272 4688 -133 4498 -133C4294 -133 4161 -272 4162 -483Z M6194 -483C6197 -793 6000 -998 5698 -998C5391 -998 5188 -793 5188 -483C5188 -177 5391 25 5698 25C5997 25 6194 -177 6194 -483ZM5362 -483C5363 -698 5497 -840 5698 -840C5887 -840 6015 -698 6020 -483C6016 -272 5888 -133 5698 -133C5494 -133 5361 -272 5362 -483Z M7242 -974 7077 -1000 6693 -594C6641 -540 6600 -461 6578 -427V-336L6597 -262ZM6623 0V-1516H6459V0ZM7285 2 6910 -624 6799 -507 7103 2Z"/></svg><span class="sr">Outlook</span></span> on IT.</h1>
         <p class="second">Run your business on the tech you <em>love.</em></p>
-        <p>Mac, Claude and Proton. The only MSP solely focussed on all three.</p>
+        <p>Mac, Claude, Google and 1Password. Managed for A$99 per person per month, plus GST.</p>
     </div>
 </header>
 
@@ -200,8 +206,22 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
     </section>
     <section class="card">
         <div class="wrap">
-            <h2>Proton</h2>
-            <p>Life after Outlook.<span>Email, calendar, files, meetings, passwords and a VPN, all in one place and off the platform that keeps going down. Every mailbox and file is moved across for you.</span></p>
+            <h2>Google</h2>
+            <p>Life after Outlook.<span>Gmail, Calendar, Drive, Docs, Meet and Chat, the tools your team already knows, with Gemini built in for the quick jobs. Every mailbox and file is moved across for you.</span></p>
+        </div>
+    </section>
+    <section class="card long">
+        <div class="wrap">
+            <h2>1Password</h2>
+            <p>Every login, one fingerprint.<span>A strong, unique password for every site, filled in with Touch ID and shared safely across your team. Claude can sign in for you while the password stays hidden.</span></p>
+        </div>
+    </section>
+
+    <section class="paper price" id="price">
+        <div class="wrap">
+            <p class="kicker">Mac + Claude + Google + 1Password Managed Support</p>
+            <h2>A$99 per person per month, plus GST.</h2>
+            <p>Licences and licence management: A$28.57 per person for a team of 10. Claude Team is billed to you by Anthropic at US$20.00 per person per month on annual billing.</p>
         </div>
     </section>
 
@@ -209,16 +229,17 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
         <div class="wrap">
             <p class="kicker">Free white paper</p>
             <h2><a href="/white-paper/">The case for a business without Windows</a></h2>
-            <p>Outages, price rises and the 2026 privacy changes, then the Mac, Claude and Proton workplace that answers all three. Read it here or take the PDF with you.</p>
-            <p class="go"><a class="btn" href="/white-paper/">Read the white paper</a><a class="pdf" href="/white-paper/change-your-outlook-on-it.pdf" download>Download the PDF</a></p>
+            <p>Outages, price rises and the 2026 privacy changes, then the Mac, Claude, Google and 1Password workplace that answers all three. Read it here or take the PDF with you.</p>
+            <p class="go"><a class="btn" href="/white-paper/">Read the white paper</a><a class="pdf" href="/white-paper/change-your-outlook-on-it.pdf" download>Download the PDF</a><a class="pdf" href="#contact">Get my free move plan</a></p>
         </div>
     </section>
 
     <section class="close" id="contact">
         <div class="wrap">
             <h2><span>Microsoft <em>sucks.</em></span> <span>Switch to something better<i class="cursor" aria-hidden="true"></i></span></h2>
-            <p>Coffee's on me. Thirty minutes on how your business runs today, and you leave with a plan for Mac, Claude and Proton.</p>
-            <a class="mail" href="mailto:richard@dobsondevelopment.com.au?subject=Coffee">richard@dobsondevelopment.com.au</a>
+            <p><b>Send us your app list. Get your move plan free.</b> Tell us the programs your team uses and how many people you have. We reply with a one-page plan: what moves, how long it takes and what it costs.</p>
+            <p class="go"><a class="btn" href="mailto:richard@dobsondevelopment.com.au?subject=My%20app%20list&amp;body=How%20many%20people%3A%0A%0APrograms%20we%20use%3A%0A">Get my free move plan</a></p>
+            <a class="mail" href="mailto:richard@dobsondevelopment.com.au?subject=My%20app%20list&amp;body=How%20many%20people%3A%0A%0APrograms%20we%20use%3A%0A">richard@dobsondevelopment.com.au</a>
         </div>
     </section>
 </main>
@@ -226,7 +247,7 @@ footer p { margin: 0 0 0.35rem; max-width: 56rem; }
 <footer>
     <div class="wrap">
         <p>&copy; 2026 Dobson Development Pty Ltd. ABN 43 688 593 606. Queensland, Australia.</p>
-        <p>Mac, iPhone and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Claude, Proton and Addigy are trademarks of their owners. Dobson Development is an independent business.</p>
+        <p>Mac, iPhone and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Claude, Google, Gmail, Gemini and 1Password are trademarks of their owners. Dobson Development is an independent business.</p>
     </div>
 </footer>
 <script>
