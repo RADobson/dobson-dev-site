@@ -606,7 +606,7 @@ For a team of 10, each person's month looks like this before GST.
 | Managed support | Dobson Development | A$99.00 |
 | Licences and licence management: Google Workspace Business Standard, 1Password and IDrive backup | Dobson Development | A$28.57 |
 | Claude Team on annual billing | Anthropic, on your card | US$20.00, which is A$28.60 |
-| Total | | A$156.17 |
+| Total |  | A$156.17 |
 
 Our invoice comes to A$127.57 per person per month, or A$140.33 including GST. Anthropic bills Claude Team to you directly at US$20.00 per person per month on annual billing, as [Anthropic's Team plan page](https://claude.com/get-claude-team-plan) lists. The Australian dollar figures use an exchange rate of 1.43 to the US dollar, and the licence line moves with that rate and with the size of your team.
 
@@ -620,7 +620,7 @@ Setting up your accounts and every Mac and moving every mailbox and file off Mic
 
 IT Start's [2026 guide to managed services pricing](https://itstart.com.au/blog/managed-services-pricing-in-australia-2026-guide-for-smbs) puts basic managed support in Australia at A$100 to A$130 per user per month for a business-hours helpdesk and standard monitoring, with licences billed on top. Microsoft lists [Microsoft 365 Business Premium](https://www.microsoft.com/en-au/security/small-medium-business/pricing) at A$32.90 per user per month on annual billing.
 
-| | A basic managed plan on Microsoft | Dobson Development |
+|  | A basic managed plan on Microsoft | Dobson Development |
 | --- | --- | --- |
 | Managed support | A$100.00 to A$130.00 | A$99.00 |
 | Licences | Microsoft 365 Business Premium, A$32.90 | Google Workspace, 1Password and backup, A$28.57 |
