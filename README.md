@@ -1,6 +1,6 @@
 # Dobson Development
 
-The website for Dobson Development Pty Ltd: Mac, Claude and Proton for Australian business.
+The website for Dobson Development Pty Ltd: Mac, Claude, Google and 1Password for Australian business.
 
 Live at https://dobsondevelopment.com.au
 
@@ -9,3 +9,5 @@ Two static pages with their styles inline: the home page, `index.html`, and the 
 The logo is the `dobson_dev_` wordmark with a cyan-to-violet cursor. Vector files are in `assets/brand/`. Typeface: Geist (SIL OFL), self-hosted in `assets/fonts/`.
 
 The white paper page and its PDF are generated. The source text is `tools/white-paper/paper.md`; `build.py` and `pdf.py` in the same folder rebuild the page and the PDF (usage is at the top of `build.py`).
+
+The social preview image, `assets/images/og.png`, is rendered from `tools/og/og.html` by `tools/og/shot.py`.

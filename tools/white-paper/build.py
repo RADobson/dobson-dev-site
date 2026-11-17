@@ -25,7 +25,7 @@ PDF = '/white-paper/change-your-outlook-on-it.pdf'
 URL = 'https://dobsondevelopment.com.au/white-paper/'
 TITLE = 'Change your Outlook on IT: the case for a Microsoft-free Australian business'
 DESC = ('A free white paper for Australian business owners: Microsoft\'s record on outages, price and security, '
-        'the 2026 privacy and ASD Essentials changes, and the Mac, Claude and Proton workplace that replaces it.')
+        'the 2026 privacy and ASD Essentials changes, and the Mac, Claude, Google and 1Password workplace that replaces it.')
 
 lines = open(SRC).read().split('\n')
 
@@ -42,7 +42,7 @@ STATS = [('24 hours', 'Outlook and Teams down across Australia', '13 November 20
          ('16.7%', 'rise in Microsoft 365 Business Basic', '1 July 2026'),
          ('22%', 'of federal agencies at Essential Eight Level 2', 'ASD, 2025 posture report'),
          ('$55,400', 'average cost of a cybercrime report, small business', 'ASD, 2025-26'),
-         ('A$245', 'per person per month, everything included', 'Dobson Development')]
+         ('A$99', 'per person per month for managed support, plus GST', 'Dobson Development')]
 stats_html = '<div class="fig stats" role="list">' + ''.join(
     f'<div class="stat" role="listitem"><b>{a}</b><span>{b}</span><small>{c}</small></div>' for a, b, c in STATS) + '</div>'
 
@@ -57,20 +57,21 @@ chart_html = ('<figure class="fig panel chart"><figcaption><b>Hours to recover</
                         for d, w, h in OUTAGES)
               + '</div><p class="src">Sources: ABC News, IsDown, The Register, Breached Company. Durations are approximate.</p></figure>')
 
-SIX = [('Mac', 'From Apple, with iPhone and iPad', 'replaces Windows PCs'), ('Claude', 'AI assistant', 'replaces Copilot'),
-       ('Proton', 'Mail, files, meetings, passwords, VPN', 'replaces Outlook and OneDrive'), ('Slack', 'Team chat', 'replaces Teams'),
-       ('Salesforce', 'Customer records', 'replaces Dynamics 365'), ('Okta', 'Sign-in and staff accounts', 'replaces Entra ID')]
-stack_html = ('<figure class="fig panel stack"><figcaption><b>One workplace, six specialists</b>'
-              '<span>Each job goes to the company that does it best. We join them up and look after the lot.</span></figcaption>'
-              '<div class="people">Your people, on a Mac, signed in with one fingerprint</div><div class="six">'
-              + ''.join(f'<div class="sx"><b>{n}</b><span>{j}</span><small>{r}</small></div>' for n, j, r in SIX)
+FOUR = [('Mac', 'The computer on every desk', 'replaces Windows PCs'),
+        ('Claude', 'AI for deep work, paired with Gemini', 'replaces Copilot'),
+        ('Google', 'Mail, calendar, files, meetings, chat', 'replaces Outlook, OneDrive and Teams'),
+        ('1Password', 'Every login, generated and shared safely', 'replaces passwords in spreadsheets')]
+stack_html = ('<figure class="fig panel stack"><figcaption><b>One workplace, four names you know</b>'
+              '<span>Each job goes to a product your staff already like. We join them up and look after the lot.</span></figcaption>'
+              '<div class="people">Your people, on a Mac, with Claude at every desk</div><div class="four">'
+              + ''.join(f'<div class="sx"><b>{n}</b><span>{j}</span><small>{r}</small></div>' for n, j, r in FOUR)
               + f'</div><div class="base"><span class="wm">{WM}</span>'
-              '<span>Set-up with Addigy · updates · threat monitoring · help desk</span></div></figure>')
+              '<span>Set-up · updates · security baseline · backup · support</span></div></figure>')
 
 STAGES = [('Before you commit', 'Free review', ['Apps, folders, mailboxes listed', 'Windows-only software flagged', 'A written plan']),
-          ('Days 1 to 30', 'Foundation and move', ['Apple Business and Okta set up', 'Mac computers shipped to staff', 'Email switched on a Friday night']),
-          ('Days 31 to 60', 'Settling in', ['Slack goes live', 'Passwords into Proton Pass', 'Files tidied, Claude session']),
-          ('Days 61 to 90', 'Proof and close', ['First evidence pack', 'Microsoft licences cancelled', 'Old PCs wiped and recycled'])]
+          ('Days 1 to 30', 'Foundation and move', ['Apple Business and Google Workspace set up', 'Mac computers shipped to staff', 'Email switched on a Friday evening']),
+          ('Days 31 to 60', 'Settling in', ['Passwords into 1Password', 'Files tidied into shared drives', 'Claude connected and skills built']),
+          ('Days 61 to 90', 'Closing the Microsoft account', ['Old account read-only for a month', 'Microsoft licences cancelled', 'Old PCs wiped and recycled'])]
 road_html = ('<figure class="fig panel road"><figcaption><b>The first 90 days</b></figcaption><ol class="stages">'
              + ''.join(f'<li><small>{w}</small><b>{n}</b><ul>' + ''.join(f'<li>{i}</li>' for i in its) + '</ul></li>'
                        for w, n, its in STAGES) + '</ol></figure>')
@@ -80,7 +81,7 @@ quote_html = ('<figure class="fig quote"><blockquote>You can claw my Claude Max 
 
 PARTS = {'Part one': ('01', "Microsoft's record", 'Outages, price rises, layoffs and security failures'),
          'Part two': ('02', 'The rules have changed', 'ASD Essentials and the Privacy Act for small business'),
-         'Part three': ('03', 'The stack', 'Mac, Claude and Proton, with Slack, Salesforce and Okta'),
+         'Part three': ('03', 'The stack', 'Mac, Claude, Google and 1Password'),
          'Part four': ('04', 'Working with us', 'The service, the first 90 days and the price')}
 
 
@@ -122,7 +123,7 @@ while i < len(lines):
             out.append(tok('QUOTE', quote_html))
         elif alt.startswith('Timeline'):
             out.append(tok('ROAD', road_html))
-        elif alt in ('Apple', 'Mac', 'Addigy', 'Proton', 'Claude', 'Slack', 'Salesforce', 'Okta') or alt.startswith('Change your Outlook'):
+        elif alt in ('Apple', 'Mac', 'Claude', 'Google', '1Password') or alt.startswith('Change your Outlook'):
             pass  # the heading carries the supplier name; the closing banner becomes the call to action
         else:
             raise SystemExit('unmapped image: ' + alt)
@@ -156,9 +157,12 @@ for k, v in tokens.items():
 
 # ---------- post-process ----------
 body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
+# short tables stay on one page in the PDF
+body = re.sub(r'<div class="tbl">(<table>.*?</table>)</div>',
+              lambda m: (f'<div class="tbl keep">{m.group(1)}</div>' if m.group(1).count('<tr>') <= 8 else m.group(0)), body, flags=re.S)
 body = re.sub(r'<a href="(https?://)', r'<a rel="noopener" href="\1', body)
 
-SUPPLIERS = 'Mac|Addigy|Claude|Proton|Slack|Salesforce|Okta'
+SUPPLIERS = 'Mac|Claude|Google|1Password'
 body = re.sub(rf'<h2 id="([^"]+)">({SUPPLIERS}): ([^<]+)</h2>',
               lambda m: (f'<h2 id="{m.group(1)}" class="sup"><span class="sup-name">{m.group(2)}</span>'
                          f'<span class="sr">: </span><span class="sup-rest">{m.group(3)}</span></h2>'), body)
@@ -205,7 +209,7 @@ mins = round(words / 230 / 5) * 5
 CSS = open(os.path.join(HERE, 'page.css')).read()
 JS = open(os.path.join(HERE, 'page.js')).read()
 ld = {"@context": "https://schema.org", "@type": "Article", "headline": TITLE, "description": DESC,
-      "datePublished": "2026-11-14", "dateModified": "2026-11-14", "inLanguage": "en-AU",
+      "datePublished": "2026-11-14", "dateModified": "2026-11-17", "inLanguage": "en-AU",
       "mainEntityOfPage": URL, "image": "https://dobsondevelopment.com.au/white-paper/og.jpg",
       "author": {"@type": "Person", "name": "Richard Dobson"},
       "publisher": {"@type": "Organization", "name": "Dobson Development Pty Ltd", "url": "https://dobsondevelopment.com.au/"}}
@@ -253,7 +257,7 @@ page = f'''<!DOCTYPE html>
         <p class="eyebrow">White paper · November 2026</p>
         <h1>Change your {OUTLOOK} on IT.</h1>
         <p class="second">The case for a Microsoft-free Australian business.</p>
-        <p class="lead">Meet the Mac, Claude and Proton workplace that Dobson Development sets up and manages for you.</p>
+        <p class="lead">Meet the Mac, Claude, Google and 1Password workplace that Dobson Development sets up and manages for you.</p>
         <p class="meta">By Richard Dobson · 14 November 2026 · {mins} minute read</p>
         <p class="hero-a"><a class="btn" href="#executive-summary">Start reading</a><a class="btn ghost" href="{PDF}" download>Download the PDF</a></p>
         <img class="hero-img" src="/white-paper/hero.jpg" width="1800" height="1012" alt="A MacBook lit in violet and blue light" fetchpriority="high">
@@ -299,7 +303,7 @@ page = f'''<!DOCTYPE html>
     <div class="wrap">
         <span class="wordmark pdf-only">{WM}</span>
         <h2><span class="l">Change your</span> <span class="l">{OUTLOOK} on IT<i class="cursor" aria-hidden="true"></i></span></h2>
-        <p>Thirty minutes over a coffee, and the coffee is on us. You leave with a one-page plan for your business on Mac, Claude and Proton.</p>
+        <p>Thirty minutes over a coffee, and the coffee is on us. You leave with a one-page plan for your business on Mac, Claude, Google and 1Password.</p>
         <a class="mail" href="mailto:{EMAIL}?subject=Coffee">{EMAIL}</a>
         <p class="close-pdf screen-only"><a href="{PDF}" download>Download this paper as a PDF</a></p>
         <p class="close-site pdf-only">dobsondevelopment.com.au</p>
@@ -309,7 +313,7 @@ page = f'''<!DOCTYPE html>
 <footer>
     <div class="wrap">
         <p>&copy; 2026 Dobson Development Pty Ltd. ABN 43 688 593 606. Queensland, Australia.</p>
-        <p>This paper is general information. Please take legal advice about your own obligations. Apple, Mac, MacBook, iPhone, iPad and Touch ID are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Claude, Proton, Slack, Salesforce, Okta, Addigy and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
+        <p>This paper is general information. Please take legal advice about your own obligations. Apple, Mac, MacBook, iPhone, iPad and Touch ID are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Claude, Google, Gmail, Gemini, 1Password, IDrive and Microsoft are trademarks of their respective owners. Dobson Development is an independent business.</p>
     </div>
 </footer>
 <script>
