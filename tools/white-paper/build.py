@@ -21,6 +21,11 @@ OUTLOOK = ('<span class="outlook"><svg viewBox="0 -1491 7311 1922" aria-hidden="
            f'<path d="{OUTLOOK_D}"/></svg><span class="sr">Outlook</span></span>')
 WM = 'dobson_dev<span class="cursor" aria-hidden="true"></span>'
 EMAIL = 'richard@dobsondevelopment.com.au'
+MAILTO = f'mailto:{EMAIL}?subject=My%20app%20list&amp;body=How%20many%20people%3A%0A%0APrograms%20we%20use%3A%0A'
+CTA_H = 'Send us your app list. Get your move plan free.'
+CTA_S = ('Tell us the programs your team uses and how many people you have. '
+         'We reply with a one-page plan: what moves, how long it takes and what it costs.')
+CTA_B = 'Get my free move plan'
 PDF = '/white-paper/change-your-outlook-on-it.pdf'
 URL = 'https://dobsondevelopment.com.au/white-paper/'
 TITLE = 'Change your Outlook on IT: the case for a Microsoft-free Australian business'
@@ -170,11 +175,11 @@ body = re.sub(rf'<h2 id="([^"]+)">({SUPPLIERS}): ([^<]+)</h2>',
 # the next-step call to action
 nxt = re.search(r'(<h2 id="next-step">Next step</h2>)(.*?)(<p>Dobson Development Pty Ltd, ABN)', body, re.S)
 assert nxt
-coffee = re.search(r'<p>The first conversation.*?</p>', nxt.group(2), re.S).group(0)
-cta = (f'<div class="next"><p class="next-h">Change your {OUTLOOK} on IT.</p>{coffee}'
-       f'<p class="next-a"><a class="btn" href="mailto:{EMAIL}?subject=Coffee">Book a coffee</a>'
+assert f'<p>{CTA_H}</p>' in nxt.group(2) and f'<p>{CTA_S}</p>' in nxt.group(2), 'paper.md and the call to action have drifted apart'
+cta = (f'<div class="next"><p class="next-h">Change your {OUTLOOK} on IT.</p><p class="next-o">{CTA_H}</p><p>{CTA_S}</p>'
+       f'<p class="next-a"><a class="btn" href="{MAILTO}">{CTA_B}</a>'
        f'<a class="btn ghost screen-only" href="{PDF}" download>Download the PDF</a></p>'
-       f'<p class="next-m">Email <a href="mailto:{EMAIL}?subject=Coffee">{EMAIL}</a> or visit '
+       f'<p class="next-m">Email <a href="{MAILTO}">{EMAIL}</a> or visit '
        f'<a href="https://dobsondevelopment.com.au">dobsondevelopment.com.au</a>.</p></div>')
 body = body[:nxt.start(2)] + cta + '<p class="legal">Dobson Development Pty Ltd, ABN' + body[nxt.end(3):]
 
@@ -245,7 +250,7 @@ page = f'''<!DOCTYPE html>
         <a class="wordmark" href="/" aria-label="Dobson Development, home">{WM}</a>
         <nav class="bar-nav" aria-label="White paper">
             <a class="pdf" href="{PDF}" download>Download PDF</a>
-            <a class="btn small" href="mailto:{EMAIL}?subject=Coffee">Book a coffee</a>
+            <a class="btn small" href="{MAILTO}">{CTA_B}</a>
         </nav>
     </div>
     <div class="progress" aria-hidden="true"><i id="progress"></i></div>
@@ -303,8 +308,8 @@ page = f'''<!DOCTYPE html>
     <div class="wrap">
         <span class="wordmark pdf-only">{WM}</span>
         <h2><span class="l">Change your</span> <span class="l">{OUTLOOK} on IT<i class="cursor" aria-hidden="true"></i></span></h2>
-        <p>Thirty minutes over a coffee, and the coffee is on us. You leave with a one-page plan for your business on Mac, Claude, Google and 1Password.</p>
-        <a class="mail" href="mailto:{EMAIL}?subject=Coffee">{EMAIL}</a>
+        <p><b>{CTA_H}</b> {CTA_S}</p>
+        <a class="mail" href="{MAILTO}">{EMAIL}</a>
         <p class="close-pdf screen-only"><a href="{PDF}" download>Download this paper as a PDF</a></p>
         <p class="close-site pdf-only">dobsondevelopment.com.au</p>
     </div>

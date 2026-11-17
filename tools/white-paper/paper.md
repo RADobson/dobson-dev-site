@@ -682,11 +682,11 @@ One group should wait. A business whose central system runs on Windows alone is 
 
 ## Next step
 
-&#91;image: Change your Outlook on IT. Thirty minutes over a coffee, and the coffee is on us.\]
-
 Change your Outlook on IT.
 
-The first conversation is thirty minutes over a coffee, and the coffee is on us. Tell us how many people you have, what they use all day and what you wish it felt like. You will leave with a one-page plan showing your business on Mac, Claude, Google and 1Password, what the move involves and what it costs.
+Send us your app list. Get your move plan free.
+
+Tell us the programs your team uses and how many people you have. We reply with a one-page plan: what moves, how long it takes and what it costs.
 
 Email <richard@dobsondevelopment.com.au> or visit [dobsondevelopment.com.au](https://dobsondevelopment.com.au).
 

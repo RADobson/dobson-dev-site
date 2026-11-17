@@ -221,6 +221,7 @@ th:last-child, td:last-child { padding-right: 0; }
 .next { margin: 2rem 0 2.2rem; padding: clamp(1.5rem, 4vw, 2.4rem); border: 1px solid var(--card-line); border-radius: 1.25rem; background: radial-gradient(80% 130% at 100% 0%, rgba(155, 92, 255, 0.3), transparent 60%), var(--card); }
 .next p { margin: 0 0 1.1em; }
 .next .next-h { color: var(--fg); font-size: clamp(2rem, 5.4vw, 3.4rem); font-weight: 600; line-height: 0.98; letter-spacing: -0.055em; }
+.next .next-o { margin-bottom: 0.5em; color: var(--fg); font-size: 1.2em; font-weight: 600; letter-spacing: -0.03em; line-height: 1.2; }
 .next .next-a { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.6rem 0 1.3rem; }
 .next .next-m { margin: 0; color: var(--muted); font-size: 0.92rem; }
 .next .btn { color: #05060A; text-decoration: none; }
@@ -238,6 +239,7 @@ th:last-child, td:last-child { padding-right: 0; }
 .close::before { content: ""; position: absolute; z-index: -1; width: 70vmax; height: 40vmax; left: 50%; bottom: -30vmax; transform: translateX(-50%); border-radius: 50%; filter: blur(120px); background: linear-gradient(90deg, var(--cyan), var(--violet)); opacity: 0.4; }
 .close h2 { margin: 0; font-weight: 600; font-size: clamp(2.4rem, 6.4vw, 5.6rem); line-height: 0.98; letter-spacing: -0.055em; }
 .close p { margin: clamp(1.5rem, 3vw, 2.5rem) 0 0; max-width: 32rem; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -0.02em; color: var(--muted); }
+.close p b { color: var(--fg); font-weight: 600; }
 .close a.mail { display: inline-block; margin-top: clamp(2.5rem, 5vw, 4rem); font-weight: 600; font-size: clamp(1.25rem, 3.4vw, 2.75rem); letter-spacing: -0.04em; line-height: 1.1; text-decoration: none; overflow-wrap: anywhere; }
 .close a.mail:hover { text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.14em; }
 .close .close-pdf { margin-top: 1.5rem; font-size: 1rem; }
