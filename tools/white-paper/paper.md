@@ -156,7 +156,7 @@ A Microsoft business that paid for an Essential Eight project now faces a second
 
 Insurers, larger customers and government buyers will move their questionnaires to the new language over the next two years. A business that can answer in the new terms will be well placed to win that work.
 
-The new framework finally suits a business that runs on Mac. The Essential Eight was written around Windows, so a Mac business had to translate every control. ASD Essentials asks for outcomes: strong sign-in, patched devices, limited privileges, working backups, and evidence. Well-managed Macs with multi-factor sign-in on every account start from a strong position on each of them.
+The new framework finally suits a business that runs on Mac. The Essential Eight was written around Windows, so a Mac business had to translate every control. ASD Essentials asks for outcomes: strong sign-in, patched devices, limited privileges, working backups, and evidence. A business on well-managed Mac computers, with multi-factor sign-in on every account, starts from a strong position on each of them.
 
 ## The 1 July 2026 privacy change for small businesses
 
@@ -324,7 +324,7 @@ macOS and app updates install in the background through Apple's own update syste
 
 ### Fixes happen in the evening
 
-A request logged today has a reply by tomorrow morning. The fix goes in that evening, while your staff are off their Macs, so repairs happen outside your working day.
+A request logged today has a reply by tomorrow morning. The fix goes in that evening, after your staff have finished for the day, so repairs happen outside your working hours.
 
 ### A lost Mac is locked and erased
 
@@ -551,7 +551,7 @@ The service has a name that says what is in it: Mac + Claude + Google + 1Passwor
 
 ### How support works
 
-Staff log a request in our service portal at any hour. Every request has a reply by the next morning. We do the fix in the evening, while your staff are off their Macs, so repairs happen outside your working day.
+Staff log a request in our service portal at any hour. Every request has a reply by the next morning. We do the fix in the evening, after your staff have finished for the day, so repairs happen outside your working hours.
 
 One person in your business holds backup admin rights, so a password or sign-in reset can happen on the spot at any time of day.
 
@@ -606,7 +606,7 @@ For a team of 10, each person's month looks like this before GST.
 | Managed support | Dobson Development | A$99.00 |
 | Licences and licence management: Google Workspace Business Standard, 1Password and IDrive backup | Dobson Development | A$28.57 |
 | Claude Team on annual billing | Anthropic, on your card | US$20.00, which is A$28.60 |
-| Total | | A$156.17 |
+| Total |  | A$156.17 |
 
 Our invoice comes to A$127.57 per person per month, or A$140.33 including GST. Anthropic bills Claude Team to you directly at US$20.00 per person per month on annual billing, as [Anthropic's Team plan page](https://claude.com/get-claude-team-plan) lists. The Australian dollar figures use an exchange rate of 1.43 to the US dollar, and the licence line moves with that rate and with the size of your team.
 
@@ -614,13 +614,13 @@ You buy or lease the Mac computers yourself, as described earlier. A MacBook Neo
 
 ### Onboarding is free for our first three clients
 
-Setting up your accounts and your Macs and moving every mailbox and file off Microsoft is free for our first three clients, in return for a case study that names your business.
+Setting up your accounts and every Mac and moving every mailbox and file off Microsoft is free for our first three clients, in return for a case study that names your business.
 
 ### How that compares
 
 IT Start's [2026 guide to managed services pricing](https://itstart.com.au/blog/managed-services-pricing-in-australia-2026-guide-for-smbs) puts basic managed support in Australia at A$100 to A$130 per user per month for a business-hours helpdesk and standard monitoring, with licences billed on top. Microsoft lists [Microsoft 365 Business Premium](https://www.microsoft.com/en-au/security/small-medium-business/pricing) at A$32.90 per user per month on annual billing.
 
-| | A basic managed plan on Microsoft | Dobson Development |
+|  | A basic managed plan on Microsoft | Dobson Development |
 | --- | --- | --- |
 | Managed support | A$100.00 to A$130.00 | A$99.00 |
 | Licences | Microsoft 365 Business Premium, A$32.90 | Google Workspace, 1Password and backup, A$28.57 |
@@ -642,7 +642,7 @@ Most people use a spreadsheet for lists, budgets and simple calculations. Google
 
 ### We have a program that runs on Windows alone. What then?
 
-Most business software now runs in a web browser, including the accounting, practice management and property systems that Australian firms rely on. Those work on a Mac today. If one Windows program remains, the review sets out the options for running it alongside your Macs. If your whole business runs on Windows-only software, we will say so in the review and recommend that you wait.
+Most business software now runs in a web browser, including the accounting, practice management and property systems that Australian firms rely on. Those work on a Mac today. If one Windows program remains, the review sets out the options for running it alongside your Mac computers. If your whole business runs on Windows-only software, we will say so in the review and recommend that you wait.
 
 ### Will clients and suppliers be able to work with us?
 
