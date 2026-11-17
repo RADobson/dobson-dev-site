@@ -156,7 +156,7 @@ A Microsoft business that paid for an Essential Eight project now faces a second
 
 Insurers, larger customers and government buyers will move their questionnaires to the new language over the next two years. A business that can answer in the new terms will be well placed to win that work.
 
-The new framework finally suits a business that runs on Mac. The Essential Eight was written around Windows, so a Mac business had to translate every control. ASD Essentials asks for outcomes: strong sign-in, patched devices, limited privileges, working backups, and evidence. Well-managed Macs with multi-factor sign-in on every account start from a strong position on each of them.
+The new framework finally suits a business that runs on Mac. The Essential Eight was written around Windows, so a Mac business had to translate every control. ASD Essentials asks for outcomes: strong sign-in, patched devices, limited privileges, working backups, and evidence. A business on well-managed Mac computers, with multi-factor sign-in on every account, starts from a strong position on each of them.
 
 ## The 1 July 2026 privacy change for small businesses
 
@@ -324,7 +324,7 @@ macOS and app updates install in the background through Apple's own update syste
 
 ### Fixes happen in the evening
 
-A request logged today has a reply by tomorrow morning. The fix goes in that evening, while your staff are off their Macs, so repairs happen outside your working day.
+A request logged today has a reply by tomorrow morning. The fix goes in that evening, after your staff have finished for the day, so repairs happen outside your working hours.
 
 ### A lost Mac is locked and erased
 
@@ -551,7 +551,7 @@ The service has a name that says what is in it: Mac + Claude + Google + 1Passwor
 
 ### How support works
 
-Staff log a request in our service portal at any hour. Every request has a reply by the next morning. We do the fix in the evening, while your staff are off their Macs, so repairs happen outside your working day.
+Staff log a request in our service portal at any hour. Every request has a reply by the next morning. We do the fix in the evening, after your staff have finished for the day, so repairs happen outside your working hours.
 
 One person in your business holds backup admin rights, so a password or sign-in reset can happen on the spot at any time of day.
 
@@ -614,7 +614,7 @@ You buy or lease the Mac computers yourself, as described earlier. A MacBook Neo
 
 ### Onboarding is free for our first three clients
 
-Setting up your accounts and your Macs and moving every mailbox and file off Microsoft is free for our first three clients, in return for a case study that names your business.
+Setting up your accounts and every Mac and moving every mailbox and file off Microsoft is free for our first three clients, in return for a case study that names your business.
 
 ### How that compares
 
@@ -642,7 +642,7 @@ Most people use a spreadsheet for lists, budgets and simple calculations. Google
 
 ### We have a program that runs on Windows alone. What then?
 
-Most business software now runs in a web browser, including the accounting, practice management and property systems that Australian firms rely on. Those work on a Mac today. If one Windows program remains, the review sets out the options for running it alongside your Macs. If your whole business runs on Windows-only software, we will say so in the review and recommend that you wait.
+Most business software now runs in a web browser, including the accounting, practice management and property systems that Australian firms rely on. Those work on a Mac today. If one Windows program remains, the review sets out the options for running it alongside your Mac computers. If your whole business runs on Windows-only software, we will say so in the review and recommend that you wait.
 
 ### Will clients and suppliers be able to work with us?
 
