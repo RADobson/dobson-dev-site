@@ -1,6 +1,6 @@
 # Dobson Development
 
-The website for Dobson Development Pty Ltd: Mac, Claude, Google and 1Password for Australian business.
+The website for Dobson Development Pty Ltd: Mac, Claude and Google for Australian business.
 
 Live at https://dobsondevelopment.com.au
 
