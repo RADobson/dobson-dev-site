@@ -30,7 +30,7 @@ PDF = '/white-paper/change-your-outlook-on-it.pdf'
 URL = 'https://dobsondevelopment.com.au/white-paper/'
 TITLE = 'Change your Outlook on IT: the case for a Microsoft-free Australian business'
 DESC = ('A free white paper for Australian business owners: Microsoft\'s record on outages, price and security, '
-        'the 2026 privacy and ASD Essentials changes, and the Mac, Claude, Google and 1Password workplace that replaces it.')
+        'the 2026 privacy and ASD Essentials changes, and the Mac, Claude and Google workplace that replaces it.')
 
 lines = open(SRC).read().split('\n')
 
@@ -64,14 +64,13 @@ chart_html = ('<figure class="fig panel chart"><figcaption><b>Hours to recover</
 
 FOUR = [('Mac', 'The computer on every desk', 'replaces Windows PCs'),
         ('Claude', 'AI for deep work, paired with Gemini', 'replaces Copilot'),
-        ('Google', 'Mail, calendar, files, meetings, chat', 'replaces Outlook, OneDrive and Teams'),
-        ('1Password', 'Every login, generated and shared safely', 'replaces passwords in spreadsheets')]
-stack_html = ('<figure class="fig panel stack"><figcaption><b>One workplace, four names you know</b>'
+        ('Google', 'Mail, calendar, files, meetings, chat', 'replaces Outlook, OneDrive and Teams')]
+stack_html = ('<figure class="fig panel stack"><figcaption><b>One workplace, three names you know</b>'
               '<span>Each job goes to a product your staff already like. We join them up and look after the lot.</span></figcaption>'
               '<div class="people">Your people, on a Mac, with Claude at every desk</div><div class="four">'
               + ''.join(f'<div class="sx"><b>{n}</b><span>{j}</span><small>{r}</small></div>' for n, j, r in FOUR)
               + f'</div><div class="base"><span class="wm">{WM}</span>'
-              '<span>Set-up · updates · security baseline · backup · support</span></div></figure>')
+              '<span>Set-up · updates · 1Password · security baseline · backup · support</span></div></figure>')
 
 STAGES = [('Before you commit', 'Free review', ['Apps, folders, mailboxes listed', 'Windows-only software flagged', 'A written plan']),
           ('Days 1 to 30', 'Foundation and move', ['Apple Business and Google Workspace set up', 'Mac computers shipped to staff', 'Email switched on a Friday evening']),
@@ -86,7 +85,7 @@ quote_html = ('<figure class="fig quote"><blockquote>You can claw my Claude Max 
 
 PARTS = {'Part one': ('01', "Microsoft's record", 'Outages, price rises, layoffs and security failures'),
          'Part two': ('02', 'The rules have changed', 'ASD Essentials and the Privacy Act for small business'),
-         'Part three': ('03', 'The stack', 'Mac, Claude, Google and 1Password'),
+         'Part three': ('03', 'The stack', 'Mac, Claude and Google'),
          'Part four': ('04', 'Working with us', 'The service, the first 90 days and the price')}
 
 
@@ -167,7 +166,7 @@ body = re.sub(r'<div class="tbl">(<table>.*?</table>)</div>',
               lambda m: (f'<div class="tbl keep">{m.group(1)}</div>' if m.group(1).count('<tr>') <= 8 else m.group(0)), body, flags=re.S)
 body = re.sub(r'<a href="(https?://)', r'<a rel="noopener" href="\1', body)
 
-SUPPLIERS = 'Mac|Claude|Google|1Password'
+SUPPLIERS = 'Mac|Claude|Google'
 body = re.sub(rf'<h2 id="([^"]+)">({SUPPLIERS}): ([^<]+)</h2>',
               lambda m: (f'<h2 id="{m.group(1)}" class="sup"><span class="sup-name">{m.group(2)}</span>'
                          f'<span class="sr">: </span><span class="sup-rest">{m.group(3)}</span></h2>'), body)
@@ -262,7 +261,7 @@ page = f'''<!DOCTYPE html>
         <p class="eyebrow">White paper · November 2026</p>
         <h1>Change your {OUTLOOK} on IT.</h1>
         <p class="second">The case for a Microsoft-free Australian business.</p>
-        <p class="lead">Meet the Mac, Claude, Google and 1Password workplace that Dobson Development sets up and manages for you.</p>
+        <p class="lead">Meet the Mac, Claude and Google workplace that Dobson Development sets up and manages for you.</p>
         <p class="meta">By Richard Dobson · 14 November 2026 · {mins} minute read</p>
         <p class="hero-a"><a class="btn" href="#executive-summary">Start reading</a><a class="btn ghost" href="{PDF}" download>Download the PDF</a></p>
         <img class="hero-img" src="/white-paper/hero.jpg" width="1800" height="1012" alt="A MacBook lit in violet and blue light" fetchpriority="high">
