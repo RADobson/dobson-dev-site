@@ -1,13 +1,13 @@
 # Dobson Development
 
-The public website for Dobson Development Pty Ltd: managed Mac IT, Google Workspace, 1Password and Claude for Australian businesses.
+The website for Dobson Development Pty Ltd: Mac, Claude, Google and 1Password for Australian business.
 
-Live at https://dobsondevelopment.com.au. GitHub Pages serves the static files directly; pushing to `main` publishes.
+Live at https://dobsondevelopment.com.au
 
-The homepage keeps the `dobson_dev` branding, Geist typeface and cyan/violet palette. Service pages and the About page use `services.css`. Each public page has a title, description and canonical URL; the homepage includes Organization and WebSite structured data. `sitemap.xml` lists all public landing pages.
+Two static pages with their styles inline: the home page, `index.html`, and the white paper, `white-paper/index.html`, which also carries its PDF. GitHub Pages serves it as is; pushing to `main` publishes. The previous multi-page site is in the git history.
 
-Edit the static HTML directly. Keep page titles, descriptions, canonical URLs and structured data consistent with the visible copy, and update `sitemap.xml` when adding public pages.
+The logo is the `dobson_dev_` wordmark with a cyan-to-violet cursor. Vector files are in `assets/brand/`. Typeface: Geist (SIL OFL), self-hosted in `assets/fonts/`.
 
-The white paper and PDF are generated from `tools/white-paper/paper.md` using the existing `build.py` and `pdf.py`. The social image is rendered from `tools/og/og.html`.
+The white paper page and its PDF are generated. The source text is `tools/white-paper/paper.md`; `build.py` and `pdf.py` in the same folder rebuild the page and the PDF (usage is at the top of `build.py`).
 
-Commercial model: A$99 per person/month + GST is management and support only. All software subscriptions are additional; clients pay Anthropic directly for Claude. Custom Claude engineering and projects are scoped separately.
+The social preview image, `assets/images/og.png`, is rendered from `tools/og/og.html` by `tools/og/shot.py`.
