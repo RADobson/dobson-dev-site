@@ -4,7 +4,7 @@ Nov 14, 2026 · @Richard Dobson
 
 &#91;image: Dobson Development white paper cover: Change your Outlook on IT\]
 
-The case for a Microsoft-free Australian business, and the Mac, Claude, Google and 1Password workplace that Dobson Development sets up and manages for you. A white paper from Dobson Development Pty Ltd.
+The case for a Microsoft-free Australian business, and the Mac, Claude and Google workplace that Dobson Development sets up and manages for you. A white paper from Dobson Development Pty Ltd.
 
 ## Executive summary
 
@@ -14,7 +14,7 @@ Four months earlier, on 1 July, Microsoft raised the price of the Microsoft 365 
 
 After a year like that, a business owner is entitled to ask whether Microsoft is still the safe choice.
 
-Our answer is that a better choice now exists, for a similar monthly spend. Dobson Development builds and manages a complete workplace on four names your staff already know: Mac, Claude, Google and 1Password.
+Our answer is that a better choice now exists, for a similar monthly spend. Dobson Development builds and manages a complete workplace on three names your staff already know: Mac, Claude and Google.
 
 - Every Mac arrives configured and ready to work.
 - Mail, calendar, files, documents, meetings and chat run on Google Workspace, and we move every mailbox and file across from Microsoft for you.
@@ -447,7 +447,7 @@ Google's data migration service copies mail, calendars and contacts across from 
 
 We will be direct about one limit. Google Sheets handles the lists, budgets and everyday calculations that make up most spreadsheet work, and it opens and saves Excel files. Apple's Numbers is on every Mac as a second option. Workbooks that lean on complex macros or very heavy models get individual attention in the free review, and we tell you what we find before you spend a dollar.
 
-## 1Password: every login in one place
+## Passwords: every login in one place
 
 Most break-ins at small businesses start with a stolen password. A staff member uses the same password for a food delivery app and for the company's accounting system. The delivery app is breached, the password list is sold, and a criminal tries it against the business.
 
@@ -535,7 +535,7 @@ The frameworks will keep changing. Because every customer runs the same build, w
 
 Software on its own solves half the problem. Someone has to buy it, set it up properly, keep it secure and current, and fix it when it breaks. Dobson Development does that work for a fixed monthly price per person.
 
-The service has a name that says what is in it: Mac + Claude + Google + 1Password Managed Support.
+The service has a name that says what is in it: Mac + Claude + Google Managed Support.
 
 ### What every person gets
 
